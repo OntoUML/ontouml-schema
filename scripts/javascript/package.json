@@ -1,0 +1,25 @@
+{
+  "name": "DestinationData",
+  "version": "1.0.0",
+  "description": "DestinationData",
+  "scripts": {
+    "test": "mocha",
+    "start": "node src/validator.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/alpinebits/destinationdata.git"
+  },
+  "keywords": [],
+  "author": "",
+  "bugs": {
+    "url": "https://gitlab.com/alpinebits/destinationdata/issues"
+  },
+  "homepage": "https://gitlab.com/alpinebits/destinationdata",
+  "dependencies": {
+    "ajv": "^6.10.0"
+  },
+  "devDependencies": {
+    "mocha": "^6.0.2"
+  }
+}

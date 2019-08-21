@@ -1,0 +1,191 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "id": "https://ontouml.org/OntoUMLSchema/v1/Model",
+  "title": "Model",
+  "definitions": {
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "uri": {
+      "type": "string",
+      "format": "uri"
+    },
+    "authors": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string"
+      }
+    },
+
+    "structuralElements": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "oneOf": [
+          {
+            "$ref": "#/definitions/Package"
+          },
+          {
+            "$ref": "#/definitions/Class"
+          },
+          {
+            "$ref": "#/definitions/GeneralizationLink"
+          }
+        ]
+      },
+      "additionalProperties": false
+    },
+    "relata": {
+      "type": "array",
+      "uniqueItems": true,
+      "minItems": 2,
+      "items": {
+        "oneOf": [
+          {
+            "type": "string",
+            "format": "uri"
+          },
+          {
+            "$ref": "#/definitions/Property"
+          }
+        ]
+      },
+      "additionalProperties": false
+    },
+
+    "Package": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "const": "Package"
+        },
+        "name": {
+          "$ref": "#/definitions/name"
+        },
+        "url": {
+          "$ref": "#/definitions/url"
+        },
+        "uri": {
+          "$ref": "#/definitions/uri"
+        },
+        "structuralElements": {
+          "$ref": "#/definitions/structuralElements"
+        }
+      },
+      "required": [
+        "@type",
+        "uri"
+      ],
+      "additionalProperties": false
+    },
+    "Class": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "const": "Class"
+        },
+        "name": {
+          "$ref": "#/definitions/name"
+        },
+        "url": {
+          "$ref": "#/definitions/url"
+        },
+        "uri": {
+          "$ref": "#/definitions/uri"
+        }
+      },
+      "required": [
+        "@type",
+        "uri"
+      ],
+      "additionalProperties": false
+    },
+    "GeneralizationLink": {
+      "type": "object",
+      "$id": "#/GeneralizationLink",
+      "properties": {
+        "@type": {
+          "const": "GeneralizationLink"
+        },
+        "name": {
+          "$ref": "#/definitions/name"
+        },
+        "url": {
+          "$ref": "#/definitions/url"
+        },
+        "uri": {
+          "$ref": "#/definitions/uri"
+        },
+        "relata": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/relata"
+            }
+          ],
+          "maxItems": 2
+        }
+      },
+        "required": [
+          "@type",
+          "uri",
+          "relata"
+        ],
+        "additionalProperties": false
+      },
+    "Property": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "const": "Property"
+        },
+        "name": {
+          "$ref": "#/definitions/name"
+        },
+        "uri": {
+          "$ref": "#/definitions/uri"
+        },
+        "url": {
+          "$ref": "#/definitions/url"
+        }
+      },
+      "required": [
+        "@type",
+        "uri"
+      ],
+      "additionalProperties": false
+    }
+  },
+
+  "type": "object",
+  "properties": {
+    "@type": {
+      "const": "Model"
+    },
+    "name": {
+      "$ref": "#/definitions/name"
+    },
+    "url": {
+      "$ref": "#/definitions/url"
+    },
+    "uri": {
+      "$ref": "#/definitions/uri"
+    },
+    "authors": {
+      "$ref": "#/definitions/authors"
+    },
+    "structuralElements": {
+      "$ref": "#/definitions/structuralElements"
+    }
+  },
+  "required": [
+    "@type",
+    "uri"
+  ],
+  "additionalProperties": false
+}
