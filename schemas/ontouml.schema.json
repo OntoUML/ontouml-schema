@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "id": "https://ontouml.org/OntoUMLSchema/v1/Model",
+  "$id": "https://ontouml.org/OntoUMLSchema/v1/Model",
   "title": "Model",
   "definitions": {
     "name": {
@@ -36,25 +36,21 @@
           },
           {
             "$ref": "#/definitions/GeneralizationLink"
+          },
+          {
+            "$ref": "#/definitions/GeneralizationSet"
           }
         ]
       },
       "additionalProperties": false
     },
-    "relata": {
+    "tuple": {
       "type": "array",
       "uniqueItems": true,
       "minItems": 2,
       "items": {
-        "oneOf": [
-          {
-            "type": "string",
-            "format": "uri"
-          },
-          {
-            "$ref": "#/definitions/Property"
-          }
-        ]
+        "type": "string",
+        "format": "uri"
       },
       "additionalProperties": false
     },
@@ -108,7 +104,6 @@
     },
     "GeneralizationLink": {
       "type": "object",
-      "$id": "#/GeneralizationLink",
       "properties": {
         "@type": {
           "const": "GeneralizationLink"
@@ -122,10 +117,10 @@
         "uri": {
           "$ref": "#/definitions/uri"
         },
-        "relata": {
+        "tuple": {
           "allOf": [
             {
-              "$ref": "#/definitions/relata"
+              "$ref": "#/definitions/tuple"
             }
           ],
           "maxItems": 2
@@ -134,10 +129,50 @@
         "required": [
           "@type",
           "uri",
-          "relata"
+          "tuple"
         ],
         "additionalProperties": false
       },
+      "GeneralizationSet": {
+        "type": "object",
+        "properties": {
+          "@type": {
+            "const": "GeneralizationSet"
+          },
+          "name": {
+            "$ref": "#/definitions/name"
+          },
+          "url": {
+            "$ref": "#/definitions/url"
+          },
+          "uri": {
+            "$ref": "#/definitions/uri"
+          },
+          "isDisjoint": {
+            "type": "boolean"
+          },
+          "isComplete": {
+            "type": "boolean"
+          },
+          "categorizer": {
+            "type": "string",
+            "format": "uri"
+          },
+          "tuple": {
+            "allOf": [
+              {
+                "$ref": "#/definitions/tuple"
+              }
+            ]
+          }
+        },
+          "required": [
+            "@type",
+            "uri",
+            "tuple"
+          ],
+          "additionalProperties": false
+        },
     "Property": {
       "type": "object",
       "properties": {

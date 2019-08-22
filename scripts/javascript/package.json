@@ -1,21 +1,21 @@
 {
-  "name": "DestinationData",
+  "name": "ontouml-schema",
   "version": "1.0.0",
-  "description": "DestinationData",
+  "description": "OntoUMLSchema",
   "scripts": {
     "test": "mocha",
     "start": "node src/validator.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://gitlab.com/alpinebits/destinationdata.git"
+    "url": "git+https://github.com/claudenirmf/ontouml-schema.git"
   },
   "keywords": [],
   "author": "",
   "bugs": {
-    "url": "https://gitlab.com/alpinebits/destinationdata/issues"
+    "url": "https://github.com/claudenirmf/ontouml-schema/issues"
   },
-  "homepage": "https://gitlab.com/alpinebits/destinationdata",
+  "homepage": "https://github.com/claudenirmf/ontouml-schema/",
   "dependencies": {
     "ajv": "^6.10.0"
   },
