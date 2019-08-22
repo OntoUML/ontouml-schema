@@ -1,7 +1,7 @@
 {
   "name": "ontouml-schema",
   "version": "1.0.0",
-  "description": "OntoUMLSchema",
+  "description": "JSON Schema definition of a OntoUML Model Exchange file.",
   "scripts": {
     "test": "mocha",
     "start": "node src/validator.js"
