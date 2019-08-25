@@ -10,7 +10,7 @@
   "structuralElements": [
     {
       "@type": "GeneralizationLink",
-      "uri": "ontouml:g1",
+      "uri": "ontouml:model.g1",
       "tuple": [
         "ontouml:model.p1.c1",
         "ontouml:model.c2"
@@ -18,7 +18,7 @@
     },
     {
       "@type": "GeneralizationLink",
-      "uri": "ontouml:g2",
+      "uri": "ontouml:model.g2",
       "tuple": [
         "ontouml:model.p1.c1",
         "ontouml:model.c3"
