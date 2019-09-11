@@ -1,4 +1,4 @@
-const OntoUMLSchema = require('./validator')
+const OntoUMLSchema = require('./../src/validator')
 
 //var instance = new OntoUMLSchema();
 
