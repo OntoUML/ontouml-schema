@@ -1,7 +1,7 @@
 {
   "@type": "Model",
-  "uri": "https://example.com/model/",
-  "url": "https://example.com/model/",
+  "uri": "https://example.com/model/m1",
+  "url": "https://example.com/model/m1",
   "name": "Something Else",
   "authors": [
     "Bob",
