@@ -1,177 +1,116 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://ontouml.org/OntoUMLSchema/v1/Model",
+  "$id": "https://ontouml.org/ontouml-schema/1.0/",
   "title": "Model",
+  "description": "The `ontouml-schema` is an object that represents an OntoUML ontology. Mandatory fields: constant \"@type\": \"Model\", \"id\", \"name\", \"authors\", \"contents\". Additional fields allowed.",
+  "type": "object",
+  "properties": {
+    "@type": { "const": "Model" },
+    "id": { "$ref": "#/definitions/id" },
+    "name": { "$ref": "#/definitions/name" },
+    "authors": { "$ref": "#/definitions/authors" },
+    "contents": { "$ref": "#/definitions/contents" }
+  },
+  "required": [
+    "@type",
+    "id",
+    "name",
+    "authors",
+    "contents"
+  ],
+
   "definitions": {
-    "name": {
-      "description": "The name of the field's container.",
-      "type": "string",
-      "minLength": 1
-    },
-    "url": {
-      "description": "URL towards some resource diretcly related to the field's container.",
-      "type": "string",
-      "format": "uri"
-    },
-    "uri": {
-      "description": "Element URI (under RFC 3986) used to represent resources' unique identies and non-containment references between entities.",
-      "type": "string",
-      "format": "uri"
-    },
-    "authors": {
-      "description": "Aliases for the ontology's authors.",
-      "type": "array",
-      "uniqueItems": true,
-      "items": {
-        "type": "string"
-      }
-    },
-
-    "structuralElements": {
-      "description": "This field contains entities present in OntoUML structural aspects (packages, classes, relations, generalizations and so on). Contained packages may have their on fields 'structuralElements'.",
-      "type": "array",
-      "uniqueItems": true,
-      "items": {
-        "oneOf": [
-          {
-            "$ref": "#/definitions/Package"
-          },
-          {
-            "$ref": "#/definitions/Class"
-          },
-          {
-            "$ref": "#/definitions/Relation"
-          },
-          {
-            "$ref": "#/definitions/GeneralizationLink"
-          },
-          {
-            "$ref": "#/definitions/GeneralizationSet"
-          }
-        ]
-      }
-    },
-    "tuple": {
-      "description": "Tuples of URIs following some predicative statement. Used to represent relations' instances and/or links. The elements are ordered and the positions follow the semantics of some specified predicated (e.g., loves(a,b) = 'a loves b').",
-      "type": "array",
-      "uniqueItems": true,
-      "minItems": 2,
-      "items": {
-        "type": "string",
-        "format": "uri"
-      }
-    },
-    "stereotypes": {
-      "description": "List of stereotypes of annotating the field's container.",
-      "type": "array",
-      "uniqueItems": true,
-      "minItems": 1,
-      "items": {
-        "$ref": "#/definitions/Stereotype"
-      }
-    },
-
     "Package": {
-      "description": "Model element container used to support modularization.",
+      "description": "An object representing a packge element. Mandatory fields: constant \"@type\": \"Package\", \"id\". Optional fields: \"name\", \"contents\", \"metaProperties\". Additional fields allowed.",
       "type": "object",
       "properties": {
-        "@type": {
-          "const": "Package"
-        },
-        "name": {
-          "$ref": "#/definitions/name"
-        },
-        "url": {
-          "$ref": "#/definitions/url"
-        },
-        "uri": {
-          "$ref": "#/definitions/uri"
-        },
-        "structuralElements": {
-          "$ref": "#/definitions/structuralElements"
-        }
+        "@type": { "const": "Package" },
+        "id": { "$ref": "#/definitions/id" },
+        "name": { "$ref": "#/definitions/name" },
+        "contents": { "$ref": "#/definitions/contents" },
+        "metaProperties": { "$ref": "#/definitions/metaProperties" }
       },
       "required": [
         "@type",
-        "uri"
-      ],
-      "additionalProperties": false
+        "id",
+        "name",
+        "contents",
+        "metaProperties"
+      ]
     },
+
     "Class": {
-      "description": "Predicative entities representing bundle of aspects exhibited by its instances (e.g., 'Person', 'Organization', 'Cointract').",
+      "description": "An object representing a class element. Mandatory fields: constant \"@type\": \"Class\", \"id\", \"name\", \"stereotypes\", \"properties\", \"metaProperties\". Additional fields allowed.",
       "type": "object",
       "properties": {
-        "@type": {
-          "const": "Class"
-        },
-        "name": {
-          "$ref": "#/definitions/name"
-        },
-        "url": {
-          "$ref": "#/definitions/url"
-        },
-        "uri": {
-          "$ref": "#/definitions/uri"
-        },
-        "stereotypes": {
-          "$ref": "#/definitions/stereotypes"
-        },
-        "properties": {
-          "type": "array",
-          "minItems": 1,
-          "items": {
-            "allOf": [
-              {
-                "$ref": "#/definitions/Property"
-              }
-            ]
-          }
-        }
+        "@type": { "const": "Class" },
+        "id": { "$ref": "#/definitions/id" },
+        "name": { "$ref": "#/definitions/name" },
+        "stereotypes": { "$ref": "#/definitions/stereotypes" },
+        "properties": { "$ref": "#/definitions/properties" },
+        "metaProperties": { "$ref": "#/definitions/metaProperties" }
       },
       "required": [
         "@type",
-        "uri"
-      ],
-      "additionalProperties": false
+        "id",
+        "name",
+        "stereotypes",
+        "properties",
+        "metaProperties"
+      ]
     },
-    "Relation": {
+
+    "Association": {
+      "description": "An object representing an association element. Mandatory fields: constant \"@type\": \"Class\", \"id\", \"name\", \"stereotypes\", \"properties\", \"metaProperties\". The \"properties\" array must have at least two items and is not nullable. The order of these items represents their position on a equivalent predicate, e.g., in the ternary association \"buys-product-from(buyer,product,seller)\", the order of items representing these entities must follow the order \"buyer\" (in properties[0]), \"product\" (in properties[1]), and \"seller\" (in properties[2]). Additional fields allowed.",
+      "type": "object",
+      "properties": {
+        "@type": { "const": "Association" },
+        "id": { "$ref": "#/definitions/id" },
+        "name": { "$ref": "#/definitions/name" },
+        "stereotypes": { "$ref": "#/definitions/stereotypes" },
+        "properties": { 
+          "$ref": "#/definitions/properties",
+          "minItems": 2
+        },
+        "metaProperties": { "$ref": "#/definitions/metaProperties" }
+      },
+      "required": [
+        "@type",
+        "id",
+        "name",
+        "stereotypes",
+        "properties",
+        "metaProperties"
+      ],
+      "not": { "properties": { "properties": { "type": "null" } } }
+    },
+
+    "DeriviationAssociation": {
       "description": "Predicative entities representing bundle of aspects exhibited by tuples that isntantiate it (e.g., 'loves' as in 'John loves Marry' or 'buys-with' as in 'Bob buys a Cellphone with a Credit Card').",
       "type": "object",
       "properties": {
-        "@type": {
-          "const": "Relation"
-        },
-        "name": {
-          "$ref": "#/definitions/name"
-        },
-        "url": {
-          "$ref": "#/definitions/url"
-        },
-        "uri": {
-          "$ref": "#/definitions/uri"
-        },
-        "stereotypes": {
-          "$ref": "#/definitions/stereotypes"
-        },
-        "properties": {
-          "type": "array",
+        "@type": { "const": "DeriviationAssociation" },
+        "id": { "$ref": "#/definitions/id" },
+        "name": { "$ref": "#/definitions/name" },
+        "stereotypes": { "$ref": "#/definitions/stereotypes" },
+        "properties": { 
+          "$ref": "#/definitions/properties",
           "minItems": 2,
-          "items": {
-            "allOf": [
-              {
-                "$ref": "#/definitions/Property"
-              }
-            ]
-          }
-        }
+          "maxItems": 2
+        },
+        "metaProperties": { "$ref": "#/definitions/metaProperties" }
       },
       "required": [
         "@type",
-        "uri",
-        "properties"
+        "id",
+        "name",
+        "stereotypes",
+        "properties",
+        "metaProperties"
       ],
-      "additionalProperties": false
+      "not": { "properties": { "properties": { "type": "null" } } }
     },
+
     "GeneralizationLink": {
       "description": "A link between two classifiers (either classes or relations) where the instances of the latter (the specific) are necessarily instances of the former (the general).",
       "type": "object",
@@ -295,64 +234,148 @@
       ],
       "additionalProperties": false
     },
-    "Stereotype": {
-      "description": "The field stereotype allows the flexible annotation of model elements with meta-properties. BEAWARE that the current strategy for dealing with stereotypes in the OntoUML Schema may change soon as we try to incorporate tagged values and avoid unnecessary duplication of stereotypes (potentially relying on URIs for the latter).",
+
+    "authors": {
+      "description": "A non-empty array of strings representing names of an object's authors. Nullable.",
+      "oneOf": [
+        {
+          "type": "array",
+          "uniqueItems": true,
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        { "type": "null" }
+      ]
+    },
+
+    "contents": {
+      "description": "A non-empty array of objects representing model elements. May contain objects representing one of the following types of model elements: \"Package\", \"Class\", \"Association\", \"Generalization\", \"GeneralizationSet\". Nullable.",
+      "oneOf": [
+        {
+          "type": "array",
+          "uniqueItems": true,
+          "minItems": 1,
+          "items": {
+            "oneOf": [
+              { "$ref": "#/definitions/Package" },
+              { "$ref": "#/definitions/Class" },
+              { "$ref": "#/definitions/Association" },
+              { "$ref": "#/definitions/Generalization" },
+              { "$ref": "#/definitions/GeneralizationSet" }
+            ]
+          }
+        },
+        { "type": "null" }
+      ]
+    },
+    
+    "id": {
+      "description": "A non-empty string representing an object's unique identifier.",
+      "type": "string",
+      "minLength": 1
+    },
+
+    "link": {
+      "description": "A non-empty array of IDs representing a relation between two or more objects. A link is equivalent to a predicate evaluated as *true* for the involved entities (e.g., knows(Bob,Jim) representing that Bob indeed knows Jim). The order of elements in the array carry semantics. The minimum array size is 2. Nullable. Ordered.",
+      "oneOf": [
+        {
+          "type": "array",
+          "uniqueItems": true,
+          "minItems": 2,
+          "items": { "$ref": "#/definitions/id" }
+        },
+        { "type": "null" }
+      ]
+    },
+
+    "metaProperties": {
+      "description": "A non-empty array of key-value pairs representing an object's meta properties. Meta properties may have any name, but its values are restricted to null, booleans, numbers, strings or arrays of these. Meta properties whose values are other objects must be represented through the IDs (i.e., strings) of these objects. A number of pre-defined meta-properties are defined: \"aggregationKind\", \"isAbstract\", \"isDerived\", \"isOrdered\", and \"isReadOnly\". Meta properties are analogous to UML's notion of tagged values. Nullable.",
+      "oneOf": [
+        {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              { 
+                "aggregationKind": { 
+                  "type": "string",
+                  "enum": [ "NONE", "SHARED", "COMPOSITE" ]
+                } 
+              },
+              { "isAbstract": { "type": "boolean" } },
+              { "isDerived": { "type": "boolean" } },
+              { "isOrdered": { "type": "boolean" } },
+              { "isReadOnly": { "type": "boolean" } },
+              { "type": "null" },
+              {
+                "additionalProperties": {
+                  "oneOf": [
+                    { "type": "null" },
+                    { "type": "boolean" },
+                    { "type": "number" },
+                    { "type": "string" },
+                    { 
+                      "type": "array",
+                      "uniqueItems": true,
+                      "minItems": 1,
+                      "items": {
+                        "anyOf": [
+                          { "type": "boolean" },
+                          { "type": "number" },
+                          { "type": "string" }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        { "type": "null" }
+      ]
+    },
+
+    "name": {
+      "description": "A non-empty string representing an object's name. Nullable.",
       "oneOf": [
         {
           "type": "string",
           "minLength": 1
         },
+        { "type": "null" }
+      ]
+    },
+
+    "properties": {
+      "description": "A non-empty array of Property objects representing properties of instances of the container model element. This captures instances of classes, associations and derivation associations, where in the first case properties are analougous to attrbutes while in the second and third cases are analogous to association ends. Nullable.",
+      "oneOf": [
         {
-          "type": "object",
-          "properties": {
-            "@type": {
-              "const": "Stereotype"
-            },
-            "name": {
-              "$ref": "#/definitions/name"
-            },
-            "uri": {
-              "$ref": "#/definitions/uri"
-            },
-            "url": {
-              "$ref": "#/definitions/url"
-            }
-          },
-          "required": [
-            "@type",
-            "uri"
-          ],
-          "additionalProperties": false
-        }
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/definitions/Property" }
+        },
+        { "type": "null" }
+      ]
+    },
+
+    "stereotypes": {
+      "description": "A non-empty array of non-empty strings representing stereotypes of its container object. Nullable.",
+      "oneOf": [
+        {
+          "type": "array",
+          "uniqueItems": true,
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        { "type": "null" }
       ]
     }
-  },
 
-  "description": "Container of a OntoUML ontology.",
-  "type": "object",
-  "properties": {
-    "@type": {
-      "const": "Model"
-    },
-    "name": {
-      "$ref": "#/definitions/name"
-    },
-    "url": {
-      "$ref": "#/definitions/url"
-    },
-    "uri": {
-      "$ref": "#/definitions/uri"
-    },
-    "authors": {
-      "$ref": "#/definitions/authors"
-    },
-    "structuralElements": {
-      "$ref": "#/definitions/structuralElements"
-    }
-  },
-  "required": [
-    "@type",
-    "uri"
-  ],
-  "additionalProperties": false
+  }
 }
