@@ -4,6 +4,7 @@
   "title": "Model",
   "description": "The `ontouml-schema` is an object that represents an OntoUML ontology. Mandatory fields: constant \"@type\": \"Model\", \"id\", \"name\", \"authors\", \"contents\". Additional fields allowed.",
   "type": "object",
+  
   "properties": {
     "@type": { "const": "Model" },
     "id": { "$ref": "#/definitions/id" },
@@ -11,6 +12,7 @@
     "authors": { "$ref": "#/definitions/authors" },
     "contents": { "$ref": "#/definitions/contents" }
   },
+
   "required": [
     "@type",
     "id",
@@ -61,7 +63,7 @@
     },
 
     "Association": {
-      "description": "An object representing an association element. Mandatory fields: constant \"@type\": \"Class\", \"id\", \"name\", \"stereotypes\", \"properties\", \"metaProperties\". The \"properties\" array must have at least two items and is not nullable. The order of these items represents their position on a equivalent predicate, e.g., in the ternary association \"buys-product-from(buyer,product,seller)\", the order of items representing these entities must follow the order \"buyer\" (in properties[0]), \"product\" (in properties[1]), and \"seller\" (in properties[2]). Additional fields allowed.",
+      "description": "An object representing an association element. Mandatory fields: constant \"@type\": \"Association\", \"id\", \"name\", \"stereotypes\", \"properties\", \"metaProperties\". The \"properties\" array must have at least two items and is not nullable. The order of these items represents their position on a equivalent predicate, e.g., in the ternary association \"buys-product-from(buyer,product,seller)\", the order of items representing these entities must follow the order \"buyer\" (in properties[0]), \"product\" (in properties[1]), and \"seller\" (in properties[2]). Additional fields allowed. Ordered.",
       "type": "object",
       "properties": {
         "@type": { "const": "Association" },
@@ -69,7 +71,7 @@
         "name": { "$ref": "#/definitions/name" },
         "stereotypes": { "$ref": "#/definitions/stereotypes" },
         "properties": { 
-          "$ref": "#/definitions/properties",
+          "allOf": [ { "$ref": "#/definitions/properties" } ],
           "minItems": 2
         },
         "metaProperties": { "$ref": "#/definitions/metaProperties" }
@@ -86,7 +88,7 @@
     },
 
     "DeriviationAssociation": {
-      "description": "Predicative entities representing bundle of aspects exhibited by tuples that isntantiate it (e.g., 'loves' as in 'John loves Marry' or 'buys-with' as in 'Bob buys a Cellphone with a Credit Card').",
+      "description": "An object representing a derivation association element. Mandatory fields: constant \"@type\": \"DeriviationAssociation\", \"id\", \"name\", \"stereotypes\", \"properties\", \"metaProperties\". The \"properties\" array must have exactly two items and is not nullable. The order of these must represente first the deriving association and second the derived class. Additional fields allowed. Ordered.",
       "type": "object",
       "properties": {
         "@type": { "const": "DeriviationAssociation" },
@@ -94,7 +96,7 @@
         "name": { "$ref": "#/definitions/name" },
         "stereotypes": { "$ref": "#/definitions/stereotypes" },
         "properties": { 
-          "$ref": "#/definitions/properties",
+          "allOf": [ { "$ref": "#/definitions/properties" } ],
           "minItems": 2,
           "maxItems": 2
         },
@@ -111,128 +113,98 @@
       "not": { "properties": { "properties": { "type": "null" } } }
     },
 
-    "GeneralizationLink": {
-      "description": "A link between two classifiers (either classes or relations) where the instances of the latter (the specific) are necessarily instances of the former (the general).",
+    "Generalization": {
+      "description": "An object representing a generalization element. Mandatory fields: constant \"@type\": \"Generalization\", \"id\", \"name\", \"generic\", \"specific\". Additional fields allowed.",
       "type": "object",
       "properties": {
-        "@type": {
-          "const": "GeneralizationLink"
-        },
-        "name": {
-          "$ref": "#/definitions/name"
-        },
-        "url": {
-          "$ref": "#/definitions/url"
-        },
-        "uri": {
-          "$ref": "#/definitions/uri"
-        },
-        "tuple": {
-          "allOf": [
-            {
-              "$ref": "#/definitions/tuple"
-            }
-          ],
-          "maxItems": 2
-        }
+        "@type": { "const": "Generalization" },
+        "id": { "$ref": "#/definitions/id" },
+        "name": { "$ref": "#/definitions/name" },
+        "generic": { "$ref": "#/definitions/id" },
+        "specific": { "$ref": "#/definitions/id" }
       },
       "required": [
         "@type",
-        "uri",
-        "tuple"
-      ],
-      "additionalProperties": false
+        "id",
+        "name",
+        "generic",
+        "specific"
+      ]
     },
+
     "GeneralizationSet": {
-      "description": "Bundles of generalization links sharing a common general classifier and defined according a common specialization criteria. Generalization sets may be declared as disjoint and/or complete, being assumed as overllaping and incomplete otherwise. A categorizer may be declared in multi-level contexts where the categorizer is instantiated by the specializations of the general classifier present in the set.",
+      "description": "An object representing a generalization set element. Mandatory fields: constant \"@type\": \"GeneralizationSet\", \"id\", \"name\", \"isDisjoint\", \"isComplete\", \"categorizer\", \"generalizations\". Additional fields allowed.",
       "type": "object",
       "properties": {
-        "@type": {
-          "const": "GeneralizationSet"
-        },
-        "name": {
-          "$ref": "#/definitions/name"
-        },
-        "url": {
-          "$ref": "#/definitions/url"
-        },
-        "uri": {
-          "$ref": "#/definitions/uri"
-        },
+        "@type": { "const": "GeneralizationSet" },
+        "id": { "$ref": "#/definitions/id" },
+        "name": { "$ref": "#/definitions/name" },
         "isDisjoint": {
-          "type": "boolean"
+          "oneOf": [
+            { "type": "boolean" },
+            { "type": "null" }
+          ]
         },
         "isComplete": {
-          "type": "boolean"
+          "oneOf": [
+            { "type": "boolean" },
+            { "type": "null" }
+          ]
         },
         "categorizer": {
-          "type": "string",
-          "format": "uri"
-        },
-        "tuple": {
-          "allOf": [
-            {
-              "$ref": "#/definitions/tuple"
-            }
-          ]
-        }
-      },
-      "required": [
-        "@type",
-        "uri",
-        "tuple"
-      ],
-      "additionalProperties": false
-    },
-    "Property": {
-      "description": "Represents some property of a classifier (either a class of a relation) that captures some valued aspect of instances of the said classifier (e.g., instances of 'Person' holding values for the property 'name'). Values instantiating properties must conform to the property's type and multiplicity.",
-      "type": "object",
-      "properties": {
-        "@type": {
-          "const": "Property"
-        },
-        "name": {
-          "$ref": "#/definitions/name"
-        },
-        "uri": {
-          "$ref": "#/definitions/uri"
-        },
-        "url": {
-          "$ref": "#/definitions/url"
-        },
-        "propertyType": {
-          "$ref": "#/definitions/uri"
-        },
-        "lowerbound": {
-          "type": "integer",
-          "minimum": 0
-        },
-        "upperbound": {
           "oneOf": [
-            {
-              "type": "integer",
-              "minimum": 1
-            },
-            {
-              "const": "*"
-            }
+            { "$ref": "#/definitions/id" },
+            { "type": "null" }
           ]
         },
-        "constraints": {
+        "generalizations": {
           "type": "array",
-          "uniqueItems": true,
           "minItems": 1,
           "items": {
-            "type": "string",
-            "minLength": 1
+            "$ref": "#/definitions/id"
           }
         }
       },
       "required": [
         "@type",
-        "uri"
-      ],
-      "additionalProperties": false
+        "id",
+        "name",
+        "isDisjoint",
+        "isComplete",
+        "categorizer",
+        "generalizations"
+      ]
+    },
+
+    "Property": {
+      "description": "An object representing a property element. This captures properties of instances of classes, associations and derivation associations, where in the first case properties are analougous to attrbutes while in the second and third cases are analogous to association ends. Mandatory fields: constant \"@type\": \"Property\", \"id\", \"name\", \"type\", \"cardinality\", \"stereotypes\", \"metaProperties\". Additional fields allowed.",
+      "type": "object",
+      "properties": {
+        "@type": { "const": "Property" },
+        "id": { "$ref": "#/definitions/id" },
+        "name": { "$ref": "#/definitions/name" },
+        "type": { "$ref": "#/definitions/id" },
+        "cardinality": {
+          "oneOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            { "type": "null" }
+          ]
+        },
+        "stereotypes": { "$ref": "#/definitions/stereotypes" },
+        "metaProperties": { "$ref": "#/definitions/metaProperties" }
+      },
+      "required": [
+        "@type",
+        "id",
+        "name",
+        "type",
+        "cardinality",
+        "stereotypes",
+        "metaProperties"
+      ]
     },
 
     "authors": {
@@ -278,19 +250,6 @@
       "minLength": 1
     },
 
-    "link": {
-      "description": "A non-empty array of IDs representing a relation between two or more objects. A link is equivalent to a predicate evaluated as *true* for the involved entities (e.g., knows(Bob,Jim) representing that Bob indeed knows Jim). The order of elements in the array carry semantics. The minimum array size is 2. Nullable. Ordered.",
-      "oneOf": [
-        {
-          "type": "array",
-          "uniqueItems": true,
-          "minItems": 2,
-          "items": { "$ref": "#/definitions/id" }
-        },
-        { "type": "null" }
-      ]
-    },
-
     "metaProperties": {
       "description": "A non-empty array of key-value pairs representing an object's meta properties. Meta properties may have any name, but its values are restricted to null, booleans, numbers, strings or arrays of these. Meta properties whose values are other objects must be represented through the IDs (i.e., strings) of these objects. A number of pre-defined meta-properties are defined: \"aggregationKind\", \"isAbstract\", \"isDerived\", \"isOrdered\", and \"isReadOnly\". Meta properties are analogous to UML's notion of tagged values. Nullable.",
       "oneOf": [
@@ -311,24 +270,7 @@
               { "type": "null" },
               {
                 "additionalProperties": {
-                  "oneOf": [
-                    { "type": "null" },
-                    { "type": "boolean" },
-                    { "type": "number" },
-                    { "type": "string" },
-                    { 
-                      "type": "array",
-                      "uniqueItems": true,
-                      "minItems": 1,
-                      "items": {
-                        "anyOf": [
-                          { "type": "boolean" },
-                          { "type": "number" },
-                          { "type": "string" }
-                        ]
-                      }
-                    }
-                  ]
+                  
                 }
               }
             ]
@@ -350,7 +292,7 @@
     },
 
     "properties": {
-      "description": "A non-empty array of Property objects representing properties of instances of the container model element. This captures instances of classes, associations and derivation associations, where in the first case properties are analougous to attrbutes while in the second and third cases are analogous to association ends. Nullable.",
+      "description": "A non-empty array of Property objects representing properties of instances of the container model element. This captures properties of instances of classes, associations and derivation associations, where in the first case properties are analougous to attrbutes while in the second and third cases are analogous to association ends. Nullable.",
       "oneOf": [
         {
           "type": "array",
@@ -374,6 +316,30 @@
           }
         },
         { "type": "null" }
+      ]
+    },
+
+    "valueAssignment": {
+      "description": "A value assignment represents the declaration of a value to a property that the container object instantiates. These values are restricted to null, booleans, numbers, strings, or non-empty arrays of these. Nullable.",
+      "oneOf": [
+        { "type": "null" },
+        { "type": "boolean" },
+        { "type": "number" },
+        { "type": "string" },
+        { "$ref": "#/definitions/id" },
+        { 
+          "type": "array",
+          "uniqueItems": true,
+          "minItems": 1,
+          "items": {
+            "anyOf": [
+              { "type": "boolean" },
+              { "type": "number" },
+              { "type": "string" },
+              { "$ref": "#/definitions/id" }
+            ]
+          }
+        }
       ]
     }
 

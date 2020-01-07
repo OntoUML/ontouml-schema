@@ -20,7 +20,19 @@ If you are interested to know more, feel free to open an issue to provide feedba
     An object representing a class element. Mandatory fields: constant "@type": "Class", "id", "name", "stereotypes", "properties", "metaProperties". Additional fields allowed.
 
 - Association:
-    An object representing an association element. Mandatory fields: constant "@type": "Class", "id", "name", "stereotypes", "properties", "metaProperties". The "properties" array must have at least two items and is not nullable. The order of these items represents their position on a equivalent predicate, e.g., in the ternary association "buys-product-from(buyer,product,seller)", the order of items representing these entities must follow the order "buyer" (in properties[0]), "product" (in properties[1]), and "seller" (in properties[2]). Additional fields allowed.
+    An object representing an association element. Mandatory fields: constant "@type": "Class", "id", "name", "stereotypes", "properties", "metaProperties". The "properties" array must have at least two items and is not nullable. The order of these items represents their position on a equivalent predicate, e.g., in the ternary association "buys-product-from(buyer,product,seller)", the order of items representing these entities must follow the order "buyer" (in properties[0]), "product" (in properties[1]), and "seller" (in properties[2]). Additional fields allowed. Ordered.
+
+- DeriviationAssociation:
+    An object representing a derivation association element. Mandatory fields: constant "@type": "DeriviationAssociation", "id", "name", "stereotypes", "properties", "metaProperties". The "properties" array must have exactly two items and is not nullable. The order of these must represente first the deriving association and second the derived class. Additional fields allowed. Ordered.
+
+- Generalization:
+    An object representing a generalization element. Mandatory fields: constant "@type": "Generalization", "id", "name", "generic", "specific". Additional fields allowed.
+
+- GeneralizationSet:
+    An object representing a generalization set element. Mandatory fields: constant "@type": "GeneralizationSet", "id", "name", "isDisjoint", "isComplete", "categorizer", "generalizations". Additional fields allowed.
+
+- Property:
+    An object representing a property element. This captures properties of instances of classes, associations and derivation associations, where in the first case properties are analougous to attrbutes while in the second and third cases are analogous to association ends. Mandatory fields: constant "@type": "Property", "id", "name", "type", "cardinality", "stereotypes", "metaProperties". Additional fields allowed.
 
 - authors:
     A non-empty array of strings representing names of an object's authors. Nullable.
@@ -31,9 +43,6 @@ If you are interested to know more, feel free to open an issue to provide feedba
 - id:
     A non-empty string representing an object's unique identifier.
 
-- link:
-    A non-empty array of IDs representing a relation between two or more objects. A link is equivalent to a predicate evaluated as *true* for the involved entities (e.g., knows(Bob,Jim) representing that Bob indeed knows Jim). The order of elements in the array carry semantics. The minimum array size is 2. Nullable. Ordered.
-
 - name:
     A non-empty string representing an object's name. Nullable.
 
@@ -41,7 +50,10 @@ If you are interested to know more, feel free to open an issue to provide feedba
     A non-empty array of key-value pairs representing an object's meta properties. Meta properties may have any name, but its values are restricted to null, booleans, numbers, strings or arrays of these. Meta properties whose values are other objects must be represented through the IDs (i.e., strings) of these objects. A number of pre-defined meta-properties are defined: "aggregationKind", "isAbstract", "isDerived", "isOrdered", and "isReadOnly". Meta properties are analogous to UML's notion of tagged values. Nullable.
 
 - properties:
-    A non-empty array of Property objects representing properties of instances of the container model element. This captures instances of classes, associations and derivation associations, where in the first case properties are analougous to attrbutes while in the second and third cases are analogous to association ends. Nullable.
+    A non-empty array of Property objects representing properties of instances of the container model element. This captures properties of instances of classes, associations and derivation associations, where in the first case properties are analougous to attrbutes while in the second and third cases are analogous to association ends. Nullable.
 
 - stereotypes:
     A non-empty array of non-empty strings representing stereotypes of its container object. Nullable.
+
+- valueAssignment:
+    A value assignment represents the declaration of a value to a property that the container object instantiates. These values are restricted to null, booleans, numbers, strings, or non-empty arrays of these. Nullable.
