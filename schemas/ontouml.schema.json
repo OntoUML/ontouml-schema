@@ -235,6 +235,7 @@
               { "$ref": "#/definitions/Package" },
               { "$ref": "#/definitions/Class" },
               { "$ref": "#/definitions/Association" },
+              { "$ref": "#/definitions/DerivationAssociation" },
               { "$ref": "#/definitions/Generalization" },
               { "$ref": "#/definitions/GeneralizationSet" }
             ]
@@ -269,9 +270,7 @@
               { "isReadOnly": { "type": "boolean" } },
               { "type": "null" },
               {
-                "additionalProperties": {
-                  
-                }
+                "additionalProperties": { "$ref": "#/definitions/valueAssignment"
               }
             ]
           }
@@ -312,6 +311,7 @@
           "minItems": 1,
           "items": {
             "type": "string",
+            "pattern": "^([a-z]|[A-Z])+(/([a-z]|[A-Z])+)*$",
             "minLength": 1
           }
         },
