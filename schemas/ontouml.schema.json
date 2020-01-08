@@ -23,26 +23,26 @@
 
   "definitions": {
     "Package": {
-      "description": "An object representing a packge element. Mandatory fields: constant \"@type\": \"Package\", \"id\". Optional fields: \"name\", \"contents\", \"metaProperties\". Additional fields allowed.",
+      "description": "An object representing a packge element. Mandatory fields: constant \"@type\": \"Package\", \"id\". Optional fields: \"name\", \"contents\", \"propertyAssignments\". Additional fields allowed.",
       "type": "object",
       "properties": {
         "@type": { "const": "Package" },
         "id": { "$ref": "#/definitions/id" },
         "name": { "$ref": "#/definitions/name" },
         "contents": { "$ref": "#/definitions/contents" },
-        "metaProperties": { "$ref": "#/definitions/metaProperties" }
+        "propertyAssignments": { "$ref": "#/definitions/propertyAssignments" }
       },
       "required": [
         "@type",
         "id",
         "name",
         "contents",
-        "metaProperties"
+        "propertyAssignments"
       ]
     },
 
     "Class": {
-      "description": "An object representing a class element. Mandatory fields: constant \"@type\": \"Class\", \"id\", \"name\", \"stereotypes\", \"properties\", \"metaProperties\". Additional fields allowed.",
+      "description": "An object representing a class element. Mandatory fields: constant \"@type\": \"Class\", \"id\", \"name\", \"stereotypes\", \"properties\", \"propertyAssignments\". Additional fields allowed.",
       "type": "object",
       "properties": {
         "@type": { "const": "Class" },
@@ -50,7 +50,13 @@
         "name": { "$ref": "#/definitions/name" },
         "stereotypes": { "$ref": "#/definitions/stereotypes" },
         "properties": { "$ref": "#/definitions/properties" },
-        "metaProperties": { "$ref": "#/definitions/metaProperties" }
+        "propertyAssignments": { "$ref": "#/definitions/propertyAssignments" },
+        "isAbstract": {
+          "oneOf": [
+            { "type": "boolean" },
+            { "type": "null" }
+          ]
+        }
       },
       "required": [
         "@type",
@@ -58,12 +64,13 @@
         "name",
         "stereotypes",
         "properties",
-        "metaProperties"
+        "propertyAssignments",
+        "isAbstract"
       ]
     },
 
     "Association": {
-      "description": "An object representing an association element. Mandatory fields: constant \"@type\": \"Association\", \"id\", \"name\", \"stereotypes\", \"properties\", \"metaProperties\". The \"properties\" array must have at least two items and is not nullable. The order of these items represents their position on a equivalent predicate, e.g., in the ternary association \"buys-product-from(buyer,product,seller)\", the order of items representing these entities must follow the order \"buyer\" (in properties[0]), \"product\" (in properties[1]), and \"seller\" (in properties[2]). Additional fields allowed. Ordered.",
+      "description": "An object representing an association element. Mandatory fields: constant \"@type\": \"Association\", \"id\", \"name\", \"stereotypes\", \"properties\", \"propertyAssignments\". The \"properties\" array must have at least two items and is not nullable. The order of these items represents their position on a equivalent predicate, e.g., in the ternary association \"buys-product-from(buyer,product,seller)\", the order of items representing these entities must follow the order \"buyer\" (in properties[0]), \"product\" (in properties[1]), and \"seller\" (in properties[2]). Additional fields allowed. Ordered.",
       "type": "object",
       "properties": {
         "@type": { "const": "Association" },
@@ -74,33 +81,19 @@
           "allOf": [ { "$ref": "#/definitions/properties" } ],
           "minItems": 2
         },
-        "metaProperties": { "$ref": "#/definitions/metaProperties" }
-      },
-      "required": [
-        "@type",
-        "id",
-        "name",
-        "stereotypes",
-        "properties",
-        "metaProperties"
-      ],
-      "not": { "properties": { "properties": { "type": "null" } } }
-    },
-
-    "DeriviationAssociation": {
-      "description": "An object representing a derivation association element. Mandatory fields: constant \"@type\": \"DeriviationAssociation\", \"id\", \"name\", \"stereotypes\", \"properties\", \"metaProperties\". The \"properties\" array must have exactly two items and is not nullable. The order of these must represente first the deriving association and second the derived class. Additional fields allowed. Ordered.",
-      "type": "object",
-      "properties": {
-        "@type": { "const": "DeriviationAssociation" },
-        "id": { "$ref": "#/definitions/id" },
-        "name": { "$ref": "#/definitions/name" },
-        "stereotypes": { "$ref": "#/definitions/stereotypes" },
-        "properties": { 
-          "allOf": [ { "$ref": "#/definitions/properties" } ],
-          "minItems": 2,
-          "maxItems": 2
+        "propertyAssignments": { "$ref": "#/definitions/propertyAssignments" },
+        "isAbstract": {
+          "oneOf": [
+            { "type": "boolean" },
+            { "type": "null" }
+          ]
         },
-        "metaProperties": { "$ref": "#/definitions/metaProperties" }
+        "isDerived": { 
+          "oneOf": [
+            { "type": "boolean" },
+            { "type": "null" }
+          ]
+        }
       },
       "required": [
         "@type",
@@ -108,7 +101,9 @@
         "name",
         "stereotypes",
         "properties",
-        "metaProperties"
+        "propertyAssignments",
+        "isAbstract",
+        "isDerived"
       ],
       "not": { "properties": { "properties": { "type": "null" } } }
     },
@@ -120,15 +115,17 @@
         "@type": { "const": "Generalization" },
         "id": { "$ref": "#/definitions/id" },
         "name": { "$ref": "#/definitions/name" },
-        "generic": { "$ref": "#/definitions/id" },
-        "specific": { "$ref": "#/definitions/id" }
+        "generic": { "$ref": "#/definitions/reference" },
+        "specific": { "$ref": "#/definitions/reference" },
+        "propertyAssignments": { "$ref": "#/definitions/propertyAssignments" }
       },
       "required": [
         "@type",
         "id",
         "name",
         "generic",
-        "specific"
+        "specific",
+        "propertyAssignments"
       ]
     },
 
@@ -153,17 +150,16 @@
         },
         "categorizer": {
           "oneOf": [
-            { "$ref": "#/definitions/id" },
+            { "$ref": "#/definitions/reference" },
             { "type": "null" }
           ]
         },
         "generalizations": {
           "type": "array",
           "minItems": 1,
-          "items": {
-            "$ref": "#/definitions/id"
-          }
-        }
+          "items": { "$ref": "#/definitions/reference" }
+        },
+        "propertyAssignments": { "$ref": "#/definitions/propertyAssignments" }
       },
       "required": [
         "@type",
@@ -172,18 +168,19 @@
         "isDisjoint",
         "isComplete",
         "categorizer",
-        "generalizations"
+        "generalizations",
+        "propertyAssignments"
       ]
     },
 
     "Property": {
-      "description": "An object representing a property element. This captures properties of instances of classes, associations and derivation associations, where in the first case properties are analougous to attrbutes while in the second and third cases are analogous to association ends. Mandatory fields: constant \"@type\": \"Property\", \"id\", \"name\", \"type\", \"cardinality\", \"stereotypes\", \"metaProperties\". Additional fields allowed.",
+      "description": "An object representing a property element. This captures properties of instances of classes, associations and derivation associations, where in the first case properties are analougous to attrbutes while in the second and third cases are analogous to association ends. Mandatory fields: constant \"@type\": \"Property\", \"id\", \"name\", \"type\", \"cardinality\", \"stereotypes\", \"propertyAssignments\". Additional fields allowed.",
       "type": "object",
       "properties": {
         "@type": { "const": "Property" },
         "id": { "$ref": "#/definitions/id" },
         "name": { "$ref": "#/definitions/name" },
-        "type": { "$ref": "#/definitions/id" },
+        "type": { "$ref": "#/definitions/reference" },
         "cardinality": {
           "oneOf": [
             {
@@ -194,7 +191,56 @@
           ]
         },
         "stereotypes": { "$ref": "#/definitions/stereotypes" },
-        "metaProperties": { "$ref": "#/definitions/metaProperties" }
+        "propertyAssignments": { "$ref": "#/definitions/propertyAssignments" },
+        "subsettedProperties": {
+          "oneOf": [
+            {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": { "$ref": "#/definitions/reference" }
+            },
+            { "type": "null" }
+          ]
+        },
+        "redefinedProperties": {
+          "oneOf": [
+            {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": { "$ref": "#/definitions/reference" }
+            },
+            { "type": "null" }
+          ]
+        },
+        "aggregationKind": { 
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [ "NONE", "SHARED", "COMPOSITE" ]
+            },
+            { "type": "null" }
+          ]
+        },
+        "isDerived": { 
+          "oneOf": [
+            { "type": "boolean" },
+            { "type": "null" }
+          ]
+        },
+        "isOrdered": {
+          "oneOf": [
+            { "type": "boolean" },
+            { "type": "null" }
+          ]
+        },
+        "isReadOnly": {
+          "oneOf": [
+            { "type": "boolean" },
+            { "type": "null" }
+          ]
+        }
       },
       "required": [
         "@type",
@@ -203,7 +249,13 @@
         "type",
         "cardinality",
         "stereotypes",
-        "metaProperties"
+        "propertyAssignments",
+        "subsettedProperties",
+        "redefinedProperties",
+        "aggregationKind",
+        "isDerived",
+        "isOrdered",
+        "isReadOnly"
       ]
     },
 
@@ -235,7 +287,6 @@
               { "$ref": "#/definitions/Package" },
               { "$ref": "#/definitions/Class" },
               { "$ref": "#/definitions/Association" },
-              { "$ref": "#/definitions/DerivationAssociation" },
               { "$ref": "#/definitions/Generalization" },
               { "$ref": "#/definitions/GeneralizationSet" }
             ]
@@ -249,34 +300,6 @@
       "description": "A non-empty string representing an object's unique identifier.",
       "type": "string",
       "minLength": 1
-    },
-
-    "metaProperties": {
-      "description": "A non-empty array of key-value pairs representing an object's meta properties. Meta properties may have any name, but its values are restricted to null, booleans, numbers, strings or arrays of these. Meta properties whose values are other objects must be represented through the IDs (i.e., strings) of these objects. A number of pre-defined meta-properties are defined: \"aggregationKind\", \"isAbstract\", \"isDerived\", \"isOrdered\", and \"isReadOnly\". Meta properties are analogous to UML's notion of tagged values. Nullable.",
-      "oneOf": [
-        {
-          "type": "array",
-          "items": {
-            "oneOf": [
-              { 
-                "aggregationKind": { 
-                  "type": "string",
-                  "enum": [ "NONE", "SHARED", "COMPOSITE" ]
-                } 
-              },
-              { "isAbstract": { "type": "boolean" } },
-              { "isDerived": { "type": "boolean" } },
-              { "isOrdered": { "type": "boolean" } },
-              { "isReadOnly": { "type": "boolean" } },
-              { "type": "null" },
-              {
-                "additionalProperties": { "$ref": "#/definitions/valueAssignment"
-              }
-            ]
-          }
-        },
-        { "type": "null" }
-      ]
     },
 
     "name": {
@@ -302,6 +325,30 @@
       ]
     },
 
+    "reference": {
+      "description": "An object representing a singular reference to a model element. Mandatory fields: \"type\", \"id\".",
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "Package",
+            "Class",
+            "Association",
+            "Generalization",
+            "GeneralizationSet",
+            "Property"
+          ]
+        },
+        "id": { "$ref": "#/definitions/id" }
+      },
+      "required": [
+        "type",
+        "id"
+      ],
+      "additionalProperties": false
+    },
+
     "stereotypes": {
       "description": "A non-empty array of non-empty strings representing stereotypes of its container object. Nullable.",
       "oneOf": [
@@ -319,28 +366,37 @@
       ]
     },
 
-    "valueAssignment": {
+    "propertyAssignments": {
       "description": "A value assignment represents the declaration of a value to a property that the container object instantiates. These values are restricted to null, booleans, numbers, strings, or non-empty arrays of these. Nullable.",
       "oneOf": [
-        { "type": "null" },
-        { "type": "boolean" },
-        { "type": "number" },
-        { "type": "string" },
-        { "$ref": "#/definitions/id" },
         { 
-          "type": "array",
-          "uniqueItems": true,
-          "minItems": 1,
-          "items": {
-            "anyOf": [
-              { "type": "boolean" },
-              { "type": "number" },
-              { "type": "string" },
-              { "$ref": "#/definitions/id" }
-            ]
+          "type": "object",
+          "minProperties": 1 
+        },
+        { "type": "null" }
+      ],
+      "additionalProperties": {
+        "oneOf": [
+          { "type": "null" },
+          { "type": "boolean" },
+          { "type": "number" },
+          { "type": "string" },
+          { "$ref": "#/definitions/reference" },
+          { 
+            "type": "array",
+            "uniqueItems": true,
+            "minItems": 1,
+            "items": {
+              "anyOf": [
+                { "type": "boolean" },
+                { "type": "number" },
+                { "type": "string" },
+                { "$ref": "#/definitions/reference" }
+              ]
+            }
           }
-        }
-      ]
+        ]
+      }
     }
 
   }
