@@ -4,7 +4,7 @@
   "description": "JSON Schema definition of a OntoUML Model Exchange file.",
   "main": "src/validator.js",
   "scripts": {
-    "test": "mocha",
+    "test": "jest",
     "start": "node src/validator.js"
   },
   "repository": {
@@ -21,6 +21,6 @@
     "ajv": "^6.10.0"
   },
   "devDependencies": {
-    "mocha": "^6.0.2"
+    "jest": "^24.9.0"
   }
 }

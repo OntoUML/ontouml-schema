@@ -10,7 +10,7 @@ module.exports = {
   getValidator: function() {
     var schema = schemaFile;
     var ajv = new Ajv({schemas: [schema]});
-    return ajv.getSchema("https://ontouml.org/OntoUMLSchema/v1/Model");
+    return ajv.getSchema(schemaFile['$id']);
   }
 
 }

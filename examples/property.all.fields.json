@@ -1,0 +1,102 @@
+{
+    "@type": "Model",
+    "id": "model1",
+    "name": null,
+    "authors": null,
+    "elements": [
+        {
+            "@type": "Class",
+            "id": "class1",
+            "name": "Person",
+            "properties": [
+                {
+                    "@type": "Property",
+                    "id": "attribute1",
+                    "name": "socialName",
+                    "type": {
+                        "type": "Class",
+                        "id": "class2"
+                    },
+                    "cardinality": "1..1",
+                    "isDerived": false,
+                    "isOrdered": false,
+                    "isReadOnly": false,
+                    "stereotypes": [ "customStereotype" ],
+                    "propertyAssignments": { "nonStandardProperty": null },
+                    "subsettedProperties": [ 
+                        {
+                            "type": "Property",
+                            "id": "noproperty"
+                        }
+                    ],
+                    "redefinedProperties": [ 
+                        {
+                            "type": "Property",
+                            "id": "noproperty"
+                        }
+                    ],
+                    "aggregationKind": null
+                }
+            ],
+            "propertyAssignments": null,
+            "stereotypes": null,
+            "isAbstract": null
+        },
+        {
+            "@type": "Class",
+            "id": "class2",
+            "name": "String",
+            "properties": null,
+            "propertyAssignments": null,
+            "stereotypes": null,
+            "isAbstract": null
+        },
+        {
+            "@type": "Association",
+            "id": "association1",
+            "name": "knows",
+            "properties": [
+                {
+                    "@type": "Property",
+                    "id": "associationEnd1",
+                    "name": "known by",
+                    "type": {
+                        "type": "Class",
+                        "id": "class1"
+                    },
+                    "cardinality": null,
+                    "isDerived": null,
+                    "isOrdered": null,
+                    "isReadOnly": null,
+                    "stereotypes": null,
+                    "propertyAssignments": null,
+                    "subsettedProperties": null,
+                    "redefinedProperties": null,
+                    "aggregationKind": "SHARED"
+                },
+                {
+                    "@type": "Property",
+                    "id": "associationEnd2",
+                    "name": "known person",
+                    "type": {
+                        "type": "Class",
+                        "id": "class1"
+                    },
+                    "cardinality": null,
+                    "isDerived": null,
+                    "isOrdered": null,
+                    "isReadOnly": null,
+                    "stereotypes": null,
+                    "propertyAssignments": null,
+                    "subsettedProperties": null,
+                    "redefinedProperties": null,
+                    "aggregationKind": "NONE"
+                }
+            ],
+            "propertyAssignments": { "nonStandardProperty": null },
+            "stereotypes": [ "ontouml/stereotype" ],
+            "isAbstract": true,
+            "isDerived": false
+        }
+    ]
+}

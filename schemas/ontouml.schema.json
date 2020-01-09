@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://ontouml.org/ontouml-schema/1.0/",
   "title": "Model",
-  "description": "The `ontouml-schema` is an object that represents an OntoUML ontology. Mandatory fields: constant \"@type\": \"Model\", \"id\", \"name\", \"authors\", \"contents\". Additional fields allowed.",
+  "description": "The `ontouml-schema` is an object that represents an OntoUML ontology. Mandatory fields: constant \"@type\": \"Model\", \"id\", \"name\", \"authors\", \"elements\". Additional fields allowed.",
   "type": "object",
   
   "properties": {
@@ -10,7 +10,7 @@
     "id": { "$ref": "#/definitions/id" },
     "name": { "$ref": "#/definitions/name" },
     "authors": { "$ref": "#/definitions/authors" },
-    "contents": { "$ref": "#/definitions/contents" }
+    "elements": { "$ref": "#/definitions/elements" }
   },
 
   "required": [
@@ -18,25 +18,25 @@
     "id",
     "name",
     "authors",
-    "contents"
+    "elements"
   ],
 
   "definitions": {
     "Package": {
-      "description": "An object representing a packge element. Mandatory fields: constant \"@type\": \"Package\", \"id\". Optional fields: \"name\", \"contents\", \"propertyAssignments\". Additional fields allowed.",
+      "description": "An object representing a packge element. Mandatory fields: constant \"@type\": \"Package\", \"id\". Optional fields: \"name\", \"elements\", \"propertyAssignments\". Additional fields allowed.",
       "type": "object",
       "properties": {
         "@type": { "const": "Package" },
         "id": { "$ref": "#/definitions/id" },
         "name": { "$ref": "#/definitions/name" },
-        "contents": { "$ref": "#/definitions/contents" },
+        "elements": { "$ref": "#/definitions/elements" },
         "propertyAssignments": { "$ref": "#/definitions/propertyAssignments" }
       },
       "required": [
         "@type",
         "id",
         "name",
-        "contents",
+        "elements",
         "propertyAssignments"
       ]
     },
@@ -275,7 +275,7 @@
       ]
     },
 
-    "contents": {
+    "elements": {
       "description": "A non-empty array of objects representing model elements. May contain objects representing one of the following types of model elements: \"Package\", \"Class\", \"Association\", \"Generalization\", \"GeneralizationSet\". Nullable.",
       "oneOf": [
         {
