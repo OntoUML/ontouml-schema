@@ -56,7 +56,7 @@ This section describes all fields in a OntoUML 2 model.
     An object representing an relation element. Mandatory fields: constant "@type": "Class", "id", "name", "stereotypes", "properties", "propertyAssignments". The "properties" array must have at least two items and is not nullable. The order of these items represents their position on a equivalent predicate, e.g., in the ternary relation "buys-product-from(buyer,product,seller)", the order of items representing these entities must follow the order "buyer" (in properties[0]), "product" (in properties[1]), and "seller" (in properties[2]). Relation elements are also used to represent derivation relations, in which case they must contain the stereotype "ontouml/derivation" and have only 2 properties, the first being a Relation element and the second a Class element. Additional fields allowed. Ordered properties.
 
 - Generalization:
-    An object representing a generalization element. Mandatory fields: constant "@type": "Generalization", "id", "name", "generic", "specific", "propertyAssignments". Additional fields allowed.
+    An object representing a generalization element. Mandatory fields: constant "@type": "Generalization", "id", "name", "general", "specific", "propertyAssignments". Additional fields allowed.
 
 - GeneralizationSet:
     An object representing a generalization set element. Mandatory fields: constant "@type": "GeneralizationSet", "id", "name", "isDisjoint", "isComplete", "categorizer", "generalizations", "propertyAssignments". Additional fields allowed.

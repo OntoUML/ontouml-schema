@@ -28,7 +28,7 @@
             "@type": "Generalization",
             "id": "generalization1",
             "name": null,
-            "generic": {
+            "general": {
                 "type": "Class",
                 "id": "class1"
             },

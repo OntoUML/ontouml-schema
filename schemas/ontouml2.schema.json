@@ -116,13 +116,13 @@
     },
 
     "Generalization": {
-      "description": "An object representing a generalization element. Mandatory fields: constant \"@type\": \"Generalization\", \"id\", \"name\", \"generic\", \"specific\", \"propertyAssignments\". Additional fields allowed.",
+      "description": "An object representing a generalization element. Mandatory fields: constant \"@type\": \"Generalization\", \"id\", \"name\", \"general\", \"specific\", \"propertyAssignments\". Additional fields allowed.",
       "type": "object",
       "properties": {
         "@type": { "const": "Generalization" },
         "id": { "$ref": "#/definitions/id" },
         "name": { "$ref": "#/definitions/name" },
-        "generic": { "$ref": "#/definitions/reference" },
+        "general": { "$ref": "#/definitions/reference" },
         "specific": { "$ref": "#/definitions/reference" },
         "propertyAssignments": { "$ref": "#/definitions/propertyAssignments" }
       },
@@ -130,7 +130,7 @@
         "@type",
         "id",
         "name",
-        "generic",
+        "general",
         "specific",
         "propertyAssignments"
       ]
