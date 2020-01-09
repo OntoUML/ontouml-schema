@@ -1,22 +1,21 @@
 {
   "name": "ontouml-schema",
-  "version": "0.1.201909111456",
-  "description": "JSON Schema definition of a OntoUML Model Exchange file.",
-  "main": "src/validator.js",
+  "version": "0.1.202001091222",
+  "description": "This package provides a JSON Schema message format for the exchange of OntoUML models.",
+  "main": "src/index.js",
   "scripts": {
-    "test": "jest",
-    "start": "node src/validator.js"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/claudenirmf/ontouml-schema.git"
+    "url": "git+https://github.com/OntoUML/ontouml-schema.git"
   },
   "keywords": [],
   "author": "",
   "bugs": {
-    "url": "https://github.com/claudenirmf/ontouml-schema/issues"
+    "url": "https://github.com/OntoUML/ontouml-schema/issues"
   },
-  "homepage": "https://github.com/claudenirmf/ontouml-schema/",
+  "homepage": "https://github.com/OntoUML/ontouml-schema/",
   "dependencies": {
     "ajv": "^6.10.0"
   },

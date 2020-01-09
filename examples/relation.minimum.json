@@ -11,16 +11,17 @@
             "properties": null,
             "propertyAssignments": null,
             "stereotypes": null,
-            "isAbstract": null
+            "isAbstract": null,
+            "isDerived": null
         },
         {
-            "@type": "Association",
-            "id": "association1",
+            "@type": "Relation",
+            "id": "relation1",
             "name": null,
             "properties": [
                 {
                     "@type": "Property",
-                    "id": "associationEnd1",
+                    "id": "end1",
                     "name": null,
                     "type": {
                         "type": "Class",
@@ -38,7 +39,7 @@
                 },
                 {
                     "@type": "Property",
-                    "id": "associationEnd2",
+                    "id": "end2",
                     "name": null,
                     "type": {
                         "type": "Class",

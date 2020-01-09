@@ -30,7 +30,8 @@
             ],
             "propertyAssignments": null,
             "stereotypes": null,
-            "isAbstract": null
+            "isAbstract": null,
+            "isDerived": null
         },
         {
             "@type": "Class",
@@ -39,16 +40,17 @@
             "properties": null,
             "propertyAssignments": null,
             "stereotypes": null,
-            "isAbstract": null
+            "isAbstract": null,
+            "isDerived": null
         },
         {
-            "@type": "Association",
-            "id": "association1",
+            "@type": "Relation",
+            "id": "relation1",
             "name": "knows",
             "properties": [
                 {
                     "@type": "Property",
-                    "id": "associationEnd1",
+                    "id": "end1",
                     "name": "known by",
                     "type": {
                         "type": "Class",
@@ -66,7 +68,7 @@
                 },
                 {
                     "@type": "Property",
-                    "id": "associationEnd2",
+                    "id": "end2",
                     "name": "known person",
                     "type": {
                         "type": "Class",

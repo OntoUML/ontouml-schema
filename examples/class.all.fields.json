@@ -30,7 +30,8 @@
              ],
             "propertyAssignments": { "nonStandardProperty": null },
             "stereotypes": [ "ontouml/stereotype" ],
-            "isAbstract": true
+            "isAbstract": true,
+            "isDerived": false
         }
     ]
 }

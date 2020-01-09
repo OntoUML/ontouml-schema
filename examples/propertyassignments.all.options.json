@@ -31,7 +31,8 @@
                 ]
             },
             "stereotypes": null,
-            "isAbstract": null
+            "isAbstract": null,
+            "isDerived": null
         }
     ]
 }

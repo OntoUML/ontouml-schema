@@ -11,7 +11,8 @@
             "properties": null,
             "propertyAssignments": null,
             "stereotypes": null,
-            "isAbstract": null
+            "isAbstract": null,
+            "isDerived": null
         },
         {
             "@type": "Class",
@@ -20,7 +21,8 @@
             "properties": null,
             "propertyAssignments": null,
             "stereotypes": null,
-            "isAbstract": null
+            "isAbstract": null,
+            "isDerived": null
         },
         {
             "@type": "Class",
@@ -29,7 +31,8 @@
             "properties": null,
             "propertyAssignments": null,
             "stereotypes": null,
-            "isAbstract": null
+            "isAbstract": null,
+            "isDerived": null
         },
         {
             "@type": "Class",
@@ -38,7 +41,8 @@
             "properties": null,
             "propertyAssignments": null,
             "stereotypes": null,
-            "isAbstract": null
+            "isAbstract": null,
+            "isDerived": null
         },
         {
             "@type": "Generalization",
