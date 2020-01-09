@@ -1,0 +1,95 @@
+{
+    "type": "Model",
+    "id": "model1",
+    "name": null,
+    "authors": null,
+    "elements": [
+        {
+            "type": "Class",
+            "id": "class1",
+            "name": null,
+            "properties": null,
+            "propertyAssignments": null,
+            "stereotypes": null,
+            "isAbstract": null,
+            "isDerived": null
+        },
+        {
+            "type": "Class",
+            "id": "class2",
+            "name": null,
+            "properties": null,
+            "propertyAssignments": null,
+            "stereotypes": null,
+            "isAbstract": null,
+            "isDerived": null
+        },
+        {
+            "type": "Class",
+            "id": "class3",
+            "name": null,
+            "properties": null,
+            "propertyAssignments": null,
+            "stereotypes": null,
+            "isAbstract": null,
+            "isDerived": null
+        },
+        {
+            "type": "Class",
+            "id": "class4",
+            "name": null,
+            "properties": null,
+            "propertyAssignments": null,
+            "stereotypes": null,
+            "isAbstract": null,
+            "isDerived": null
+        },
+        {
+            "type": "Generalization",
+            "id": "generalization1",
+            "name": null,
+            "general": {
+                "type": "Class",
+                "id": "class1"
+            },
+            "specific": {
+                "type": "Class",
+                "id": "class2"
+            },
+            "propertyAssignments": null
+        },
+        {
+            "type": "Generalization",
+            "id": "generalization2",
+            "name": null,
+            "general": {
+                "type": "Class",
+                "id": "class1"
+            },
+            "specific": {
+                "type": "Class",
+                "id": "class3"
+            },
+            "propertyAssignments": null
+        },
+        {
+            "type": "GeneralizationSet",
+            "id": "generalizationSet1",
+            "name": null,
+            "categorizer": null,
+            "generalizations": [
+                {
+                    "type": "Generalization",
+                    "id": "generalization1"
+                },
+                {
+                    "type": "Generalization",
+                    "id": "generalization2"
+                }
+            ],
+            "isDisjoint": null,
+            "isComplete": null,
+            "propertyAssignments": null
+        }
+    ]
+}

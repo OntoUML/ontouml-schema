@@ -1,0 +1,38 @@
+{
+    "type": "Model",
+    "id": "model1",
+    "name": null,
+    "authors": null,
+    "elements": [
+        {
+            "type": "Class",
+            "id": "class1",
+            "name": null,
+            "properties": null,
+            "propertyAssignments": { 
+                "a": null,
+                "b": true,
+                "c": 0,
+                "d": 1.0,
+                "e": "word",
+                "f": {
+                    "type": "Class",
+                    "id": "class1"
+                },
+                "g": [
+                    true,
+                    0,
+                    1.0,
+                    "word",
+                    {
+                        "type": "Class",
+                        "id": "class1"
+                    }
+                ]
+            },
+            "stereotypes": null,
+            "isAbstract": null,
+            "isDerived": null
+        }
+    ]
+}
