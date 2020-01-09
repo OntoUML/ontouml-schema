@@ -1,0 +1,42 @@
+{
+    "@type": "Model",
+    "id": "model1",
+    "name": null,
+    "authors": null,
+    "elements": [
+        {
+            "@type": "Class",
+            "id": "class1",
+            "name": null,
+            "properties": null,
+            "propertyAssignments": null,
+            "stereotypes": null,
+            "isAbstract": null,
+            "isDerived": null
+        },
+        {
+            "@type": "Class",
+            "id": "class2",
+            "name": null,
+            "properties": null,
+            "propertyAssignments": null,
+            "stereotypes": null,
+            "isAbstract": null,
+            "isDerived": null
+        },
+        {
+            "@type": "Generalization",
+            "id": "generalization1",
+            "name": "generalization",
+            "general": {
+                "type": "Class",
+                "id": "class1"
+            },
+            "specific": {
+                "type": "Class",
+                "id": "class2"
+            },
+            "propertyAssignments": { "nonStandardProperty": null }
+        }
+    ]
+}

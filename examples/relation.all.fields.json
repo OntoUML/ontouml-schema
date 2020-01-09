@@ -1,0 +1,65 @@
+{
+    "@type": "Model",
+    "id": "model1",
+    "name": null,
+    "authors": null,
+    "elements": [
+        {
+            "@type": "Class",
+            "id": "class1",
+            "name": "Person",
+            "properties": null,
+            "propertyAssignments": null,
+            "stereotypes": null,
+            "isAbstract": null,
+            "isDerived": null
+        },
+        {
+            "@type": "Relation",
+            "id": "relation1",
+            "name": "knows",
+            "properties": [
+                {
+                    "@type": "Property",
+                    "id": "end1",
+                    "name": "known by",
+                    "type": {
+                        "type": "Class",
+                        "id": "class1"
+                    },
+                    "cardinality": null,
+                    "isDerived": null,
+                    "isOrdered": null,
+                    "isReadOnly": null,
+                    "stereotypes": null,
+                    "propertyAssignments": null,
+                    "subsettedProperties": null,
+                    "redefinedProperties": null,
+                    "aggregationKind": null
+                },
+                {
+                    "@type": "Property",
+                    "id": "end2",
+                    "name": "known person",
+                    "type": {
+                        "type": "Class",
+                        "id": "class1"
+                    },
+                    "cardinality": null,
+                    "isDerived": null,
+                    "isOrdered": null,
+                    "isReadOnly": null,
+                    "stereotypes": null,
+                    "propertyAssignments": null,
+                    "subsettedProperties": null,
+                    "redefinedProperties": null,
+                    "aggregationKind": null
+                }
+            ],
+            "propertyAssignments": { "nonStandardProperty": null },
+            "stereotypes": [ "ontouml/material" ],
+            "isAbstract": true,
+            "isDerived": false
+        }
+    ]
+}

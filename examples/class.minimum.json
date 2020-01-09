@@ -1,0 +1,18 @@
+{
+    "@type": "Model",
+    "id": "model1",
+    "name": null,
+    "authors": null,
+    "elements": [
+        {
+            "@type": "Class",
+            "id": "class1",
+            "name": null,
+            "properties": null,
+            "propertyAssignments": null,
+            "stereotypes": null,
+            "isAbstract": null,
+            "isDerived": null
+        }
+    ]
+}

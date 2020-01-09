@@ -1,0 +1,25 @@
+{
+  "name": "ontouml-schema",
+  "version": "0.1.202001091222",
+  "description": "This package provides a JSON Schema message format for the exchange of OntoUML models.",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OntoUML/ontouml-schema.git"
+  },
+  "keywords": [],
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/OntoUML/ontouml-schema/issues"
+  },
+  "homepage": "https://github.com/OntoUML/ontouml-schema/",
+  "dependencies": {
+    "ajv": "^6.10.0"
+  },
+  "devDependencies": {
+    "jest": "^24.9.0"
+  }
+}
