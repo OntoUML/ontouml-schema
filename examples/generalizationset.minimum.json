@@ -1,11 +1,11 @@
 {
-    "@type": "Model",
+    "type": "Model",
     "id": "model1",
     "name": null,
     "authors": null,
     "elements": [
         {
-            "@type": "Class",
+            "type": "Class",
             "id": "class1",
             "name": null,
             "properties": null,
@@ -15,7 +15,7 @@
             "isDerived": null
         },
         {
-            "@type": "Class",
+            "type": "Class",
             "id": "class2",
             "name": null,
             "properties": null,
@@ -25,7 +25,7 @@
             "isDerived": null
         },
         {
-            "@type": "Class",
+            "type": "Class",
             "id": "class3",
             "name": null,
             "properties": null,
@@ -35,7 +35,7 @@
             "isDerived": null
         },
         {
-            "@type": "Class",
+            "type": "Class",
             "id": "class4",
             "name": null,
             "properties": null,
@@ -45,7 +45,7 @@
             "isDerived": null
         },
         {
-            "@type": "Generalization",
+            "type": "Generalization",
             "id": "generalization1",
             "name": null,
             "general": {
@@ -59,7 +59,7 @@
             "propertyAssignments": null
         },
         {
-            "@type": "Generalization",
+            "type": "Generalization",
             "id": "generalization2",
             "name": null,
             "general": {
@@ -73,7 +73,7 @@
             "propertyAssignments": null
         },
         {
-            "@type": "GeneralizationSet",
+            "type": "GeneralizationSet",
             "id": "generalizationSet1",
             "name": null,
             "categorizer": null,

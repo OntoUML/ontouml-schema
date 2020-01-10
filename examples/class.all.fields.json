@@ -1,19 +1,19 @@
 {
-    "@type": "Model",
+    "type": "Model",
     "id": "model1",
     "name": null,
     "authors": null,
     "elements": [
         {
-            "@type": "Class",
+            "type": "Class",
             "id": "class1",
             "name": "Person",
             "properties": [ 
                 {
-                    "@type": "Property",
+                    "type": "Property",
                     "id": "attribute1",
                     "name": "knows",
-                    "type": {
+                    "propertyType": {
                         "type": "Class",
                         "id": "class1"
                     },

@@ -1,11 +1,11 @@
 {
-    "@type": "Model",
+    "type": "Model",
     "id": "model1",
     "name": null,
     "authors": null,
     "elements": [
         {
-            "@type": "Class",
+            "type": "Class",
             "id": "class1",
             "name": null,
             "properties": null,
@@ -15,15 +15,15 @@
             "isDerived": null
         },
         {
-            "@type": "Relation",
+            "type": "Relation",
             "id": "relation1",
             "name": null,
             "properties": [
                 {
-                    "@type": "Property",
+                    "type": "Property",
                     "id": "end1",
                     "name": null,
-                    "type": {
+                    "propertyType": {
                         "type": "Class",
                         "id": "class1"
                     },
@@ -38,10 +38,10 @@
                     "aggregationKind": null
                 },
                 {
-                    "@type": "Property",
+                    "type": "Property",
                     "id": "end2",
                     "name": null,
-                    "type": {
+                    "propertyType": {
                         "type": "Class",
                         "id": "class1"
                     },

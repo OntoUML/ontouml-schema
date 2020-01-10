@@ -1,11 +1,11 @@
 {
-    "@type": "Model",
+    "type": "Model",
     "id": "model1",
     "name": null,
     "authors": null,
     "elements": [
         {
-            "@type": "Class",
+            "type": "Class",
             "id": "class1",
             "name": null,
             "properties": null,

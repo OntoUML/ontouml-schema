@@ -1,16 +1,16 @@
 {
-    "@type": "Model",
+    "type": "Model",
     "id": "model1",
     "name": null,
     "authors": null,
     "elements": [
         {
-            "@type": "Package",
+            "type": "Package",
             "id": "package1",
             "name": "Root Package",
             "elements": [
                 {
-                    "@type": "Class",
+                    "type": "Class",
                     "id": "class1",
                     "name": null,
                     "properties": null,
