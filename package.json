@@ -4,6 +4,7 @@
   "description": "This package provides a JSON Schema message format for the exchange of OntoUML models.",
   "main": "src/index.js",
   "scripts": {
+    "start": "onchange '**/*.js' '**/*.json' -- prettier --write {{changed}}",
     "test": "jest"
   },
   "repository": {
@@ -17,7 +18,9 @@
   },
   "homepage": "https://github.com/OntoUML/ontouml-schema/",
   "dependencies": {
-    "ajv": "^6.10.0"
+    "ajv": "^6.10.0",
+    "onchange": "^6.1.0",
+    "prettier": "^1.19.1"
   },
   "devDependencies": {
     "jest": "^24.9.0"

@@ -1,15 +1,15 @@
 {
-    "type": "Model",
-    "id": "model1",
-    "name": "Test Model",
-    "authors": [ "John", "Anna" ],
-    "elements": [
-        {
-            "type": "Package",
-            "id": "package1",
-            "name": null,
-            "elements": null,
-            "propertyAssignments": null
-        }
-    ]
+  "type": "Model",
+  "id": "model1",
+  "name": "Test Model",
+  "authors": ["John", "Anna"],
+  "elements": [
+    {
+      "type": "Package",
+      "id": "package1",
+      "name": null,
+      "elements": null,
+      "propertyAssignments": null
+    }
+  ]
 }
