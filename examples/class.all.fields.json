@@ -1,37 +1,37 @@
 {
-    "type": "Model",
-    "id": "model1",
-    "name": null,
-    "authors": null,
-    "elements": [
+  "type": "Model",
+  "id": "model1",
+  "name": null,
+  "authors": null,
+  "elements": [
+    {
+      "type": "Class",
+      "id": "class1",
+      "name": "Person",
+      "properties": [
         {
+          "type": "Property",
+          "id": "attribute1",
+          "name": "knows",
+          "propertyType": {
             "type": "Class",
-            "id": "class1",
-            "name": "Person",
-            "properties": [ 
-                {
-                    "type": "Property",
-                    "id": "attribute1",
-                    "name": "knows",
-                    "propertyType": {
-                        "type": "Class",
-                        "id": "class1"
-                    },
-                    "cardinality": null,
-                    "isDerived": null,
-                    "isOrdered": null,
-                    "isReadOnly": null,
-                    "stereotypes": null,
-                    "propertyAssignments": null,
-                    "subsettedProperties": null,
-                    "redefinedProperties": null,
-                    "aggregationKind": null
-                }
-             ],
-            "propertyAssignments": { "nonStandardProperty": null },
-            "stereotypes": [ "ontouml/stereotype" ],
-            "isAbstract": true,
-            "isDerived": false
+            "id": "class1"
+          },
+          "cardinality": null,
+          "isDerived": null,
+          "isOrdered": null,
+          "isReadOnly": null,
+          "stereotypes": null,
+          "propertyAssignments": null,
+          "subsettedProperties": null,
+          "redefinedProperties": null,
+          "aggregationKind": null
         }
-    ]
+      ],
+      "propertyAssignments": { "nonStandardProperty": null },
+      "stereotypes": ["ontouml/stereotype"],
+      "isAbstract": true,
+      "isDerived": false
+    }
+  ]
 }
