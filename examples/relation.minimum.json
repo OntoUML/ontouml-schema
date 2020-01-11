@@ -1,65 +1,65 @@
 {
-    "type": "Model",
-    "id": "model1",
-    "name": null,
-    "authors": null,
-    "elements": [
+  "type": "Model",
+  "id": "model1",
+  "name": null,
+  "authors": null,
+  "elements": [
+    {
+      "type": "Class",
+      "id": "class1",
+      "name": null,
+      "properties": null,
+      "propertyAssignments": null,
+      "stereotypes": null,
+      "isAbstract": null,
+      "isDerived": null
+    },
+    {
+      "type": "Relation",
+      "id": "relation1",
+      "name": null,
+      "properties": [
         {
+          "type": "Property",
+          "id": "end1",
+          "name": null,
+          "propertyType": {
             "type": "Class",
-            "id": "class1",
-            "name": null,
-            "properties": null,
-            "propertyAssignments": null,
-            "stereotypes": null,
-            "isAbstract": null,
-            "isDerived": null
+            "id": "class1"
+          },
+          "cardinality": null,
+          "isDerived": null,
+          "isOrdered": null,
+          "isReadOnly": null,
+          "stereotypes": null,
+          "propertyAssignments": null,
+          "subsettedProperties": null,
+          "redefinedProperties": null,
+          "aggregationKind": null
         },
         {
-            "type": "Relation",
-            "id": "relation1",
-            "name": null,
-            "properties": [
-                {
-                    "type": "Property",
-                    "id": "end1",
-                    "name": null,
-                    "propertyType": {
-                        "type": "Class",
-                        "id": "class1"
-                    },
-                    "cardinality": null,
-                    "isDerived": null,
-                    "isOrdered": null,
-                    "isReadOnly": null,
-                    "stereotypes": null,
-                    "propertyAssignments": null,
-                    "subsettedProperties": null,
-                    "redefinedProperties": null,
-                    "aggregationKind": null
-                },
-                {
-                    "type": "Property",
-                    "id": "end2",
-                    "name": null,
-                    "propertyType": {
-                        "type": "Class",
-                        "id": "class1"
-                    },
-                    "cardinality": null,
-                    "isDerived": null,
-                    "isOrdered": null,
-                    "isReadOnly": null,
-                    "stereotypes": null,
-                    "propertyAssignments": null,
-                    "subsettedProperties": null,
-                    "redefinedProperties": null,
-                    "aggregationKind": null
-                }
-            ],
-            "propertyAssignments": null,
-            "stereotypes": null,
-            "isAbstract": null,
-            "isDerived": null
+          "type": "Property",
+          "id": "end2",
+          "name": null,
+          "propertyType": {
+            "type": "Class",
+            "id": "class1"
+          },
+          "cardinality": null,
+          "isDerived": null,
+          "isOrdered": null,
+          "isReadOnly": null,
+          "stereotypes": null,
+          "propertyAssignments": null,
+          "subsettedProperties": null,
+          "redefinedProperties": null,
+          "aggregationKind": null
         }
-    ]
+      ],
+      "propertyAssignments": null,
+      "stereotypes": null,
+      "isAbstract": null,
+      "isDerived": null
+    }
+  ]
 }
