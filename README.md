@@ -7,6 +7,8 @@ This project is defined under the umbrella of the [OntoUML Server](https://githu
 If you are interested to know more, feel free to open an issue to provide feedback on the project or reach our team members for more specific cases:
  * [Claudenir M. Fonseca](https://github.com/claudenirmf)
  * [Tiago Prince Sales](https://github.com/tgoprince)
+ * [Lucas Bassetti](https://github.com/LucasBassetti)
+ * [Victor Viola](https://github.com/victorviola)
 
 ## How to use
 
@@ -44,25 +46,25 @@ Even though the source in this repository is developed for Javascript projects, 
 This section describes all fields in a OntoUML 2 model.
 
 - root/Model:
-    An object that represents an OntoUML 2 ontology. Mandatory fields: constant "type": "Model", "id", "name", "authors", "elements". Additional fields allowed.
+    An object that represents an OntoUML 2 ontology. Mandatory fields: constant "type": "Model", "id", "name", "authors", "elements". Additional fields NOT allowed.
 
 - Package:
-    An object representing a packge element. Mandatory fields: constant "type": "Package", "id", "name", "elements", "propertyAssignments". Additional fields allowed.
+    An object representing a packge element. Mandatory fields: constant "type": "Package", "id", "name", "elements", "propertyAssignments". Additional fields NOT allowed.
 
 - Class:
-    An object representing a class element. Mandatory fields: constant "type": "Class", "id", "name", "stereotypes", "properties", "propertyAssignments", "isAbstract", "isDerived". Additional fields allowed.
+    An object representing a class element. Mandatory fields: constant "type": "Class", "id", "name", "stereotypes", "properties", "propertyAssignments", "isAbstract", "isDerived". Additional fields NOT allowed.
 
 - Relation:
-    An object representing an relation element. Mandatory fields: constant "type": "Class", "id", "name", "stereotypes", "properties", "propertyAssignments". The "properties" array must have at least two items and is not nullable. The order of these items represents their position on a equivalent predicate, e.g., in the ternary relation "buys-product-from(buyer,product,seller)", the order of items representing these entities must follow the order "buyer" (in properties[0]), "product" (in properties[1]), and "seller" (in properties[2]). Relation elements are also used to represent derivation relations, in which case they must contain the stereotype "ontouml/derivation" and have only 2 properties, the first being a Relation element and the second a Class element. Additional fields allowed. Ordered properties.
+    An object representing an relation element. Mandatory fields: constant "type": "Class", "id", "name", "stereotypes", "properties", "propertyAssignments". The "properties" array must have at least two items and is not nullable. The order of these items represents their position on a equivalent predicate, e.g., in the ternary relation "buys-product-from(buyer,product,seller)", the order of items representing these entities must follow the order "buyer" (in properties[0]), "product" (in properties[1]), and "seller" (in properties[2]). Relation elements are also used to represent derivation relations, in which case they must contain the stereotype "ontouml/derivation" and have only 2 properties, the first being a Relation element and the second a Class element. Additional fields NOT allowed. Ordered properties.
 
 - Generalization:
-    An object representing a generalization element. Mandatory fields: constant "type": "Generalization", "id", "name", "general", "specific", "propertyAssignments". Additional fields allowed.
+    An object representing a generalization element. Mandatory fields: constant "type": "Generalization", "id", "name", "general", "specific", "propertyAssignments". Additional fields NOT allowed.
 
 - GeneralizationSet:
-    An object representing a generalization set element. Mandatory fields: constant "type": "GeneralizationSet", "id", "name", "isDisjoint", "isComplete", "categorizer", "generalizations", "propertyAssignments". Additional fields allowed.
+    An object representing a generalization set element. Mandatory fields: constant "type": "GeneralizationSet", "id", "name", "isDisjoint", "isComplete", "categorizer", "generalizations", "propertyAssignments". Additional fields NOT allowed.
 
 - Property:
-    An object representing a property element. This represents properties exhibited by instances of classes, relations and derivation relations, where in the first case properties are analougous to attrbutes while in the second and third cases properties are analogous to association ends. Mandatory fields: constant "type": "Property", "id", "name", "propertyType", "cardinality", "stereotypes", "propertyAssignments", "subsettedProperties", "redefinedProperties", "aggregationKind", "isDerived", "isOrdered", "isReadOnly". Additional fields allowed.
+    An object representing a property element. This represents properties exhibited by instances of classes, relations and derivation relations, where in the first case properties are analougous to attrbutes while in the second and third cases properties are analogous to association ends. Mandatory fields: constant "type": "Property", "id", "name", "propertyType", "cardinality", "stereotypes", "propertyAssignments", "subsettedProperties", "redefinedProperties", "aggregationKind", "isDerived", "isOrdered", "isReadOnly". Additional fields NOT allowed.
 
 - authors:
     A non-empty array of strings representing names of an object's authors. Nullable.
