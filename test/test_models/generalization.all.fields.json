@@ -1,14 +1,16 @@
 {
-  "type": "Model",
-  "id": "model1",
+  "type": "Package",
+  "id": "package1",
   "name": null,
-  "authors": null,
-  "elements": [
+  "description": null,
+  "contents": [
     {
       "type": "Class",
       "id": "class1",
       "name": null,
+      "description": null,
       "properties": null,
+      "literals": null,
       "propertyAssignments": null,
       "stereotypes": null,
       "isAbstract": null,
@@ -18,7 +20,9 @@
       "type": "Class",
       "id": "class2",
       "name": null,
+      "description": null,
       "properties": null,
+      "literals": null,
       "propertyAssignments": null,
       "stereotypes": null,
       "isAbstract": null,
@@ -28,6 +32,7 @@
       "type": "Generalization",
       "id": "generalization1",
       "name": "generalization",
+      "description": null,
       "general": {
         "type": "Class",
         "id": "class1"
@@ -36,7 +41,10 @@
         "type": "Class",
         "id": "class2"
       },
-      "propertyAssignments": { "nonStandardProperty": null }
+      "propertyAssignments": {
+        "nonStandardProperty": null
+      }
     }
-  ]
+  ],
+  "propertyAssignments": null
 }

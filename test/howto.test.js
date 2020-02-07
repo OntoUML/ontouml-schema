@@ -6,11 +6,12 @@ test('README tutorial test', () => {
 
     let validator = new Ajv().compile(schemas.getSchema(schemas.ONTOUML_2));
     let model = {
-        "type": "Model",
+        "type": "Package",
         "id": "m1",
         "name": "My Model",
-        "authors": null,
-        "elements": null
+        "description": null,
+        "contents": null,
+        "propertyAssignments": null
     };
     let isValid = validator(model);
 

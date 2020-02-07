@@ -25,8 +25,7 @@ let model = {
     "type": "Model",
     "id": "m1",
     "name": "My Model",
-    "authors": null,
-    "elements": null
+        "elements": null
 };
 let isValid = validator(model);
 
@@ -46,8 +45,7 @@ Even though the source in this repository is developed for Javascript projects, 
 This section describes all fields in a OntoUML 2 model.
 
 - root/Model:
-    An object that represents an OntoUML 2 ontology. Mandatory fields: constant "type": "Model", "id", "name", "authors", "elements". Additional fields NOT allowed.
-
+    An object that represents an OntoUML 2 ontology. Mandatory fields: constant "type": "Model", "id", "name", 
 - Package:
     An object representing a packge element. Mandatory fields: constant "type": "Package", "id", "name", "elements", "propertyAssignments". Additional fields NOT allowed.
 

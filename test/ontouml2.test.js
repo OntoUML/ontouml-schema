@@ -12,16 +12,8 @@ function testOntoUML2Model(modelPath) {
     expect(valid).toBeTruthy();
 }
 
-test('Model: minimal model', () => {
-    testOntoUML2Model('./test_models/model.minimum.json')
-});
-
-test('Model: all fields', () => {
-    testOntoUML2Model('./test_models/model.all.fields.json')
-});
-
 test('Package: minimal package', () => {
-    testOntoUML2Model('./test_models/package.all.fields.json')
+    testOntoUML2Model('./test_models/package.minimum.json')
 });
 
 test('Package: all fields', () => {
@@ -50,6 +42,14 @@ test('Property: minimal property', () => {
 
 test('Property: all fields', () => {
     testOntoUML2Model('./test_models/property.all.fields.json')
+});
+
+test('Literal: minimal property', () => {
+    testOntoUML2Model('./test_models/literal.minimum.json')
+});
+
+test('Attribute with null property type: all fields', () => {
+    testOntoUML2Model('./test_models/null-property-type.json')
 });
 
 test('Generalization: minimal generalization', () => {
