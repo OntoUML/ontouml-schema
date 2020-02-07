@@ -435,7 +435,7 @@
       ]
     },
     "contents": {
-      "description": "A non-empty nullable array of objects representing model elements. May contain objects representing one of the following types of model elements: \"Package\", \"Class\", \"Relation\", \"Generalization\", \"GeneralizationSet\".",
+      "description": "A non-empty nullable array of objects representing model elements. Possible object types in this array are: \"Package\", \"Class\", \"Relation\", \"Generalization\", \"GeneralizationSet\".",
       "oneOf": [
         {
           "type": "array",
