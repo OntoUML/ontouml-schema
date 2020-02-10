@@ -1,18 +1,20 @@
 {
-  "type": "Model",
-  "id": "model1",
+  "type": "Package",
+  "id": "package1",
   "name": null,
-  "authors": null,
-  "elements": [
+  "description": null,
+  "contents": [
     {
       "type": "Class",
       "id": "class1",
       "name": "Person",
+      "description": null,
       "properties": [
         {
           "type": "Property",
           "id": "attribute1",
           "name": "socialName",
+          "description": null,
           "propertyType": {
             "type": "Class",
             "id": "class2"
@@ -21,8 +23,12 @@
           "isDerived": false,
           "isOrdered": false,
           "isReadOnly": false,
-          "stereotypes": ["customStereotype"],
-          "propertyAssignments": { "nonStandardProperty": null },
+          "stereotypes": [
+            "customStereotype"
+          ],
+          "propertyAssignments": {
+            "nonStandardProperty": null
+          },
           "subsettedProperties": [
             {
               "type": "Property",
@@ -38,6 +44,7 @@
           "aggregationKind": null
         }
       ],
+      "literals": null,
       "propertyAssignments": null,
       "stereotypes": null,
       "isAbstract": null,
@@ -47,7 +54,9 @@
       "type": "Class",
       "id": "class2",
       "name": "String",
+      "description": null,
       "properties": null,
+      "literals": null,
       "propertyAssignments": null,
       "stereotypes": null,
       "isAbstract": null,
@@ -57,11 +66,13 @@
       "type": "Relation",
       "id": "relation1",
       "name": "knows",
+      "description": null,
       "properties": [
         {
           "type": "Property",
           "id": "end1",
           "name": "known by",
+          "description": null,
           "propertyType": {
             "type": "Class",
             "id": "class1"
@@ -80,6 +91,7 @@
           "type": "Property",
           "id": "end2",
           "name": "known person",
+          "description": null,
           "propertyType": {
             "type": "Class",
             "id": "class1"
@@ -95,10 +107,15 @@
           "aggregationKind": "NONE"
         }
       ],
-      "propertyAssignments": { "nonStandardProperty": null },
-      "stereotypes": ["ontouml/stereotype"],
+      "propertyAssignments": {
+        "nonStandardProperty": null
+      },
+      "stereotypes": [
+        "ontouml/stereotype"
+      ],
       "isAbstract": true,
       "isDerived": false
     }
-  ]
+  ],
+  "propertyAssignments": null
 }

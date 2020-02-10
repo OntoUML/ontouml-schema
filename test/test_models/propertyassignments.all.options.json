@@ -1,19 +1,21 @@
 {
-  "type": "Model",
-  "id": "model1",
+  "type": "Package",
+  "id": "package1",
   "name": null,
-  "authors": null,
-  "elements": [
+  "description": null,
+  "contents": [
     {
       "type": "Class",
       "id": "class1",
       "name": null,
+      "description": null,
       "properties": null,
+      "literals": null,
       "propertyAssignments": {
         "a": null,
         "b": true,
         "c": 0,
-        "d": 1.0,
+        "d": 1,
         "e": "word",
         "f": {
           "type": "Class",
@@ -22,7 +24,7 @@
         "g": [
           true,
           0,
-          1.0,
+          1,
           "word",
           {
             "type": "Class",
@@ -34,5 +36,6 @@
       "isAbstract": null,
       "isDerived": null
     }
-  ]
+  ],
+  "propertyAssignments": null
 }

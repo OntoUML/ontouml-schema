@@ -1,0 +1,36 @@
+{
+  "type": "Package",
+  "id": "package1",
+  "name": null,
+  "description": null,
+  "contents": [
+    {
+      "type": "Class",
+      "id": "class1",
+      "name": "Color",
+      "description": "An enumeration containing basic colors.",
+      "properties": null,
+      "literals": [
+        {
+          "type": "Literal",
+          "id": "0",
+          "name": "Red",
+          "description": "Classic red. Hex Code: #FF0000 Decimal Code: rgb(255,0,0)",
+          "propertyAssignments": null
+        },
+        {
+          "type": "Literal",
+          "id": "1",
+          "name": "Blue",
+          "description": "Classic blue. Hex Code: #0000FF Decimal Code: rgb(0,0,255)",
+          "propertyAssignments": null
+        }
+      ],
+      "propertyAssignments": null,
+      "stereotypes": null,
+      "isAbstract": false,
+      "isDerived": false
+    }
+  ],
+  "propertyAssignments": null
+}
