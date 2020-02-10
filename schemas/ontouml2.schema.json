@@ -1,28 +1,14 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://ontouml.org/ontouml-schema/2.0/0.1.202001091222",
-  "title": "Model",
-  "description": "An object that represents an OntoUML 2 ontology. Mandatory fields: constant \"type\": \"Model\", \"id\", \"name\", \"authors\", \"elements\". Additional fields NOT allowed.",
+  "title": "Root Package",
+  "description": "A package that contains an ontology in OntoUML 2. Mandatory fields are those defined for Package.",
   "type": "object",
-  "properties": {
-    "type": {
-      "const": "Model"
-    },
-    "id": {
-      "$ref": "#/definitions/id"
-    },
-    "name": {
-      "$ref": "#/definitions/name"
-    },
-    "authors": {
-      "$ref": "#/definitions/authors"
-    },
-    "elements": {
-      "$ref": "#/definitions/elements"
+  "allOf": [
+    {
+      "$ref": "#/definitions/Package"
     }
-  },
-  "additionalProperties": false,
-  "required": ["type", "id", "name", "authors", "elements"],
+  ],
   "definitions": {
     "Package": {
       "description": "An object representing a packge element. Mandatory fields: constant \"type\": \"Package\", \"id\", \"name\", \"elements\", \"propertyAssignments\". Additional fields NOT allowed.",
@@ -37,15 +23,25 @@
         "name": {
           "$ref": "#/definitions/name"
         },
-        "elements": {
-          "$ref": "#/definitions/elements"
+        "description": {
+          "$ref": "#/definitions/description"
+        },
+        "contents": {
+          "$ref": "#/definitions/contents"
         },
         "propertyAssignments": {
           "$ref": "#/definitions/propertyAssignments"
         }
       },
       "additionalProperties": false,
-      "required": ["type", "id", "name", "elements", "propertyAssignments"]
+      "required": [
+        "type",
+        "id",
+        "name",
+        "description",
+        "contents",
+        "propertyAssignments"
+      ]
     },
     "Class": {
       "description": "An object representing a class element. Mandatory fields: constant \"type\": \"Class\", \"id\", \"name\", \"stereotypes\", \"properties\", \"propertyAssignments\", \"isAbstract\", \"isDerived\". Additional fields NOT allowed.",
@@ -60,6 +56,9 @@
         "name": {
           "$ref": "#/definitions/name"
         },
+        "description": {
+          "$ref": "#/definitions/description"
+        },
         "stereotypes": {
           "$ref": "#/definitions/stereotypes"
         },
@@ -69,25 +68,26 @@
         "propertyAssignments": {
           "$ref": "#/definitions/propertyAssignments"
         },
-        "isAbstract": {
+        "literals": {
+          "description": "An array containing the values defined for an enumeration. Should only be used if the class is stereotyped as <<enumeration>>, otherwise, the value of this field should be null.",
           "oneOf": [
             {
-              "type": "boolean"
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "$ref": "#/definitions/Literal"
+              }
             },
             {
               "type": "null"
             }
           ]
         },
+        "isAbstract": {
+          "$ref": "#/definitions/isAbstract"
+        },
         "isDerived": {
-          "oneOf": [
-            {
-              "type": "boolean"
-            },
-            {
-              "type": "null"
-            }
-          ]
+          "$ref": "#/definitions/isDerived"
         }
       },
       "additionalProperties": false,
@@ -95,11 +95,42 @@
         "type",
         "id",
         "name",
+        "description",
         "stereotypes",
         "properties",
         "propertyAssignments",
+        "literals",
         "isAbstract",
         "isDerived"
+      ]
+    },
+    "Literal": {
+      "description": "An object representing a value defined for an enumeration.",
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "Literal"
+        },
+        "id": {
+          "$ref": "#/definitions/id"
+        },
+        "name": {
+          "$ref": "#/definitions/name"
+        },
+        "description": {
+          "$ref": "#/definitions/description"
+        },
+        "propertyAssignments": {
+          "$ref": "#/definitions/propertyAssignments"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "id",
+        "name",
+        "description",
+        "propertyAssignments"
       ]
     },
     "Relation": {
@@ -114,6 +145,9 @@
         },
         "name": {
           "$ref": "#/definitions/name"
+        },
+        "description": {
+          "$ref": "#/definitions/description"
         },
         "stereotypes": {
           "$ref": "#/definitions/stereotypes"
@@ -130,24 +164,10 @@
           "$ref": "#/definitions/propertyAssignments"
         },
         "isAbstract": {
-          "oneOf": [
-            {
-              "type": "boolean"
-            },
-            {
-              "type": "null"
-            }
-          ]
+          "$ref": "#/definitions/isAbstract"
         },
         "isDerived": {
-          "oneOf": [
-            {
-              "type": "boolean"
-            },
-            {
-              "type": "null"
-            }
-          ]
+          "$ref": "#/definitions/isDerived"
         }
       },
       "additionalProperties": false,
@@ -155,6 +175,7 @@
         "type",
         "id",
         "name",
+        "description",
         "stereotypes",
         "properties",
         "propertyAssignments",
@@ -182,6 +203,9 @@
         "name": {
           "$ref": "#/definitions/name"
         },
+        "description": {
+          "$ref": "#/definitions/description"
+        },
         "general": {
           "$ref": "#/definitions/reference"
         },
@@ -197,6 +221,7 @@
         "type",
         "id",
         "name",
+        "description",
         "general",
         "specific",
         "propertyAssignments"
@@ -214,6 +239,9 @@
         },
         "name": {
           "$ref": "#/definitions/name"
+        },
+        "description": {
+          "$ref": "#/definitions/description"
         },
         "isDisjoint": {
           "oneOf": [
@@ -261,6 +289,7 @@
         "type",
         "id",
         "name",
+        "description",
         "isDisjoint",
         "isComplete",
         "categorizer",
@@ -281,6 +310,9 @@
         "name": {
           "$ref": "#/definitions/name"
         },
+        "description": {
+          "$ref": "#/definitions/description"
+        },
         "cardinality": {
           "oneOf": [
             {
@@ -298,7 +330,16 @@
         "propertyAssignments": {
           "$ref": "#/definitions/propertyAssignments"
         },
-        "propertyType": { "$ref": "#/definitions/reference" },
+        "propertyType": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/reference"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
         "subsettedProperties": {
           "oneOf": [
             {
@@ -333,7 +374,11 @@
           "oneOf": [
             {
               "type": "string",
-              "enum": ["NONE", "SHARED", "COMPOSITE"]
+              "enum": [
+                "NONE",
+                "SHARED",
+                "COMPOSITE"
+              ]
             },
             {
               "type": "null"
@@ -376,6 +421,7 @@
         "type",
         "id",
         "name",
+        "description",
         "cardinality",
         "stereotypes",
         "propertyAssignments",
@@ -388,25 +434,8 @@
         "isReadOnly"
       ]
     },
-    "authors": {
-      "description": "A non-empty array of strings representing names of an object's authors. Nullable.",
-      "oneOf": [
-        {
-          "type": "array",
-          "uniqueItems": true,
-          "minItems": 1,
-          "items": {
-            "type": "string",
-            "minLength": 1
-          }
-        },
-        {
-          "type": "null"
-        }
-      ]
-    },
-    "elements": {
-      "description": "A non-empty array of objects representing model elements. May contain objects representing one of the following types of model elements: \"Package\", \"Class\", \"Relation\", \"Generalization\", \"GeneralizationSet\". Nullable.",
+    "contents": {
+      "description": "A non-empty nullable array of objects representing model elements. Possible object types in this array are: \"Package\", \"Class\", \"Relation\", \"Generalization\", \"GeneralizationSet\".",
       "oneOf": [
         {
           "type": "array",
@@ -438,12 +467,12 @@
       ]
     },
     "id": {
-      "description": "A non-empty string representing an object's unique identifier.",
+      "description": "A non-empty and non-nullable string that uniquely identifies an object of a given type. Thus, two objects of the same type (e.g. two classes, two relations, two properties) may not have the same id, even if they have different containers.",
       "type": "string",
       "minLength": 1
     },
     "name": {
-      "description": "A non-empty string representing an object's name. Nullable.",
+      "description": "A non-empty nullable string representing the object's name. It is allowed for two objects of the ontology to have identical names, even if they are of the same type, although it is not advisable.",
       "oneOf": [
         {
           "type": "string",
@@ -454,8 +483,42 @@
         }
       ]
     },
+    "description": {
+      "description": "A non-empty nullable string representing the description of the object in free textual format.",
+      "oneOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "isAbstract":{
+      "description": "A boolean meta-property that identifies whether or not the class or relation can have direct instances. If set to true, the class or relation is deemed abstract and it cannot have direct instances, i.e., for it must be specialized before being instantiated. If set to false, the class is deemed concrete and it can have direct instances.",
+      "oneOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "isDerived": {
+      "description": "A boolean meta-property that identifies whether or not the extension of the class (or relation) can be \"computed\" by means of a derivation rule. If set to true, they can, if set to false, they cannot. For instance, the Child can be modelled as a derived class, if it is considered that a child is a person whose age is less or equal to 10.",
+      "oneOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
     "properties": {
-      "description": "A non-empty array of Property elements representing properties exhibited by instances of the container model element. Nullable.",
+      "description": "A non-empty array of Property elements representing properties exhibited by instances of the container model element. Nullable. If the container object of his field is a class, the properties in this array are the attributes of the class. Alternatively, if the container is a relation, the properties in this array are the association ends of the relation.",
       "oneOf": [
         {
           "type": "array",
@@ -470,7 +533,7 @@
       ]
     },
     "propertyAssignments": {
-      "description": "A non-empty array of key-value pairs representing assignments to instantiated properties instantiated by the container object. Assignments may have any key name, but its values are restricted to null, booleans, numbers, strings, references or arrays of these. Assignments are analogous to UML's notion of tagged values. Nullable.",
+      "description": "An object that contains assignments to properties instantiated by the container object. Each field in this object corresponds to an assigment, whose possible values are restricted to null, boolean, number, string, reference, or an array containing any of the former. Assignments are analogous to UML's notion of tagged values. Nullable.",
       "oneOf": [
         {
           "type": "object",
@@ -533,18 +596,23 @@
             "Relation",
             "Generalization",
             "GeneralizationSet",
-            "Property"
+            "Property",
+            "Enumeration",
+            "Literal"
           ]
         },
         "id": {
           "$ref": "#/definitions/id"
         }
       },
-      "required": ["type", "id"],
+      "required": [
+        "type",
+        "id"
+      ],
       "additionalProperties": false
     },
     "stereotypes": {
-      "description": "A non-empty array of non-empty strings representing stereotypes of its container object. Nullable.",
+      "description": "A non-empty nullable array of non-empty strings containing the stereotypes applied to its container object. If no stereotype is applied to the object, the value of this field should be null.",
       "oneOf": [
         {
           "type": "array",

@@ -1,14 +1,16 @@
 {
-  "type": "Model",
-  "id": "model1",
+  "type": "Package",
+  "id": "package1",
   "name": null,
-  "authors": null,
-  "elements": [
+  "description": null,
+  "contents": [
     {
       "type": "Class",
       "id": "class1",
       "name": null,
+      "description": null,
       "properties": null,
+      "literals": null,
       "propertyAssignments": null,
       "stereotypes": null,
       "isAbstract": null,
@@ -18,11 +20,13 @@
       "type": "Relation",
       "id": "relation1",
       "name": null,
+      "description": null,
       "properties": [
         {
           "type": "Property",
           "id": "end1",
           "name": null,
+          "description": null,
           "propertyType": {
             "type": "Class",
             "id": "class1"
@@ -41,6 +45,7 @@
           "type": "Property",
           "id": "end2",
           "name": null,
+          "description": null,
           "propertyType": {
             "type": "Class",
             "id": "class1"
@@ -61,5 +66,6 @@
       "isAbstract": null,
       "isDerived": null
     }
-  ]
+  ],
+  "propertyAssignments": null
 }

@@ -8,17 +8,14 @@
       "type": "Class",
       "id": "class1",
       "name": "Person",
-      "description": "Description of person.",
+      "description": null,
       "properties": [
         {
           "type": "Property",
           "id": "attribute1",
-          "name": "knows",
-          "description": "Description of property knows.",
-          "propertyType": {
-            "type": "Class",
-            "id": "class1"
-          },
+          "name": "name",
+          "description": null,
+          "propertyType": null,
           "cardinality": null,
           "isDerived": null,
           "isOrdered": null,
@@ -31,14 +28,10 @@
         }
       ],
       "literals": null,
-      "propertyAssignments": {
-        "nonStandardProperty": null
-      },
-      "stereotypes": [
-        "ontouml/stereotype"
-      ],
-      "isAbstract": true,
-      "isDerived": false
+      "propertyAssignments": null,
+      "stereotypes": null,
+      "isAbstract": null,
+      "isDerived": null
     }
   ],
   "propertyAssignments": null

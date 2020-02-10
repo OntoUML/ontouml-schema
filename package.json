@@ -1,6 +1,6 @@
 {
   "name": "ontouml-schema",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "This package provides a JSON Schema message format for the exchange of OntoUML models.",
   "main": "src/index.js",
   "scripts": {
