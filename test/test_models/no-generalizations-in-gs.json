@@ -1,0 +1,20 @@
+{
+  "type": "Package",
+  "id": "package1",
+  "name": null,
+  "description": null,
+  "contents": [
+    {
+      "type": "GeneralizationSet",
+      "id": "generalizationSet1",
+      "name": null,
+      "description": null,
+      "categorizer": null,
+      "generalizations": null,
+      "isDisjoint": null,
+      "isComplete": null,
+      "propertyAssignments": null
+    }
+  ],
+  "propertyAssignments": null
+}

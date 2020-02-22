@@ -68,6 +68,10 @@ test('GeneralizationSet: all fields', () => {
     testOntoUML2Model('./test_models/generalizationset.all.fields.json')
 });
 
+test('GeneralizationSet: no generalizations', () => {
+    testOntoUML2Model('./test_models/no-generalizations-in-gs.json')
+});
+
 test('propertyAssignments: all options', () => {
     testOntoUML2Model('./test_models/propertyassignments.all.options.json')
 });
