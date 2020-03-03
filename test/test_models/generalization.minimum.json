@@ -5,42 +5,12 @@
   "description": null,
   "contents": [
     {
-      "type": "Class",
-      "id": "class1",
-      "name": null,
-      "description": null,
-      "properties": null,
-      "literals": null,
-      "propertyAssignments": null,
-      "stereotypes": null,
-      "isAbstract": null,
-      "isDerived": null
-    },
-    {
-      "type": "Class",
-      "id": "class2",
-      "name": null,
-      "description": null,
-      "properties": null,
-      "literals": null,
-      "propertyAssignments": null,
-      "stereotypes": null,
-      "isAbstract": null,
-      "isDerived": null
-    },
-    {
       "type": "Generalization",
       "id": "generalization1",
       "name": null,
       "description": null,
-      "general": {
-        "type": "Class",
-        "id": "class1"
-      },
-      "specific": {
-        "type": "Class",
-        "id": "class2"
-      },
+      "general": null,
+      "specific": null,
       "propertyAssignments": null
     }
   ],

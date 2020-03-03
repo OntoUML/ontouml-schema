@@ -1,11 +1,11 @@
 {
   "name": "ontouml-schema",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "This package provides a JSON Schema message format for the exchange of OntoUML models.",
   "main": "src/index.js",
   "scripts": {
     "start": "onchange '**/*.js' '**/*.json' -- prettier --write {{changed}}",
-    "test": "jest"
+    "test": "jest --silent --coverage"
   },
   "repository": {
     "type": "git",

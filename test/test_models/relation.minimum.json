@@ -65,6 +65,17 @@
       "stereotypes": null,
       "isAbstract": null,
       "isDerived": null
+    },
+    {
+      "type": "Relation",
+      "id": "relation1",
+      "name": null,
+      "description": null,
+      "properties": null,
+      "propertyAssignments": null,
+      "stereotypes": null,
+      "isAbstract": null,
+      "isDerived": null
     }
   ],
   "propertyAssignments": null

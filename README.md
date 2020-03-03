@@ -14,7 +14,7 @@ If you are interested to know more, feel free to open an issue to provide feedba
 
 [JSON Schema](https://json-schema.org/) is a popular web standard for definition and validation of JSON files. The standard employs JSON files describing valid schema formats as input to validation software to check the validity of any other JSON file its is feed with.
 
-The code excerpt bellow, examplifies how to use the `ontouml-schema` project to validate objects representing OntoUML 2 models:
+The code excerpt bellow, exemplifies how to use the `ontouml-schema` project to validate objects representing OntoUML 2 models:
 
 ```javascript
 const schemas = require('ontouml-schema');
@@ -22,17 +22,18 @@ const Ajv = require('ajv');
 
 let validator = new Ajv().compile(schemas.getSchema(schemas.ONTOUML_2));
 let model = {
-    "type": "Model",
-    "id": "m1",
-    "name": "My Model",
-        "elements": null
+    type: 'Package',
+    id: 'm1',
+    name: 'My Model',
+    description: null,
+    contents: null,
+    propertyAssignments: null,
 };
 let isValid = validator(model);
 
-if(isValid) {
+if (isValid) {
     console.log(`Model ${model.name} is valid!`);
-}
-else {
+} else {
     console.log(`Model ${model.name} is NOT valid!`);
     console.log(validator.errors);
 }
@@ -50,7 +51,7 @@ All fields defined for an object type are MANDATORY, but only some are not nulla
 
 Additional fields are NOT allowed for any object type.
 
-- **Package**: An object representing an ontology or an ontology (sub)module.
+- **Package**: An object representing an ontology or an ontology (sub)module. The Package object at the root of a JSON file instantiating the ontouml-schema is also referred to as "root package" and "model", where the later captures the notion of all container for all model elements in an ontology module.
     
     ```json
     { 
@@ -160,7 +161,7 @@ Additional fields are NOT allowed for any object type.
     }
     ```
 
-  The field "properties" is a non-nullable ordered array of objets of type "Property" with a minimum size of 2. 
+  The field "properties" is a nullable ordered array of objets of type "Property" whose minimum size should be 2. Relation objects with less than 2 items in the "properties" must raise error messages.
   
   The order of the properties in this array represents their position on a equivalent predicate, e.g., in the ternary relation "buys-product-from(buyer,product,seller)", the order of items representing these entities must follow the order "buyer" (in properties[0]), "product" (in properties[1]), and "seller" (in properties[2]).
   
