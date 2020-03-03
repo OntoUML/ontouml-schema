@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "start": "onchange '**/*.js' '**/*.json' -- prettier --write {{changed}}",
-    "test": "jest"
+    "test": "jest --silent --coverage"
   },
   "repository": {
     "type": "git",

@@ -5,99 +5,12 @@
   "description": null,
   "contents": [
     {
-      "type": "Class",
-      "id": "class1",
-      "name": null,
-      "description": null,
-      "properties": null,
-      "literals": null,
-      "propertyAssignments": null,
-      "stereotypes": null,
-      "isAbstract": null,
-      "isDerived": null
-    },
-    {
-      "type": "Class",
-      "id": "class2",
-      "name": null,
-      "description": null,
-      "properties": null,
-      "literals": null,
-      "propertyAssignments": null,
-      "stereotypes": null,
-      "isAbstract": null,
-      "isDerived": null
-    },
-    {
-      "type": "Class",
-      "id": "class3",
-      "name": null,
-      "description": null,
-      "properties": null,
-      "literals": null,
-      "propertyAssignments": null,
-      "stereotypes": null,
-      "isAbstract": null,
-      "isDerived": null
-    },
-    {
-      "type": "Class",
-      "id": "class4",
-      "name": null,
-      "description": null,
-      "properties": null,
-      "literals": null,
-      "propertyAssignments": null,
-      "stereotypes": null,
-      "isAbstract": null,
-      "isDerived": null
-    },
-    {
-      "type": "Generalization",
-      "id": "generalization1",
-      "name": null,
-      "description": null,
-      "general": {
-        "type": "Class",
-        "id": "class1"
-      },
-      "specific": {
-        "type": "Class",
-        "id": "class2"
-      },
-      "propertyAssignments": null
-    },
-    {
-      "type": "Generalization",
-      "id": "generalization2",
-      "name": null,
-      "description": null,
-      "general": {
-        "type": "Class",
-        "id": "class1"
-      },
-      "specific": {
-        "type": "Class",
-        "id": "class3"
-      },
-      "propertyAssignments": null
-    },
-    {
       "type": "GeneralizationSet",
       "id": "generalizationSet1",
       "name": null,
       "description": null,
       "categorizer": null,
-      "generalizations": [
-        {
-          "type": "Generalization",
-          "id": "generalization1"
-        },
-        {
-          "type": "Generalization",
-          "id": "generalization2"
-        }
-      ],
+      "generalizations": null,
       "isDisjoint": null,
       "isComplete": null,
       "propertyAssignments": null

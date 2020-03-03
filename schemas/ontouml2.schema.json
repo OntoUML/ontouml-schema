@@ -125,13 +125,7 @@
         }
       },
       "additionalProperties": false,
-      "required": [
-        "type",
-        "id",
-        "name",
-        "description",
-        "propertyAssignments"
-      ]
+      "required": ["type", "id", "name", "description", "propertyAssignments"]
     },
     "Relation": {
       "description": "An object representing an relation element. Mandatory fields: constant \"type\": \"Class\", \"id\", \"name\", \"stereotypes\", \"properties\", \"propertyAssignments\". The \"properties\" array must have at least two items and is not nullable. The order of these items represents their position on a equivalent predicate, e.g., in the ternary relation \"buys-product-from(buyer,product,seller)\", the order of items representing these entities must follow the order \"buyer\" (in properties[0]), \"product\" (in properties[1]), and \"seller\" (in properties[2]). Relation elements are also used to represent derivation relations, in which case they must contain the stereotype \"ontouml/derivation\" and have only 2 properties, the first being a Relation element and the second a Class element. Additional fields NOT allowed. Ordered properties.",
@@ -153,12 +147,7 @@
           "$ref": "#/definitions/stereotypes"
         },
         "properties": {
-          "allOf": [
-            {
-              "$ref": "#/definitions/properties"
-            }
-          ],
-          "minItems": 2
+          "$ref": "#/definitions/properties"
         },
         "propertyAssignments": {
           "$ref": "#/definitions/propertyAssignments"
@@ -181,14 +170,7 @@
         "propertyAssignments",
         "isAbstract",
         "isDerived"
-      ],
-      "not": {
-        "properties": {
-          "properties": {
-            "type": "null"
-          }
-        }
-      }
+      ]
     },
     "Generalization": {
       "description": "An object representing a generalization element. Mandatory fields: constant \"type\": \"Generalization\", \"id\", \"name\", \"general\", \"specific\", \"propertyAssignments\". Additional fields NOT allowed.",
@@ -264,14 +246,7 @@
           ]
         },
         "categorizer": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/reference"
-            },
-            {
-              "type": "null"
-            }
-          ]
+          "$ref": "#/definitions/reference"
         },
         "generalizations": {
           "oneOf": [
@@ -338,14 +313,7 @@
           "$ref": "#/definitions/propertyAssignments"
         },
         "propertyType": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/reference"
-            },
-            {
-              "type": "null"
-            }
-          ]
+          "$ref": "#/definitions/reference"
         },
         "subsettedProperties": {
           "oneOf": [
@@ -381,11 +349,7 @@
           "oneOf": [
             {
               "type": "string",
-              "enum": [
-                "NONE",
-                "SHARED",
-                "COMPOSITE"
-              ]
+              "enum": ["NONE", "SHARED", "COMPOSITE"]
             },
             {
               "type": "null"
@@ -502,7 +466,7 @@
         }
       ]
     },
-    "isAbstract":{
+    "isAbstract": {
       "description": "A boolean meta-property that identifies whether or not the class or relation can have direct instances. If set to true, the class or relation is deemed abstract and it cannot have direct instances, i.e., for it must be specialized before being instantiated. If set to false, the class is deemed concrete and it can have direct instances.",
       "oneOf": [
         {
@@ -543,15 +507,14 @@
       "description": "An object that contains assignments to properties instantiated by the container object. Each field in this object corresponds to an assigment, whose possible values are restricted to null, boolean, number, string, reference, or an array containing any of the former. Assignments are analogous to UML's notion of tagged values. Nullable.",
       "oneOf": [
         {
-          "type": "object",
-          "minProperties": 1
+          "type": "object"
         },
         {
           "type": "null"
         }
       ],
       "additionalProperties": {
-        "oneOf": [
+        "anyOf": [
           {
             "type": "null"
           },
@@ -593,30 +556,34 @@
     },
     "reference": {
       "description": "An object representing a singular reference to a model element. Mandatory fields: \"type\", \"id\".",
-      "type": "object",
-      "properties": {
-        "type": {
-          "type": "string",
-          "enum": [
-            "Package",
-            "Class",
-            "Relation",
-            "Generalization",
-            "GeneralizationSet",
-            "Property",
-            "Enumeration",
-            "Literal"
-          ]
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "Package",
+                "Class",
+                "Relation",
+                "Generalization",
+                "GeneralizationSet",
+                "Property",
+                "Enumeration",
+                "Literal"
+              ]
+            },
+            "id": {
+              "$ref": "#/definitions/id"
+            }
+          },
+          "required": ["type", "id"],
+          "additionalProperties": false
         },
-        "id": {
-          "$ref": "#/definitions/id"
+        {
+          "type": "null"
         }
-      },
-      "required": [
-        "type",
-        "id"
-      ],
-      "additionalProperties": false
+      ]
     },
     "stereotypes": {
       "description": "A non-empty nullable array of non-empty strings containing the stereotypes applied to its container object. If no stereotype is applied to the object, the value of this field should be null.",

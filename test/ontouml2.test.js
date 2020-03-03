@@ -1,77 +1,79 @@
 const schemas = require('ontouml-schema');
+const models = require('./test_models');
 const Ajv = require('ajv');
 let ajv = new Ajv();
 
-function testOntoUML2Model(modelPath) {
-    let validator = ajv.compile(schemas.getSchema(schemas.ONTOUML_2));
-    let model = require(modelPath);
-    let valid = validator(model);
-    
-    if(!valid) { console.log(validator.errors); }
-    
-    expect(valid).toBeTruthy();
+function testOntoUML2Model(model) {
+  let validator = ajv.compile(schemas.getSchema(schemas.ONTOUML_2));
+  let valid = validator(model);
+
+  if (!valid) {
+    console.log(validator.errors);
+  }
+
+  expect(valid).toBeTruthy();
 }
 
 test('Package: minimal package', () => {
-    testOntoUML2Model('./test_models/package.minimum.json')
+  testOntoUML2Model(models.packageMinimum);
 });
 
 test('Package: all fields', () => {
-    testOntoUML2Model('./test_models/package.all.fields.json')
+  testOntoUML2Model(models.packageAllFields);
 });
 
 test('Class: minimal class', () => {
-    testOntoUML2Model('./test_models/class.minimum.json')
+  testOntoUML2Model(models.classMinimum);
 });
 
 test('Class: all fields', () => {
-    testOntoUML2Model('./test_models/class.all.fields.json')
+  testOntoUML2Model(models.classAllFields);
 });
 
 test('Relation: minimal relation', () => {
-    testOntoUML2Model('./test_models/relation.minimum.json')
+  testOntoUML2Model(models.relationMinimum);
 });
 
 test('Relation: all fields', () => {
-    testOntoUML2Model('./test_models/relation.all.fields.json')
+  testOntoUML2Model(models.relationAllFields);
 });
 
 test('Property: minimal property', () => {
-    testOntoUML2Model('./test_models/property.minimum.json')
+  testOntoUML2Model(models.propertyMinimum);
 });
 
 test('Property: all fields', () => {
-    testOntoUML2Model('./test_models/property.all.fields.json')
+  testOntoUML2Model(models.propertyAllFields);
 });
 
-test('Literal: minimal property', () => {
-    testOntoUML2Model('./test_models/literal.minimum.json')
+test('Literal: minimal literal', () => {
+  testOntoUML2Model(models.literalMinimum);
 });
 
 test('Attribute with null property type: all fields', () => {
-    testOntoUML2Model('./test_models/null-property-type.json')
+  testOntoUML2Model(models.nullPropertyType);
 });
 
 test('Generalization: minimal generalization', () => {
-    testOntoUML2Model('./test_models/generalization.minimum.json')
+  testOntoUML2Model(models.generalizationMinimum);
 });
 
 test('Generalization: all fields', () => {
-    testOntoUML2Model('./test_models/generalization.all.fields.json')
+  testOntoUML2Model(models.generalizationAllFields);
 });
 
 test('GeneralizationSet: minimal generalization set', () => {
-    testOntoUML2Model('./test_models/generalizationset.minimum.json')
+  testOntoUML2Model(models.generalizationSetMinimum);
 });
 
 test('GeneralizationSet: all fields', () => {
-    testOntoUML2Model('./test_models/generalizationset.all.fields.json')
+  testOntoUML2Model(models.generalizationSetAllFields);
 });
 
 test('GeneralizationSet: no generalizations', () => {
-    testOntoUML2Model('./test_models/no-generalizations-in-gs.json')
+  testOntoUML2Model(models.noGeneralizationInGS);
 });
 
 test('propertyAssignments: all options', () => {
-    testOntoUML2Model('./test_models/propertyassignments.all.options.json')
+  testOntoUML2Model(models.propertyAssignmentsAllOptions);
 });
