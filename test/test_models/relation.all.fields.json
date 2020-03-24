@@ -14,7 +14,11 @@
       "propertyAssignments": null,
       "stereotypes": null,
       "isAbstract": null,
-      "isDerived": null
+      "isDerived": null,
+      "isExtensional": null,
+      "isPowertype": null,
+      "order": null,
+      "natures": null
     },
     {
       "type": "Relation",
@@ -64,9 +68,7 @@
       "propertyAssignments": {
         "nonStandardProperty": null
       },
-      "stereotypes": [
-        "ontouml/material"
-      ],
+      "stereotypes": ["ontouml/material"],
       "isAbstract": true,
       "isDerived": false
     }

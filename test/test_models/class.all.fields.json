@@ -34,11 +34,13 @@
       "propertyAssignments": {
         "nonStandardProperty": null
       },
-      "stereotypes": [
-        "ontouml/stereotype"
-      ],
+      "stereotypes": ["ontouml/stereotype"],
       "isAbstract": true,
-      "isDerived": false
+      "isDerived": false,
+      "isExtensional": false,
+      "isPowertype": false,
+      "order": "1",
+      "natures": ["object"]
     }
   ],
   "propertyAssignments": null

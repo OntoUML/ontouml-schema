@@ -26,10 +26,3 @@ test('README tutorial test', () => {
 
   expect(isValid).toBeTruthy();
 });
-
-test('Developer reminder to update the README file before publishing a new version', () => {
-  const packageJSON = JSON.parse(fs.readFileSync('package.json'));
-  const lastReadMeUpdateVersion = '0.2.1';
-
-  expect(lastReadMeUpdateVersion).toBe(packageJSON.version);
-});

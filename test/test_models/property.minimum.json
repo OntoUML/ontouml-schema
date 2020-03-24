@@ -34,7 +34,11 @@
       "propertyAssignments": null,
       "stereotypes": null,
       "isAbstract": null,
-      "isDerived": null
+      "isDerived": null,
+      "isExtensional": null,
+      "isPowertype": null,
+      "order": null,
+      "natures": null
     },
     {
       "type": "Class",
@@ -46,7 +50,11 @@
       "propertyAssignments": null,
       "stereotypes": null,
       "isAbstract": null,
-      "isDerived": null
+      "isDerived": null,
+      "isExtensional": null,
+      "isPowertype": null,
+      "order": null,
+      "natures": null
     },
     {
       "type": "Relation",

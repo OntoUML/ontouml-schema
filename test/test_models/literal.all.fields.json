@@ -29,7 +29,11 @@
       "propertyAssignments": null,
       "stereotypes": null,
       "isAbstract": false,
-      "isDerived": false
+      "isDerived": false,
+      "isExtensional": null,
+      "isPowertype": null,
+      "order": null,
+      "natures": null
     }
   ],
   "propertyAssignments": null

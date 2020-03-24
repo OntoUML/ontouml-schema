@@ -77,7 +77,11 @@ Additional fields are NOT allowed for any object type.
         "isDerived": false,
         "properties": [ ... ],
         "literals": null,
-        "propertyAssignments": { ... }
+        "propertyAssignments": { ... },
+        "isExtensional": null,
+        "isPowertype": null,
+        "order": null,
+        "natures": [ "object" ]
     }
     ```
 
@@ -108,7 +112,11 @@ Additional fields are NOT allowed for any object type.
             },
             ...
         ],
-        "propertyAssignments": { ... }
+        "propertyAssignments": { ... },
+        "isExtensional": null,
+        "isPowertype": null,
+        "order": null,
+        "natures": null
     }
     ```
 - **Literal**: An object representing a value defined for an enumeration.
