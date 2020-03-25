@@ -101,8 +101,8 @@
           "description": "A string field that captures the type-order of a class decorated as «type».",
           "$ref": "#/definitions/nullableString"
         },
-        "natures": {
-          "description": "A nullable array of unique enumerated strings that represents the possible ontological natures of the class's instances.",
+        "allowed": {
+          "description": "A nullable array of unique enumerated strings that represents the allowed (possible) ontological natures of the class's instances.",
           "oneOf": [
             {
               "type": "null"
@@ -115,7 +115,7 @@
                 "type": "string",
                 "enum": [
                   "object",
-                  "collection",
+                  "collective",
                   "quantity",
                   "relator",
                   "mode",
@@ -143,7 +143,7 @@
         "isExtensional",
         "isPowertype",
         "order",
-        "natures"
+        "allowed"
       ]
     },
     "Literal": {

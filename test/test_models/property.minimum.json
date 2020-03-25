@@ -38,7 +38,7 @@
       "isExtensional": null,
       "isPowertype": null,
       "order": null,
-      "natures": null
+      "allowed": null
     },
     {
       "type": "Class",
@@ -54,7 +54,7 @@
       "isExtensional": null,
       "isPowertype": null,
       "order": null,
-      "natures": null
+      "allowed": null
     },
     {
       "type": "Relation",

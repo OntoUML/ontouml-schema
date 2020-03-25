@@ -81,7 +81,7 @@ Additional fields are NOT allowed for any object type.
         "isExtensional": null,
         "isPowertype": null,
         "order": null,
-        "natures": [ "object" ]
+        "allowed": [ "object" ]
     }
     ```
 
@@ -116,7 +116,7 @@ Additional fields are NOT allowed for any object type.
         "isExtensional": null,
         "isPowertype": null,
         "order": null,
-        "natures": null
+        "allowed": null
     }
     ```
 - **Literal**: An object representing a value defined for an enumeration.

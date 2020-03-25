@@ -40,7 +40,7 @@
       "isExtensional": false,
       "isPowertype": false,
       "order": "1",
-      "natures": ["object"]
+      "allowed": ["object"]
     }
   ],
   "propertyAssignments": null
