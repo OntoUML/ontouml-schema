@@ -81,7 +81,7 @@ Additional fields are NOT allowed for any object type.
         "isExtensional": null,
         "isPowertype": null,
         "order": null,
-        "allowed": [ "object" ]
+        "allowed": [ "functional-complex" ]
     }
     ```
 

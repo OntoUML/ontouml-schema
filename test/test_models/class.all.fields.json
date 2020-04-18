@@ -40,7 +40,7 @@
       "isExtensional": false,
       "isPowertype": false,
       "order": "1",
-      "allowed": ["object"]
+      "allowed": ["functional-complex"]
     }
   ],
   "propertyAssignments": null

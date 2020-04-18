@@ -98,7 +98,7 @@
           "$ref": "#/definitions/nullableBoolean"
         },
         "order": {
-          "description": "A string field that captures the type-order of a class decorated as «type».",
+          "description": "A string field that captures the type-order of a class decorated as «type». This field MUST be set to \"*\" for orderless types.",
           "$ref": "#/definitions/nullableString"
         },
         "allowed": {
@@ -114,7 +114,7 @@
               "items": {
                 "type": "string",
                 "enum": [
-                  "object",
+                  "functional-complex",
                   "collective",
                   "quantity",
                   "relator",
