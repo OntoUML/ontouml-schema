@@ -98,7 +98,7 @@
           "$ref": "#/definitions/nullableBoolean"
         },
         "order": {
-          "description": "A string field that captures the type-order of a class decorated as «type». This field MUST be set to \"*\" for orderless types.",
+          "description": "A string field that captures the type-order of a class decorated as «type». This field supports the representation of second-order types or greater, thus its minimum value is \"2\". This field MUST be set to \"*\" for orderless types.",
           "$ref": "#/definitions/nullableString"
         },
         "allowed": {
@@ -121,7 +121,8 @@
                   "mode",
                   "quality",
                   "event",
-                  "type"
+                  "type",
+                  "abstract"
                 ]
               }
             }
