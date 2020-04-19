@@ -9,58 +9,12 @@
       "id": "c1",
       "name": "Person",
       "description": null,
-      "properties": [
-        {
-          "type": "Property",
-          "id": "a1",
-          "name": "socialName",
-          "description": null,
-          "propertyType": {
-            "type": "Class",
-            "id": "c2"
-          },
-          "cardinality": "1..1",
-          "isDerived": false,
-          "isOrdered": false,
-          "isReadOnly": false,
-          "stereotypes": null,
-          "propertyAssignments": {
-            "nonStandardProperty": null
-          },
-          "subsettedProperties": [
-            {
-              "type": "Property",
-              "id": "noproperty"
-            }
-          ],
-          "redefinedProperties": [
-            {
-              "type": "Property",
-              "id": "noproperty"
-            }
-          ],
-          "aggregationKind": null
-        }
+      "stereotypes": [
+        "kind"
       ],
-      "literals": null,
-      "propertyAssignments": null,
-      "stereotypes": null,
-      "isAbstract": null,
-      "isDerived": null,
-      "isExtensional": null,
-      "isPowertype": null,
-      "order": null,
-      "allowed": null
-    },
-    {
-      "type": "Class",
-      "id": "c2",
-      "name": "String",
-      "description": null,
       "properties": null,
       "literals": null,
       "propertyAssignments": null,
-      "stereotypes": null,
       "isAbstract": null,
       "isDerived": null,
       "isExtensional": null,
@@ -70,14 +24,18 @@
     },
     {
       "type": "Relation",
-      "id": "r1",
-      "name": "knows",
+      "id": "relation1",
+      "name": {
+        "en": "knows",
+        "es": "conoce",
+        "pt-BR": "conhece"
+      },
       "description": null,
       "stereotypes": [
         "material"
       ],
       "isAbstract": false,
-      "isDerived": true,
+      "isDerived": false,
       "properties": [
         {
           "type": "Property",
@@ -88,7 +46,7 @@
             "type": "Class",
             "id": "c1"
           },
-          "cardinality": null,
+          "cardinality": "*",
           "isDerived": null,
           "isOrdered": null,
           "isReadOnly": null,
@@ -96,7 +54,7 @@
           "propertyAssignments": null,
           "subsettedProperties": null,
           "redefinedProperties": null,
-          "aggregationKind": "SHARED"
+          "aggregationKind": null
         },
         {
           "type": "Property",
@@ -107,7 +65,7 @@
             "type": "Class",
             "id": "c1"
           },
-          "cardinality": null,
+          "cardinality": "*",
           "isDerived": null,
           "isOrdered": null,
           "isReadOnly": null,
@@ -115,7 +73,7 @@
           "propertyAssignments": null,
           "subsettedProperties": null,
           "redefinedProperties": null,
-          "aggregationKind": "NONE"
+          "aggregationKind": null
         }
       ],
       "propertyAssignments": {

@@ -1,12 +1,12 @@
 {
   "type": "Package",
-  "id": "package1",
+  "id": "pk1",
   "name": null,
   "description": null,
   "contents": [
     {
       "type": "Class",
-      "id": "class1",
+      "id": "c1",
       "name": null,
       "description": null,
       "properties": null,
@@ -22,7 +22,7 @@
     },
     {
       "type": "Class",
-      "id": "class2",
+      "id": "c2",
       "name": null,
       "description": null,
       "properties": null,
@@ -70,27 +70,27 @@
     },
     {
       "type": "Generalization",
-      "id": "generalization1",
+      "id": "g1",
       "name": null,
       "description": null,
       "general": {
         "type": "Class",
-        "id": "class1"
+        "id": "c1"
       },
       "specific": {
         "type": "Class",
-        "id": "class2"
+        "id": "c2"
       },
       "propertyAssignments": null
     },
     {
       "type": "Generalization",
-      "id": "generalization2",
+      "id": "g2",
       "name": null,
       "description": null,
       "general": {
         "type": "Class",
-        "id": "class1"
+        "id": "c1"
       },
       "specific": {
         "type": "Class",
@@ -100,7 +100,7 @@
     },
     {
       "type": "GeneralizationSet",
-      "id": "generalizationSet1",
+      "id": "gs1",
       "name": "set",
       "description": null,
       "categorizer": {
@@ -110,11 +110,11 @@
       "generalizations": [
         {
           "type": "Generalization",
-          "id": "generalization1"
+          "id": "g1"
         },
         {
           "type": "Generalization",
-          "id": "generalization2"
+          "id": "g2"
         }
       ],
       "isDisjoint": true,

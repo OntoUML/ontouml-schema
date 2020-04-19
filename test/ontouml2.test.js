@@ -77,3 +77,15 @@ test('GeneralizationSet: no generalizations', () => {
 test('propertyAssignments: all options', () => {
   testOntoUML2Model(models.propertyAssignmentsAllOptions);
 });
+
+test('Multilingual support', () => {
+  testOntoUML2Model(models.classMultilingual);
+  testOntoUML2Model(models.propertyMultilingual);
+  testOntoUML2Model(models.relationMultilingual);
+});
+
+test('Order set on classes decorated with <<type>>', () => {
+  testOntoUML2Model(models.classMultilingual);
+  testOntoUML2Model(models.propertyMultilingual);
+  testOntoUML2Model(models.relationMultilingual);
+});

@@ -1,12 +1,12 @@
 {
   "type": "Package",
-  "id": "package1",
+  "id": "pk1",
   "name": null,
   "description": null,
   "contents": [
     {
       "type": "Class",
-      "id": "class1",
+      "id": "c1",
       "name": null,
       "description": null,
       "properties": null,
@@ -19,7 +19,7 @@
         "e": "word",
         "f": {
           "type": "Class",
-          "id": "class1"
+          "id": "c1"
         },
         "g": [
           true,
@@ -28,7 +28,7 @@
           "word",
           {
             "type": "Class",
-            "id": "class1"
+            "id": "c1"
           }
         ]
       },

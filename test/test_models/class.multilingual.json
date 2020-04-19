@@ -7,8 +7,16 @@
     {
       "type": "Class",
       "id": "c1",
-      "name": null,
-      "description": null,
+      "name": {
+        "en": "Person",
+        "es": "Persona",
+        "pt-BR": "Pessoa"
+      },
+      "description": {
+        "en": "Class whose instances are all people.",
+        "es": "Clase cuyas instancias son todas personas.",
+        "pt-BR": "Classe cujas instâncias são todas as pessoas."
+      },
       "properties": null,
       "literals": null,
       "propertyAssignments": null,
