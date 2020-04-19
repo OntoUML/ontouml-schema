@@ -98,7 +98,7 @@
           "$ref": "#/definitions/nullableBoolean"
         },
         "order": {
-          "description": "A string field that captures the type-order of a class decorated as «type». This field supports the representation of second-order types or greater, thus its minimum value is \"2\". This field MUST be set to \"*\" for orderless types.",
+          "description": "A string field that captures the type-order of a class decorated as «type». This field supports the representation of second-order types or greater, thus its minimum value is \"2\". This field must be set to \"*\" for orderless types.",
           "$ref": "#/definitions/nullableString"
         },
         "allowed": {
@@ -459,7 +459,7 @@
       "$ref": "#/definitions/nullableBoolean"
     },
     "multilingualString": {
-      "description": "A nullable field that may contain either a text string or a non-empty object where each key denotes a two-letter language code conforming to the ISO 639-3 standard.",
+      "description": "A nullable field that may contain either a text string or a non-empty object where each key must indicate a language code conforming to the BCP 47 recommendations.",
       "oneOf": [
         {
           "$ref": "#/definitions/nullableString"
