@@ -13,8 +13,8 @@
         "pt-BR": "Pessoa"
       },
       "description": {
-        "en-US": "Class whose instances are all people.",
-        "es-ES": "Clase cuyas instancias son todas personas.",
+        "en": "Class whose instances are all people.",
+        "es": "Clase cuyas instancias son todas personas.",
         "pt-BR": "Classe cujas instâncias são todas as pessoas."
       },
       "properties": null,
