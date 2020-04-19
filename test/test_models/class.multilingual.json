@@ -1,12 +1,12 @@
 {
   "type": "Package",
-  "id": "package1",
+  "id": "pk1",
   "name": null,
   "description": null,
   "contents": [
     {
       "type": "Class",
-      "id": "class1",
+      "id": "c1",
       "name": {
         "en": "Person",
         "es": "Persona",

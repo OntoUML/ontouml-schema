@@ -1,18 +1,20 @@
 {
   "type": "Package",
-  "id": "package1",
+  "id": "pk1",
   "name": null,
   "description": null,
   "contents": [
     {
       "type": "Class",
-      "id": "class1",
+      "id": "c1",
       "name": "Person",
       "description": null,
+      "stereotypes": [
+        "kind"
+      ],
       "properties": null,
       "literals": null,
       "propertyAssignments": null,
-      "stereotypes": null,
       "isAbstract": null,
       "isDerived": null,
       "isExtensional": null,
@@ -25,17 +27,22 @@
       "id": "relation1",
       "name": "knows",
       "description": null,
+      "stereotypes": [
+        "material"
+      ],
+      "isAbstract": false,
+      "isDerived": false,
       "properties": [
         {
           "type": "Property",
-          "id": "end1",
+          "id": "p1",
           "name": "known by",
           "description": null,
           "propertyType": {
             "type": "Class",
-            "id": "class1"
+            "id": "c1"
           },
-          "cardinality": null,
+          "cardinality": "*",
           "isDerived": null,
           "isOrdered": null,
           "isReadOnly": null,
@@ -47,14 +54,14 @@
         },
         {
           "type": "Property",
-          "id": "end2",
+          "id": "p2",
           "name": "known person",
           "description": null,
           "propertyType": {
             "type": "Class",
-            "id": "class1"
+            "id": "c1"
           },
-          "cardinality": null,
+          "cardinality": "*",
           "isDerived": null,
           "isOrdered": null,
           "isReadOnly": null,
@@ -67,10 +74,7 @@
       ],
       "propertyAssignments": {
         "nonStandardProperty": null
-      },
-      "stereotypes": ["ontouml/material"],
-      "isAbstract": true,
-      "isDerived": false
+      }
     }
   ],
   "propertyAssignments": null

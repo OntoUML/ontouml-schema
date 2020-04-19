@@ -1,12 +1,12 @@
 {
   "type": "Package",
-  "id": "package1",
+  "id": "pk1",
   "name": null,
   "description": null,
   "contents": [
     {
       "type": "Class",
-      "id": "class1",
+      "id": "c1",
       "name": null,
       "description": null,
       "properties": null,
@@ -28,12 +28,12 @@
       "properties": [
         {
           "type": "Property",
-          "id": "end1",
+          "id": "p1",
           "name": null,
           "description": null,
           "propertyType": {
             "type": "Class",
-            "id": "class1"
+            "id": "c1"
           },
           "cardinality": null,
           "isDerived": null,
@@ -47,12 +47,12 @@
         },
         {
           "type": "Property",
-          "id": "end2",
+          "id": "p2",
           "name": null,
           "description": null,
           "propertyType": {
             "type": "Class",
-            "id": "class1"
+            "id": "c1"
           },
           "cardinality": null,
           "isDerived": null,

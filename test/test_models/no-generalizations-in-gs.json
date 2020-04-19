@@ -1,12 +1,12 @@
 {
   "type": "Package",
-  "id": "package1",
+  "id": "pk1",
   "name": null,
   "description": null,
   "contents": [
     {
       "type": "GeneralizationSet",
-      "id": "generalizationSet1",
+      "id": "gs1",
       "name": null,
       "description": null,
       "categorizer": null,

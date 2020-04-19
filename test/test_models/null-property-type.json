@@ -1,18 +1,18 @@
 {
   "type": "Package",
-  "id": "package1",
+  "id": "pk1",
   "name": null,
   "description": null,
   "contents": [
     {
       "type": "Class",
-      "id": "class1",
+      "id": "c1",
       "name": "Person",
       "description": null,
       "properties": [
         {
           "type": "Property",
-          "id": "attribute1",
+          "id": "a1",
           "name": "name",
           "description": null,
           "propertyType": null,

@@ -13,11 +13,15 @@
         {
           "type": "Property",
           "id": "a1",
-          "name": "socialName",
+          "name": {
+            "en": "social name",
+            "es": "nombre social",
+            "pt-BR": "nome social"
+          },
           "description": null,
           "propertyType": {
             "type": "Class",
-            "id": "c2"
+            "id": "2"
           },
           "cardinality": "1..1",
           "isDerived": false,
@@ -30,13 +34,13 @@
           "subsettedProperties": [
             {
               "type": "Property",
-              "id": "noproperty"
+              "id": "c1"
             }
           ],
           "redefinedProperties": [
             {
               "type": "Property",
-              "id": "noproperty"
+              "id": "2"
             }
           ],
           "aggregationKind": null
@@ -44,7 +48,7 @@
       ],
       "literals": null,
       "propertyAssignments": null,
-      "stereotypes": null,
+      "stereotypes": [ "kind" ],
       "isAbstract": null,
       "isDerived": null,
       "isExtensional": null,
@@ -54,13 +58,13 @@
     },
     {
       "type": "Class",
-      "id": "c2",
+      "id": "2",
       "name": "String",
       "description": null,
       "properties": null,
       "literals": null,
       "propertyAssignments": null,
-      "stereotypes": null,
+      "stereotypes": [ "datatype" ],
       "isAbstract": null,
       "isDerived": null,
       "isExtensional": null,
@@ -73,16 +77,15 @@
       "id": "r1",
       "name": "knows",
       "description": null,
-      "stereotypes": [
-        "material"
-      ],
-      "isAbstract": false,
-      "isDerived": true,
       "properties": [
         {
           "type": "Property",
           "id": "p1",
-          "name": "known by",
+          "name": {
+            "en": "known by",
+            "es": "conocido por",
+            "pt-BR": "conhecido por"
+          },
           "description": null,
           "propertyType": {
             "type": "Class",
@@ -101,7 +104,11 @@
         {
           "type": "Property",
           "id": "p2",
-          "name": "known person",
+          "name": {
+            "en": "known person",
+            "es": "persona conocida",
+            "pt-BR": "pessoa conhecida"
+          },
           "description": null,
           "propertyType": {
             "type": "Class",
@@ -120,7 +127,10 @@
       ],
       "propertyAssignments": {
         "nonStandardProperty": null
-      }
+      },
+      "stereotypes": [ "material" ],
+      "isAbstract": false,
+      "isDerived": false
     }
   ],
   "propertyAssignments": null

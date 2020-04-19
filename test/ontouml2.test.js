@@ -79,5 +79,7 @@ test('propertyAssignments: all options', () => {
 });
 
 test('Multilingual support', () => {
-  testOntoUML2Model(models.classAllFields);
+  testOntoUML2Model(models.classMultilingual);
+  testOntoUML2Model(models.propertyMultilingual);
+  testOntoUML2Model(models.relationMultilingual);
 });
