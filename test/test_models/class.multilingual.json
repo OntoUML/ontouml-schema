@@ -8,8 +8,8 @@
       "type": "Class",
       "id": "class1",
       "name": {
-        "en-US": "Person",
-        "es-ES": "Persona",
+        "en": "Person",
+        "es": "Persona",
         "pt-BR": "Pessoa"
       },
       "description": {
