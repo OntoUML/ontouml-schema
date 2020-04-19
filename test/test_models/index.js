@@ -19,4 +19,5 @@ module.exports = {
   noGeneralizationInGS: require('./no-generalizations-in-gs.json'),
   nullPropertyType: require('./null-property-type.json'),
   propertyAssignmentsAllOptions: require('./propertyassignments.all.options.json'),
+  order: require('./order.json'),
 };

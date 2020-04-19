@@ -1,0 +1,49 @@
+{
+  "type": "Package",
+  "id": "pk1",
+  "name": null,
+  "description": null,
+  "propertyAssignments": null,
+  "contents": [
+    {
+      "type": "Class",
+      "id": "c1",
+      "name": "Gender",
+      "description": null,
+      "stereotypes": [
+        "type"
+      ],
+      "isAbstract": true,
+      "isDerived": false,
+      "isExtensional": false,
+      "isPowertype": false,
+      "order": "2",
+      "allowed": [
+        "type"
+      ],
+      "properties": null,
+      "literals": null,
+      "propertyAssignments": null
+    },
+    {
+      "type": "Class",
+      "id": "c1",
+      "name": "Orderless type",
+      "description": null,
+      "stereotypes": [
+        "type"
+      ],
+      "isAbstract": true,
+      "isDerived": false,
+      "isExtensional": false,
+      "isPowertype": false,
+      "order": "*",
+      "allowed": [
+        "type"
+      ],
+      "properties": null,
+      "literals": null,
+      "propertyAssignments": null
+    }
+  ]
+}

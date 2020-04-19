@@ -14,7 +14,7 @@
       "isDerived": false,
       "isExtensional": false,
       "isPowertype": false,
-      "order": "1",
+      "order": null,
       "allowed": ["functional-complex"],
       "properties": [
         {
