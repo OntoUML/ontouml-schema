@@ -59,9 +59,9 @@ Additional fields are NOT allowed for any object type.
         "id": "1",
         "name": "UFO-S",
         "description": {
-            "eng": "A commitment-based ontology of services.",
-            "spa": "Una ontología de servicios basada en el concepto de compromiso.",
-            "por": "Uma ontologia dos serviços baseada no conceito de compromisso.",
+            "en-GB": "A commitment-based ontology of services.",
+            "es-ES": "Una ontología de servicios basada en el concepto de compromiso.",
+            "pt-BR": "Uma ontologia de serviços baseada no conceito de compromisso.",
         },
         "elements": [ ... ],
         "propertyAssignments": { ... }
@@ -75,8 +75,8 @@ Additional fields are NOT allowed for any object type.
         "type": "Class",
         "id": "1",
         "name": {
-            "eng": "Service Provider",
-            "ita": "Fornitore di servizi",
+            "en-US": "Service Provider",
+            "it_IT": "Fornitore di servizi",
         },
         "description": "A role played by the agent providing a service.",
         "stereotypes": ["roleMixin"],

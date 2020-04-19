@@ -8,14 +8,14 @@
       "type": "Class",
       "id": "class1",
       "name": {
-        "eng": "Person",
-        "spa": "Persona",
-        "por": "Pessoa"
+        "en-US": "Person",
+        "es-ES": "Persona",
+        "pt-BR": "Pessoa"
       },
       "description": {
-        "eng": "Class whose instances are all people.",
-        "spa": "Clase cuyas instancias son todas personas.",
-        "por": "Classe cujas instâncias são todas as pessoas."
+        "en-US": "Class whose instances are all people.",
+        "es-ES": "Clase cuyas instancias son todas personas.",
+        "pt-BR": "Classe cujas instâncias são todas as pessoas."
       },
       "properties": null,
       "literals": null,
