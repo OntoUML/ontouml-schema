@@ -1,0 +1,33 @@
+{
+  "type": "Package",
+  "id": "package1",
+  "name": null,
+  "description": null,
+  "contents": [
+    {
+      "type": "Class",
+      "id": "class1",
+      "name": {
+        "eng": "Person",
+        "spa": "Persona",
+        "por": "Pessoa"
+      },
+      "description": {
+        "eng": "Class whose instances are all people.",
+        "spa": "Clase cuyas instancias son todas personas.",
+        "por": "Classe cujas instâncias são todas as pessoas."
+      },
+      "properties": null,
+      "literals": null,
+      "propertyAssignments": null,
+      "stereotypes": null,
+      "isAbstract": null,
+      "isDerived": null,
+      "isExtensional": null,
+      "isPowertype": null,
+      "order": null,
+      "allowed": null
+    }
+  ],
+  "propertyAssignments": null
+}

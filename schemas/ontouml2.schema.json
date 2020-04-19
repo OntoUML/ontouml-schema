@@ -442,12 +442,12 @@
       "minLength": 1
     },
     "name": {
-      "description": "A non-empty nullable string representing the object's name. It is allowed for two objects of the ontology to have identical names, even if they are of the same type, although it is not advisable.",
-      "$ref": "#/definitions/nullableString"
+      "description": "A nullable field, either a non-empty string or a multilingual object, representing the object's name. It is allowed for two objects of the ontology to have identical names, even if they are of the same type, although it is not advisable.",
+      "$ref": "#/definitions/multilingualString"
     },
     "description": {
-      "description": "A non-empty nullable string representing the description of the object in free textual format.",
-      "$ref": "#/definitions/nullableString"
+      "description": "A nullable field, either a non-empty string or a multilingual object, representing the description of the object in free textual format.",
+      "$ref": "#/definitions/multilingualString"
     },
     "isAbstract": {
       "description": "A boolean meta-property that identifies whether or not the class or relation can have direct instances. If set to true, the class or relation is deemed abstract and it cannot have direct instances, i.e., for it must be specialized before being instantiated. If set to false, the class is deemed concrete and it can have direct instances.",
@@ -456,6 +456,22 @@
     "isDerived": {
       "description": "A boolean meta-property that identifies whether or not the extension of the class (or relation) can be \"computed\" by means of a derivation rule. If set to true, they can, if set to false, they cannot. For instance, the Child can be modelled as a derived class, if it is considered that a child is a person whose age is less or equal to 10.",
       "$ref": "#/definitions/nullableBoolean"
+    },
+    "multilingualString": {
+      "description": "A nullable field that may contain either a text string or a non-empty object where each key denotes a two-letter language code conforming to the ISO 639-3 standard.",
+      "oneOf": [
+        {
+          "$ref": "#/definitions/nullableString"
+        },
+        {
+          "type": "object",
+          "minimum": 1,
+          "additionalProperties": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      ]
     },
     "nullableBoolean": {
       "description": "A auxiliary definition for nullable boolean fields.",

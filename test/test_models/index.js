@@ -1,5 +1,6 @@
 module.exports = {
   classMinimum: require('./class.minimum.json'),
+  classMultilingual: require('./class.multilingual.json'),
   classAllFields: require('./class.all.fields.json'),
   generalizationMinimum: require('./generalization.minimum.json'),
   generalizationAllFields: require('./generalization.all.fields.json'),
