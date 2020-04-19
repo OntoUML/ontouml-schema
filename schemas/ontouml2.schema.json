@@ -44,7 +44,7 @@
       ]
     },
     "Class": {
-      "description": "An object representing a class element. Mandatory fields: constant \"type\": \"Class\", \"id\", \"name\", \"stereotypes\", \"properties\", \"propertyAssignments\", \"isAbstract\", \"isDerived\". Additional fields NOT allowed.",
+      "description": "An object representing a class element. Mandatory fields: constant \"type\": \"Class\", \"id\", \"name\", \"stereotypes\", \"properties\", \"propertyAssignments\", \"isAbstract\", \"isDerived\", \"isExtensional\", \"isPowertype\", \"order\", \"natures\". Additional fields NOT allowed.",
       "type": "object",
       "properties": {
         "type": {
@@ -88,6 +88,45 @@
         },
         "isDerived": {
           "$ref": "#/definitions/isDerived"
+        },
+        "isExtensional": {
+          "description": "A boolean field that captures if a class decorated as «collective» is extensionally defined (i.e., it's parts cannot change).",
+          "$ref": "#/definitions/nullableBoolean"
+        },
+        "isPowertype": {
+          "description": "A boolean field that captures if a class decorated as «type» represents a powertype.",
+          "$ref": "#/definitions/nullableBoolean"
+        },
+        "order": {
+          "description": "A string field that captures the type-order of a class decorated as «type». This field supports the representation of second-order types or greater, thus its minimum value is \"2\". This field MUST be set to \"*\" for orderless types.",
+          "$ref": "#/definitions/nullableString"
+        },
+        "allowed": {
+          "description": "A nullable array of unique enumerated strings that represents the allowed (possible) ontological natures of the class's instances.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "array",
+              "uniqueItems": true,
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "functional-complex",
+                  "collective",
+                  "quantity",
+                  "relator",
+                  "mode",
+                  "quality",
+                  "event",
+                  "type",
+                  "abstract"
+                ]
+              }
+            }
+          ]
         }
       },
       "additionalProperties": false,
@@ -101,7 +140,11 @@
         "propertyAssignments",
         "literals",
         "isAbstract",
-        "isDerived"
+        "isDerived",
+        "isExtensional",
+        "isPowertype",
+        "order",
+        "allowed"
       ]
     },
     "Literal": {
@@ -226,24 +269,10 @@
           "$ref": "#/definitions/description"
         },
         "isDisjoint": {
-          "oneOf": [
-            {
-              "type": "boolean"
-            },
-            {
-              "type": "null"
-            }
-          ]
+          "$ref": "#/definitions/nullableBoolean"
         },
         "isComplete": {
-          "oneOf": [
-            {
-              "type": "boolean"
-            },
-            {
-              "type": "null"
-            }
-          ]
+          "$ref": "#/definitions/nullableBoolean"
         },
         "categorizer": {
           "$ref": "#/definitions/reference"
@@ -296,15 +325,7 @@
           "$ref": "#/definitions/description"
         },
         "cardinality": {
-          "oneOf": [
-            {
-              "type": "string",
-              "minLength": 1
-            },
-            {
-              "type": "null"
-            }
-          ]
+          "$ref": "#/definitions/nullableString"
         },
         "stereotypes": {
           "$ref": "#/definitions/stereotypes"
@@ -357,34 +378,13 @@
           ]
         },
         "isDerived": {
-          "oneOf": [
-            {
-              "type": "boolean"
-            },
-            {
-              "type": "null"
-            }
-          ]
+          "$ref": "#/definitions/nullableBoolean"
         },
         "isOrdered": {
-          "oneOf": [
-            {
-              "type": "boolean"
-            },
-            {
-              "type": "null"
-            }
-          ]
+          "$ref": "#/definitions/nullableBoolean"
         },
         "isReadOnly": {
-          "oneOf": [
-            {
-              "type": "boolean"
-            },
-            {
-              "type": "null"
-            }
-          ]
+          "$ref": "#/definitions/nullableBoolean"
         }
       },
       "additionalProperties": false,
@@ -444,44 +444,37 @@
     },
     "name": {
       "description": "A non-empty nullable string representing the object's name. It is allowed for two objects of the ontology to have identical names, even if they are of the same type, although it is not advisable.",
-      "oneOf": [
-        {
-          "type": "string",
-          "minLength": 1
-        },
-        {
-          "type": "null"
-        }
-      ]
+      "$ref": "#/definitions/nullableString"
     },
     "description": {
       "description": "A non-empty nullable string representing the description of the object in free textual format.",
+      "$ref": "#/definitions/nullableString"
+    },
+    "isAbstract": {
+      "description": "A boolean meta-property that identifies whether or not the class or relation can have direct instances. If set to true, the class or relation is deemed abstract and it cannot have direct instances, i.e., for it must be specialized before being instantiated. If set to false, the class is deemed concrete and it can have direct instances.",
+      "$ref": "#/definitions/nullableBoolean"
+    },
+    "isDerived": {
+      "description": "A boolean meta-property that identifies whether or not the extension of the class (or relation) can be \"computed\" by means of a derivation rule. If set to true, they can, if set to false, they cannot. For instance, the Child can be modelled as a derived class, if it is considered that a child is a person whose age is less or equal to 10.",
+      "$ref": "#/definitions/nullableBoolean"
+    },
+    "nullableBoolean": {
+      "description": "A auxiliary definition for nullable boolean fields.",
+      "oneOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "nullableString": {
+      "description": "A auxiliary definition for nullable string fields.",
       "oneOf": [
         {
           "type": "string",
           "minLength": 1
-        },
-        {
-          "type": "null"
-        }
-      ]
-    },
-    "isAbstract": {
-      "description": "A boolean meta-property that identifies whether or not the class or relation can have direct instances. If set to true, the class or relation is deemed abstract and it cannot have direct instances, i.e., for it must be specialized before being instantiated. If set to false, the class is deemed concrete and it can have direct instances.",
-      "oneOf": [
-        {
-          "type": "boolean"
-        },
-        {
-          "type": "null"
-        }
-      ]
-    },
-    "isDerived": {
-      "description": "A boolean meta-property that identifies whether or not the extension of the class (or relation) can be \"computed\" by means of a derivation rule. If set to true, they can, if set to false, they cannot. For instance, the Child can be modelled as a derived class, if it is considered that a child is a person whose age is less or equal to 10.",
-      "oneOf": [
-        {
-          "type": "boolean"
         },
         {
           "type": "null"
