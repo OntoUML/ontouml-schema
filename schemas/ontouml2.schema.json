@@ -113,17 +113,7 @@
               "minItems": 1,
               "items": {
                 "type": "string",
-                "enum": [
-                  "functional-complex",
-                  "collective",
-                  "quantity",
-                  "relator",
-                  "mode",
-                  "quality",
-                  "event",
-                  "type",
-                  "abstract"
-                ]
+                "minLength": 1
               }
             }
           ]
