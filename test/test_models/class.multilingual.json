@@ -1,33 +1,40 @@
 {
-  "type": "Package",
-  "id": "pk1",
-  "name": null,
-  "description": null,
-  "contents": [
-    {
-      "type": "Class",
-      "id": "c1",
-      "name": {
-        "en": "Person",
-        "es": "Persona",
-        "pt-BR": "Pessoa"
-      },
-      "description": {
-        "en": "Class whose instances are all people.",
-        "es": "Clase cuyas instancias son todas personas.",
-        "pt-BR": "Classe cujas instâncias são todas as pessoas."
-      },
-      "properties": null,
-      "literals": null,
-      "propertyAssignments": null,
-      "stereotypes": null,
-      "isAbstract": null,
-      "isDerived": null,
-      "isExtensional": null,
-      "isPowertype": null,
-      "order": null,
-      "allowed": null
-    }
-  ],
-  "propertyAssignments": null
+  "type": "Project",
+  "id": "proj1",
+  "name": "My Test Project",
+  "description": "A project to test multilingual properties in classes.",
+  "model": {
+    "type": "Package",
+    "id": "pk1",
+    "name": null,
+    "description": null,
+    "contents": [
+      {
+        "type": "Class",
+        "id": "c1",
+        "name": {
+          "en": "Person",
+          "es": "Persona",
+          "pt-BR": "Pessoa"
+        },
+        "description": {
+          "en": "Class whose instances are all people.",
+          "es": "Clase cuyas instancias son todas personas.",
+          "pt-BR": "Classe cujas instâncias são todas as pessoas."
+        },
+        "properties": null,
+        "literals": null,
+        "propertyAssignments": null,
+        "stereotypes": null,
+        "isAbstract": null,
+        "isDerived": null,
+        "isExtensional": null,
+        "isPowertype": null,
+        "order": null,
+        "allowed": null
+      }
+    ],
+    "propertyAssignments": null
+  },
+  "diagrams": null
 }

@@ -1,86 +1,93 @@
 {
-  "type": "Package",
-  "id": "pk1",
+  "type": "Project",
+  "id": "proj1",
   "name": null,
   "description": null,
-  "contents": [
-    {
-      "type": "Class",
-      "id": "c1",
-      "name": null,
-      "description": null,
-      "properties": null,
-      "literals": null,
-      "propertyAssignments": null,
-      "stereotypes": null,
-      "isAbstract": null,
-      "isDerived": null,
-      "isExtensional": null,
-      "isPowertype": null,
-      "order": null,
-      "allowed": null
-    },
-    {
-      "type": "Relation",
-      "id": "relation1",
-      "name": null,
-      "description": null,
-      "properties": [
-        {
-          "type": "Property",
-          "id": "p1",
-          "name": null,
-          "description": null,
-          "propertyType": {
-            "type": "Class",
-            "id": "c1"
+  "model": {
+    "type": "Package",
+    "id": "pk1",
+    "name": null,
+    "description": null,
+    "contents": [
+      {
+        "type": "Class",
+        "id": "c1",
+        "name": null,
+        "description": null,
+        "properties": null,
+        "literals": null,
+        "propertyAssignments": null,
+        "stereotypes": null,
+        "isAbstract": null,
+        "isDerived": null,
+        "isExtensional": null,
+        "isPowertype": null,
+        "order": null,
+        "allowed": null
+      },
+      {
+        "type": "Relation",
+        "id": "relation1",
+        "name": null,
+        "description": null,
+        "properties": [
+          {
+            "type": "Property",
+            "id": "p1",
+            "name": null,
+            "description": null,
+            "propertyType": {
+              "type": "Class",
+              "id": "c1"
+            },
+            "cardinality": null,
+            "isDerived": null,
+            "isOrdered": null,
+            "isReadOnly": null,
+            "stereotypes": null,
+            "propertyAssignments": null,
+            "subsettedProperties": null,
+            "redefinedProperties": null,
+            "aggregationKind": null
           },
-          "cardinality": null,
-          "isDerived": null,
-          "isOrdered": null,
-          "isReadOnly": null,
-          "stereotypes": null,
-          "propertyAssignments": null,
-          "subsettedProperties": null,
-          "redefinedProperties": null,
-          "aggregationKind": null
-        },
-        {
-          "type": "Property",
-          "id": "p2",
-          "name": null,
-          "description": null,
-          "propertyType": {
-            "type": "Class",
-            "id": "c1"
-          },
-          "cardinality": null,
-          "isDerived": null,
-          "isOrdered": null,
-          "isReadOnly": null,
-          "stereotypes": null,
-          "propertyAssignments": null,
-          "subsettedProperties": null,
-          "redefinedProperties": null,
-          "aggregationKind": null
-        }
-      ],
-      "propertyAssignments": null,
-      "stereotypes": null,
-      "isAbstract": null,
-      "isDerived": null
-    },
-    {
-      "type": "Relation",
-      "id": "relation1",
-      "name": null,
-      "description": null,
-      "properties": null,
-      "propertyAssignments": null,
-      "stereotypes": null,
-      "isAbstract": null,
-      "isDerived": null
-    }
-  ],
-  "propertyAssignments": null
+          {
+            "type": "Property",
+            "id": "p2",
+            "name": null,
+            "description": null,
+            "propertyType": {
+              "type": "Class",
+              "id": "c1"
+            },
+            "cardinality": null,
+            "isDerived": null,
+            "isOrdered": null,
+            "isReadOnly": null,
+            "stereotypes": null,
+            "propertyAssignments": null,
+            "subsettedProperties": null,
+            "redefinedProperties": null,
+            "aggregationKind": null
+          }
+        ],
+        "propertyAssignments": null,
+        "stereotypes": null,
+        "isAbstract": null,
+        "isDerived": null
+      },
+      {
+        "type": "Relation",
+        "id": "relation1",
+        "name": null,
+        "description": null,
+        "properties": null,
+        "propertyAssignments": null,
+        "stereotypes": null,
+        "isAbstract": null,
+        "isDerived": null
+      }
+    ],
+    "propertyAssignments": null
+  },
+  "diagrams": null
 }
