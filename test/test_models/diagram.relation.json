@@ -1,0 +1,227 @@
+{
+  "type": "Project",
+  "id": "proj1",
+  "name": "My Test Project",
+  "description": "A project to test the representation of relations in diagrams.",
+  "model": {
+    "type": "Package",
+    "id": "pk1",
+    "name": null,
+    "description": null,
+    "contents": [
+      {
+        "type": "Class",
+        "id": "c1",
+        "name": "Person",
+        "description": null,
+        "stereotypes": [
+          "kind"
+        ],
+        "properties": null,
+        "literals": null,
+        "propertyAssignments": null,
+        "isAbstract": null,
+        "isDerived": null,
+        "isExtensional": null,
+        "isPowertype": null,
+        "order": null,
+        "allowed": null
+      },
+      {
+        "type": "Relation",
+        "id": "r1",
+        "name": "knows",
+        "description": null,
+        "stereotypes": [
+          "material"
+        ],
+        "isAbstract": false,
+        "isDerived": false,
+        "properties": [
+          {
+            "type": "Property",
+            "id": "p1",
+            "name": "known by",
+            "description": null,
+            "propertyType": {
+              "type": "Class",
+              "id": "c1"
+            },
+            "cardinality": "*",
+            "isDerived": null,
+            "isOrdered": null,
+            "isReadOnly": null,
+            "stereotypes": null,
+            "propertyAssignments": null,
+            "subsettedProperties": null,
+            "redefinedProperties": null,
+            "aggregationKind": null
+          },
+          {
+            "type": "Property",
+            "id": "p2",
+            "name": "known person",
+            "description": null,
+            "propertyType": {
+              "type": "Class",
+              "id": "c1"
+            },
+            "cardinality": "*",
+            "isDerived": null,
+            "isOrdered": null,
+            "isReadOnly": null,
+            "stereotypes": null,
+            "propertyAssignments": null,
+            "subsettedProperties": null,
+            "redefinedProperties": null,
+            "aggregationKind": null
+          }
+        ],
+        "propertyAssignments": {
+          "nonStandardProperty": null
+        }
+      }
+    ],
+    "propertyAssignments": null
+  },
+  "diagrams": [
+    {
+      "type": "Diagram",
+      "id": "d1",
+      "name": "Diagram 1",
+      "description": "My first diagram",
+      "owner": {
+        "type": "Package",
+        "id": "pk1"
+      },
+      "contents": [
+        {
+          "type": "Shape",
+          "id": "s1",
+          "source": {
+            "type": "Class",
+            "id": "c1"
+          },
+          "field": null,
+          "points": [
+            {
+              "x": 10,
+              "y": 10
+            }
+          ],
+          "font": {
+            "name": null,
+            "size": 11,
+            "color": "#000000"
+          },
+          "line": {
+            "color": "#000000",
+            "style": "solid",
+            "weight": 1,
+            "transparency": 0
+          },
+          "background": {
+            "color": "#ff99a3",
+            "transparency": 0
+          },
+          "visibility": {
+            "attributes": false,
+            "stereotype": true
+          },
+          "elements": null
+        },
+        {
+          "type": "Line",
+          "id": "l1",
+          "source": {
+            "type": "Relation",
+            "id": "r1"
+          },
+          "field": null,
+          "points": [
+            {
+              "x": 60,
+              "y": 15
+            },
+            {
+              "x": 70,
+              "y": 15
+            },
+            {
+              "x": 70,
+              "y": 25
+            },
+            {
+              "x": 60,
+              "y": 25
+            }
+          ],
+          "font": {
+            "name": null,
+            "size": 11,
+            "color": "#000000"
+          },
+          "line": {
+            "color": "#000000",
+            "style": "solid",
+            "weight": 1,
+            "transparency": 0
+          },
+          "background": {
+            "color": "#ff99a3",
+            "transparency": 0
+          },
+          "visibility": {
+           "direction": true
+          },
+          "elements": [
+            {
+              "type": "Label",
+              "id": "la1",
+              "source": {
+                "type": "Relation",
+                "id": "r1"
+              },
+              "field": "name",
+              "points": [{
+                "x": 75,
+                "y": 18
+              }],
+              "font": {
+                "name": null,
+                "size": 11,
+                "color": "#000000"
+              },
+              "line": null,
+              "background": null,
+              "visibility": null,
+              "elements": null
+            },
+            {
+              "type": "Label",
+              "id": "la12",
+              "source": {
+                "type": "Relation",
+                "id": "r1"
+              },
+              "field": "stereotype",
+              "points": [{
+                "x": 75,
+                "y": 22
+              }],
+              "font": {
+                "name": null,
+                "size": 11,
+                "color": "#000000"
+              },
+              "line": null,
+              "background": null,
+              "visibility": null,
+              "elements": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,20 +1,27 @@
 {
-  "type": "Package",
-  "id": "pk1",
-  "name": null,
-  "description": null,
-  "contents": [
-    {
-      "type": "GeneralizationSet",
-      "id": "gs1",
-      "name": null,
-      "description": null,
-      "categorizer": null,
-      "generalizations": null,
-      "isDisjoint": null,
-      "isComplete": null,
-      "propertyAssignments": null
-    }
-  ],
-  "propertyAssignments": null
+  "type": "Project",
+  "id": "proj1",
+  "name": "My Test Project",
+  "description": "A project to tests the possibility of representing an empty generalization set.",
+  "model": {
+    "type": "Package",
+    "id": "pk1",
+    "name": null,
+    "description": null,
+    "contents": [
+      {
+        "type": "GeneralizationSet",
+        "id": "gs1",
+        "name": null,
+        "description": null,
+        "categorizer": null,
+        "generalizations": null,
+        "isDisjoint": null,
+        "isComplete": null,
+        "propertyAssignments": null
+      }
+    ],
+    "propertyAssignments": null
+  },
+  "diagrams": null
 }

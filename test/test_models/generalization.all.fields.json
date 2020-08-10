@@ -1,58 +1,65 @@
 {
-  "type": "Package",
-  "id": "pk1",
-  "name": null,
-  "description": null,
-  "contents": [
-    {
-      "type": "Class",
-      "id": "c1",
-      "name": null,
-      "description": null,
-      "properties": null,
-      "literals": null,
-      "propertyAssignments": null,
-      "stereotypes": null,
-      "isAbstract": null,
-      "isDerived": null,
-      "isExtensional": null,
-      "isPowertype": null,
-      "order": null,
-      "allowed": null
-    },
-    {
-      "type": "Class",
-      "id": "c2",
-      "name": null,
-      "description": null,
-      "properties": null,
-      "literals": null,
-      "propertyAssignments": null,
-      "stereotypes": null,
-      "isAbstract": null,
-      "isDerived": null,
-      "isExtensional": null,
-      "isPowertype": null,
-      "order": null,
-      "allowed": null
-    },
-    {
-      "type": "Generalization",
-      "id": "g1",
-      "name": "generalization",
-      "description": null,
-      "general": {
+  "type": "Project",
+  "id": "proj1",
+  "name": "My Test Project",
+  "description": "A project to test generalizations.",
+  "model": {
+    "type": "Package",
+    "id": "pk1",
+    "name": null,
+    "description": null,
+    "contents": [
+      {
         "type": "Class",
-        "id": "c1"
+        "id": "c1",
+        "name": null,
+        "description": null,
+        "properties": null,
+        "literals": null,
+        "propertyAssignments": null,
+        "stereotypes": null,
+        "isAbstract": null,
+        "isDerived": null,
+        "isExtensional": null,
+        "isPowertype": null,
+        "order": null,
+        "allowed": null
       },
-      "specific": {
+      {
         "type": "Class",
-        "id": "c2"
+        "id": "c2",
+        "name": null,
+        "description": null,
+        "properties": null,
+        "literals": null,
+        "propertyAssignments": null,
+        "stereotypes": null,
+        "isAbstract": null,
+        "isDerived": null,
+        "isExtensional": null,
+        "isPowertype": null,
+        "order": null,
+        "allowed": null
       },
-      "propertyAssignments": {
-        "nonStandardProperty": null
+      {
+        "type": "Generalization",
+        "id": "g1",
+        "name": "generalization",
+        "description": null,
+        "general": {
+          "type": "Class",
+          "id": "c1"
+        },
+        "specific": {
+          "type": "Class",
+          "id": "c2"
+        },
+        "propertyAssignments": {
+          "nonStandardProperty": null
+        }
       }
-    }
-  ],
-  "propertyAssignments": null
+    ],
+    "propertyAssignments": null
+  },
+  "diagrams": null
 }

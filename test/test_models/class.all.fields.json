@@ -1,47 +1,58 @@
 {
-  "type": "Package",
-  "id": "pk1",
-  "name": null,
-  "description": null,
-  "contents": [
-    {
-      "type": "Class",
-      "id": "c1",
-      "name": "Person",
-      "description": "Description of person.",
-      "stereotypes": ["kind"],
-      "isAbstract": true,
-      "isDerived": false,
-      "isExtensional": false,
-      "isPowertype": false,
-      "order": null,
-      "allowed": ["functional-complex"],
-      "properties": [
-        {
-          "type": "Property",
-          "id": "a1",
-          "name": "knows",
-          "description": "Description of property knows.",
-          "propertyType": {
-            "type": "Class",
-            "id": "c1"
-          },
-          "cardinality": null,
-          "isDerived": null,
-          "isOrdered": null,
-          "isReadOnly": null,
-          "stereotypes": null,
-          "propertyAssignments": null,
-          "subsettedProperties": null,
-          "redefinedProperties": null,
-          "aggregationKind": null
+  "type": "Project",
+  "id": "proj1",
+  "name": "My Test Project",
+  "description": "A project to test classes.",
+  "model": {
+    "type": "Package",
+    "id": "pk1",
+    "name": null,
+    "description": null,
+    "contents": [
+      {
+        "type": "Class",
+        "id": "c1",
+        "name": "Person",
+        "description": "Description of person.",
+        "stereotypes": [
+          "kind"
+        ],
+        "isAbstract": true,
+        "isDerived": false,
+        "isExtensional": false,
+        "isPowertype": false,
+        "order": null,
+        "allowed": [
+          "functional-complex"
+        ],
+        "properties": [
+          {
+            "type": "Property",
+            "id": "a1",
+            "name": "knows",
+            "description": "Description of property knows.",
+            "propertyType": {
+              "type": "Class",
+              "id": "c1"
+            },
+            "cardinality": null,
+            "isDerived": null,
+            "isOrdered": null,
+            "isReadOnly": null,
+            "stereotypes": null,
+            "propertyAssignments": null,
+            "subsettedProperties": null,
+            "redefinedProperties": null,
+            "aggregationKind": null
+          }
+        ],
+        "literals": null,
+        "propertyAssignments": {
+          "nonStandardProperty": null
         }
-      ],
-      "literals": null,
-      "propertyAssignments": {
-        "nonStandardProperty": null
       }
-    }
-  ],
-  "propertyAssignments": null
+    ],
+    "propertyAssignments": null
+  },
+  "diagrams": null
 }

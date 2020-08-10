@@ -1,0 +1,186 @@
+{
+  "type": "Project",
+  "id": "proj1",
+  "name": "My Test Project",
+  "description": "A project to test the representation of generalizations in diagrams.",
+  "model": {
+    "type": "Package",
+    "id": "pk1",
+    "name": null,
+    "description": null,
+    "contents": [
+      {
+        "type": "Class",
+        "id": "c1",
+        "name": "Person",
+        "description": null,
+        "stereotypes": [
+          "kind"
+        ],
+        "properties": null,
+        "literals": null,
+        "propertyAssignments": null,
+        "isAbstract": null,
+        "isDerived": null,
+        "isExtensional": null,
+        "isPowertype": null,
+        "order": null,
+        "allowed": null
+      },
+      {
+        "type": "Class",
+        "id": "c2",
+        "name": "Child",
+        "description": null,
+        "stereotypes": [
+          "phase"
+        ],
+        "properties": null,
+        "literals": null,
+        "propertyAssignments": null,
+        "isAbstract": null,
+        "isDerived": null,
+        "isExtensional": null,
+        "isPowertype": null,
+        "order": null,
+        "allowed": null
+      },
+      {
+        "type": "Generalization",
+        "id": "g1",
+        "name": "generalization",
+        "description": null,
+        "general": {
+          "type": "Class",
+          "id": "c1"
+        },
+        "specific": {
+          "type": "Class",
+          "id": "c2"
+        },
+        "propertyAssignments": null
+      }
+    ],
+    "propertyAssignments": null
+  },
+  "diagrams": [
+    {
+      "type": "Diagram",
+      "id": "d1",
+      "name": "Diagram 1",
+      "description": "My first diagram",
+      "owner": {
+        "type": "Package",
+        "id": "pk1"
+      },
+      "contents": [
+        {
+          "type": "Shape",
+          "id": "s1",
+          "source": {
+            "type": "Class",
+            "id": "c1"
+          },
+          "field": null,
+          "points": [
+            {
+              "x": 10,
+              "y": 10
+            }
+          ],
+          "font": {
+            "name": null,
+            "size": 11,
+            "color": "#000000"
+          },
+          "line": {
+            "color": "#000000",
+            "style": "solid",
+            "weight": 1,
+            "transparency": 0
+          },
+          "background": {
+            "color": "#ff99a3",
+            "transparency": 0
+          },
+          "visibility": {
+            "attributes": false,
+            "stereotype": true
+          },
+          "elements": null
+        },
+        {
+          "type": "Shape",
+          "id": "s2",
+          "source": {
+            "type": "Class",
+            "id": "c2"
+          },
+          "field": null,
+          "points": [
+            {
+              "x": 10,
+              "y": 80
+            }
+          ],
+          "font": {
+            "name": null,
+            "size": 11,
+            "color": "#000000"
+          },
+          "line": {
+            "color": "#000000",
+            "style": "solid",
+            "weight": 1,
+            "transparency": 0
+          },
+          "background": {
+            "color": "#ff99a3",
+            "transparency": 0
+          },
+          "visibility": {
+            "attributes": false,
+            "stereotype": true
+          },
+          "elements": null
+        },
+        {
+          "type": "Line",
+          "id": "l1",
+          "source": {
+            "type": "Generalization",
+            "id": "g1"
+          },
+          "field": null,
+          "points": [
+            {
+              "x": 40,
+              "y": 50
+            },
+            {
+              "x": 60,
+              "y": 25
+            }
+          ],
+          "font": {
+            "name": null,
+            "size": 11,
+            "color": "#000000"
+          },
+          "line": {
+            "color": "#000000",
+            "style": "solid",
+            "weight": 1,
+            "transparency": 0
+          },
+          "background": {
+            "color": "#ff99a3",
+            "transparency": 0
+          },
+          "visibility": null,
+          "elements": null
+        }
+      ]
+    }
+  ]
+}

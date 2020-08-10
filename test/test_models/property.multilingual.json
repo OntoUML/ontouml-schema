@@ -1,137 +1,150 @@
 {
-  "type": "Package",
-  "id": "pk1",
-  "name": null,
-  "description": null,
-  "contents": [
-    {
-      "type": "Class",
-      "id": "c1",
-      "name": "Person",
-      "description": null,
-      "properties": [
-        {
-          "type": "Property",
-          "id": "a1",
-          "name": {
-            "en": "social name",
-            "es": "nombre social",
-            "pt-BR": "nome social"
-          },
-          "description": null,
-          "propertyType": {
-            "type": "Class",
-            "id": "2"
-          },
-          "cardinality": "1..1",
-          "isDerived": false,
-          "isOrdered": false,
-          "isReadOnly": false,
-          "stereotypes": null,
-          "propertyAssignments": {
-            "nonStandardProperty": null
-          },
-          "subsettedProperties": [
-            {
-              "type": "Property",
-              "id": "c1"
-            }
-          ],
-          "redefinedProperties": [
-            {
-              "type": "Property",
+  "type": "Project",
+  "id": "proj1",
+  "name": "My Test Project",
+  "description": "A project to test multilingual properties.",
+  "model": {
+    "type": "Package",
+    "id": "pk1",
+    "name": null,
+    "description": null,
+    "contents": [
+      {
+        "type": "Class",
+        "id": "c1",
+        "name": "Person",
+        "description": null,
+        "properties": [
+          {
+            "type": "Property",
+            "id": "a1",
+            "name": {
+              "en": "social name",
+              "es": "nombre social",
+              "pt-BR": "nome social"
+            },
+            "description": null,
+            "propertyType": {
+              "type": "Class",
               "id": "2"
-            }
-          ],
-          "aggregationKind": null
-        }
-      ],
-      "literals": null,
-      "propertyAssignments": null,
-      "stereotypes": [ "kind" ],
-      "isAbstract": null,
-      "isDerived": null,
-      "isExtensional": null,
-      "isPowertype": null,
-      "order": null,
-      "allowed": null
-    },
-    {
-      "type": "Class",
-      "id": "2",
-      "name": "String",
-      "description": null,
-      "properties": null,
-      "literals": null,
-      "propertyAssignments": null,
-      "stereotypes": [ "datatype" ],
-      "isAbstract": null,
-      "isDerived": null,
-      "isExtensional": null,
-      "isPowertype": null,
-      "order": null,
-      "allowed": null
-    },
-    {
-      "type": "Relation",
-      "id": "r1",
-      "name": "knows",
-      "description": null,
-      "properties": [
-        {
-          "type": "Property",
-          "id": "p1",
-          "name": {
-            "en": "known by",
-            "es": "conocido por",
-            "pt-BR": "conhecido por"
-          },
-          "description": null,
-          "propertyType": {
-            "type": "Class",
-            "id": "c1"
-          },
-          "cardinality": null,
-          "isDerived": null,
-          "isOrdered": null,
-          "isReadOnly": null,
-          "stereotypes": null,
-          "propertyAssignments": null,
-          "subsettedProperties": null,
-          "redefinedProperties": null,
-          "aggregationKind": "SHARED"
-        },
-        {
-          "type": "Property",
-          "id": "p2",
-          "name": {
-            "en": "known person",
-            "es": "persona conocida",
-            "pt-BR": "pessoa conhecida"
-          },
-          "description": null,
-          "propertyType": {
-            "type": "Class",
-            "id": "c1"
-          },
-          "cardinality": null,
-          "isDerived": null,
-          "isOrdered": null,
-          "isReadOnly": null,
-          "stereotypes": null,
-          "propertyAssignments": null,
-          "subsettedProperties": null,
-          "redefinedProperties": null,
-          "aggregationKind": "NONE"
-        }
-      ],
-      "propertyAssignments": {
-        "nonStandardProperty": null
+            },
+            "cardinality": "1..1",
+            "isDerived": false,
+            "isOrdered": false,
+            "isReadOnly": false,
+            "stereotypes": null,
+            "propertyAssignments": {
+              "nonStandardProperty": null
+            },
+            "subsettedProperties": [
+              {
+                "type": "Property",
+                "id": "c1"
+              }
+            ],
+            "redefinedProperties": [
+              {
+                "type": "Property",
+                "id": "2"
+              }
+            ],
+            "aggregationKind": null
+          }
+        ],
+        "literals": null,
+        "propertyAssignments": null,
+        "stereotypes": [
+          "kind"
+        ],
+        "isAbstract": null,
+        "isDerived": null,
+        "isExtensional": null,
+        "isPowertype": null,
+        "order": null,
+        "allowed": null
       },
-      "stereotypes": [ "material" ],
-      "isAbstract": false,
-      "isDerived": false
-    }
-  ],
-  "propertyAssignments": null
+      {
+        "type": "Class",
+        "id": "2",
+        "name": "String",
+        "description": null,
+        "properties": null,
+        "literals": null,
+        "propertyAssignments": null,
+        "stereotypes": [
+          "datatype"
+        ],
+        "isAbstract": null,
+        "isDerived": null,
+        "isExtensional": null,
+        "isPowertype": null,
+        "order": null,
+        "allowed": null
+      },
+      {
+        "type": "Relation",
+        "id": "r1",
+        "name": "knows",
+        "description": null,
+        "properties": [
+          {
+            "type": "Property",
+            "id": "p1",
+            "name": {
+              "en": "known by",
+              "es": "conocido por",
+              "pt-BR": "conhecido por"
+            },
+            "description": null,
+            "propertyType": {
+              "type": "Class",
+              "id": "c1"
+            },
+            "cardinality": null,
+            "isDerived": null,
+            "isOrdered": null,
+            "isReadOnly": null,
+            "stereotypes": null,
+            "propertyAssignments": null,
+            "subsettedProperties": null,
+            "redefinedProperties": null,
+            "aggregationKind": "SHARED"
+          },
+          {
+            "type": "Property",
+            "id": "p2",
+            "name": {
+              "en": "known person",
+              "es": "persona conocida",
+              "pt-BR": "pessoa conhecida"
+            },
+            "description": null,
+            "propertyType": {
+              "type": "Class",
+              "id": "c1"
+            },
+            "cardinality": null,
+            "isDerived": null,
+            "isOrdered": null,
+            "isReadOnly": null,
+            "stereotypes": null,
+            "propertyAssignments": null,
+            "subsettedProperties": null,
+            "redefinedProperties": null,
+            "aggregationKind": "NONE"
+          }
+        ],
+        "propertyAssignments": {
+          "nonStandardProperty": null
+        },
+        "stereotypes": [
+          "material"
+        ],
+        "isAbstract": false,
+        "isDerived": false
+      }
+    ],
+    "propertyAssignments": null
+  },
+  "diagrams": null
 }

@@ -1,4 +1,9 @@
 {
+  "type": "Project",
+  "id": "proj1",
+  "name": "My Test Project",
+  "description": "A project to tests the representation of order in higher-order types, i.e. classes with decorated with <<type>>.",
+  "model": {
   "type": "Package",
   "id": "pk1",
   "name": null,
@@ -46,4 +51,6 @@
       "propertyAssignments": null
     }
   ]
+},
+"diagrams": null
 }

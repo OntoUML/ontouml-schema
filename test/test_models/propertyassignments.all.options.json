@@ -1,45 +1,52 @@
 {
-  "type": "Package",
-  "id": "pk1",
-  "name": null,
-  "description": null,
-  "contents": [
-    {
-      "type": "Class",
-      "id": "c1",
-      "name": null,
-      "description": null,
-      "properties": null,
-      "literals": null,
-      "propertyAssignments": {
-        "a": null,
-        "b": true,
-        "c": 0,
-        "d": 1,
-        "e": "word",
-        "f": {
-          "type": "Class",
-          "id": "c1"
-        },
-        "g": [
-          true,
-          0,
-          1,
-          "word",
-          {
+  "type": "Project",
+  "id": "proj1",
+  "name": "My Test Project",
+  "description": "A project to test property assignments.",
+  "model": {
+    "type": "Package",
+    "id": "pk1",
+    "name": null,
+    "description": null,
+    "contents": [
+      {
+        "type": "Class",
+        "id": "c1",
+        "name": null,
+        "description": null,
+        "properties": null,
+        "literals": null,
+        "propertyAssignments": {
+          "a": null,
+          "b": true,
+          "c": 0,
+          "d": 1,
+          "e": "word",
+          "f": {
             "type": "Class",
             "id": "c1"
-          }
-        ]
-      },
-      "stereotypes": null,
-      "isAbstract": null,
-      "isDerived": null,
-      "isExtensional": null,
-      "isPowertype": null,
-      "order": null,
-      "allowed": null
-    }
-  ],
-  "propertyAssignments": null
+          },
+          "g": [
+            true,
+            0,
+            1,
+            "word",
+            {
+              "type": "Class",
+              "id": "c1"
+            }
+          ]
+        },
+        "stereotypes": null,
+        "isAbstract": null,
+        "isDerived": null,
+        "isExtensional": null,
+        "isPowertype": null,
+        "order": null,
+        "allowed": null
+      }
+    ],
+    "propertyAssignments": null
+  },
+  "diagrams": null
 }
