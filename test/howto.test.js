@@ -1,5 +1,3 @@
-const fs = require('fs');
-
 test('README tutorial test', () => {
   // Start of tutorial script
   const schemas = require('ontouml-schema');
