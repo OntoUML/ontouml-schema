@@ -51,7 +51,7 @@ All fields defined for an object type are MANDATORY, but only some are not nulla
 
 Additional fields are NOT allowed for any object type.
 
-- **Package**: An object representing an ontology or an ontology (sub)module. The Package object at the root of a JSON file instantiating the ontouml-schema is also referred to as "root package" and "model", where the later captures the notion of all container for all model elements in an ontology module.
+- **Package**: An object representing an ontology or an ontology (sub)module. The Package object at the root of a JSON file instantiating the ontouml-schema is also referred to as "root package" and "model", where the latter captures the notion of all container for all model elements in an ontology module.
     
     ```json
     { 
@@ -178,7 +178,7 @@ Additional fields are NOT allowed for any object type.
 
   The field "properties" is a nullable ordered array of objets of type "Property" whose minimum size should be 2. Relation objects with less than 2 items in the "properties" must raise error messages.
   
-  The order of the properties in this array represents their position on a equivalent predicate, e.g., in the ternary relation "buys-product-from(buyer,product,seller)", the order of items representing these entities must follow the order "buyer" (in properties[0]), "product" (in properties[1]), and "seller" (in properties[2]).
+  The order of the properties in this array represents their position on an equivalent predicate, e.g., in the ternary relation "buys-product-from(buyer,product,seller)", the order of items representing these entities must follow the order "buyer" (in properties[0]), "product" (in properties[1]), and "seller" (in properties[2]).
   
   Relation elements are also used to represent derivation relations, in which case they must contain the stereotype "derivation" and have only 2 properties, the first being an object of type "Relation" and the second an object of type "Class" element.
 
@@ -265,7 +265,7 @@ Additional fields are NOT allowed for any object type.
 
 - **id**: A non-empty and non-nullable string that uniquely identifies an object of a given type. Thus, two objects of the same type (e.g. two classes, two relations, two properties) may not have the same id, even if they are contained by different packages.
 
-- **name**: A non-empty nullable string containing the object's name. It is allowed for two objects of the ontology to have identical names, even if they are of the same type,.
+- **name**: A non-empty nullable string containing the object's name. It is allowed for two objects of the ontology to have identical names, even if they are of the same type.
 
 - **description**: A non-empty nullable string representing the description of the object in free textual format.
 
