@@ -1,33 +1,40 @@
 {
-  "type": "Package",
-  "id": "pk1",
+  "type": "Project",
+  "id": "proj1",
   "name": null,
   "description": null,
-  "contents": [
-    {
-      "type": "Class",
-      "id": "c1",
-      "name": null,
-      "description": null,
-      "properties": null,
-      "literals": [
-        {
-          "type": "Literal",
-          "id": "0",
-          "name": null,
-          "description": null,
-          "propertyAssignments": null
-        }
-      ],
-      "propertyAssignments": null,
-      "stereotypes": null,
-      "isAbstract": false,
-      "isDerived": false,
-      "isExtensional": null,
-      "isPowertype": null,
-      "order": null,
-      "allowed": null
-    }
-  ],
-  "propertyAssignments": null
+  "model": {
+    "type": "Package",
+    "id": "pk1",
+    "name": null,
+    "description": null,
+    "contents": [
+      {
+        "type": "Class",
+        "id": "c1",
+        "name": null,
+        "description": null,
+        "properties": null,
+        "literals": [
+          {
+            "type": "Literal",
+            "id": "0",
+            "name": null,
+            "description": null,
+            "propertyAssignments": null
+          }
+        ],
+        "propertyAssignments": null,
+        "stereotypes": null,
+        "isAbstract": false,
+        "isDerived": false,
+        "isExtensional": null,
+        "isPowertype": null,
+        "order": null,
+        "allowed": null
+      }
+    ],
+    "propertyAssignments": null
+  },
+  "diagrams": null
 }

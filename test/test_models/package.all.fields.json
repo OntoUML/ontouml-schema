@@ -1,4 +1,9 @@
 {
+  "type": "Project",
+  "id": "proj1",
+  "name": "My Test Project",
+  "description": "A project to tests all fields in a package",
+  "model": {
   "type": "Package",
   "id": "pk1",
   "name": "Package 1",
@@ -33,4 +38,6 @@
     }
   ],
   "propertyAssignments": null
+},
+"diagrams": null
 }

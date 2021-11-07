@@ -1,8 +1,15 @@
 {
-  "type": "Package",
-  "id": "pk1",
+  "type": "Project",
+  "id": "proj1",
   "name": null,
   "description": null,
-  "contents": null,
-  "propertyAssignments": null
+  "model": {
+    "type": "Package",
+    "id": "pk1",
+    "name": null,
+    "description": null,
+    "contents": null,
+    "propertyAssignments": null
+  },
+  "diagrams": null
 }

@@ -89,3 +89,19 @@ test('Order set on classes decorated with <<type>>', () => {
   testOntoUML2Model(models.propertyMultilingual);
   testOntoUML2Model(models.relationMultilingual);
 });
+
+test('Diagram referencing a class', () => {
+  testOntoUML2Model(models.diagramClass);
+});
+
+test('Diagram referencing a class and an association', () => {
+  testOntoUML2Model(models.diagramRelation);
+});
+
+test('Diagram referencing a class and an generalization', () => {
+  testOntoUML2Model(models.diagramRelation);
+});
+
+test('Diagram referencing a generalization set', () => {
+  testOntoUML2Model(models.diagramRelation);
+});

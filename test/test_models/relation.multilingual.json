@@ -1,85 +1,92 @@
 {
-  "type": "Package",
-  "id": "pk1",
-  "name": null,
-  "description": null,
-  "contents": [
-    {
-      "type": "Class",
-      "id": "c1",
-      "name": "Person",
-      "description": null,
-      "stereotypes": [
-        "kind"
-      ],
-      "properties": null,
-      "literals": null,
-      "propertyAssignments": null,
-      "isAbstract": null,
-      "isDerived": null,
-      "isExtensional": null,
-      "isPowertype": null,
-      "order": null,
-      "allowed": null
-    },
-    {
-      "type": "Relation",
-      "id": "relation1",
-      "name": {
-        "en": "knows",
-        "es": "conoce",
-        "pt-BR": "conhece"
+  "type": "Project",
+  "id": "proj1",
+  "name": "My Test Project",
+  "description": "A project to tests multilingual properties in relations.",
+  "model": {
+    "type": "Package",
+    "id": "pk1",
+    "name": null,
+    "description": null,
+    "contents": [
+      {
+        "type": "Class",
+        "id": "c1",
+        "name": "Person",
+        "description": null,
+        "stereotypes": [
+          "kind"
+        ],
+        "properties": null,
+        "literals": null,
+        "propertyAssignments": null,
+        "isAbstract": null,
+        "isDerived": null,
+        "isExtensional": null,
+        "isPowertype": null,
+        "order": null,
+        "allowed": null
       },
-      "description": null,
-      "stereotypes": [
-        "material"
-      ],
-      "isAbstract": false,
-      "isDerived": false,
-      "properties": [
-        {
-          "type": "Property",
-          "id": "p1",
-          "name": "known by",
-          "description": null,
-          "propertyType": {
-            "type": "Class",
-            "id": "c1"
-          },
-          "cardinality": "*",
-          "isDerived": null,
-          "isOrdered": null,
-          "isReadOnly": null,
-          "stereotypes": null,
-          "propertyAssignments": null,
-          "subsettedProperties": null,
-          "redefinedProperties": null,
-          "aggregationKind": null
+      {
+        "type": "Relation",
+        "id": "relation1",
+        "name": {
+          "en": "knows",
+          "es": "conoce",
+          "pt-BR": "conhece"
         },
-        {
-          "type": "Property",
-          "id": "p2",
-          "name": "known person",
-          "description": null,
-          "propertyType": {
-            "type": "Class",
-            "id": "c1"
+        "description": null,
+        "stereotypes": [
+          "material"
+        ],
+        "isAbstract": false,
+        "isDerived": false,
+        "properties": [
+          {
+            "type": "Property",
+            "id": "p1",
+            "name": "known by",
+            "description": null,
+            "propertyType": {
+              "type": "Class",
+              "id": "c1"
+            },
+            "cardinality": "*",
+            "isDerived": null,
+            "isOrdered": null,
+            "isReadOnly": null,
+            "stereotypes": null,
+            "propertyAssignments": null,
+            "subsettedProperties": null,
+            "redefinedProperties": null,
+            "aggregationKind": null
           },
-          "cardinality": "*",
-          "isDerived": null,
-          "isOrdered": null,
-          "isReadOnly": null,
-          "stereotypes": null,
-          "propertyAssignments": null,
-          "subsettedProperties": null,
-          "redefinedProperties": null,
-          "aggregationKind": null
+          {
+            "type": "Property",
+            "id": "p2",
+            "name": "known person",
+            "description": null,
+            "propertyType": {
+              "type": "Class",
+              "id": "c1"
+            },
+            "cardinality": "*",
+            "isDerived": null,
+            "isOrdered": null,
+            "isReadOnly": null,
+            "stereotypes": null,
+            "propertyAssignments": null,
+            "subsettedProperties": null,
+            "redefinedProperties": null,
+            "aggregationKind": null
+          }
+        ],
+        "propertyAssignments": {
+          "nonStandardProperty": null
         }
-      ],
-      "propertyAssignments": {
-        "nonStandardProperty": null
       }
-    }
-  ],
-  "propertyAssignments": null
+    ],
+    "propertyAssignments": null
+  },
+  "diagrams": null
 }
