@@ -4,12 +4,380 @@
   "title": "OntoUML Schema",
   "description": "The OntoUML Schema defines the shape of serializations ",
   "type": "object",
-  "allOf": [
+  "oneOf": [
+    {
+      "$ref": "#/definitions/Project"
+    },
+    {
+      "$ref": "#/definitions/Class"
+    },
+    {
+      "$ref": "#/definitions/Generalization"
+    },
+    {
+      "$ref": "#/definitions/GeneralizationSet"
+    },
+    {
+      "$ref": "#/definitions/Literal"
+    },
     {
       "$ref": "#/definitions/Package"
+    },
+    {
+      "$ref": "#/definitions/Property"
+    },
+    {
+      "$ref": "#/definitions/Relation"
+    },
+    {
+      "$ref": "#/definitions/Note"
+    },
+    {
+      "$ref": "#/definitions/Diagram"
+    },
+    {
+      "$ref": "#/definitions/ClassView"
+    },
+    {
+      "$ref": "#/definitions/GeneralizationSetView"
+    },
+    {
+      "$ref": "#/definitions/GeneralizationView"
+    },
+    {
+      "$ref": "#/definitions/NoteView"
+    },
+    {
+      "$ref": "#/definitions/PackageView"
+    },
+    {
+      "$ref": "#/definitions/RelationView"
+    },
+    {
+      "$ref": "#/definitions/PathShape"
+    },
+    {
+      "$ref": "#/definitions/RectangleShape"
+    },
+    {
+      "$ref": "#/definitions/TextShape"
+    },
+    {
+      "$ref": "#/definitions/Service"
+    },
+    {
+      "$ref": "#/definitions/Issue"
     }
   ],
   "definitions": {
-    
+    "Project": {
+      "$id": "#Project",
+      "title": "Project",
+      "description": "Something...",
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "Project"
+        },
+        "title": {
+          "title": "title",
+          "description": "Determines a title for the resource. Accepts xsd:string and rdf:langString literals. E.g., \"Common Ontology of Value and Risk\"@en, \"FAIR Model Catalog for Ontology-Driven Conceptual Modeling Research\"@en. There must be at most one title per language."
+        },
+        "alternative": {
+          "title": "alternative",
+          "description": "Determines an alternative title for the resource. Accepts xsd:string and rdf:langString literals. E.g., \"OntoUML/UFO Catalog\"@en."
+        },
+        "description": {
+          "title": "description",
+          "description": "Determines a free-text account of the resource. Accepts xsd:string and rdf:langString literals."
+        },
+        "issued": {
+          "title": "issued",
+          "description": "Determines when the resource was created. Accepts literals of the types xsd:dateTime, xsd:date, xsd:gYearMonth, and xsd:gYear. e.g., \"2018\"^^xsd:gYear, \"2018-01-15\"^^xsd:date. When cataloging a model from documents, we recommend using the publication date from the first one."
+        },
+        "modified": {
+          "title": "modified",
+          "description": "Determines when the resource was last modified. Accepts literals of the types xsd:dateTime, xsd:date, xsd:gYearMonth, and xsd:gYear. When cataloging a model based on documents, we recommend using the publication date from the latest one."
+        },
+        "license": {
+          "title": "license",
+          "description": "Identifies a legal document under which the resource is made available. E.g., https://creativecommons.org/licenses/by/4.0/."
+        },
+        "accessRights": {
+          "title": "access rights",
+          "description": "Identifies a dct:RightsStatement or a text concerning who and how the resource can be accessed. E.g., the statement http://publications.europa.eu/resource/authority/access-right/PUBLIC informs that something is “publicly accessible by everyone”."
+        },
+        "editorialNote": {
+          "title": "editorial note",
+          "description": "Determines a general note relative to the resource documentation process. Accepts xsd:string and rdf:langString literals. E.g., \"The model was originally designed in Portuguese and translated by the publisher.\"@en."
+        },
+        "contributor": {
+          "title": "contributor",
+          "description": "Identifies a foaf:Agent who contributed to the development of the resource."
+        },
+        "creator": {
+          "title": "creator",
+          "description": "Identifies a foaf:Agent who contributed to the creation of the resource."
+        },
+        "publisher": {
+          "title": "publisher",
+          "description": "Identifies the foaf:Agent who added the resource to the catalog. The publisher does not need to have created or contributed to the resource."
+        },
+        "landingPage": {
+          "title": "landing page",
+          "description": "Identifies a web page where one can access the dataset, its metadata, its distributions, and additional information about it. E.g., https://www.model-a-platform.com is the landing page of the Digital Platform Ontology."
+        },
+        "bibliographicCitation": {
+          "title": "bibliographic citation",
+          "description": "Determines a bibliographic reference for the dataset in textual format. Accepts xsd:string and rdf:langString literals. E.g., \"Weigand, H., Johannesson, P., & Andersson, B. (2021). An artifact ontology for design science research. Data & Knowledge Engineering, 133.\"@en"
+        },
+        "storageUrl": {
+          "title": "storage URL",
+          "description": "Determines a URL of a service in which the data and metadata of the dataset are stored. Accepts values in xsd:anyURI."
+        },
+        "distribution": {
+          "title": "distribution",
+          "description": "Identifies an available dcat:Distribution of the dataset."
+        },
+        "contactPoint": {
+          "title": "contact point",
+          "description": "Identifies a vcard:vCard that contains information on how to contact an agent responsible for the dataset. We required that at least an email is provided."
+        },
+        "keyword": {
+          "title": "keyword",
+          "description": "Determines a domain (partially) described by the semantic artefact. Accepts xsd:string and rdf:langString literals. E.g., the User Feedback Ontology is described with the keywords \"online user feedback\", \"software engineering\", and \"requirements engineering\"."
+        },
+        "acronym": {
+          "title": "acronym",
+          "description": "Determines an acronym one can use to refer to the semantic artefact. Accepts only xsd:string literals. E.g., \"RDBS-O\", \"COVER\", \"ROT\"."
+        },
+        "source": {
+          "title": "source",
+          "description": "Identifies resources that contain, present, or significantly influenced the development of the semantic artefact. We recommend the use of persistent and resolvable identifiers to refer to these resources, such as the Digital Object Identifier (DOI) or DBLP's URI. E.g., https://doi.org/10.3233/AO-150150, https://dblp.org/rec/journals/ao/Morales-Ramirez15."
+        },
+        "language": {
+          "title": "language",
+          "description": "Determines a language in which the lexical labels of the semantic artefact are written. We require the use of values listed in the IANA Language Sub Tag Registry. E.g., \"en\", \"pt\"."
+        },
+        "theme": {
+          "title": "theme",
+          "description": "Identifies the central theme of the semantic artefact according to a theme taxonomy. In our catalog, the theme of an artefact must be a skos:Concept from the LCC. E.g., \"Class S - Agriculture\", \"Class T - Technology\"."
+        },
+        "designedForTask": {
+          "title": "designed for task",
+          "description": "Identifies a goal that motivated the development of the semantic artefact. To standardize the use of this property, we documented some recurrent modeling goals:\n- ocmv:ConceptualClarification: The artefact was created as the result of an ontological analysis of a concept, language, or domain of interest that sought to conceptually clarify and untangle complex notions and relations.\n- ocmv:DataPublication: The artefact was created to support the publication of some datasets. For instance, a conceptual model used to generate an OWL vocabulary to publish tabular data as linked open data on the web.\n- ocmv:DecisionSupportSystem: The artefact was created during the development of a decision support system.\n- ocmv:Example: The artefact was created to demonstrate how OntoUML can be used to solve a certain modeling challenge, to support an experiment involving OntoUML, or to exemplify how a generic model can be reused in more concrete scenarios.\n- ocmv:InformationRetrieval: The artefact was created to support the design of an information retrieval system.\n- ocmv:Interoperability: The artefact was created to support data integration, vocabulary alignment, or the interoperability of software systems.\n- ocmv:LanguageEngineering: The artefact was created for the design of a domain-specific modeling language.\n- ocmv:Learning: The artefact was created so that its authors could learn UFO and OntoUML. This usually applies to models developed by students as part of their course assignments.\n- ocmv:SoftwareEngineering: The artefact was created during the development of an information system. For instance, a conceptual model used to generate a relational database."
+        },
+        "context": {
+          "title": "context",
+          "description": "Identifies an ocmv:Context in which the artefact was developed, namely:\n- ocmv:Research: The artefact was developed as part of a research project. This usually implies that the artefact was featured in a scientific publication.\n- ocmv:Industry: The artefact was developed for a public or private organization.\n- ocmv:Classroom: The artefact was developed within the context of a course on conceptual modeling, most likely as a course assignment."
+        },
+        "representationStyle": {
+          "title": "representation style",
+          "description": "Identifies an ocmv:OntologyRepresentationStyle representation styles adopted in the artefact. We account for the existence of two values:\n- ocmv:OntoumlStyle: Characterizes a model that contains at least one class, relation, or property using a valid OntoUML stereotype.\n- ocmv:UfoStyle: Characterizes a model that contains at least one class or relation from UFO without an OntoUML stereotype."
+        },
+        "ontologyType": {
+          "title": "ontology type",
+          "description": "Identifies the categorization of the ontology according to its scope. For this catalog, we adopt the following three categories proposed by Roussey et al. [42]:\n- ocmv:Core: An ontology that grasps the central concepts and relations of a given do- main, possibly integrating several domain ontologies and being applicable in multiple scenarios. E.g., UFO-S, a commitment-based ontology of services, can be considered a core ontology because it applies to services in multiple domains, such as medical, financial, and legal services.\n- ocmv:Domain: An ontology that describes how a community conceptualizes a phenomenon of interest. In general, a domain ontology formally characterizes a much narrower domain than a core ontology does. E.g., OntoBio is a domain ontology of biodiversity.\n- ocmv:Application: An ontology that specializes a domain ontology where there could be no consensus or knowledge sharing. It represents the particular model of a domain according to a single viewpoint of a user or a developer."
+        }
+      }
+    },
+    "Class": {
+      "$id": "#Class",
+      "title": "Class",
+      "description": "Something...",
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "Class"
+        }
+      }
+    },
+    "Generalization": {
+      "$id": "#Generalization",
+      "title": "Generalization",
+      "description": "Something...",
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "Generalization"
+        }
+      }
+    },
+    "GeneralizationSet": {
+      "$id": "#GeneralizationSet",
+      "title": "Generalization Set",
+      "description": "Something...",
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "GeneralizationSet"
+        }
+      }
+    },
+    "Literal": {
+      "$id": "#Literal",
+      "title": "Literal",
+      "description": "Something...",
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "Literal"
+        }
+      }
+    },
+    "Package": {
+      "$id": "#Package",
+      "title": "Package",
+      "description": "Something...",
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "Package"
+        }
+      }
+    },
+    "Property": {
+      "$id": "#Property",
+      "title": "Property",
+      "description": "Something...",
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "Property"
+        }
+      }
+    },
+    "Relation": {
+      "$id": "#Relation",
+      "title": "Relation",
+      "description": "Something...",
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "Relation"
+        }
+      }
+    },
+    "Note": {
+      "$id": "#Note",
+      "title": "Note",
+      "description": "Something...",
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "Note"
+        }
+      }
+    },
+    "Diagram": {
+      "$id": "#Diagram",
+      "title": "Diagram",
+      "description": "Something...",
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "Diagram"
+        }
+      }
+    },
+    "ClassView": {
+      "$id": "#ClassView",
+      "title": "Class View",
+      "description": "Something...",
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "ClassView"
+        }
+      }
+    },
+    "GeneralizationSetView": {
+      "$id": "#GeneralizationSetView",
+      "title": "Generalization Set View",
+      "description": "Something...",
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "GeneralizationSetView"
+        }
+      }
+    },
+    "GeneralizationView": {
+      "$id": "#GeneralizationView",
+      "title": "Generalization View",
+      "description": "Something...",
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "GeneralizationView"
+        }
+      }
+    },
+    "NoteView": {
+      "$id": "#NoteView",
+      "title": "Note View",
+      "description": "Something...",
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "NoteView"
+        }
+      }
+    },
+    "PackageView": {
+      "$id": "#PackageView",
+      "title": "Package View",
+      "description": "Something...",
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "PackageView"
+        }
+      }
+    },
+    "RelationView": {
+      "$id": "#RelationView",
+      "title": "Relation View",
+      "description": "Something...",
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "RelationView"
+        }
+      }
+    },
+    "PathShape": {
+      "$id": "#PathShape",
+      "title": "Path Shape",
+      "description": "Something...",
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "PathShape"
+        }
+      }
+    },
+    "RectangleShape": {
+      "$id": "#RectangleShape",
+      "title": "Rectangle Shape",
+      "description": "Something...",
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "RectangleShape"
+        }
+      }
+    },
+    "TextShape": {
+      "$id": "#TextShape",
+      "title": "Text Shape",
+      "description": "Something...",
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "TextShape"
+        }
+      }
+    }
   }
 }
