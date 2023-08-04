@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://w3id.org/ontouml/schema/v1.0.0",
+  "title": "OntoUML Schema",
+  "description": "The OntoUML Schema defines the shape of serializations ",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "#/definitions/Package"
+    }
+  ],
+  "definitions": {
+    
+  }
+}
