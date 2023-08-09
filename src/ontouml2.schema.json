@@ -27,9 +27,9 @@
         {
           "oneOf": [
             { "$ref": "#/definitions/Project" },
+            { "$ref": "#/definitions/ModelElement" },
             { "$ref": "#/definitions/Diagram" },
-            { "$ref": "#/definitions/DiagramElement" },
-            { "$ref": "#/definitions/ModelElement" }
+            { "$ref": "#/definitions/DiagramElement" }
           ]
         }
       ]
@@ -62,22 +62,294 @@
       "$id": "#ModelElement",
       "title": "Model Element",
       "description": "Something...",
+      "allOf": [
+        {
+          "type": "object",
+          "properties": { "propertyAssignments": { "type": "string" } }
+        },
+        {
+          "oneOf": [
+            { "$ref": "#/definitions/Generalization" },
+            { "$ref": "#/definitions/GeneralizationSet" },
+            { "$ref": "#/definitions/Package" },
+            { "$ref": "#/definitions/DecoratableElement" }
+          ]
+        }
+      ]
+    },
+    "Generalization": {
+      "$id": "#Generalization",
+      "title": "Generalization",
+      "description": "Something...",
       "type": "object",
-      "properties": { "nothing": { "type": "string" } }
+      "properties": {
+        "type": { "const": "Generalization" },
+        "general": { "type": "string" },
+        "specific": { "type": "string" }
+      }
+    },
+    "GeneralizationSet": {
+      "$id": "#GeneralizationSet",
+      "title": "Generalization Set",
+      "description": "Something...",
+      "type": "object",
+      "properties": {
+        "type": { "const": "GeneralizationSet" },
+        "isDisjoint": { "type": "string" },
+        "isComplete": { "type": "string" },
+        "generalizations": { "type": "string" },
+        "categorizer": { "type": "string" }
+      }
+    },
+    "Package": {
+      "$id": "#Package",
+      "title": "Package",
+      "description": "Something...",
+      "type": "object",
+      "properties": {
+        "type": { "const": "Package" },
+        "contents": { "type": "string" }
+      }
+    },
+    "DecoratableElement": {
+      "$id": "#DecoratableElement",
+      "title": "Decoratable Element",
+      "description": "Something...",
+      "allOf": [
+        {
+          "type": "object",
+          "properties": { "stereotype": { "type": "string" } }
+        },
+        {
+          "oneOf": [
+            { "$ref": "#/definitions/Property" },
+            { "$ref": "#/definitions/ClassifierElement" }
+          ]
+        }
+      ]
+    },
+    "Property": {
+      "$id": "#Property",
+      "title": "Property",
+      "description": "Something...",
+      "type": "object",
+      "properties": {
+        "type": { "const": "Property" },
+        "isDerived": { "type": "string" },
+        "isOrdered": { "type": "string" },
+        "isReadOnly": { "type": "string" },
+        "propertyType": { "type": "string" },
+        "aggregationKind": { "type": "string" },
+        "cardinality": { "type": "string" }
+      }
+    },
+    "ClassifierElement": {
+      "$id": "#ClassifierElement",
+      "title": "Classifier Element",
+      "description": "Something...",
+      "allOf": [
+        {
+          "type": "object",
+          "properties": {
+            "isAbstract": { "type": "string" },
+            "isDerived": { "type": "string" },
+            "properties": { "type": "string" }
+          }
+        },
+        {
+          "oneOf": [
+            { "$ref": "#/definitions/Class" },
+            { "$ref": "#/definitions/Relation" }
+          ]
+        }
+      ]
+    },
+    "Class": {
+      "$id": "#Class",
+      "title": "Class",
+      "description": "Something...",
+      "type": "object",
+      "properties": {
+        "type": { "const": "Class" },
+        "isPowertype": { "type": "string" },
+        "order": { "type": "string" },
+        "literals": { "type": "string" },
+        "restrictedTo": { "type": "string" }
+      }
+    },
+    "Relation": {
+      "$id": "#Relation",
+      "title": "Relation",
+      "description": "Something...",
+      "type": "object",
+      "properties": { "type": { "const": "Relation" } }
     },
     "Diagram": {
       "$id": "#Diagram",
       "title": "Diagram",
       "description": "Something...",
       "type": "object",
-      "properties": { "contents": { "type": "string" } }
+      "properties": {
+        "type": { "const": "Diagram" },
+        "contents": { "type": "string" },
+        "owner": { "type": "string" }
+      }
     },
     "DiagramElement": {
       "$id": "#DiagramElement",
       "title": "Diagram Element",
       "description": "Something...",
+      "oneOf": [
+        { "$ref": "#/definitions/ElementView" },
+        { "$ref": "#/definitions/Shape" }
+      ]
+    },
+    "ElementView": {
+      "$id": "#ElementView",
+      "title": "Element View",
+      "description": "Something...",
+      "allOf": [
+        {
+          "type": "object",
+          "properties": {
+            "shape": { "type": "string" },
+            "isViewOf": { "type": "string" }
+          }
+        },
+        {
+          "oneOf": [
+            { "$ref": "#/definitions/GeneralizationSetView" },
+            { "$ref": "#/definitions/NodeView" },
+            { "$ref": "#/definitions/ConnectorView" }
+          ]
+        }
+      ]
+    },
+    "GeneralizationSetView": {
+      "$id": "#GeneralizationSetView",
+      "title": "Generalization Set View",
+      "description": "Something...",
       "type": "object",
-      "properties": { "nothing": { "type": "string" } }
+      "properties": { "type": { "const": "GeneralizationSetView" } }
+    },
+    "NodeView": {
+      "$id": "#NodeView",
+      "title": "Node View",
+      "description": "Something...",
+      "oneOf": [
+        { "$ref": "#/definitions/ClassView" },
+        { "$ref": "#/definitions/NoteView" },
+        { "$ref": "#/definitions/PackageView" }
+      ]
+    },
+    "ClassView": {
+      "$id": "#ClassView",
+      "title": "Class View",
+      "description": "Something...",
+      "type": "object",
+      "properties": { "type": { "const": "ClassView" } }
+    },
+    "NoteView": {
+      "$id": "#NoteView",
+      "title": "Note View",
+      "description": "Something...",
+      "type": "object",
+      "properties": { "type": { "const": "NoteView" } }
+    },
+    "PackageView": {
+      "$id": "#PackageView",
+      "title": "Package View",
+      "description": "Something...",
+      "type": "object",
+      "properties": { "type": { "const": "PackageView" } }
+    },
+    "ConnectorView": {
+      "$id": "#ConnectorView",
+      "title": "Connector View",
+      "description": "Something...",
+      "allOf": [
+        {
+          "type": "object",
+          "properties": {
+            "sourceView": { "type": "string" },
+            "targetView": { "type": "string" }
+          }
+        },
+        {
+          "oneOf": [
+            { "$ref": "#/definitions/GeneralizationView" },
+            { "$ref": "#/definitions/RelationView" }
+          ]
+        }
+      ]
+    },
+    "GeneralizationView": {
+      "$id": "#GeneralizationView",
+      "title": "Generalization View",
+      "description": "Something...",
+      "type": "object",
+      "properties": { "type": { "const": "GeneralizationView" } }
+    },
+    "RelationView": {
+      "$id": "#RelationView",
+      "title": "Relation View",
+      "description": "Something...",
+      "type": "object",
+      "properties": { "type": { "const": "RelationView" } }
+    },
+    "Shape": {
+      "$id": "#Shape",
+      "title": "Shape",
+      "description": "Something...",
+      "oneOf": [
+        { "$ref": "#/definitions/Path" },
+        { "$ref": "#/definitions/RectangularShape" }
+      ]
+    },
+    "Path": {
+      "$id": "#Path",
+      "title": "Path",
+      "description": "Something...",
+      "type": "object",
+      "properties": {
+        "type": { "const": "Path" },
+        "points": { "type": "string" }
+      }
+    },
+    "RectangularShape": {
+      "$id": "#RectangularShape",
+      "title": "Rectangular Shape",
+      "description": "Something...",
+      "allOf": [
+        {
+          "type": "object",
+          "properties": {
+            "width": { "type": "string" },
+            "height": { "type": "string" },
+            "topLeft": { "type": "string" }
+          }
+        },
+        {
+          "oneOf": [
+            { "$ref": "#/definitions/Rectangle" },
+            { "$ref": "#/definitions/Text" }
+          ]
+        }
+      ]
+    },
+    "Rectangle": {
+      "$id": "#Rectangle",
+      "title": "Rectangle",
+      "description": "Something...",
+      "type": "object",
+      "properties": { "type": { "const": "Rectangle" } }
+    },
+    "Text": {
+      "$id": "#Text",
+      "title": "Text",
+      "description": "Something...",
+      "type": "object",
+      "properties": { "type": { "const": "Text" } }
     }
   }
 }
