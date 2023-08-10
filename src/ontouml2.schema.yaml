@@ -1,33 +1,14 @@
-$schema: 'http://json-schema.org/draft-07/schema#'
-$id: 'https://w3id.org/ontouml/schema/v1.0.0'
-title: 'OntoUML Schema'
-description: 'The OntoUML Schema defines the shape of serializations OntoUML ontologies and their contents.'
+$schema: http://json-schema.org/draft-07/schema#
+$id: https://w3id.org/ontouml/schema/v1.0.0
+title: OntoUML Schema
+description: The OntoUML Schema defines the JSON serializations of OntoUML ontologies and their contents according to the OntoUML Metamodel project.
 oneOf:
   - $ref: '#/definitions/OntoumlElement'
-  # - $ref: '#Project'
-  # - $ref: '#Class'
-  # - $ref: '#Generalization'
-  # - $ref: '#GeneralizationSet'
-  # - $ref: '#Literal'
-  # - $ref: '#Package'
-  # - $ref: '#Property'
-  # - $ref: '#Relation'
-  # - $ref: '#Note'
-  # - $ref: '#Diagram'
-  # - $ref: '#ClassView'
-  # - $ref: '#GeneralizationSetView'
-  # - $ref: '#GeneralizationView'
-  # - $ref: '#NoteView'
-  # - $ref: '#PackageView'
-  # - $ref: '#RelationView'
-  # - $ref: '#PathShape'
-  # - $ref: '#RectangleShape'
-  # - $ref: '#TextShape'
 definitions:
   OntoumlElement:
     $id: '#OntoumlElement'
     title: OntoUML Element
-    description: Basic schema that applies to all OntoUML Elements.
+    description: An identified element of an OntoUML ontology according to the OntoUML Metamodel, which includes projects, model elements, diagrams, and diagram elements.
     allOf:
       - type: object
         properties:
@@ -57,7 +38,7 @@ definitions:
   Project:
     $id: '#Project'
     title: Project
-    description: Something...
+    description: An OntoUML element that serves as the container of an entire OntoUML ontology. A project provides a separation between model and diagram elements of an ontology, where the former are organized inside a package element (referred to as model), and the latter inside an array of diagrams.
     type: object
     properties:
       type:
@@ -95,7 +76,7 @@ definitions:
   ModelElement:
     $id: '#ModelElement'
     title: Model Element
-    description: Something...
+    description: An OntoUML element that represents an element of the language's abstract syntax (e.g., a class, a relation, or a generalization).
     allOf:
       - type: object
         properties:
@@ -109,7 +90,12 @@ definitions:
   Generalization:
     $id: '#Generalization'
     title: Generalization
-    description: Something...
+    description: |-
+      A model element that represents the generalization of a specific classifier into a general classifier. When read in the inverse direction, a generalization is referred to as a specialization.
+
+      Examples include the generalization of a specific class "Student" into a general class "Person," and the generalization of a specific relation "close friends with" into a general relation "friends with".
+
+      A generalization can only connect two classifiers of the same type, i.e., it can either connect two class elements or two relation elements.
     type: object
     properties:
       type:
@@ -120,8 +106,13 @@ definitions:
         type: string
   GeneralizationSet:
     $id: '#GeneralizationSet'
-    title: 'Generalization Set'
-    description: Something...
+    title: Generalization Set
+    description: |-
+      A model element that represents a group of connected generalization elements. A generalization set can define disjoint and/or complete constraints over the generalizations it groups.
+
+      Examples include the incomplete (i.e., non-complete) and overlapping (i.e., non-disjoint) generalization set of "Person" into "Student" and "Teacher", and the disjoint and complete generalization set of "Person" into "Child" and "Adult".
+
+      All generalizations in the generalization set must share a common general classifier.
     type: object
     properties:
       type:
@@ -133,6 +124,10 @@ definitions:
       generalizations:
         type: string
       categorizer:
+        description: |-
+          TODO: update
+
+          A generalization set involving classes can also have a categorizer, which is a class with an order greater than one which all specific classes in the set instantiate. For example, "Academic Role" as the categorizer of the generalization set of "Person" into "Student" and "Teacher" representing the specific classes as instances of the categorizer.
         type: string
   Package:
     $id: '#Package'
