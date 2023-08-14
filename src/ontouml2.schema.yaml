@@ -8,7 +8,7 @@ definitions:
   OntoumlElement:
     $id: '#OntoumlElement'
     title: OntoUML Element
-    description: An identified element of an OntoUML ontology according to the OntoUML Metamodel, which includes projects, model elements, diagrams, and diagram elements.
+    description: An identified element of an OntoUML ontology according to the OntoUML Metamodel, which includes projects, model elements, diagrams, views, and shapes.
     allOf:
       - type: object
         properties:
@@ -25,7 +25,7 @@ definitions:
   NamedElement:
     $id: '#NamedElement'
     title: Named Element
-    description: Something
+    description: An OntoUML element that can be attributed a name and other descriptive information.
     allOf:
       - type: object
         properties:
@@ -47,7 +47,7 @@ definitions:
   Project:
     $id: '#Project'
     title: Project
-    description: An OntoUML element that serves as the container of an entire OntoUML ontology. A project provides a separation between model and diagram elements of an ontology, where the former are organized inside a package element (referred to as model), and the latter inside an array of diagrams.
+    description: A named element that serves as the container of an entire OntoUML ontology, including the elements of both the abstract syntax (i.e., model elements) and the concrete syntax (i.e., diagrams, view, and shapes).
     type: object
     properties:
       type:
@@ -89,7 +89,7 @@ definitions:
   ModelElement:
     $id: '#ModelElement'
     title: Model Element
-    description: An OntoUML element that represents an element of the language's abstract syntax (e.g., a class, a relation, or a generalization).
+    description: A named element that represents an element of the language's abstract syntax (e.g., a class, a relation, or a generalization).
     allOf:
       - type: object
         properties:
@@ -102,7 +102,7 @@ definitions:
           - $ref: '#/definitions/Literal'
           - $ref: '#/definitions/Note'
           - $ref: '#/definitions/Package'
-          - $ref: '#/definitions/DecoratedElement'
+          - $ref: '#/definitions/DecoratableElement'
   Generalization:
     $id: '#Generalization'
     title: Generalization
@@ -148,7 +148,7 @@ definitions:
   Link:
     $id: '#Link'
     title: Link
-    description: Something...
+    description: A model element that connects a note to a model element it concerns.
     type: object
     properties:
       type:
@@ -160,7 +160,7 @@ definitions:
   Literal:
     $id: '#Literal'
     title: Literal
-    description: Something...
+    description: A model element that represents a specific value within an enumerated set of values. Examples include each letter in an A to F letter grading scale, listed in a class \"Letter Grade\" decorated with the stereotype \"enumeration\".
     type: object
     properties:
       type:
@@ -168,7 +168,7 @@ definitions:
   Note:
     $id: '#Note'
     title: Note
-    description: Something...
+    description: A model element that contains an annotation about the ontology or some of its elements. A note can also be used to represent a constraint in both natural or structured language (i.e., first-order logic, or OCL).
     type: object
     properties:
       type:
@@ -178,17 +178,23 @@ definitions:
   Package:
     $id: '#Package'
     title: Package
-    description: Something...
+    description: |-
+      A model element that groups other model elements referred to as "packageable elements." Package elements are used to perform the modularization of an ontology.
+
+      While the OntoUML Metamodel does not require package elements to follow a tree structure (i.e., it allows overlapping packages), ontologies that require UML representations should adhere to this constraint for compatibility.
     type: object
     properties:
       type:
         const: Package
       contents:
         type: string
-  DecoratedElement:
-    $id: '#DecoratedElement'
-    title: Decorated Element
-    description: Something...
+  DecoratableElement:
+    $id: '#DecoratableElement'
+    title: Decoratable Element
+    description: |-
+      A model element that can be decorated with a stereotype to identify its ontological properties according to UFO.
+
+      Examples include a class decorated with the stereotype "kind" identifying it as a type of objects that provides an identity principle to its instances.
     allOf:
       - type: object
         properties:
@@ -198,11 +204,16 @@ definitions:
             type: string
       - oneOf:
           - $ref: '#/definitions/Property'
-          - $ref: '#/definitions/ClassifierElement'
+          - $ref: '#/definitions/Classifier'
   Property:
     $id: '#Property'
     title: Property
-    description: Something...
+    description: |-
+      A decoratable element that represents an attribute of a class, or one end of a relation.
+
+      Examples include the attribute "name" of the class "Person", and the ends of the binary relation "studies in" connected to the classes "Student" and "University."
+
+      Instances of class and relation elements bear values for the properties these classifiers contain, according to the constraints specified within each property. For example, the value assigned to a property in an instance must be itself an instance of the classifier in property type.
     type: object
     properties:
       type:
@@ -221,10 +232,10 @@ definitions:
         type: string
       propertyType:
         type: string
-  ClassifierElement:
-    $id: '#ClassifierElement'
-    title: Classifier Element
-    description: Something...
+  Classifier:
+    $id: '#Classifier'
+    title: Classifier
+    description: A decoratable element (either a class or a relation) that defines properties exhibited by its instances.
     allOf:
       - type: object
         properties:
@@ -238,7 +249,12 @@ definitions:
   Class:
     $id: '#Class'
     title: Class
-    description: Something...
+    description: |-
+      A classifier that defines the properties of a set of "individualized" entities (i.e., non-relational) of the subject domain.
+
+      Examples include "Person", "Enrollment", and "Grade".
+
+      The instances of a class may include entities such as objects (e.g., people, organizations, vehicles), reified properties (e.g., leafs' colors, agents' intentions, enrollments), and bare values (e.g., a number or a literal).
     type: object
     properties:
       type:
@@ -254,15 +270,42 @@ definitions:
   Relation:
     $id: '#Relation'
     title: Relation
-    description: Something...
+    description: |-
+      A classifier that defines the properties of a set of relations of the subject domain.
+
+      Examples include "studies in", "buys product from" (ternary relation), and derivation relations (e.g., between material relations and relators).
+    type: object
+    oneOf:
+      - $ref: '#/definitions/BinaryRelation'
+      - $ref: '#/definitions/NaryRelation'
+  BinaryRelation:
+    $id: '#BinaryRelation'
+    title: Binary Relation
+    description: |-
+      A relation that defines the properties of a set of binary relations of the subject domain.
+
+      Examples include "studies in", and derivation relations (e.g., between material relations and relators).
+
+      A binary relation may either connect two classes, or a relation (as source) and a class (as class) in the case of derivation relations connecting descriptive relations to the classes that serve as their truthmakers (as in the relation between the material relation "studies in" and the "Enrollment" relator).
     type: object
     properties:
       type:
-        const: Relation
+        const: BinaryRelation
+  NaryRelation:
+    $id: '#NaryRelation'
+    title: N-ary Relation
+    description: |-
+      A relation that defines the properties of a set of relations of the subject domain that connect more than two members.
+
+      Examples include "studies in", "buys product from" (ternary relation), and derivation relations (e.g., between material relations and relators).
+    type: object
+    properties:
+      type:
+        const: NaryRelation
   Diagram:
     $id: '#Diagram'
     title: Diagram
-    description: Something...
+    description: A named element that contains the visual representation (i.e., the concrete syntax) of an OntoUML model or of a portion of it.
     type: object
     properties:
       type:
@@ -274,7 +317,12 @@ definitions:
   View:
     $id: '#View'
     title: View
-    description: Something...
+    description: |-
+      An OntoUML element that represents a single model element in a diagram.
+
+      A view element connects a model element to the shapes in a diagram necessary to represent a single occurrence of it. For example, an n-ary relation view connects a single relation element to one diamond and a set of paths that represent a single occurrence of it in a diagram. Multiple views can represent multiple occurrences of an element in the same diagram.
+
+      A view element is responsible for what portions of a model element are present in a single diagram representation (e.g., whether the cardinality of a property is shown), unlike a shape, which is responsible aspects of the actual drawing (e.g., how to render a portion of a view, in which position, and with which dimensions).
     allOf:
       - type: object
         properties:
@@ -292,7 +340,7 @@ definitions:
   ClassView:
     $id: '#ClassView'
     title: Class View
-    description: Something...
+    description: A view element that represents the single occurrence of a class in a diagram.
     type: object
     properties:
       type:
@@ -302,7 +350,7 @@ definitions:
   GeneralizationSetView:
     $id: '#GeneralizationSetView'
     title: Generalization Set View
-    description: Something...
+    description: A view element that represents the single occurrence of a generalization set in a diagram.
     type: object
     properties:
       type:
@@ -314,7 +362,7 @@ definitions:
   NaryRelationView:
     $id: '#NaryRelationView'
     title: N-ary Relation View
-    description: Something...
+    description: A view element that represents the single occurrence of a n-ary relation in a diagram.
     type: object
     properties:
       type:
@@ -328,7 +376,7 @@ definitions:
   NoteView:
     $id: '#NoteView'
     title: Note View
-    description: Something...
+    description: A view element that represents the single occurrence of a note in a diagram.
     type: object
     properties:
       type:
@@ -338,7 +386,7 @@ definitions:
   PackageView:
     $id: '#PackageView'
     title: Package View
-    description: Something...
+    description: A view element that represents the single occurrence of a package in a diagram.
     type: object
     properties:
       type:
@@ -348,7 +396,7 @@ definitions:
   BinaryConnectorView:
     $id: '#BinaryConnectorView'
     title: Binary Connector View
-    description: Something...
+    description: A view element that represents the single occurrence of a binary connector (e.g., a binary relation, or a generalization) in a diagram.
     allOf:
       - type: object
         properties:
@@ -365,7 +413,7 @@ definitions:
   GeneralizationView:
     $id: '#GeneralizationView'
     title: Generalization View
-    description: Something...
+    description: A view element that represents the single occurrence of a binary relation in a diagram.
     type: object
     properties:
       type:
@@ -373,7 +421,7 @@ definitions:
   LinkView:
     $id: '#LinkView'
     title: Link View
-    description: Something...
+    description: A view element that represents the single occurrence of a link in a diagram.
     type: object
     properties:
       type:
@@ -381,7 +429,7 @@ definitions:
   RelationView:
     $id: '#RelationView'
     title: Relation View
-    description: Something...
+    description: A view element that represents the single occurrence of a binary relation in a diagram.
     type: object
     properties:
       type:
@@ -389,14 +437,14 @@ definitions:
   Shape:
     $id: '#Shape'
     title: Shape
-    description: Something...
+    description: An OntoUML element that identifies how to render a view (or a portion of one) in a diagram.
     oneOf:
       - $ref: '#/definitions/Path'
       - $ref: '#/definitions/RectangularShape'
   Path:
     $id: '#Path'
     title: Path
-    description: Something...
+    description: A shape defined by a list of points connecting two other shapes.
     type: object
     properties:
       type:
@@ -406,7 +454,7 @@ definitions:
   RectangularShape:
     $id: '#RectangularShape'
     title: Rectangular Shape
-    description: Something...
+    description: A shape defined by a top left position, a height, a width.
     allOf:
       - type: object
         properties:
@@ -423,7 +471,7 @@ definitions:
   Diamond:
     $id: '#Diamond'
     title: Diamond
-    description: Something...
+    description: A rectangular shape that renders the joining diamond of a n-ary relation view.
     type: object
     properties:
       type:
@@ -431,7 +479,7 @@ definitions:
   Rectangle:
     $id: '#Rectangle'
     title: Rectangle
-    description: Something...
+    description: A rectangular shape that renders the shape of a class view or a package view.
     type: object
     properties:
       type:
@@ -439,7 +487,7 @@ definitions:
   Text:
     $id: '#Text'
     title: Text
-    description: Something...
+    description: A rectangular shape that renders the shape of a generalization set view or a note view.
     type: object
     properties:
       type:
