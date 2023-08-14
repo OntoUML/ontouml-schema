@@ -2,20 +2,39 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://w3id.org/ontouml/schema/v1.0.0",
   "title": "OntoUML Schema",
-  "description": "The OntoUML Schema defines the shape of serializations OntoUML ontologies and their contents.",
+  "description": "The OntoUML Schema defines the JSON serializations of OntoUML ontologies and their contents according to the OntoUML Metamodel project.",
   "oneOf": [{ "$ref": "#/definitions/OntoumlElement" }],
   "definitions": {
     "OntoumlElement": {
       "$id": "#OntoumlElement",
       "title": "OntoUML Element",
-      "description": "Basic schema that applies to all OntoUML Elements.",
+      "description": "An identified element of an OntoUML ontology according to the OntoUML Metamodel, which includes projects, model elements, diagrams, and diagram elements.",
       "allOf": [
         {
           "type": "object",
           "properties": {
             "id": { "type": "string" },
-            "issued": { "type": "string" },
-            "modified": { "type": "string" },
+            "created": { "type": "string" },
+            "modified": { "type": "string" }
+          }
+        },
+        {
+          "oneOf": [
+            { "$ref": "#/definitions/NamedElement" },
+            { "$ref": "#/definitions/Shape" },
+            { "$ref": "#/definitions/View" }
+          ]
+        }
+      ]
+    },
+    "NamedElement": {
+      "$id": "#NamedElement",
+      "title": "Named Element",
+      "description": "Something",
+      "allOf": [
+        {
+          "type": "object",
+          "properties": {
             "name": { "type": "string" },
             "alternativeNames": { "type": "string" },
             "description": { "type": "string" },
@@ -27,9 +46,7 @@
         {
           "oneOf": [
             { "$ref": "#/definitions/Project" },
-            { "$ref": "#/definitions/ModelElement" },
-            { "$ref": "#/definitions/Diagram" },
-            { "$ref": "#/definitions/DiagramElement" }
+            { "$ref": "#/definitions/ModelElement" }
           ]
         }
       ]
@@ -37,42 +54,47 @@
     "Project": {
       "$id": "#Project",
       "title": "Project",
-      "description": "Something...",
+      "description": "An OntoUML element that serves as the container of an entire OntoUML ontology. A project provides a separation between model and diagram elements of an ontology, where the former are organized inside a package element (referred to as model), and the latter inside an array of diagrams.",
       "type": "object",
       "properties": {
         "type": { "const": "Project" },
-        "model": { "type": "string" },
-        "diagrams": { "type": "string" },
-        "landingPages": { "type": "string" },
-        "sources": { "type": "string" },
-        "bibliographicCitations": { "type": "string" },
-        "keywords": { "type": "string" },
-        "acronyms": { "type": "string" },
-        "languages": { "type": "string" },
+        "elements": { "type": "string" },
+        "root": { "type": "string" },
+        "publisher": { "type": "string" },
         "designedForTasks": { "type": "string" },
         "license": { "type": "string" },
         "accessRights": { "type": "string" },
         "themes": { "type": "string" },
         "contexts": { "type": "string" },
         "ontologyTypes": { "type": "string" },
-        "representationStyle": { "type": "string" }
+        "representationStyle": { "type": "string" },
+        "namespace": { "type": "string" },
+        "landingPages": { "type": "string" },
+        "sources": { "type": "string" },
+        "bibliographicCitations": { "type": "string" },
+        "keywords": { "type": "string" },
+        "acronyms": { "type": "string" },
+        "languages": { "type": "string" }
       }
     },
     "ModelElement": {
       "$id": "#ModelElement",
       "title": "Model Element",
-      "description": "Something...",
+      "description": "An OntoUML element that represents an element of the language's abstract syntax (e.g., a class, a relation, or a generalization).",
       "allOf": [
         {
           "type": "object",
-          "properties": { "propertyAssignments": { "type": "string" } }
+          "properties": { "customProperties": { "type": "string" } }
         },
         {
           "oneOf": [
             { "$ref": "#/definitions/Generalization" },
             { "$ref": "#/definitions/GeneralizationSet" },
+            { "$ref": "#/definitions/Link" },
+            { "$ref": "#/definitions/Literal" },
+            { "$ref": "#/definitions/Note" },
             { "$ref": "#/definitions/Package" },
-            { "$ref": "#/definitions/DecoratableElement" }
+            { "$ref": "#/definitions/DecoratedElement" }
           ]
         }
       ]
@@ -80,7 +102,7 @@
     "Generalization": {
       "$id": "#Generalization",
       "title": "Generalization",
-      "description": "Something...",
+      "description": "A model element that represents the generalization of a specific classifier into a general classifier. When read in the inverse direction, a generalization is referred to as a specialization.\n\nExamples include the generalization of a specific class \"Student\" into a general class \"Person,\" and the generalization of a specific relation \"close friends with\" into a general relation \"friends with\".\n\nA generalization can only connect two classifiers of the same type, i.e., it can either connect two class elements or two relation elements.",
       "type": "object",
       "properties": {
         "type": { "const": "Generalization" },
@@ -91,14 +113,45 @@
     "GeneralizationSet": {
       "$id": "#GeneralizationSet",
       "title": "Generalization Set",
-      "description": "Something...",
+      "description": "A model element that represents a group of connected generalization elements. A generalization set can define disjoint and/or complete constraints over the generalizations it groups.\n\nExamples include the incomplete (i.e., non-complete) and overlapping (i.e., non-disjoint) generalization set of \"Person\" into \"Student\" and \"Teacher\", and the disjoint and complete generalization set of \"Person\" into \"Child\" and \"Adult\".\n\nAll generalizations in the generalization set must share a common general classifier.",
       "type": "object",
       "properties": {
         "type": { "const": "GeneralizationSet" },
         "isDisjoint": { "type": "string" },
         "isComplete": { "type": "string" },
         "generalizations": { "type": "string" },
-        "categorizer": { "type": "string" }
+        "categorizer": {
+          "description": "TODO: update\n\nA generalization set involving classes can also have a categorizer, which is a class with an order greater than one which all specific classes in the set instantiate. For example, \"Academic Role\" as the categorizer of the generalization set of \"Person\" into \"Student\" and \"Teacher\" representing the specific classes as instances of the categorizer.",
+          "type": "string"
+        }
+      }
+    },
+    "Link": {
+      "$id": "#Link",
+      "title": "Link",
+      "description": "Something...",
+      "type": "object",
+      "properties": {
+        "type": { "const": "Link" },
+        "note": { "type": "string" },
+        "element": { "type": "string" }
+      }
+    },
+    "Literal": {
+      "$id": "#Literal",
+      "title": "Literal",
+      "description": "Something...",
+      "type": "object",
+      "properties": { "type": { "const": "Literal" } }
+    },
+    "Note": {
+      "$id": "#Note",
+      "title": "Note",
+      "description": "Something...",
+      "type": "object",
+      "properties": {
+        "type": { "const": "Note" },
+        "text": { "type": "string" }
       }
     },
     "Package": {
@@ -111,14 +164,17 @@
         "contents": { "type": "string" }
       }
     },
-    "DecoratableElement": {
-      "$id": "#DecoratableElement",
-      "title": "Decoratable Element",
+    "DecoratedElement": {
+      "$id": "#DecoratedElement",
+      "title": "Decorated Element",
       "description": "Something...",
       "allOf": [
         {
           "type": "object",
-          "properties": { "stereotype": { "type": "string" } }
+          "properties": {
+            "stereotype": { "type": "string" },
+            "isDerived": { "type": "string" }
+          }
         },
         {
           "oneOf": [
@@ -135,12 +191,13 @@
       "type": "object",
       "properties": {
         "type": { "const": "Property" },
-        "isDerived": { "type": "string" },
+        "subsettedProperties": { "type": "string" },
+        "redefinedProperties": { "type": "string" },
+        "aggregationKind": { "type": "string" },
+        "cardinality": { "type": "string" },
         "isOrdered": { "type": "string" },
         "isReadOnly": { "type": "string" },
-        "propertyType": { "type": "string" },
-        "aggregationKind": { "type": "string" },
-        "cardinality": { "type": "string" }
+        "propertyType": { "type": "string" }
       }
     },
     "ClassifierElement": {
@@ -152,7 +209,6 @@
           "type": "object",
           "properties": {
             "isAbstract": { "type": "string" },
-            "isDerived": { "type": "string" },
             "properties": { "type": "string" }
           }
         },
@@ -171,10 +227,10 @@
       "type": "object",
       "properties": {
         "type": { "const": "Class" },
-        "isPowertype": { "type": "string" },
-        "order": { "type": "string" },
         "literals": { "type": "string" },
-        "restrictedTo": { "type": "string" }
+        "restrictedTo": { "type": "string" },
+        "isPowertype": { "type": "string" },
+        "order": { "type": "string" }
       }
     },
     "Relation": {
@@ -191,22 +247,13 @@
       "type": "object",
       "properties": {
         "type": { "const": "Diagram" },
-        "contents": { "type": "string" },
-        "owner": { "type": "string" }
+        "owner": { "type": "string" },
+        "views": { "type": "string" }
       }
     },
-    "DiagramElement": {
-      "$id": "#DiagramElement",
-      "title": "Diagram Element",
-      "description": "Something...",
-      "oneOf": [
-        { "$ref": "#/definitions/ElementView" },
-        { "$ref": "#/definitions/Shape" }
-      ]
-    },
-    "ElementView": {
-      "$id": "#ElementView",
-      "title": "Element View",
+    "View": {
+      "$id": "#View",
+      "title": "View",
       "description": "Something...",
       "allOf": [
         {
@@ -218,28 +265,14 @@
         },
         {
           "oneOf": [
+            { "$ref": "#/definitions/ClassView" },
             { "$ref": "#/definitions/GeneralizationSetView" },
-            { "$ref": "#/definitions/NodeView" },
-            { "$ref": "#/definitions/ConnectorView" }
+            { "$ref": "#/definitions/NaryRelationView" },
+            { "$ref": "#/definitions/NoteView" },
+            { "$ref": "#/definitions/PackageView" },
+            { "$ref": "#/definitions/BinaryConnectorView" }
           ]
         }
-      ]
-    },
-    "GeneralizationSetView": {
-      "$id": "#GeneralizationSetView",
-      "title": "Generalization Set View",
-      "description": "Something...",
-      "type": "object",
-      "properties": { "type": { "const": "GeneralizationSetView" } }
-    },
-    "NodeView": {
-      "$id": "#NodeView",
-      "title": "Node View",
-      "description": "Something...",
-      "oneOf": [
-        { "$ref": "#/definitions/ClassView" },
-        { "$ref": "#/definitions/NoteView" },
-        { "$ref": "#/definitions/PackageView" }
       ]
     },
     "ClassView": {
@@ -247,37 +280,71 @@
       "title": "Class View",
       "description": "Something...",
       "type": "object",
-      "properties": { "type": { "const": "ClassView" } }
+      "properties": {
+        "type": { "const": "ClassView" },
+        "rectangle": { "type": "string" }
+      }
+    },
+    "GeneralizationSetView": {
+      "$id": "#GeneralizationSetView",
+      "title": "Generalization Set View",
+      "description": "Something...",
+      "type": "object",
+      "properties": {
+        "type": { "const": "GeneralizationSetView" },
+        "generalizations": { "type": "string" },
+        "text": { "type": "string" }
+      }
+    },
+    "NaryRelationView": {
+      "$id": "#NaryRelationView",
+      "title": "N-ary Relation View",
+      "description": "Something...",
+      "type": "object",
+      "properties": {
+        "type": { "const": "NaryRelationView" },
+        "members": { "type": "string" },
+        "diamond": { "type": "string" },
+        "paths": { "type": "string" }
+      }
     },
     "NoteView": {
       "$id": "#NoteView",
       "title": "Note View",
       "description": "Something...",
       "type": "object",
-      "properties": { "type": { "const": "NoteView" } }
+      "properties": {
+        "type": { "const": "NoteView" },
+        "text": { "type": "string" }
+      }
     },
     "PackageView": {
       "$id": "#PackageView",
       "title": "Package View",
       "description": "Something...",
       "type": "object",
-      "properties": { "type": { "const": "PackageView" } }
+      "properties": {
+        "type": { "const": "PackageView" },
+        "rectangle": { "type": "string" }
+      }
     },
-    "ConnectorView": {
-      "$id": "#ConnectorView",
-      "title": "Connector View",
+    "BinaryConnectorView": {
+      "$id": "#BinaryConnectorView",
+      "title": "Binary Connector View",
       "description": "Something...",
       "allOf": [
         {
           "type": "object",
           "properties": {
             "sourceView": { "type": "string" },
-            "targetView": { "type": "string" }
+            "targetView": { "type": "string" },
+            "path": { "type": "string" }
           }
         },
         {
           "oneOf": [
             { "$ref": "#/definitions/GeneralizationView" },
+            { "$ref": "#/definitions/LinkView" },
             { "$ref": "#/definitions/RelationView" }
           ]
         }
@@ -289,6 +356,13 @@
       "description": "Something...",
       "type": "object",
       "properties": { "type": { "const": "GeneralizationView" } }
+    },
+    "LinkView": {
+      "$id": "#LinkView",
+      "title": "Link View",
+      "description": "Something...",
+      "type": "object",
+      "properties": { "type": { "const": "LinkView" } }
     },
     "RelationView": {
       "$id": "#RelationView",
@@ -324,18 +398,26 @@
         {
           "type": "object",
           "properties": {
+            "topLeft": { "type": "string" },
             "width": { "type": "string" },
-            "height": { "type": "string" },
-            "topLeft": { "type": "string" }
+            "height": { "type": "string" }
           }
         },
         {
           "oneOf": [
+            { "$ref": "#/definitions/Diamond" },
             { "$ref": "#/definitions/Rectangle" },
             { "$ref": "#/definitions/Text" }
           ]
         }
       ]
+    },
+    "Diamond": {
+      "$id": "#Diamond",
+      "title": "Diamond",
+      "description": "Something...",
+      "type": "object",
+      "properties": { "type": { "const": "Diamond" } }
     },
     "Rectangle": {
       "$id": "#Rectangle",
