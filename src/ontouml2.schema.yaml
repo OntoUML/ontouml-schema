@@ -13,11 +13,23 @@ definitions:
       - type: object
         properties:
           id:
-            type: string
+            title: id
+            description: Determines the unique identifier for an OntoUML element in an ontology using a non-empty string.
+            $ref: '#/definitions/id'
           created:
-            type: string
+            title: created
+            description: |-
+              Determines when the element was created using a string in one of the following formats: year, year-month, date, or date-time.
+            $ref: '#/definitions/pointInTime'
           modified:
-            type: string
+            title: modified
+            description: |-
+              Determines when the element was modified using a string in one of the following formats: year, year-month, date, or date-time.
+            $ref: '#/definitions/pointInTime'
+        required:
+          - id
+          - created
+          - modified
       - oneOf:
           - $ref: '#/definitions/NamedElement'
           - $ref: '#/definitions/Shape'
@@ -30,17 +42,60 @@ definitions:
       - type: object
         properties:
           name:
-            type: string
+            title: name
+            description: Determines the name of the named element using language string.
+            oneOf:
+              - type: 'null'
+              - $ref: '#/definitions/languageString'
           alternativeNames:
-            type: string
+            title: alternative names
+            description: Determines alternative names of the named element using an array of language strings. Alternative names are not translations of the named element, but indeed alternatives or synonyms to the main one.
+            oneOf:
+              - type: 'null'
+              - type: array
+                minItems: 1
+                items:
+                  $ref: '#/definitions/languageString'
           description:
-            type: string
+            title: description
+            description: Determines a free-text account of the named element using language string.
+            oneOf:
+              - type: 'null'
+              - $ref: '#/definitions/languageString'
           editorialNotes:
-            type: string
+            title: editorial notes
+            description: Determines general notes about the named element using an array of language strings. Editorial notes are typically notes on the development process and must not be confused with descriptions.
+            oneOf:
+              - type: 'null'
+              - type: array
+                minItems: 1
+                items:
+                  $ref: '#/definitions/languageString'
           creators:
-            type: string
+            title: creators
+            description: Identifies the agents who contributed to the creation of the named element.
+            oneOf:
+              - type: 'null'
+              - type: array
+                minItems: 1
+                items:
+                  $ref: '#/definitions/resource'
           contributors:
-            type: string
+            title: contributors
+            description: Identifies the agents who contributed to the development of the named element.
+            oneOf:
+              - type: 'null'
+              - type: array
+                minItems: 1
+                items:
+                  $ref: '#/definitions/resource'
+        required:
+          - name
+          - alternativeNames
+          - description
+          - editorialNotes
+          - creators
+          - contributors
       - oneOf:
           - $ref: '#/definitions/Project'
           - $ref: '#/definitions/ModelElement'
@@ -51,41 +106,212 @@ definitions:
     type: object
     properties:
       type:
+        title: type
+        description: Determines an object of type 'Project.'
         const: Project
       elements:
-        type: string
+        title: elements
+        description: Contains the OntoUML elements that are part of the project.
+        oneOf:
+          - type: 'null'
+          - type: array
+            minItems: 1
+            items:
+              oneOf:
+                - $ref: '#/definitions/Diagram'
+                - $ref: '#/definitions/View'
+                - $ref: '#/definitions/PackageableElement'
       root:
-        type: string
+        title: root
+        description: Identifies the root package of a project (the package containing all other model elements of the project) if present.
+        oneOf:
+          - type: 'null'
+          - $ref: '#/definitions/id'
       publisher:
-        type: string
+        title: publisher
+        description: Identifies the agent responsible for making the project available. The publisher does not need to have created or contributed to the resource.
+        oneOf:
+          - type: 'null'
+          - $ref: '#/definitions/resource'
       designedForTasks:
-        type: string
+        title: designed for tasks
+        description: |-
+          Identifies goals that motivated the development of the project. The OntoUML/UFO Catalog Metadata Vocabulary (OCMV) provides a set of goals that be reused as recurrent modeling goals:
+
+          - ocmv:ConceptualClarification: The project was created as the result of an ontological analysis of a concept, language, or domain of interest that sought to conceptually clarify and untangle complex notions and relations.
+
+          - ocmv:DataPublication: The project was created to support the publication of some datasets. For instance, a conceptual model used to generate an OWL vocabulary to publish tabular data as linked open data on the web.
+
+          - ocmv:DecisionSupportSystem: The project was created during the development of a decision support system.
+
+          - ocmv:Example: The project was created to demonstrate how OntoUML can be used to solve a certain modeling challenge, to support an experiment involving OntoUML, or to exemplify how a generic model can be reused in more concrete scenarios.
+
+          - ocmv:InformationRetrieval: The project was created to support the design of an information retrieval system.
+
+          - ocmv:Interoperability: The project was created to support data integration, vocabulary alignment, or the interoperability of software systems.
+
+          - ocmv:LanguageEngineering: The project was created for the design of a domain-specific modeling language.
+
+          - ocmv:Learning: The project was created so that its authors could learn UFO and OntoUML. This usually applies to models developed by students as part of their course assignments.
+
+          - ocmv:SoftwareEngineering: The project was created during the development of an information system. For instance, a conceptual model used to generate a relational database.
+        oneOf:
+          - type: 'null'
+          - type: array
+            minItems: 1
+            items:
+              $ref: '#/definitions/resource'
       license:
-        type: string
+        title: license
+        description: Identifies a legal document under which the project is made available, e.g., "CC BY 4.0" <https://creativecommons.org/licenses/by/4.0/>.
+        oneOf:
+          - type: 'null'
+          - $ref: '#/definitions/resource'
       accessRights:
-        type: string
+        title: access rights
+        description: Identifies a document or a text concerning who and how the project can be accessed. E.g., the document <http://publications.europa.eu/resource/authority/access-right/PUBLIC> informs that something is "publicly accessible by everyone."
+        oneOf:
+          - type: 'null'
+          - type: array
+            minItems: 1
+            items:
+              $ref: '#/definitions/resource'
       themes:
-        type: string
+        title: themes
+        description: Identifies the central themes of the project according to a theme taxonomy. In the OntoUML/UFO Catalog Metadata Vocabulary (OCMV), for example, the theme of a project must be a concept from the Library of Congress Classification (LCC), such as, "Class S - Agriculture" or "Class T - Technology.""
+        oneOf:
+          - type: 'null'
+          - type: array
+            minItems: 1
+            items:
+              $ref: '#/definitions/resource'
       contexts:
-        type: string
+        title: contexts
+        description: |-
+          Identifies the contexts in which the project was developed. The OntoUML/UFO Catalog Metadata Vocabulary (OCMV) provides a set of recurrent modelling contexts:
+
+          - ocmv:Research: The artefact was developed as part of a research project. This usually implies that the artefact was featured in a scientific publication.
+
+          - ocmv:Industry: The artefact was developed for a public or private organization.
+
+          - ocmv:Classroom: The artefact was developed within the context of a course on conceptual modeling, most likely as a course assignment.
+        oneOf:
+          - type: 'null'
+          - type: array
+            minItems: 1
+            items:
+              $ref: '#/definitions/resource'
       ontologyTypes:
-        type: string
+        title: ontology types
+        description: |-
+          Identifies the classifications of the project according to its scope. The OntoUML/UFO Catalog Metadata Vocabulary (OCMV) provides a set of recurrent modelling scopes based on the work of Roussey et al. (2011):
+
+          - ocmv:Core: An ontology that grasps the central concepts and relations of a given domain, possibly integrating several domain ontologies and being applicable in multiple scenarios. E.g., UFO-S, a commitment-based ontology of services, can be considered a core ontology because it applies to services in multiple domains, such as medical, financial, and legal services.
+
+          - ocmv:Domain: An ontology that describes how a community conceptualizes a phenomenon of interest. In general, a domain ontology formally characterizes a much narrower domain than a core ontology does. E.g., OntoBio is a domain ontology of biodiversity.
+
+          - ocmv:Application: An ontology that specializes a domain ontology where there could be no consensus or knowledge sharing. It represents the particular model of a domain according to a single viewpoint of a user or a developer.
+        oneOf:
+          - type: 'null'
+          - type: array
+            minItems: 1
+            items:
+              $ref: '#/definitions/resource'
       representationStyle:
-        type: string
+        title: representation style
+        description: |-
+          Identifies the representation style adopted in the project between "OntoUML Style" and "UFO Style":
+
+          - ocmv:OntoumlStyle: Characterizes a project that contains at least one class, relation, or property using a valid OntoUML stereotype.
+
+          - ocmv:UfoStyle: Characterizes a project that contains at least one class or relation from UFO without an OntoUML stereotype.
+        oneOf:
+          - type: 'null'
+          - $ref: '#/definitions/resource'
       namespace:
-        type: string
+        title: namespace
+        description: Determines the namespace for all OntoUML elements in the project using a string in URI format. When present, the namespace appended with the id of any element in the project, should form a globally unique resolvable URI for identification in the web as a FAIR Digital Object.
+        oneOf:
+          - type: 'null'
+          - type: string
+            format: uri
       landingPages:
-        type: string
+        title: landing pages
+        description: Identifies the web pages where one can access the project. E.g., <https://www.model-a-platform.com> is the landing page of the Digital Platform Ontology.
+        oneOf:
+          - type: 'null'
+          - type: array
+            minItems: 1
+            items:
+              type: string
+              format: uri
       sources:
-        type: string
+        title: source
+        description: Identifies resources that contain, present, or significantly influenced the development of the project. We recommend the use of persistent and resolvable identifiers to refer to these resources, such as the Digital Object Identifier (DOI) or DBLP''s URI, such as, <https://doi.org/10.3233/AO-150150>, or <https://dblp.org/rec/journals/ao/Morales-Ramirez15>.
+        oneOf:
+          - type: 'null'
+          - type: array
+            minItems: 1
+            items:
+              type: string
+              format: uri
       bibliographicCitations:
-        type: string
+        title: bibliographic citation
+        description: Determines bibliographic references for the project using language strings. E.g., "Weigand, H., Johannesson, P., & Andersson, B. (2021). An artifact ontology for design science research. Data & Knowledge Engineering, 133".
+        oneOf:
+          - type: 'null'
+          - type: array
+            minItems: 1
+            items:
+              $ref: '#/definitions/languageString'
       keywords:
-        type: string
+        title: keywords
+        description: Determines the domains (partially) described by the project using language strings. E.g., the User Feedback Ontology is described with the keywords "online user feedback", "software engineering", and "requirements engineering".
+        oneOf:
+          - type: 'null'
+          - type: array
+            minItems: 1
+            items:
+              $ref: '#/definitions/languageString'
       acronyms:
-        type: string
+        title: acronyms
+        description: Determines the acronyms one can use to refer to the project using strings. Accepts only xsd:string literals. E.g., "RDBS-O", "COVER", "ROT".
+        oneOf:
+          - type: 'null'
+          - type: array
+            minItems: 1
+            items:
+              type: string
+              minLength: 1
       languages:
-        type: string
+        title: languages
+        description: Determines the languages in which the lexical labels of the project are written using strings. This field should use values listed in the IANA Language Sub Tag Registry, such as, "en" and "pt".
+        oneOf:
+          - type: 'null'
+          - type: array
+            minItems: 1
+            items:
+              type: string
+              minLength: 1
+    required:
+      - type
+      - elements
+      - root
+      - publisher
+      - designedForTasks
+      - license
+      - accessRights
+      - themes
+      - contexts
+      - ontologyTypes
+      - representationStyle
+      - namespace
+      - landingPages
+      - sources
+      - bibliographicCitations
+      - keywords
+      - acronyms
+      - languages
   ModelElement:
     $id: '#ModelElement'
     title: Model Element
@@ -94,7 +320,13 @@ definitions:
       - type: object
         properties:
           customProperties:
-            type: string
+            title: custom properties
+            description: Determines custom properties of the model element using key-value pairs. In UML, for instance, this custom properties are represented through tagged values.
+            oneOf:
+              - type: 'null'
+              - type: object
+        required:
+          - customProperties
       - oneOf:
           - $ref: '#/definitions/Generalization'
           - $ref: '#/definitions/GeneralizationSet'
@@ -115,11 +347,21 @@ definitions:
     type: object
     properties:
       type:
+        title: type
+        description: Determines the type of a generalization object.
         const: Generalization
       general:
-        type: string
+        title: general
+        description: Identifies the general classifier in a generalization element. E.g., in the generalization of "Student" into "Person", "Person" is the general classifier.
+        $ref: '#/definitions/id'
       specific:
-        type: string
+        title: specific
+        description: Identifies the general classifier in a generalization element. E.g., in the generalization of "Student" into "Person", "Student" is the specific classifier.
+        $ref: '#/definitions/id'
+    required:
+      - type
+      - general
+      - specific
   GeneralizationSet:
     $id: '#GeneralizationSet'
     title: Generalization Set
@@ -132,19 +374,53 @@ definitions:
     type: object
     properties:
       type:
+        title: type
+        description: Determines the type of a generalization set object.
         const: GeneralizationSet
       isDisjoint:
-        type: string
-      isComplete:
-        type: string
-      generalizations:
-        type: string
-      categorizer:
+        title: is disjoint
         description: |-
-          TODO: update
+          Determines whether the specific classifiers in the generalization set have disjoint extensions.
 
-          A generalization set involving classes can also have a categorizer, which is a class with an order greater than one which all specific classes in the set instantiate. For example, "Academic Role" as the categorizer of the generalization set of "Person" into "Student" and "Teacher" representing the specific classes as instances of the categorizer.
-        type: string
+          Examples include the generalization set involving "Child" and "Adult" generalized into "Person", where the "is disjoint" as "true" indicates that no person is simultaneously instance of "Child" and "Adult."
+        oneOf:
+          - type: 'null'
+          - type: boolean
+      isComplete:
+        title: is complete
+        description: |-
+          Determines whether the specific classifiers in the generalization set completely cover the extension of the general classifier.
+
+          Examples include the generalization set involving "Child" and "Adult" generalized into "Person", where the "is complete" as "true" indicates that every person is either an instance of "Child" or "Adult."
+        oneOf:
+          - type: 'null'
+          - type: boolean
+      generalizations:
+        title: generalizations
+        description: Identifies all generalizations that are involved by the generalization set.
+        oneOf:
+          - type: 'null'
+          - type: array
+            minItems: 1
+            items:
+              $ref: '#/definitions/id'
+      categorizer:
+        title: categorizer
+        description: |-
+          Identifies the high-order class that classifies (i.e., is instantiated by) every specific class in the generalization set.
+
+          For example, "Academic Role" as the categorizer of the generalization set of "Person" into "Student" and "Teacher" representing the specific classes as instances of the categorizer.
+
+          A categorizer can only be present in generalization sets involving exclusively classes.
+        oneOf:
+          - type: 'null'
+          - $ref: '#/definitions/id'
+    required:
+      - type
+      - isDisjoint
+      - isComplete
+      - generalizations
+      - categorizer
   Link:
     $id: '#Link'
     title: Link
@@ -152,11 +428,21 @@ definitions:
     type: object
     properties:
       type:
+        title: type
+        description: Determines the type of a link object.
         const: Link
       note:
-        type: string
+        title: note
+        description: Identifies the note the link connects.
+        $ref: '#/definitions/id'
       element:
-        type: string
+        title: element
+        description: Identifies the model element the link connects.
+        $ref: '#/definitions/id'
+    required:
+      - type
+      - note
+      - element
   Literal:
     $id: '#Literal'
     title: Literal
@@ -164,7 +450,11 @@ definitions:
     type: object
     properties:
       type:
+        title: type
+        description: Determines the type of a literal object.
         const: Literal
+    required:
+      - type
   Note:
     $id: '#Note'
     title: Note
@@ -172,9 +462,16 @@ definitions:
     type: object
     properties:
       type:
+        title: type
+        description: Determines the type of a note object.
         const: Note
       text:
-        type: string
+        title: text
+        description: Determines the contents of a note using a language string.
+        $ref: '#/definitions/languageString'
+    required:
+      - type
+      - text
   Package:
     $id: '#Package'
     title: Package
@@ -185,23 +482,51 @@ definitions:
     type: object
     properties:
       type:
+        title: type
+        description: Determines the type of a package object.
         const: Package
       contents:
-        type: string
+        title: contents
+        description: Identifies the contents of a package element.
+        oneOf:
+          - type: 'null'
+          - type: array
+            minItems: 1
+            items:
+              $ref: '#/definitions/id'
+    required:
+      - type
+      - contents
   DecoratableElement:
     $id: '#DecoratableElement'
     title: Decoratable Element
     description: |-
-      A model element that can be decorated with a stereotype to identify its ontological properties according to UFO.
+      A model element that can be decorated with a stereotype to identify its ontological properties according to the Unified Foundational Ontology (UFO).
 
       Examples include a class decorated with the stereotype "kind" identifying it as a type of objects that provides an identity principle to its instances.
     allOf:
       - type: object
         properties:
           stereotype:
-            type: string
+            title: stereotype
+            description: Determines the type of a model element according to Unified Foundational Ontology (UFO).
+            oneOf:
+              - type: 'null'
+              - type: string
+                minLength: 1
           isDerived:
-            type: string
+            title: is derived
+            description: |-
+              Determines whether the model element is derived from a different one, i.e., whether a different element serves as its truthmaker.
+
+              Examples include the comparative relation "is heavier than" between two physical objects which is derived from their "Weight" quality.
+            # TODO: consider using Pedro's original description here: "Indicates if an ontouml:DecoratableElement can be defined through a derivation rule."
+            oneOf:
+              - type: 'null'
+              - type: boolean
+        required:
+          - stereotype
+          - isDerived
       - oneOf:
           - $ref: '#/definitions/Property'
           - $ref: '#/definitions/Classifier'
@@ -217,21 +542,92 @@ definitions:
     type: object
     properties:
       type:
+        title: type
+        description: Determines the type of a property object.
         const: Property
       subsettedProperties:
-        type: string
+        title: subsetted properties
+        description: |-
+          Identifies the properties (relation ends) that provides subsetting constraints to the property.
+
+          Examples include, in the relations (i) "works for" from "Employee" to "Organization", and (ii) "teaches for" from "Teacher" to "University", both relation ends of (ii) are subsets of their respect ends in (i).
+
+          Subsetting can only occur on the relation ends when both sides of the involved relations are connected to the same classifiers or classifiers that are in the same generalization chain.
+
+          Subsetting can also be represented through a generalization between relations.
+        oneOf:
+          - type: 'null'
+          - type: array
+            minItems: 1
+            items:
+              $ref: '#/definitions/id'
       redefinedProperties:
-        type: string
+        title: redefined properties
+        description: |-
+          Identifies the properties (relation ends) that provide redefinition constraints to the property.
+
+          Examples include, in the relations (i) "works in" from "Project Member" to "Project", and (ii) "leads" from "Project Leader" to "Project", where the member end is redefined for the leader who can only be connected to the project through that specific relation.
+
+          Redefinition can only occur on the relation ends when both sides of the involved relations are connected to the same classifiers or classifiers that are in the same generalization chain.
+        oneOf:
+          - type: 'null'
+          - type: array
+            minItems: 1
+            items:
+              $ref: '#/definitions/id'
       aggregationKind:
-        type: string
+        title: aggregation kind
+        description: |-
+          Determines whether the property (a relation end) is a whole in a parthood (mereological) relation using an enumerated string.
+
+          Examples include "Project Member" as a "shared" part of a "Project Team" and an "Engine" as a "composite" part of a "Vehicle."
+
+          The possible values for aggregation kind are "composite" (when parts are exclusive to one whole), "shared" (when parts can be shared), and "none" for non-parthood relations. The "null" is also interpreted as "none."
+        oneOf:
+          - type: 'null'
+          - enum:
+              - composite
+              - shared
+              - none
       cardinality:
-        type: string
+        title: cardinality
+        description: |-
+          Determines the cardinality of a property using a string.
+
+          Examples include "Person" with cardinality "1" (exactly one) in the property (attribute) "name", and cardinality "0..*" (zero or more) in the property (related end) "friends" of the relation "friends with".
+
+          The cardinality should follow the regular express "^\d+(\.\.(\d+|\*))?$", where the number before ".." represents the lower bound, the number or "*" after represent the upper bound. In case the ".." is not present, a number represents an exact number of instances, and "*" represents "zero or more" instances.
+
+          This regular expression is not enforced to accommodate theoretical ranges as expression, such as, "a..b".
+        oneOf:
+          - type: 'null'
+          - type: string
+            minLength: 1
       isOrdered:
-        type: string
+        title: is ordered
+        description: Determines whether the order of assignments of a property carries meaning using a boolean. This boolean only regards properties whose maximum cardinality greater than one.
+        oneOf:
+          - type: 'null'
+          - type: boolean
       isReadOnly:
-        type: string
+        title: is read-only
+        description: Determines whether the assignments of a property are immutable using a boolean.
+        oneOf:
+          - type: 'null'
+          - type: boolean
       propertyType:
+        title: property type
+        description: Identifies the classifier instantiated by the values assigned to the property.
         type: string
+    required:
+      - type
+      - subsettedProperties
+      - redefinedProperties
+      - aggregationKind
+      - cardinality
+      - isOrdered
+      - isReadOnly
+      - propertyType
   Classifier:
     $id: '#Classifier'
     title: Classifier
@@ -240,9 +636,24 @@ definitions:
       - type: object
         properties:
           isAbstract:
-            type: string
+            title: is abstract
+            description: Determines whether the classifier can have direct instances using a boolean. Abstract classifiers can only have instances when these are instances of some other classifier that is not abstract (i.e., concrete) and is a specialization of the abstract one.
+            oneOf:
+              - type: 'null'
+              - type: boolean
           properties:
-            type: string
+            title: properties
+            description: |-
+              Identifies the properties contained in a classifier. These properties are referred to as attributes, when contained by classes, and relation ends, when contained by relations. In the case of relations, the properties array must be ordered.
+            oneOf:
+              - type: 'null'
+              - type: array
+                minItems: 1
+                items:
+                  $ref: '#/definitions/id'
+        required:
+          - isAbstract
+          - properties
       - oneOf:
           - $ref: '#/definitions/Class'
           - $ref: '#/definitions/Relation'
@@ -258,15 +669,60 @@ definitions:
     type: object
     properties:
       type:
+        title: type
+        description: Determines the type of a class object.
         const: Class
       literals:
-        type: string
+        title: literals
+        description: Identifies the literals of an enumeration class.
+        oneOf:
+          - type: 'null'
+          - type: array
+            minItems: 1
+            items:
+              $ref: '#/definitions/id'
       restrictedTo:
-        type: string
+        title: restrictedTo
+        description: |-
+          Determines the possible ontological natures of the instances of a class using an array of enumerated strings.
+
+          Examples include the class "Vehicle" restricted to having "functional-complex" instances, and the class "Insured Item" restricted to "functional-complex" and "relator" (e.g., employment insurance).
+        oneOf:
+          - type: 'null'
+          - type: array
+            minItems: 1
+            items:
+              enum:
+                - abstract
+                - collective
+                - event
+                - extrinsic-mode
+                - functional-complex
+                - intrinsic-mode
+                - quality
+                - quantity
+                - relator
+                - situation
+                - type
       isPowertype:
-        type: string
+        title: isPowertype
+        description: Determines whether the high-order class is a "Cardelli powertype" using a boolean. In other words, determines whether the high-order class is defined as the one whose instances are its base type plus all possible specializations of it.
+        oneOf:
+          - type: 'null'
+          - type: boolean
       order:
-        type: string
+        title: order
+        description: Determines the instantiation order of a class using a string. Examples include ordered classes such as first-order classes (order "1"), second-order classes (order "2"), and third-order classes (order "3"), and orderless classes (order "*").
+        oneOf:
+          - type: 'null'
+          - type: string
+            pattern: ^(\d+|\*)$
+    required:
+      - type
+      - literals
+      - restrictedTo
+      - isPowertype
+      - order
   Relation:
     $id: '#Relation'
     title: Relation
@@ -274,7 +730,6 @@ definitions:
       A classifier that defines the properties of a set of relations of the subject domain.
 
       Examples include "studies in", "buys product from" (ternary relation), and derivation relations (e.g., between material relations and relators).
-    type: object
     oneOf:
       - $ref: '#/definitions/BinaryRelation'
       - $ref: '#/definitions/NaryRelation'
@@ -290,7 +745,11 @@ definitions:
     type: object
     properties:
       type:
+        title: type
+        description: Determines the type of a binary relation object.
         const: BinaryRelation
+    required:
+      - type
   NaryRelation:
     $id: '#NaryRelation'
     title: N-ary Relation
@@ -301,7 +760,11 @@ definitions:
     type: object
     properties:
       type:
+        title: type
+        description: Determines the type of a n-ary relation object.
         const: NaryRelation
+    required:
+      - type
   Diagram:
     $id: '#Diagram'
     title: Diagram
@@ -309,11 +772,28 @@ definitions:
     type: object
     properties:
       type:
+        title: type
+        description: Determines the type of a diagram object.
         const: Diagram
       owner:
-        type: string
+        title: owner
+        description: Identifies the model element that is the owner of a diagram.
+        oneOf:
+          - type: 'null'
+          - $ref: '#/definitions/id'
       views:
-        type: string
+        title: views
+        description: Identifies the views contained in the diagram.
+        oneOf:
+          - type: 'null'
+          - type: array
+            minItems: 1
+            items:
+              $ref: '#/definitions/id'
+    required:
+      - type
+      - owner
+      - views
   View:
     $id: '#View'
     title: View
@@ -326,10 +806,12 @@ definitions:
     allOf:
       - type: object
         properties:
-          shape:
-            type: string
           isViewOf:
-            type: string
+            title: is view of
+            description: Identifies the model element that the view represents in the diagram.
+            $ref: '#/definitions/id'
+        required:
+          - isViewOf
       - oneOf:
           - $ref: '#/definitions/ClassView'
           - $ref: '#/definitions/GeneralizationSetView'
@@ -344,9 +826,16 @@ definitions:
     type: object
     properties:
       type:
+        title: type
+        description: Determines the type of a class view object.
         const: ClassView
       rectangle:
-        type: string
+        title: rectangle
+        description: Identifies the rectangle shape that renders the class view in the diagram.
+        $ref: '#/definitions/id'
+    required:
+      - type
+      - rectangle
   GeneralizationSetView:
     $id: '#GeneralizationSetView'
     title: Generalization Set View
@@ -354,11 +843,26 @@ definitions:
     type: object
     properties:
       type:
+        title: type
+        description: Determines the type of a generalization set view object.
         const: GeneralizationSetView
       generalizations:
-        type: string
+        title: generalizations
+        description: Identifies the generalization views that are group by the generalization set view in the diagram.
+        oneOf:
+          - type: 'null'
+          - type: array
+            minItems: 1
+            items:
+              $ref: '#/definitions/id'
       text:
-        type: string
+        title: text
+        description: Identifies the text shape that renders the generalization set view in the diagram.
+        $ref: '#/definitions/id'
+    required:
+      - type
+      - generalizations
+      - text
   NaryRelationView:
     $id: '#NaryRelationView'
     title: N-ary Relation View
@@ -366,13 +870,34 @@ definitions:
     type: object
     properties:
       type:
+        title: type
+        description: Determines the type of a n-ary relation view object.
         const: NaryRelationView
       members:
-        type: string
+        title: members
+        description: Identifies the class views (i.e., the members) that are connected by the n-ary relation view in the diagram. This array of member views must ordered according to the properties of the relation the view represents.
+        oneOf:
+          - type: 'null'
+          - type: array
+            minItems: 1
+            items:
+              $ref: '#/definitions/id'
       diamond:
-        type: string
+        title: diamond
+        description: Identifies the diamond shape that renders the joining of all paths of the n-ary relation in the diagram.
+        $ref: '#/definitions/id'
       paths:
-        type: string
+        title: paths
+        description: Identifies the path shapes that renders each path of the n-ary relation view in the diagram. This array of paths must ordered according to the properties of the relation the view represents.
+        type: array
+        minItems: 1
+        items:
+          $ref: '#/definitions/id'
+    required:
+      - type
+      - members
+      - diamond
+      - paths
   NoteView:
     $id: '#NoteView'
     title: Note View
@@ -492,6 +1017,52 @@ definitions:
     properties:
       type:
         const: Text
+  PackageableElement:
+    $id: '#PackageableElement'
+    title: Packageable Element
+    description: A model element that can be grouped into a package.
+    oneOf:
+      - $ref: '#/definitions/Classifier'
+      - $ref: '#/definitions/Generalization'
+      - $ref: '#/definitions/GeneralizationSet'
+      - $ref: '#/definitions/Link'
+      - $ref: '#/definitions/Note'
+  id:
+    $id: '#id'
+    title: id
+    description: Determines the unique identifier for an OntoUML element in an ontology using a non-empty string.
+    type: string
+    minLength: 1
+  languageString:
+    $id: '#languageString'
+    oneOf:
+      - type: string
+        minLength: 1
+      - type: object
+        additionalProperties:
+          type: string
+          minLength: 1
+  resource:
+    $id: '#resource'
+    type: object
+    properties:
+      URI:
+        oneOf:
+          - type: 'null'
+          - type: string
+      name:
+        oneOf:
+          - type: 'null'
+          - $ref: '#/definitions/languageString'
+    minProperties: 1
+  pointInTime:
+    $id: '#pointInTime'
+    type: string
+    anyOf:
+      - format: date-time
+      - format: date
+      - pattern: ^[0-9]{4}-(1[0-2]|0[1-9]|\d)$
+      - pattern: ^([0-9]{4})$
   # Project:
   #   $id: '#Project'
   #   title: Project
