@@ -50,12 +50,9 @@ definitions:
           alternativeNames:
             title: alternative names
             description: Determines alternative names of the named element using an array of language strings. Alternative names are not translations of the named element, but indeed alternatives or synonyms to the main one.
-            oneOf:
-              - type: 'null'
-              - type: array
-                minItems: 1
-                items:
-                  $ref: '#/definitions/languageString'
+            type: array
+            items:
+              $ref: '#/definitions/languageString'
           description:
             title: description
             description: Determines a free-text account of the named element using language string.
@@ -65,30 +62,21 @@ definitions:
           editorialNotes:
             title: editorial notes
             description: Determines general notes about the named element using an array of language strings. Editorial notes are typically notes on the development process and must not be confused with descriptions.
-            oneOf:
-              - type: 'null'
-              - type: array
-                minItems: 1
-                items:
-                  $ref: '#/definitions/languageString'
+            type: array
+            items:
+              $ref: '#/definitions/languageString'
           creators:
             title: creators
             description: Identifies the agents who contributed to the creation of the named element.
-            oneOf:
-              - type: 'null'
-              - type: array
-                minItems: 1
-                items:
-                  $ref: '#/definitions/resource'
+            type: array
+            items:
+              $ref: '#/definitions/resource'
           contributors:
             title: contributors
             description: Identifies the agents who contributed to the development of the named element.
-            oneOf:
-              - type: 'null'
-              - type: array
-                minItems: 1
-                items:
-                  $ref: '#/definitions/resource'
+            type: array
+            items:
+              $ref: '#/definitions/resource'
         required:
           - name
           - alternativeNames
@@ -112,15 +100,12 @@ definitions:
       elements:
         title: elements
         description: Contains the OntoUML elements that are part of the project.
-        oneOf:
-          - type: 'null'
-          - type: array
-            minItems: 1
-            items:
-              oneOf:
-                - $ref: '#/definitions/Diagram'
-                - $ref: '#/definitions/View'
-                - $ref: '#/definitions/PackageableElement'
+        type: array
+        items:
+          oneOf:
+            - $ref: '#/definitions/Diagram'
+            - $ref: '#/definitions/View'
+            - $ref: '#/definitions/PackageableElement'
       root:
         title: root
         description: Identifies the root package of a project (the package containing all other model elements of the project) if present.
@@ -155,12 +140,9 @@ definitions:
           - ocmv:Learning: The project was created so that its authors could learn UFO and OntoUML. This usually applies to models developed by students as part of their course assignments.
 
           - ocmv:SoftwareEngineering: The project was created during the development of an information system. For instance, in the case of a conceptual model used to generate a relational database.
-        oneOf:
-          - type: 'null'
-          - type: array
-            minItems: 1
-            items:
-              $ref: '#/definitions/resource'
+        type: array
+        items:
+          $ref: '#/definitions/resource'
       license:
         title: license
         description: Identifies a legal document under which the project is made available, e.g., "CC BY 4.0" <https://creativecommons.org/licenses/by/4.0/>.
@@ -170,21 +152,15 @@ definitions:
       accessRights:
         title: access rights
         description: Identifies a document or a text concerning who and how the project can be accessed. E.g., the document <http://publications.europa.eu/resource/authority/access-right/PUBLIC> informs that something is "publicly accessible by everyone."
-        oneOf:
-          - type: 'null'
-          - type: array
-            minItems: 1
-            items:
-              $ref: '#/definitions/resource'
+        type: array
+        items:
+          $ref: '#/definitions/resource'
       themes:
         title: themes
         description: Identifies the central themes of the project according to a theme taxonomy. In the OntoUML/UFO Catalog Metadata Vocabulary (OCMV), for example, the theme of a project must be a concept from the Library of Congress Classification (LCC), such as, "Class S - Agriculture" or "Class T - Technology.""
-        oneOf:
-          - type: 'null'
-          - type: array
-            minItems: 1
-            items:
-              $ref: '#/definitions/resource'
+        type: array
+        items:
+          $ref: '#/definitions/resource'
       contexts:
         title: contexts
         description: |-
@@ -195,12 +171,9 @@ definitions:
           - ocmv:Industry: The project was developed for a public or private organization.
 
           - ocmv:Classroom: The project was developed within the context of a course on conceptual modeling, most likely as a course assignment.
-        oneOf:
-          - type: 'null'
-          - type: array
-            minItems: 1
-            items:
-              $ref: '#/definitions/resource'
+        type: array
+        items:
+          $ref: '#/definitions/resource'
       ontologyTypes:
         title: ontology types
         description: |-
@@ -211,12 +184,9 @@ definitions:
           - ocmv:Domain: An ontology that describes how a community conceptualizes a phenomenon of interest. In general, a domain ontology formally characterizes a much narrower domain than a core ontology does. E.g., OntoBio is a domain ontology of biodiversity.
 
           - ocmv:Application: An ontology that specializes a domain ontology where there could be no consensus or knowledge sharing. It represents the particular model of a domain according to a single viewpoint of a user or a developer.
-        oneOf:
-          - type: 'null'
-          - type: array
-            minItems: 1
-            items:
-              $ref: '#/definitions/resource'
+        type: array
+        items:
+          $ref: '#/definitions/resource'
       representationStyle:
         title: representation style
         description: |-
@@ -238,61 +208,43 @@ definitions:
       landingPages:
         title: landing pages
         description: Identifies the web pages where one can access the project. E.g., <https://www.model-a-platform.com> is the landing page of the Digital Platform Ontology.
-        oneOf:
-          - type: 'null'
-          - type: array
-            minItems: 1
-            items:
-              type: string
-              format: uri
+        type: array
+        items:
+          type: string
+          format: uri
       sources:
         title: source
         description: Identifies resources that contain, present, or significantly influenced the development of the project. We recommend the use of persistent and resolvable identifiers to refer to these resources, such as the Digital Object Identifier (DOI) or DBLP''s URI, such as, <https://doi.org/10.3233/AO-150150>, or <https://dblp.org/rec/journals/ao/Morales-Ramirez15>.
-        oneOf:
-          - type: 'null'
-          - type: array
-            minItems: 1
-            items:
-              type: string
-              format: uri
+        type: array
+        items:
+          type: string
+          format: uri
       bibliographicCitations:
         title: bibliographic citation
         description: Determines bibliographic references for the project using language strings. E.g., "Weigand, H., Johannesson, P., & Andersson, B. (2021). An artifact ontology for design science research. Data & Knowledge Engineering, 133".
-        oneOf:
-          - type: 'null'
-          - type: array
-            minItems: 1
-            items:
-              $ref: '#/definitions/languageString'
+        type: array
+        items:
+          $ref: '#/definitions/languageString'
       keywords:
         title: keywords
         description: Determines the domains (partially) described by the project using language strings. E.g., the User Feedback Ontology is described with the keywords "online user feedback", "software engineering", and "requirements engineering".
-        oneOf:
-          - type: 'null'
-          - type: array
-            minItems: 1
-            items:
-              $ref: '#/definitions/languageString'
+        type: array
+        items:
+          $ref: '#/definitions/languageString'
       acronyms:
         title: acronyms
         description: Determines the acronyms one can use to refer to the project using strings. E.g., "RDBS-O", "COVER", "ROT".
-        oneOf:
-          - type: 'null'
-          - type: array
-            minItems: 1
-            items:
-              type: string
-              minLength: 1
+        type: array
+        items:
+          type: string
+          minLength: 1
       languages:
         title: languages
         description: Determines the languages in which the lexical labels of the project are written using strings. This field should use values listed in the IANA Language Sub Tag Registry, such as, "en" and "pt".
-        oneOf:
-          - type: 'null'
-          - type: array
-            minItems: 1
-            items:
-              type: string
-              minLength: 1
+        type: array
+        items:
+          type: string
+          minLength: 1
     required:
       - type
       - elements
@@ -398,12 +350,9 @@ definitions:
       generalizations:
         title: generalizations
         description: Identifies all generalizations that are involved by the generalization set.
-        oneOf:
-          - type: 'null'
-          - type: array
-            minItems: 1
-            items:
-              $ref: '#/definitions/id'
+        type: array
+        items:
+          $ref: '#/definitions/id'
       categorizer:
         title: categorizer
         description: |-
@@ -488,12 +437,9 @@ definitions:
       contents:
         title: contents
         description: Identifies the contents of a package element.
-        oneOf:
-          - type: 'null'
-          - type: array
-            minItems: 1
-            items:
-              $ref: '#/definitions/id'
+        type: array
+        items:
+          $ref: '#/definitions/id'
     required:
       - type
       - contents
@@ -555,12 +501,9 @@ definitions:
           Subsetting can only occur on the relation ends when both sides of the involved relations are connected to the same classifiers or classifiers that are in the same generalization chain.
 
           Subsetting can also be represented through a generalization between relations.
-        oneOf:
-          - type: 'null'
-          - type: array
-            minItems: 1
-            items:
-              $ref: '#/definitions/id'
+        type: array
+        items:
+          $ref: '#/definitions/id'
       redefinedProperties:
         title: redefined properties
         description: |-
@@ -569,12 +512,9 @@ definitions:
           Examples include, in the relations (i) "works in" from "Project Member" to "Project", and (ii) "leads" from "Project Leader" to "Project", where the member end is redefined for the leader who can only be connected to the project through that specific relation.
 
           Redefinition can only occur on the relation ends when both sides of the involved relations are connected to the same classifiers or classifiers that are in the same generalization chain.
-        oneOf:
-          - type: 'null'
-          - type: array
-            minItems: 1
-            items:
-              $ref: '#/definitions/id'
+        type: array
+        items:
+          $ref: '#/definitions/id'
       aggregationKind:
         title: aggregation kind
         description: |-
@@ -645,12 +585,9 @@ definitions:
             title: properties
             description: |-
               Identifies the properties contained in a classifier. These properties are referred to as attributes when contained by classes, and relation ends when contained by relations. In the case of relations, the properties array must be ordered.
-            oneOf:
-              - type: 'null'
-              - type: array
-                minItems: 1
-                items:
-                  $ref: '#/definitions/id'
+            type: array
+            items:
+              $ref: '#/definitions/id'
         required:
           - isAbstract
           - properties
@@ -675,35 +612,29 @@ definitions:
       literals:
         title: literals
         description: Identifies the literals of an enumeration class.
-        oneOf:
-          - type: 'null'
-          - type: array
-            minItems: 1
-            items:
-              $ref: '#/definitions/id'
+        type: array
+        items:
+          $ref: '#/definitions/id'
       restrictedTo:
         title: restrictedTo
         description: |-
           Determines the possible ontological natures of the instances of a class using an array of enumerated strings.
 
           Examples include the class "Vehicle" restricted to having "functional-complex" instances and the class "Insured Item" restricted to "functional-complex" and "relator" (e.g., employment insurance).
-        oneOf:
-          - type: 'null'
-          - type: array
-            minItems: 1
-            items:
-              enum:
-                - abstract
-                - collective
-                - event
-                - extrinsic-mode
-                - functional-complex
-                - intrinsic-mode
-                - quality
-                - quantity
-                - relator
-                - situation
-                - type
+        type: array
+        items:
+          enum:
+            - abstract
+            - collective
+            - event
+            - extrinsic-mode
+            - functional-complex
+            - intrinsic-mode
+            - quality
+            - quantity
+            - relator
+            - situation
+            - type
       isPowertype:
         title: isPowertype
         description: Determines whether the high-order class is a "Cardelli powertype" using a boolean. In other words, determines whether the high-order class is defined as the one whose instances are its base type plus all possible specializations of it.
@@ -784,12 +715,9 @@ definitions:
       views:
         title: views
         description: Identifies the views contained in the diagram.
-        oneOf:
-          - type: 'null'
-          - type: array
-            minItems: 1
-            items:
-              $ref: '#/definitions/id'
+        type: array
+        items:
+          $ref: '#/definitions/id'
     required:
       - type
       - owner
@@ -849,12 +777,9 @@ definitions:
       generalizations:
         title: generalizations
         description: Identifies the generalization views that are grouped by the generalization set view in the diagram.
-        oneOf:
-          - type: 'null'
-          - type: array
-            minItems: 1
-            items:
-              $ref: '#/definitions/id'
+        type: array
+        items:
+          $ref: '#/definitions/id'
       text:
         title: text
         description: Identifies the text shape that renders the generalization set view in the diagram.
@@ -876,12 +801,10 @@ definitions:
       members:
         title: members
         description: Identifies the class views (i.e., the members) that are connected by the n-ary relation view in the diagram. This array of member views must be ordered according to the properties of the relation the view represents.
-        oneOf:
-          - type: 'null'
-          - type: array
-            minItems: 1
-            items:
-              $ref: '#/definitions/id'
+        type: array
+        minItems: 3
+        items:
+          $ref: '#/definitions/id'
       diamond:
         title: diamond
         description: Identifies the diamond shape that renders the joining of all paths of the n-ary relation in the diagram.
@@ -890,7 +813,7 @@ definitions:
         title: paths
         description: Identifies the path shapes that render each path of the n-ary relation view in the diagram. This array of paths must be ordered according to the properties of the relation the view represents.
         type: array
-        minItems: 1
+        minItems: 3
         items:
           $ref: '#/definitions/id'
     required:
