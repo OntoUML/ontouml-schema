@@ -25,7 +25,9 @@ definitions:
             title: modified
             description: |-
               Determines when the element was modified using a string in one of the following formats: year, year-month, date, or date-time.
-            $ref: '#/definitions/pointInTime'
+            oneOf:
+              - type: 'null'
+              - $ref: '#/definitions/pointInTime'
         required:
           - id
           - created
