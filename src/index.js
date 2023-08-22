@@ -1,2 +1,1 @@
-
-module.exports = require('./ontouml2.schema.json')
+export { default } from './ontouml-schema.json';

@@ -1,266 +1,79 @@
 # OntoUML Schema
 
-This project defines a JSON Schema message format for the exchange of OntoUML models.
-
-This project is defined under the umbrella of the [OntoUML Server](https://github.com/OntoUML/ontouml-server) project and stands as a proof of concept at the moment.
-
-If you are interested to know more, feel free to open an issue to provide feedback on the project or reach our team members for more specific cases:
- * [Claudenir M. Fonseca](https://github.com/claudenirmf)
- * [Tiago Prince Sales](https://github.com/tgoprince)
- * [Lucas Bassetti](https://github.com/LucasBassetti)
- * [Victor Viola](https://github.com/victorviola)
+This repository provides a JSON Schema representation of ontologies based on the [OntoUML Metamodel](https://github.com/OntoUML/ontouml-metamodel). This serialization of ontologies in JSON is intended to support the exchange of models over HTTP requests.
 
 ## How to use
 
-[JSON Schema](https://json-schema.org/) is a popular web standard for definition and validation of JSON files. The standard employs JSON files describing valid schema formats as input to validation software to check the validity of any other JSON file its is feed with.
+[JSON Schema](https://json-schema.org/) is a popular web standard for the definition and validation of JSON files. The standard employs JSON files to describe schemas of valid input data.
 
-The code excerpt bellow, examplifies how to use the `ontouml-schema` project to validate objects representing OntoUML 2 models:
+This standard is language-independent and the schema can be recovered directly through its dedicated URI \<https://w3id.org/ontouml/schema/v1.0.0\> (unstable as of August 22). Some [implementations](https://json-schema.org/implementations.html) of JSON Schema can directly resolve this URI and download the schema.
+
+Javascript developers, however, can directly download this dependency using the command below.
+
+```bash
+> npm install ontouml-schema
+```
+
+The code snippet below shows how a developer can then use a dedicated library such as [Ajv](https://ajv.js.org/) to validate objects against this schema.
 
 ```javascript
-const schemas = require('ontouml-schema');
+const schema = require('ontouml-schema');
 const Ajv = require('ajv');
 
-let validator = new Ajv().compile(schemas.getSchema(schemas.ONTOUML_2));
-let model = {
-    "type": "Model",
-    "id": "m1",
-    "name": "My Model",
-        "elements": null
+const validator = new Ajv().compile(schema);
+const project = {
+    "type": "Project",
+    "id": "p1",
+    "name": {
+        "en": "My Ontology"
+    }
 };
-let isValid = validator(model);
+const isValid = validator(project);
 
 if(isValid) {
-    console.log(`Model ${model.name} is valid!`);
+    console.log(`Project '${project.name.en}' is valid!`);
 }
 else {
-    console.log(`Model ${model.name} is NOT valid!`);
+    console.log(`Project '${project.name.en}' is NOT valid!`);
     console.log(validator.errors);
 }
 ```
 
-Even though the source in this repository is developed for Javascript projects, the schema files themselves available in ours releases can be used in any of JSON Schema's validators which [available for all major programming languages](https://json-schema.org/implementations.html).
 
-## OntoUML 2
+## Development
 
-This section describes the object types defined in the OntoUML Schema.
+For development purposes only, this repository is designed as a NodeJS project. This project includes a small set of development dependencies, none of which is required on dependent projects. Users should only refer to the JSON file `src/ontouml-schema.json` and available usage guides.
 
-The type of an object is identified by the field "type".
+Developers interacting with this project must start by installing its dependencies. The `start` command then activates the automated code formatting for all relevant files when these are saved.
 
-All fields defined for an object type are MANDATORY, but only some are not nullable. 
+```bash
+> npm install
+> npm start
+```
 
-Additional fields are NOT allowed for any object type.
+All changes to the OntoUML Schema must be performed in the YAML file `src/ontouml-schema.yaml`. The command below should then be executed to generate its JSON equivalent.
 
-- **Package**: An object representing an ontology or an ontology (sub)module.
-    
-    ```json
-    { 
-        "type": "Package",
-        "id": "1",
-        "name": "UFO-S",
-        "description": "A commitment-based ontology of services.",
-        "elements": [ ... ],
-        "propertyAssignments": { ... }
-    }
-    ```
+```bash
+> npm run generate
+```
 
-- **Class**: An object representing a type defined in the ontology.
+The command below then tests the JSON version of the schema file, raising error messages in case of mistakes in the usage of JSON Schema.
 
-    ```json
-    { 
-        "type": "Class",
-        "id": "1",
-        "name": "Service Provider",
-        "description": "A role played by the agent providing a service.",
-        "stereotypes": ["roleMixin"],
-        "isAbstract": true,
-        "isDerived": false,
-        "properties": [ ... ],
-        "literals": null,
-        "propertyAssignments": { ... }
-    }
-    ```
+```bash
+> npm test
+```
 
-    An enumeration is represented as a class with the "enumeration" stereotype and its values using the field "literals".
+Testing scripts and updated usage guides shall be introduced to this repository in the next steps.
 
-    ```json
-    { 
-        "type": "Class",
-        "id": "2",
-        "name": "Color",
-        "description": null,
-        "stereotypes": ["enumeration"],
-        "isAbstract": false,
-        "isDerived": false,
-        "properties": null,
-        "literals": [
-            {
-                "type": "Literal",
-                "id": "0",
-                "name": "Red",
-                ...
-            },
-            {
-                "type": "Literal",
-                "id": "1",
-                "name": "Blue",
-                ...
-            },
-            ...
-        ],
-        "propertyAssignments": { ... }
-    }
-    ```
-- **Literal**: An object representing a value defined for an enumeration.
 
-    ```json
-    {
-          "type": "Literal",
-          "id": "0",
-          "name": "Red",
-          "description": "Classic red. Hex Code: #FF0000 Decimal Code: rgb(255,0,0)",
-          "propertyAssignments": { ... }
-        }
-    ```
+## Contributors
 
-- **Relation**: An object representing a relation defined in the ontology. 
-    
-    ```json
-    { 
-        "type": "Relation",
-        "id": "1",
-        "name": "hires",
-        "description": "A relation between a service customer and a service provider.",
-        "stereotypes": ["material"],
-        "isAbstract": false,
-        "isDerived": true,
-        "properties": [
-            {
-                "type": "Property",
-                "id": "1",
-                "name": "customer",
-                "propertyType": {
-                    "type": "Class",
-                    "id": "1"
-                },
-                ...
-            },
-            {
-                "type": "Property",
-                "id": "2",
-                "name": "provider",
-                "propertyType": {
-                    "type": "Class",
-                    "id": "2"
-                },
-                ...
-            }
-        ],
-        "literals": null,
-        "propertyAssignments": { ... }
-    }
-    ```
+This project is maintained by the [Semantics, Cybersecurity & Services (SCS) Group](https://www.utwente.nl/en/eemcs/scs/) of the [University of Twente](https://www.utwente.nl/), The Netherlands.
 
-  The field "properties" is a non-nullable ordered array of objets of type "Property" with a minimum size of 2. 
-  
-  The order of the properties in this array represents their position on a equivalent predicate, e.g., in the ternary relation "buys-product-from(buyer,product,seller)", the order of items representing these entities must follow the order "buyer" (in properties[0]), "product" (in properties[1]), and "seller" (in properties[2]).
-  
-  Relation elements are also used to represent derivation relations, in which case they must contain the stereotype "derivation" and have only 2 properties, the first being an object of type "Relation" and the second an object of type "Class" element.
+The main contributors are:
 
-- **Generalization**: An object representing a generalization defined in the ontology. 
-    
-    ```json
-    {
-        "type": "Generalization",
-        "id": "1",
-        "name": "G1",
-        "description": null,
-        "general": {
-            "type": "Class",
-            "id": "1"
-        },
-        "specific": {
-            "type": "Class",
-            "id": "2"
-        },
-        "propertyAssignments": { ... }
-    }
-    ```
-
-- **GeneralizationSet**:
-    An object representing a generalization set defined in the ontology. 
-    
-    ```json
-    {
-        "type": "GeneralizationSet",
-        "id": "1",
-        "name": "Gender Set",
-        "description": null,
-        "categorizer": {
-            "type": "Class",
-            "id": "1"
-        },
-        "generalizations": [
-            {
-                "type": "Generalization",
-                "id": "1"
-            },
-            {
-                "type": "Generalization",
-                "id": "2"
-            }
-        ],
-        "isDisjoint": true,
-        "isComplete": true,
-        "propertyAssignments": { ... }
-    }
-    ```
-
-- **Property**:
-    An object representing a property defined in the ontology. Properties contained by classes are deemed attributes and those contained by relations are deemed association ends. 
-    
-    ```json
-    {
-        "type": "Property",
-        "id": "0",
-        "name": "name",
-        "description": null,
-        "propertyType": {
-            "type": "Class",
-            "id": "0"
-        },
-        "cardinality": "1..1",
-        "isDerived": false,
-        "isOrdered": false,
-        "isReadOnly": false,
-        "stereotypes": null,
-        "aggregationKind": null,
-        "subsettedProperties": [
-            {
-                "type": "Property",
-                "id": "1"
-            }
-        ],
-        "redefinedProperties": [ ... ],
-        "propertyAssignments": { ... }
-    }
-    ```
-
-- **contents**: A non-empty nullable array of objects representing model elements. Possible object types in this array are: "Package", "Class", "Relation", "Generalization", "GeneralizationSet".
-
-- **id**: A non-empty and non-nullable string that uniquely identifies an object of a given type. Thus, two objects of the same type (e.g. two classes, two relations, two properties) may not have the same id, even if they are contained by different packages.
-
-- **name**: A non-empty nullable string containing the object's name. It is allowed for two objects of the ontology to have identical names, even if they are of the same type,.
-
-- **description**: A non-empty nullable string representing the description of the object in free textual format.
-
-- **properties**:
-    A non-empty array of Property elements representing properties exhibited by instances of the container model element. Nullable.
-
-- **propertyAssignments**:
-    A non-empty array of key-value pairs representing assignments to instantiated properties instantiated by the container object. Assignments may have any key name, but its values are restricted to null, booleans, numbers, strings, references or arrays of these. Assignments are analogous to UML's notion of tagged values. Nullable.
-
-- **reference**:
-    An object representing a singular reference to a model element. Mandatory fields: "type", "id".
-
-- **stereotypes**:
-    A non-empty array of non-empty strings representing stereotypes of its container object. Nullable.
+- Tiago Prince Sales - [[ORCID]](https://orcid.org/0000-0002-5385-5761) [[GitHub]](https://github.com/tgoprince) [[LinkedIn]](https://www.linkedin.com/in/tiago-sales/)
+- Claudenir M. Fonseca - [[ORCID]](https://orcid.org/0000-0003-2528-3118) [[GitHub]](https://github.com/claudenirmf) [[LinkedIn]](https://www.linkedin.com/in/claudenir-fonseca-52b251216/)
+- Pedro Paulo Favato Barcelos - [[ORCID]](https://orcid.org/0000-0003-2736-7817) [[GitHub]](https://github.com/pedropaulofb) [[LinkedIn]](https://www.linkedin.com/in/pedro-paulo-favato-barcelos/)
+- Lucas Bassetti - [GitHub](https://github.com/LucasBassetti)
+- Victor Viola - [GitHub](https://github.com/victorviola)

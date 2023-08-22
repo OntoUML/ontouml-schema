@@ -37,7 +37,7 @@ definitions:
   NamedElement:
     $id: '#NamedElement'
     title: Named Element
-    description: An OntoUML element that can be attributed a name and other descriptive information.
+    description: An OntoUML element that can be assigned a name and other descriptive information.
     allOf:
       - type: object
         properties:
@@ -140,7 +140,7 @@ definitions:
 
           - ocmv:ConceptualClarification: The project was created as the result of an ontological analysis of a concept, language, or domain of interest that sought to conceptually clarify and untangle complex notions and relations.
 
-          - ocmv:DataPublication: The project was created to support the publication of some datasets. For instance, a conceptual model used to generate an OWL vocabulary to publish tabular data as linked open data on the web.
+          - ocmv:DataPublication: The project was created to support the publication of some datasets. For instance, in the case of a conceptual model used to generate an OWL vocabulary to publish tabular data as linked open data on the web.
 
           - ocmv:DecisionSupportSystem: The project was created during the development of a decision support system.
 
@@ -154,7 +154,7 @@ definitions:
 
           - ocmv:Learning: The project was created so that its authors could learn UFO and OntoUML. This usually applies to models developed by students as part of their course assignments.
 
-          - ocmv:SoftwareEngineering: The project was created during the development of an information system. For instance, a conceptual model used to generate a relational database.
+          - ocmv:SoftwareEngineering: The project was created during the development of an information system. For instance, in the case of a conceptual model used to generate a relational database.
         oneOf:
           - type: 'null'
           - type: array
@@ -188,13 +188,13 @@ definitions:
       contexts:
         title: contexts
         description: |-
-          Identifies the contexts in which the project was developed. The OntoUML/UFO Catalog Metadata Vocabulary (OCMV) provides a set of recurrent modelling contexts:
+          Identifies the contexts in which the project was developed. The OntoUML/UFO Catalog Metadata Vocabulary (OCMV) provides a set of recurrent modeling contexts:
 
-          - ocmv:Research: The artefact was developed as part of a research project. This usually implies that the artefact was featured in a scientific publication.
+          - ocmv:Research: The project was developed as part of a research project. This usually implies that the project was featured in a scientific publication.
 
-          - ocmv:Industry: The artefact was developed for a public or private organization.
+          - ocmv:Industry: The project was developed for a public or private organization.
 
-          - ocmv:Classroom: The artefact was developed within the context of a course on conceptual modeling, most likely as a course assignment.
+          - ocmv:Classroom: The project was developed within the context of a course on conceptual modeling, most likely as a course assignment.
         oneOf:
           - type: 'null'
           - type: array
@@ -204,7 +204,7 @@ definitions:
       ontologyTypes:
         title: ontology types
         description: |-
-          Identifies the classifications of the project according to its scope. The OntoUML/UFO Catalog Metadata Vocabulary (OCMV) provides a set of recurrent modelling scopes based on the work of Roussey et al. (2011):
+          Identifies the classifications of the project according to its scope. The OntoUML/UFO Catalog Metadata Vocabulary (OCMV) provides a set of recurrent modeling scopes based on the work of Roussey et al. (2011):
 
           - ocmv:Core: An ontology that grasps the central concepts and relations of a given domain, possibly integrating several domain ontologies and being applicable in multiple scenarios. E.g., UFO-S, a commitment-based ontology of services, can be considered a core ontology because it applies to services in multiple domains, such as medical, financial, and legal services.
 
@@ -230,7 +230,7 @@ definitions:
           - $ref: '#/definitions/resource'
       namespace:
         title: namespace
-        description: Determines the namespace for all OntoUML elements in the project using a string in URI format. When present, the namespace appended with the id of any element in the project, should form a globally unique resolvable URI for identification in the web as a FAIR Digital Object.
+        description: Determines the namespace for all OntoUML elements in the project using a string in URI format. When present, the namespace appended with the id of any element in the project should form a globally unique resolvable URI for identification in the web as a FAIR Digital Object.
         oneOf:
           - type: 'null'
           - type: string
@@ -275,7 +275,7 @@ definitions:
               $ref: '#/definitions/languageString'
       acronyms:
         title: acronyms
-        description: Determines the acronyms one can use to refer to the project using strings. Accepts only xsd:string literals. E.g., "RDBS-O", "COVER", "ROT".
+        description: Determines the acronyms one can use to refer to the project using strings. E.g., "RDBS-O", "COVER", "ROT".
         oneOf:
           - type: 'null'
           - type: array
@@ -382,7 +382,7 @@ definitions:
         description: |-
           Determines whether the specific classifiers in the generalization set have disjoint extensions.
 
-          Examples include the generalization set involving "Child" and "Adult" generalized into "Person", where the "is disjoint" as "true" indicates that no person is simultaneously instance of "Child" and "Adult."
+          Examples include the generalization set involving "Child" and "Adult" generalized into "Person", where the "is disjoint" as "true" indicates that no person is simultaneously an instance of "Child" and "Adult."
         oneOf:
           - type: 'null'
           - type: boolean
@@ -476,7 +476,7 @@ definitions:
     $id: '#Package'
     title: Package
     description: |-
-      A model element that groups other model elements referred to as "packageable elements." Package elements are used to perform the modularization of an ontology.
+      A model element that can group other model elements that are referred to as "packageable elements." Package elements are used to perform the modularization of an ontology.
 
       While the OntoUML Metamodel does not require package elements to follow a tree structure (i.e., it allows overlapping packages), ontologies that require UML representations should adhere to this constraint for compatibility.
     type: object
@@ -503,7 +503,7 @@ definitions:
     description: |-
       A model element that can be decorated with a stereotype to identify its ontological properties according to the Unified Foundational Ontology (UFO).
 
-      Examples include a class decorated with the stereotype "kind" identifying it as a type of objects that provides an identity principle to its instances.
+      Examples include a class decorated with the stereotype "kind" identifying it as a type of object that provides an identity principle to its instances.
     allOf:
       - type: object
         properties:
@@ -548,7 +548,7 @@ definitions:
       subsettedProperties:
         title: subsetted properties
         description: |-
-          Identifies the properties (relation ends) that provides subsetting constraints to the property.
+          Identifies the properties (relation ends) that provide subsetting constraints to the property.
 
           Examples include, in the relations (i) "works for" from "Employee" to "Organization", and (ii) "teaches for" from "Teacher" to "University", both relation ends of (ii) are subsets of their respect ends in (i).
 
@@ -596,7 +596,7 @@ definitions:
 
           Examples include "Person" with cardinality "1" (exactly one) in the property (attribute) "name", and cardinality "0..*" (zero or more) in the property (related end) "friends" of the relation "friends with".
 
-          The cardinality should follow the regular express "^\d+(\.\.(\d+|\*))?$", where the number before ".." represents the lower bound, the number or "*" after represent the upper bound. In case the ".." is not present, a number represents an exact number of instances, and "*" represents "zero or more" instances.
+          The cardinality should follow the regular expression "^\d+(\.\.(\d+|\*))?$", where the number before ".." represents the lower bound, and the number or "*" after represents the upper bound. In case the ".." is not present, a number represents an exact number of instances, and "*" represents "zero or more" instances.
 
           This regular expression is not enforced to accommodate theoretical ranges as expression, such as, "a..b".
         oneOf:
@@ -605,7 +605,7 @@ definitions:
             minLength: 1
       isOrdered:
         title: is ordered
-        description: Determines whether the order of assignments of a property carries meaning using a boolean. This boolean only regards properties whose maximum cardinality greater than one.
+        description: Determines whether the order of assignments of a property carries meaning using a boolean. This boolean only regards properties whose maximum cardinality is greater than one.
         oneOf:
           - type: 'null'
           - type: boolean
@@ -644,7 +644,7 @@ definitions:
           properties:
             title: properties
             description: |-
-              Identifies the properties contained in a classifier. These properties are referred to as attributes, when contained by classes, and relation ends, when contained by relations. In the case of relations, the properties array must be ordered.
+              Identifies the properties contained in a classifier. These properties are referred to as attributes when contained by classes, and relation ends when contained by relations. In the case of relations, the properties array must be ordered.
             oneOf:
               - type: 'null'
               - type: array
@@ -686,7 +686,7 @@ definitions:
         description: |-
           Determines the possible ontological natures of the instances of a class using an array of enumerated strings.
 
-          Examples include the class "Vehicle" restricted to having "functional-complex" instances, and the class "Insured Item" restricted to "functional-complex" and "relator" (e.g., employment insurance).
+          Examples include the class "Vehicle" restricted to having "functional-complex" instances and the class "Insured Item" restricted to "functional-complex" and "relator" (e.g., employment insurance).
         oneOf:
           - type: 'null'
           - type: array
@@ -712,7 +712,7 @@ definitions:
           - type: boolean
       order:
         title: order
-        description: Determines the instantiation order of a class using a string. Examples include ordered classes such as first-order classes (order "1"), second-order classes (order "2"), and third-order classes (order "3"), and orderless classes (order "*").
+        description: Determines the instantiation order of a class using a string. Examples include ordered classes such as first-order classes (order "1"), second-order classes (order "2"), and third-order classes (order "3"), as well as orderless classes (order "*").
         oneOf:
           - type: 'null'
           - type: string
@@ -741,7 +741,7 @@ definitions:
 
       Examples include "studies in", and derivation relations (e.g., between material relations and relators).
 
-      A binary relation may either connect two classes, or a relation (as source) and a class (as class) in the case of derivation relations connecting descriptive relations to the classes that serve as their truthmakers (as in the relation between the material relation "studies in" and the "Enrollment" relator).
+      A binary relation may either connect two classes, or a relation (as source) and a class (as target) in the case of derivation relations connecting descriptive relations to the classes that serve as their truthmakers (as in the relation between the material relation "studies in" and the "Enrollment" relator).
     type: object
     properties:
       type:
@@ -802,7 +802,7 @@ definitions:
 
       A view element connects a model element to the shapes in a diagram necessary to represent a single occurrence of it. For example, an n-ary relation view connects a single relation element to one diamond and a set of paths that represent a single occurrence of it in a diagram. Multiple views can represent multiple occurrences of an element in the same diagram.
 
-      A view element is responsible for what portions of a model element are present in a single diagram representation (e.g., whether the cardinality of a property is shown), unlike a shape, which is responsible aspects of the actual drawing (e.g., how to render a portion of a view, in which position, and with which dimensions).
+      A view element is responsible for what portions of a model element are present in a single diagram representation (e.g., whether the cardinality of a property is shown), unlike a shape, which is responsible for aspects of the actual drawing (e.g., how to render a portion of a view, in which position, and with which dimensions).
     allOf:
       - type: object
         properties:
@@ -848,7 +848,7 @@ definitions:
         const: GeneralizationSetView
       generalizations:
         title: generalizations
-        description: Identifies the generalization views that are group by the generalization set view in the diagram.
+        description: Identifies the generalization views that are grouped by the generalization set view in the diagram.
         oneOf:
           - type: 'null'
           - type: array
@@ -875,7 +875,7 @@ definitions:
         const: NaryRelationView
       members:
         title: members
-        description: Identifies the class views (i.e., the members) that are connected by the n-ary relation view in the diagram. This array of member views must ordered according to the properties of the relation the view represents.
+        description: Identifies the class views (i.e., the members) that are connected by the n-ary relation view in the diagram. This array of member views must be ordered according to the properties of the relation the view represents.
         oneOf:
           - type: 'null'
           - type: array
@@ -888,7 +888,7 @@ definitions:
         $ref: '#/definitions/id'
       paths:
         title: paths
-        description: Identifies the path shapes that renders each path of the n-ary relation view in the diagram. This array of paths must ordered according to the properties of the relation the view represents.
+        description: Identifies the path shapes that render each path of the n-ary relation view in the diagram. This array of paths must be ordered according to the properties of the relation the view represents.
         type: array
         minItems: 1
         items:
@@ -905,9 +905,16 @@ definitions:
     type: object
     properties:
       type:
+        title: type
+        description: Determines the type of a note view object.
         const: NoteView
       text:
-        type: string
+        title: text
+        description: Identifies the text shape that renders the note view in the diagram.
+        $ref: '#/definitions/id'
+    required:
+      - type
+      - text
   PackageView:
     $id: '#PackageView'
     title: Package View
@@ -915,9 +922,16 @@ definitions:
     type: object
     properties:
       type:
+        title: type
+        description: Determines the type of a package view object.
         const: PackageView
       rectangle:
-        type: string
+        title: rectangle
+        description: Identifies the rectangle shape that renders the package view in the diagram.
+        $ref: '#/definitions/id'
+    required:
+      - type
+      - rectangle
   BinaryConnectorView:
     $id: '#BinaryConnectorView'
     title: Binary Connector View
@@ -926,15 +940,25 @@ definitions:
       - type: object
         properties:
           sourceView:
-            type: string
+            title: source view
+            description: Identifies the source view the binary connector view connects in the diagram.
+            $ref: '#/definitions/id'
           targetView:
-            type: string
+            title: target view
+            description: Identifies the target view the binary connector view connects in the diagram.
+            $ref: '#/definitions/id'
           path:
-            type: string
+            title: path
+            description: Identifies the path shape that renders the binary connector in the diagram.
+            $ref: '#/definitions/id'
+        required:
+          - sourceView
+          - targetView
+          - path
       - oneOf:
           - $ref: '#/definitions/GeneralizationView'
           - $ref: '#/definitions/LinkView'
-          - $ref: '#/definitions/RelationView'
+          - $ref: '#/definitions/BinaryRelationView'
   GeneralizationView:
     $id: '#GeneralizationView'
     title: Generalization View
@@ -942,7 +966,11 @@ definitions:
     type: object
     properties:
       type:
+        title: type
+        description: Determines the type of a generalization view object.
         const: GeneralizationView
+    required:
+      - type
   LinkView:
     $id: '#LinkView'
     title: Link View
@@ -950,15 +978,23 @@ definitions:
     type: object
     properties:
       type:
+        title: type
+        description: Determines the type of a link view object.
         const: LinkView
-  RelationView:
-    $id: '#RelationView'
+    required:
+      - type
+  BinaryRelationView:
+    $id: '#BinaryRelationView'
     title: Relation View
     description: A view element that represents the single occurrence of a binary relation in a diagram.
     type: object
     properties:
       type:
-        const: RelationView
+        title: type
+        description: Determines the type of a binary relation view object.
+        const: BinaryRelationView
+    required:
+      - type
   Shape:
     $id: '#Shape'
     title: Shape
@@ -973,9 +1009,19 @@ definitions:
     type: object
     properties:
       type:
+        title: type
+        description: Determines the type of a path object.
         const: Path
       points:
-        type: string
+        title: points
+        description: Determines the points across the path shape is rendered using an array of point objects. A path has a minimum of two points which must be ordered from the edge of the source shape to the edge of the target shape.
+        type: array
+        minItems: 2
+        items:
+          $ref: '#/definitions/point'
+    required:
+      - type
+      - points
   RectangularShape:
     $id: '#RectangularShape'
     title: Rectangular Shape
@@ -984,11 +1030,23 @@ definitions:
       - type: object
         properties:
           topLeft:
-            type: string
+            title: top left
+            description: Determines the coordinates of the top left corner of the rectangular shape using a point object.
+            $ref: '#/definitions/point'
           width:
-            type: string
+            title: width
+            description: Determines the width of the rectangular shape using a positive integer.
+            type: integer
+            minimum: 0
           height:
-            type: string
+            title: height
+            description: Determines the height of the rectangular shape using a positive integer.
+            type: integer
+            minimum: 0
+        required:
+          - topLeft
+          - width
+          - height
       - oneOf:
           - $ref: '#/definitions/Diamond'
           - $ref: '#/definitions/Rectangle'
@@ -1000,7 +1058,11 @@ definitions:
     type: object
     properties:
       type:
+        title: type
+        description: Determines the type of a diamond object.
         const: Diamond
+    required:
+      - type
   Rectangle:
     $id: '#Rectangle'
     title: Rectangle
@@ -1008,7 +1070,11 @@ definitions:
     type: object
     properties:
       type:
+        title: type
+        description: Determines the type of a rectangle object.
         const: Rectangle
+    required:
+      - type
   Text:
     $id: '#Text'
     title: Text
@@ -1016,7 +1082,11 @@ definitions:
     type: object
     properties:
       type:
+        title: type
+        description: Determines the type of a text object.
         const: Text
+    required:
+      - type
   PackageableElement:
     $id: '#PackageableElement'
     title: Packageable Element
@@ -1035,6 +1105,8 @@ definitions:
     minLength: 1
   languageString:
     $id: '#languageString'
+    title: language string
+    description: Determines either a string carrying information in a non-specified language, or an object where the key-value pairs represent, respectively, an IANA language tag and a string carrying the textual information in that language.
     oneOf:
       - type: string
         minLength: 1
@@ -1044,286 +1116,52 @@ definitions:
           minLength: 1
   resource:
     $id: '#resource'
+    title: resource
+    description: An object that represents a reference to a resource by its name and its URI allowing references to resources in the semantic web.
     type: object
     properties:
       URI:
+        title: URI
+        description: Determines the Uniform Resource Identifier (URI) of the resource using a string.
         oneOf:
           - type: 'null'
           - type: string
+            format: uri
       name:
+        title: name
+        description: Determines the name of the resource using a language string.
         oneOf:
           - type: 'null'
           - $ref: '#/definitions/languageString'
-    minProperties: 1
+    required:
+      - URI
+      - name
   pointInTime:
     $id: '#pointInTime'
+    title: point in time
+    description: Determines a point in time with the precision of a year, a month, a day, or a second.
     type: string
     anyOf:
       - format: date-time
       - format: date
       - pattern: ^[0-9]{4}-(1[0-2]|0[1-9]|\d)$
       - pattern: ^([0-9]{4})$
-  # Project:
-  #   $id: '#Project'
-  #   title: Project
-  #   description: Something...
-  #   type: object
-  #   properties:
-  #     type:
-  #       const: Project
-  #     id:
-  #       $ref: '#id'
-  #     model:
-  #       $ref: '#Package'
-  #     diagrams:
-  #       type: 'array'
-  #       items:
-  #         $ref: '#Diagram'
-  #     name:
-  #       $ref: '#name'
-  #     alternativeName:
-  #       title: alternative name
-  #       description: Determines an alternative name for the resource. Accepts xsd:string and rdf:langString literals. E.g., "OntoUML/UFO Catalog"@en.
-  #     description:
-  #       title: description
-  #       description: Determines a free-text account of the resource. Accepts xsd:string and rdf:langString literals.
-  #     issued:
-  #       title: issued
-  #       description: Determines when the resource was created. Accepts literals of the types xsd:dateTime, xsd:date, xsd:gYearMonth, and xsd:gYear. e.g., "2018"^^xsd:gYear, "2018-01-15"^^xsd:date. When cataloging a model from documents, we recommend using the publication date from the first one.
-  #     modified:
-  #       title: modified
-  #       description: Determines when the resource was last modified. Accepts literals of the types xsd:dateTime, xsd:date, xsd:gYearMonth, and xsd:gYear. When cataloging a model based on documents, we recommend using the publication date from the latest one.
-  #     license:
-  #       title: license
-  #       description: Identifies a legal document under which the resource is made available. E.g., https://creativecommons.org/licenses/by/4.0/.
-  #     accessRights:
-  #       title: access rights
-  #       description: Identifies a dct:RightsStatement or a text concerning who and how the resource can be accessed. E.g., the statement http://publications.europa.eu/resource/authority/access-right/PUBLIC informs that something is “publicly accessible by everyone”.
-  #     editorialNote:
-  #       title: editorial note
-  #       description: Determines a general note relative to the resource documentation process. Accepts xsd:string and rdf:langString literals. E.g., "The model was originally designed in Portuguese and translated by the publisher."@en.
-  #     contributor:
-  #       title: contributor
-  #       description: Identifies a foaf:Agent who contributed to the development of the resource.
-  #     creator:
-  #       title: creator
-  #       description: Identifies a foaf:Agent who contributed to the creation of the resource.
-  #     publisher:
-  #       title: publisher
-  #       description: Identifies the foaf:Agent who added the resource to the catalog. The publisher does not need to have created or contributed to the resource.
-  #     landingPage:
-  #       title: landing page
-  #       description: Identifies a web page where one can access the dataset, its metadata, its distributions, and additional information about it. E.g., https://www.model-a-platform.com is the landing page of the Digital Platform Ontology.
-  #     bibliographicCitation:
-  #       title: bibliographic citation
-  #       description: Determines a bibliographic reference for the dataset in textual format. Accepts xsd:string and rdf:langString literals. E.g., "Weigand, H., Johannesson, P., & Andersson, B. (2021). An artifact ontology for design science research. Data & Knowledge Engineering, 133."@en
-  #     storageUrl:
-  #       title: storage URL
-  #       description: Determines a URL of a service in which the data and metadata of the dataset are stored. Accepts values in xsd:anyURI.
-  #     distribution:
-  #       title: distribution
-  #       description: Identifies an available dcat:Distribution of the dataset.
-  #     contactPoint:
-  #       title: contact point
-  #       description: Identifies a vcard:vCard that contains information on how to contact an agent responsible for the dataset. We required that at least an email is provided.
-  #     keyword:
-  #       title: keyword
-  #       description: Determines a domain (partially) described by the semantic artefact. Accepts xsd:string and rdf:langString literals. E.g., the User Feedback Ontology is described with the keywords "online user feedback", "software engineering", and "requirements engineering".
-  #     acronym:
-  #       title: acronym
-  #       description: Determines an acronym one can use to refer to the semantic artefact. Accepts only xsd:string literals. E.g., "RDBS-O", "COVER", "ROT".
-  #     source:
-  #       title: source
-  #       description: Identifies resources that contain, present, or significantly influenced the development of the semantic artefact. We recommend the use of persistent and resolvable identifiers to refer to these resources, such as the Digital Object Identifier (DOI) or DBLP''s URI. E.g., https://doi.org/10.3233/AO-150150, https://dblp.org/rec/journals/ao/Morales-Ramirez15.
-  #     language:
-  #       title: language
-  #       description: Determines a language in which the lexical labels of the semantic artefact are written. We require the use of values listed in the IANA Language Sub Tag Registry. E.g., "en", "pt".
-  #     theme:
-  #       title: theme
-  #       description: Identifies the central theme of the semantic artefact according to a theme taxonomy. In our catalog, the theme of an artefact must be a skos:Concept from the LCC. E.g., "Class S - Agriculture", "Class T - Technology".
-  #     designedForTask:
-  #       title: designed for task
-  #       description: |-
-  #         Identifies a goal that motivated the development of the semantic artefact. To standardize the use of this property, we documented some recurrent modeling goals:
-  #         - ocmv:ConceptualClarification: The artefact was created as the result of an ontological analysis of a concept, language, or domain of interest that sought to conceptually clarify and untangle complex notions and relations.
-  #         - ocmv:DataPublication: The artefact was created to support the publication of some datasets. For instance, a conceptual model used to generate an OWL vocabulary to publish tabular data as linked open data on the web.
-  #         - ocmv:DecisionSupportSystem: The artefact was created during the development of a decision support system.
-  #         - ocmv:Example: The artefact was created to demonstrate how OntoUML can be used to solve a certain modeling challenge, to support an experiment involving OntoUML, or to exemplify how a generic model can be reused in more concrete scenarios.
-  #         - ocmv:InformationRetrieval: The artefact was created to support the design of an information retrieval system.
-  #         - ocmv:Interoperability: The artefact was created to support data integration, vocabulary alignment, or the interoperability of software systems.
-  #         - ocmv:LanguageEngineering: The artefact was created for the design of a domain-specific modeling language.
-  #         - ocmv:Learning: The artefact was created so that its authors could learn UFO and OntoUML. This usually applies to models developed by students as part of their course assignments.
-  #         - ocmv:SoftwareEngineering: The artefact was created during the development of an information system. For instance, a conceptual model used to generate a relational database.
-  #     context:
-  #       title: context
-  #       description: |-
-  #         Identifies an ocmv:Context in which the artefact was developed, namely:
-  #         - ocmv:Research: The artefact was developed as part of a research project. This usually implies that the artefact was featured in a scientific publication.
-  #         - ocmv:Industry: The artefact was developed for a public or private organization.
-  #         - ocmv:Classroom: The artefact was developed within the context of a course on conceptual modeling, most likely as a course assignment.
-  #     representationStyle:
-  #       title: representation style
-  #       description: |-
-  #         Identifies an ocmv:OntologyRepresentationStyle representation styles adopted in the artefact. We account for the existence of two values:
-  #         - ocmv:OntoumlStyle: Characterizes a model that contains at least one class, relation, or property using a valid OntoUML stereotype.
-  #         - ocmv:UfoStyle: Characterizes a model that contains at least one class or relation from UFO without an OntoUML stereotype.
-  #     ontologyType:
-  #       title: ontology type
-  #       description: |-
-  #         Identifies the categorization of the ontology according to its scope. For this catalog, we adopt the following three categories proposed by Roussey et al. [42]:
-  #         - ocmv:Core: An ontology that grasps the central concepts and relations of a given do- main, possibly integrating several domain ontologies and being applicable in multiple scenarios. E.g., UFO-S, a commitment-based ontology of services, can be considered a core ontology because it applies to services in multiple domains, such as medical, financial, and legal services.
-  #         - ocmv:Domain: An ontology that describes how a community conceptualizes a phenomenon of interest. In general, a domain ontology formally characterizes a much narrower domain than a core ontology does. E.g., OntoBio is a domain ontology of biodiversity.
-  #         - ocmv:Application: An ontology that specializes a domain ontology where there could be no consensus or knowledge sharing. It represents the particular model of a domain according to a single viewpoint of a user or a developer.
-  # Class:
-  #   $id: '#Class'
-  #   title: Class
-  #   description: Something...
-  #   type: object
-  #   properties:
-  #     type:
-  #       const: Class
-  # Generalization:
-  #   $id: '#Generalization'
-  #   title: Generalization
-  #   description: Something...
-  #   type: object
-  #   properties:
-  #     type:
-  #       const: Generalization
-  # GeneralizationSet:
-  #   $id: '#GeneralizationSet'
-  #   title: 'Generalization Set'
-  #   description: Something...
-  #   type: object
-  #   properties:
-  #     type:
-  #       const: GeneralizationSet
-  # Literal:
-  #   $id: '#Literal'
-  #   title: Literal
-  #   description: Something...
-  #   type: object
-  #   properties:
-  #     type:
-  #       const: Literal
-  # Package:
-  #   $id: '#Package'
-  #   title: Package
-  #   description: Something...
-  #   type: object
-  #   properties:
-  #     type:
-  #       const: Package
-  # Property:
-  #   $id: '#Property'
-  #   title: Property
-  #   description: Something...
-  #   type: object
-  #   properties:
-  #     type:
-  #       const: Property
-  # Relation:
-  #   $id: '#Relation'
-  #   title: Relation
-  #   description: Something...
-  #   type: object
-  #   properties:
-  #     type:
-  #       const: Relation
-  # Note:
-  #   $id: '#Note'
-  #   title: Note
-  #   description: Something...
-  #   type: object
-  #   properties:
-  #     type:
-  #       const: Note
-  # Diagram:
-  #   $id: '#Diagram'
-  #   title: Diagram
-  #   description: Something...
-  #   type: object
-  #   properties:
-  #     type:
-  #       const: Diagram
-  # ClassView:
-  #   $id: '#ClassView'
-  #   title: 'Class View'
-  #   description: Something...
-  #   type: object
-  #   properties:
-  #     type:
-  #       const: ClassView
-  # GeneralizationSetView:
-  #   $id: '#GeneralizationSetView'
-  #   title: 'Generalization Set View'
-  #   description: Something...
-  #   type: object
-  #   properties:
-  #     type:
-  #       const: GeneralizationSetView
-  # GeneralizationView:
-  #   $id: '#GeneralizationView'
-  #   title: 'Generalization View'
-  #   description: Something...
-  #   type: object
-  #   properties:
-  #     type:
-  #       const: GeneralizationView
-  # NoteView:
-  #   $id: '#NoteView'
-  #   title: 'Note View'
-  #   description: Something...
-  #   type: object
-  #   properties:
-  #     type:
-  #       const: NoteView
-  # PackageView:
-  #   $id: '#PackageView'
-  #   title: 'Package View'
-  #   description: Something...
-  #   type: object
-  #   properties:
-  #     type:
-  #       const: PackageView
-  # RelationView:
-  #   $id: '#RelationView'
-  #   title: 'Relation View'
-  #   description: Something...
-  #   type: object
-  #   properties:
-  #     type:
-  #       const: RelationView
-  # PathShape:
-  #   $id: '#PathShape'
-  #   title: 'Path Shape'
-  #   description: Something...
-  #   type: object
-  #   properties:
-  #     type:
-  #       const: PathShape
-  # RectangleShape:
-  #   $id: '#RectangleShape'
-  #   title: 'Rectangle Shape'
-  #   description: Something...
-  #   type: object
-  #   properties:
-  #     type:
-  #       const: RectangleShape
-  # TextShape:
-  #   $id: '#TextShape'
-  #   title: 'Text Shape'
-  #   description: Something...
-  #   type: object
-  #   properties:
-  #     type:
-  #       const: TextShape
-  # # -----------------------------------------------------------------------------
-  # id:
-  #   $id: '#id'
-  #   description: A non-empty and non-nullable string that uniquely identifies an object of a given type. Thus, two objects of the same type (e.g. two classes, two relations, two properties) may not have the same id, even if they have different containers.
-  #   type: string
-  #   minLength: 1
-  # name:
-  #   title: name
-  #   description: Determines a title for the resource. Accepts xsd:string and rdf:langString literals. E.g., "Common Ontology of Value and Risk"@en, "FAIR Model Catalog for Ontology-Driven Conceptual Modeling Research"@en. There must be at most one title per language.
+  point:
+    $id: '#point'
+    title: point
+    description: A object that represents a point in a diagram through (x,y) coordinates (horizontal and vertical), where the top left corner of the diagram represents the coordinates (0,0) which increase downwards and rightwards.
+    type: object
+    properties:
+      x:
+        title: 'x'
+        description: Determines the horizontal coordinate of a point using a positive integer.
+        type: integer
+        minimum: 0
+      y:
+        title: 'y'
+        description: Determines the vertical coordinate of a point using a positive integer.
+        type: integer
+        minimum: 0
+    required:
+      - 'x'
+      - 'y'
