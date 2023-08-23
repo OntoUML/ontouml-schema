@@ -528,9 +528,9 @@ definitions:
         oneOf:
           - type: 'null'
           - enum:
-              - composite
-              - shared
-              - none
+              - COMPOSITE
+              - SHARED
+              - NONE
       cardinality:
         title: cardinality
         description: |-

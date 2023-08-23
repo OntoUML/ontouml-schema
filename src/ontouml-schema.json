@@ -476,7 +476,7 @@
           "description": "Determines whether the property (a relation end) is a whole in a parthood (mereological) relation using an enumerated string.\n\nExamples include \"Project Member\" as a \"shared\" part of a \"Project Team\" and an \"Engine\" as a \"composite\" part of a \"Vehicle.\"\n\nThe possible values for aggregation kind are \"composite\" (when parts are exclusive to one whole), \"shared\" (when parts can be shared), and \"none\" for non-parthood relations. The \"null\" is also interpreted as \"none.\"",
           "oneOf": [
             { "type": "null" },
-            { "enum": ["composite", "shared", "none"] }
+            { "enum": ["COMPOSITE", "SHARED", "NONE"] }
           ]
         },
         "cardinality": {
