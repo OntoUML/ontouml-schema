@@ -1031,14 +1031,16 @@ definitions:
   languageString:
     $id: '#languageString'
     title: language string
-    description: Determines either a string carrying information in a non-specified language, or an object where the key-value pairs represent, respectively, an IANA language tag and a string carrying the textual information in that language.
-    oneOf:
-      - type: string
-        minLength: 1
-      - type: object
-        additionalProperties:
-          type: string
-          minLength: 1
+    description: |-
+      Determines an object where the key-value pairs represent, respectively, an IANA language tag and a string carrying the textual information in that language.
+
+      Examples include "{ "en": "My Resource" }" and "{ "pt-BR": "Meu Recurso" }".
+
+      The empty key can be used to represent a string in an unknown language, as in "{ "": "Unknown Language Value" }".
+    type: object
+    additionalProperties:
+      type: string
+      minLength: 1
   resource:
     $id: '#resource'
     title: resource
