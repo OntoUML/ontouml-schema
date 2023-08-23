@@ -560,7 +560,9 @@ definitions:
       propertyType:
         title: property type
         description: Identifies the classifier instantiated by the values assigned to the property.
-        type: string
+        oneOf:
+          - type: 'null'
+          - $ref: '#/definitions/id'
     required:
       - type
       - subsettedProperties
