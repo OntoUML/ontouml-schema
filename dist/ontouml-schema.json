@@ -269,7 +269,7 @@
             { "$ref": "#/definitions/Literal" },
             { "$ref": "#/definitions/Note" },
             { "$ref": "#/definitions/Package" },
-            { "$ref": "#/definitions/DecoratableElement" }
+            { "$ref": "#/definitions/Decoratable" }
           ]
         }
       ]
@@ -416,9 +416,9 @@
       },
       "required": ["type", "contents"]
     },
-    "DecoratableElement": {
-      "$id": "#DecoratableElement",
-      "title": "Decoratable Element",
+    "Decoratable": {
+      "$id": "#Decoratable",
+      "title": "Decoratable",
       "description": "A model element that can be decorated with a stereotype to identify its ontological properties according to the Unified Foundational Ontology (UFO).\n\nExamples include a class decorated with the stereotype \"kind\" identifying it as a type of object that provides an identity principle to its instances.",
       "allOf": [
         {

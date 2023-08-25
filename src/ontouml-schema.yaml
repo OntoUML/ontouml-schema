@@ -288,7 +288,7 @@ definitions:
           - $ref: '#/definitions/Literal'
           - $ref: '#/definitions/Note'
           - $ref: '#/definitions/Package'
-          - $ref: '#/definitions/DecoratableElement'
+          - $ref: '#/definitions/Decoratable'
   Generalization:
     $id: '#Generalization'
     title: Generalization
@@ -445,9 +445,9 @@ definitions:
     required:
       - type
       - contents
-  DecoratableElement:
-    $id: '#DecoratableElement'
-    title: Decoratable Element
+  Decoratable:
+    $id: '#Decoratable'
+    title: Decoratable
     description: |-
       A model element that can be decorated with a stereotype to identify its ontological properties according to the Unified Foundational Ontology (UFO).
 
