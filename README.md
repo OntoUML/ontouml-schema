@@ -22,23 +22,21 @@ const Ajv = require('ajv');
 
 const validator = new Ajv().compile(schema);
 const project = {
-    "type": "Project",
-    "id": "p1",
-    "name": {
-        "en": "My Ontology"
-    }
+  type: 'Project',
+  id: 'p1',
+  name: {
+    en: 'My Ontology'
+  }
 };
 const isValid = validator(project);
 
-if(isValid) {
-    console.log(`Project '${project.name.en}' is valid!`);
-}
-else {
-    console.log(`Project '${project.name.en}' is NOT valid!`);
-    console.log(validator.errors);
+if (isValid) {
+  console.log(`Project '${project.name.en}' is valid!`);
+} else {
+  console.log(`Project '${project.name.en}' is NOT valid!`);
+  console.log(validator.errors);
 }
 ```
-
 
 ## Development
 
@@ -64,7 +62,6 @@ The command below then tests the JSON version of the schema file, raising error 
 ```
 
 Testing scripts and updated usage guides shall be introduced to this repository in the next steps.
-
 
 ## Contributors
 

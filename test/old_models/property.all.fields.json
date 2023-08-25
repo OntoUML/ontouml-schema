@@ -23,9 +23,7 @@
           "isDerived": false,
           "isOrdered": false,
           "isReadOnly": false,
-          "stereotypes": [
-            "customStereotype"
-          ],
+          "stereotypes": ["customStereotype"],
           "propertyAssignments": {
             "nonStandardProperty": null
           },
@@ -110,9 +108,7 @@
       "propertyAssignments": {
         "nonStandardProperty": null
       },
-      "stereotypes": [
-        "ontouml/stereotype"
-      ],
+      "stereotypes": ["ontouml/stereotype"],
       "isAbstract": true,
       "isDerived": false
     }

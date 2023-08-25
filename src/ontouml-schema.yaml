@@ -1,5 +1,5 @@
 $schema: http://json-schema.org/draft-07/schema#
-$id: https://w3id.org/ontouml/schema/v1.0.0
+$id: https://w3id.org/ontouml/schema/v1.0.0-draft
 title: OntoUML Schema
 description: The OntoUML Schema defines the JSON serializations of OntoUML ontologies and their contents according to the OntoUML Metamodel project.
 oneOf:
@@ -397,7 +397,7 @@ definitions:
   Literal:
     $id: '#Literal'
     title: Literal
-    description: A model element that represents a specific value within an enumerated set of values. Examples include each letter in an A to F letter grading scale, listed in a class \"Letter Grade\" decorated with the stereotype \"enumeration\".
+    description: A model element that represents a specific value within an enumerated set of values. Examples include each letter in an A to F letter grading scale, listed in a class "Letter Grade" decorated with the stereotype "enumeration".
     type: object
     properties:
       type:

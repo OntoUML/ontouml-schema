@@ -64,9 +64,7 @@
       "propertyAssignments": {
         "nonStandardProperty": null
       },
-      "stereotypes": [
-        "ontouml/material"
-      ],
+      "stereotypes": ["ontouml/material"],
       "isAbstract": true,
       "isDerived": false
     }

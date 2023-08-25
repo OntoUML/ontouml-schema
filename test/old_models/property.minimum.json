@@ -96,9 +96,7 @@
       "propertyAssignments": {
         "nonStandardProperty": null
       },
-      "stereotypes": [
-        "ontouml/stereotype"
-      ],
+      "stereotypes": ["ontouml/stereotype"],
       "isAbstract": true,
       "isDerived": false
     }
