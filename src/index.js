@@ -1,1 +1,1 @@
-export { default } from './ontouml-schema.json';
+module.exports = require('./../dist/ontouml-schema.json');

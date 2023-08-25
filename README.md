@@ -40,16 +40,15 @@ if (isValid) {
 
 ## Development
 
-For development purposes only, this repository is designed as a NodeJS project. This project includes a small set of development dependencies, none of which is required on dependent projects. Users should only refer to the JSON file `src/ontouml-schema.json` and available usage guides.
+For development purposes only, this repository is designed as a NodeJS project. This project includes a small set of development dependencies, none of which is required on dependent projects. Users should only refer to the JSON file `dist/ontouml-schema.json` and available usage guides.
 
 Developers interacting with this project must start by installing its dependencies. The `start` command then activates the automated code formatting for all relevant files when these are saved.
 
 ```bash
-> npm install
-> npm start
+> npm ci
 ```
 
-All changes to the OntoUML Schema must be performed in the YAML file `src/ontouml-schema.yaml`. The command below should then be executed to generate its JSON equivalent.
+All changes to the OntoUML Schema must be performed in the YAML file `src/ontouml-schema.yaml`. The command below should then be executed to generate its JSON equivalent. To ensure that changes to the source file are not ignored, **this command is automated on commit and on prepublish**.
 
 ```bash
 > npm run generate

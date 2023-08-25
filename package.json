@@ -1,6 +1,6 @@
 {
   "name": "ontouml-schema",
-  "version": "1.0.0-draft.1",
+  "version": "1.0.0-draft.0",
   "description": "This package provides a JSON Schema representation ontologies based on the OntoUML Metamodel. This serialization models in JSON is intended to support the exchange of models over HTTP requests.",
   "main": "src/index.js",
   "scripts": {
