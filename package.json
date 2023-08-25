@@ -7,7 +7,7 @@
     "test": "npx ajv compile -s dist/ontouml-schema.json -c ajv-formats",
     "generate": "npx yaml2json -s src/ontouml-schema.yaml && mv src/ontouml-schema.json dist/ontouml-schema.json",
     "draftBump": "npm version prerelease --preid=draft",
-    "prepublish": "npm run generate & npm run test",
+    "prepublish": "npm-run-all -s generate test",
     "prepare": "husky install"
   },
   "repository": {
