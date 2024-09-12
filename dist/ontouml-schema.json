@@ -265,7 +265,7 @@
           "oneOf": [
             { "$ref": "#/definitions/Generalization" },
             { "$ref": "#/definitions/GeneralizationSet" },
-            { "$ref": "#/definitions/Link" },
+            { "$ref": "#/definitions/Anchor" },
             { "$ref": "#/definitions/Literal" },
             { "$ref": "#/definitions/Note" },
             { "$ref": "#/definitions/Package" },
@@ -339,25 +339,25 @@
         "categorizer"
       ]
     },
-    "Link": {
-      "$id": "#Link",
-      "title": "Link",
+    "Anchor": {
+      "$id": "#Anchor",
+      "title": "Anchor",
       "description": "A model element that connects a note to a model element it concerns.",
       "type": "object",
       "properties": {
         "type": {
           "title": "type",
-          "description": "Determines the type of a link object.",
-          "const": "Link"
+          "description": "Determines the type of a anchor object.",
+          "const": "Anchor"
         },
         "note": {
           "title": "note",
-          "description": "Identifies the note the link connects.",
+          "description": "Identifies the note the anchor connects.",
           "$ref": "#/definitions/id"
         },
         "element": {
           "title": "element",
-          "description": "Identifies the model element the link connects.",
+          "description": "Identifies the model element the anchor connects.",
           "$ref": "#/definitions/id"
         }
       },
@@ -828,7 +828,7 @@
         {
           "oneOf": [
             { "$ref": "#/definitions/GeneralizationView" },
-            { "$ref": "#/definitions/LinkView" },
+            { "$ref": "#/definitions/AnchorView" },
             { "$ref": "#/definitions/BinaryRelationView" }
           ]
         }
@@ -848,16 +848,16 @@
       },
       "required": ["type"]
     },
-    "LinkView": {
-      "$id": "#LinkView",
-      "title": "Link View",
-      "description": "A view element that represents the single occurrence of a link in a diagram.",
+    "AnchorView": {
+      "$id": "#AnchorView",
+      "title": "Anchor View",
+      "description": "A view element that represents the single occurrence of a anchor in a diagram.",
       "type": "object",
       "properties": {
         "type": {
           "title": "type",
-          "description": "Determines the type of a link view object.",
-          "const": "LinkView"
+          "description": "Determines the type of a anchor view object.",
+          "const": "AnchorView"
         }
       },
       "required": ["type"]
@@ -993,8 +993,9 @@
         { "$ref": "#/definitions/Classifier" },
         { "$ref": "#/definitions/Generalization" },
         { "$ref": "#/definitions/GeneralizationSet" },
-        { "$ref": "#/definitions/Link" },
-        { "$ref": "#/definitions/Note" }
+        { "$ref": "#/definitions/Anchor" },
+        { "$ref": "#/definitions/Note" },
+        { "$ref": "#/definitions/Package" }
       ]
     },
     "id": {
