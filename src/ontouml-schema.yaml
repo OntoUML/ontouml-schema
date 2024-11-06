@@ -107,7 +107,7 @@ definitions:
           oneOf:
             - $ref: '#/definitions/Diagram'
             - $ref: '#/definitions/View'
-            - $ref: '#/definitions/PackageableElement'
+            - $ref: '#/definitions/ModelElement'
       root:
         title: root
         description: Identifies the root package of a project (the package containing all other model elements of the project) if present.

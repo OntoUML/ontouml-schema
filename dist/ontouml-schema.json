@@ -128,7 +128,7 @@
             "oneOf": [
               { "$ref": "#/definitions/Diagram" },
               { "$ref": "#/definitions/View" },
-              { "$ref": "#/definitions/PackageableElement" }
+              { "$ref": "#/definitions/ModelElement" }
             ]
           }
         },
