@@ -1,0 +1,39 @@
+{
+  "id": "1234",
+  "type": "Project",
+  "name": { "en": "Project Name" },
+  "alternativeNames": [],
+  "description": { "en": "The Project Description" },
+  "keywords": [],
+  "created": "2024-09-04T00:00:00Z",
+  "modified": "2024-09-04T00:00:00Z",
+  "propertyAssignments": null,
+  "editorialNotes": [],
+  "creators": [],
+  "contributors": [],
+  "publisher": null,
+  "designedForTasks": [],
+  "license": null,
+  "accessRights": [],
+  "themes": [],
+  "contexts": [],
+  "ontologyTypes": [],
+  "representationStyle": null,
+  "namespace": null,
+  "landingPages": [],
+  "sources": [],
+  "bibliographicCitations": [],
+  "acronyms": [],
+  "languages": ["en", "pt-br"],
+  "root": null,
+  "elements": [
+    {
+      "type": "Literal",
+      "id": "0",
+      "name": null,
+      "description": null,
+      "propertyAssignments": null,
+      "customProperties": null
+    }
+  ]
+}

@@ -1,0 +1,114 @@
+{
+  "id": "proj1",
+  "type": "Project",
+  "name": {
+    "en": "My Project",
+    "pt": "Meu Projeto"
+  },
+  "alternativeNames": [
+    {
+      "en": "Project Alternative Name",
+      "pt": "Nome alternativo do Projeto"
+    }
+  ],
+  "description": {
+    "en": "The best conceptual modeling project.",
+    "it": "Il miglior progetto in modellazione concettuale."
+  },
+  "keywords": [{ "en": "keyword1" }, { "en": "keyword2" }],
+  "created": "2024-09-03T00:00:00Z",
+  "modified": "2024-09-04T00:00:00Z",
+  "editorialNotes": [{ "pt": "An editorial Note." }],
+  "creators": [
+    {
+      "name": { "pt": "John Doe" },
+      "URI": "http://example.org/johndoe"
+    }
+  ],
+  "contributors": [
+    {
+      "name": {
+        "pt": "Matheus Lenke"
+      },
+      "URI": "http://example.org/matheuslenke"
+    }
+  ],
+  "elements": [
+    {
+      "type": "Class",
+      "id": "class1",
+      "name": null,
+      "description": null,
+      "properties": [],
+      "literals": [],
+      "propertyAssignments": null,
+      "stereotypes": null,
+      "isAbstract": null,
+      "isDerived": null,
+      "restrictedTo": [],
+      "isPowertype": false,
+      "order": null,
+      "customProperties": null,
+      "stereotype": "kind"
+    },
+    {
+      "type": "Package",
+      "id": "package1",
+      "name": {
+        "en": "Package 1"
+      },
+      "alternativeNames": [],
+      "description": null,
+      "contents": ["class1"],
+      "propertyAssignments": null,
+      "created": "2024-09-04T00:00:00Z",
+      "modified": "2024-09-04T00:00:00Z",
+      "editorialNotes": [],
+      "creators": [],
+      "contributors": [],
+      "customProperties": null
+    }
+  ],
+  "root": null,
+  "publisher": {
+    "name": { "en": "Publisher Name" },
+    "URI": "http://example.org/publisher"
+  },
+  "designedForTasks": [],
+  "license": {
+    "name": {
+      "en": "MIT"
+    },
+    "URI": "http://mit.org"
+  },
+  "accessRights": [],
+  "themes": [
+    {
+      "name": { "en": "Class S - Agriculture" },
+      "URI": "http://example.org/classS"
+    }
+  ],
+  "contexts": [
+    {
+      "name": { "en": "ocmv:Research" },
+      "URI": "http://example.org/ocmv:Research"
+    }
+  ],
+  "ontologyTypes": [
+    {
+      "name": { "en": "Ontology Type 1" },
+      "URI": "http://example.org/ontologytype1"
+    }
+  ],
+  "representationStyle": null,
+  "namespace": null,
+  "landingPages": ["https://google.com"],
+  "sources": ["https://doi.org/10.3233/AO-150150"],
+  "bibliographicCitations": [
+    {
+      "en": "Weigand, H., Johannesson, P., & Andersson, B. (2021). An artifact ontology for design science research. Data & Knowledge Engineering, 133"
+    }
+  ],
+  "acronyms": ["ASCII"],
+  "languages": ["en", "pt-br"]
+}

@@ -1,0 +1,85 @@
+{
+  "id": "project_1",
+  "created": "2024-09-04T00:00:00Z",
+  "modified": "2024-09-04T00:00:00Z",
+  "name": { "en": "Project Name" },
+  "description": { "en": "Description of the project." },
+  "editorialNotes": [],
+  "creators": [],
+  "contributors": [],
+  "publisher": {
+    "name": { "en": "OntoUML" },
+    "URI": "http://www.ontouml.org"
+  },
+  "designedForTasks": [],
+  "license": {
+    "name": { "en": "CC BY-SA 4.0" },
+    "URI": "https://creativecommons.org/licenses/by-sa/4.0/"
+  },
+  "accessRights": [],
+  "themes": [],
+  "contexts": [],
+  "ontologyTypes": [],
+  "representationStyle": null,
+  "namespace": null,
+  "landingPages": [],
+  "sources": [],
+  "bibliographicCitations": [],
+  "keywords": [],
+  "acronyms": [],
+  "languages": [],
+  "alternativeNames": [],
+  "type": "Project",
+  "root": "package_1",
+  "elements": [
+    {
+      "type": "Package",
+      "id": "package_1",
+      "name": null,
+      "description": null,
+      "contents": ["generalization_1", "class_1", "class_2"],
+      "propertyAssignments": null
+    },
+    {
+      "type": "Class",
+      "id": "class_1",
+      "name": null,
+      "description": null,
+      "properties": [],
+      "literals": [],
+      "propertyAssignments": null,
+      "stereotypes": null,
+      "isAbstract": null,
+      "isDerived": null,
+      "isPowertype": false,
+      "restrictedTo": [],
+      "order": null
+    },
+    {
+      "type": "Class",
+      "id": "class_2",
+      "name": null,
+      "description": null,
+      "properties": [],
+      "literals": [],
+      "propertyAssignments": null,
+      "stereotypes": null,
+      "isAbstract": null,
+      "isDerived": null,
+      "isPowertype": false,
+      "restrictedTo": [],
+      "order": null
+    },
+    {
+      "type": "Generalization",
+      "id": "generalization_1",
+      "name": "generalization",
+      "description": null,
+      "general": "class_1",
+      "specific": "class_2",
+      "propertyAssignments": {
+        "nonStandardProperty": null
+      }
+    }
+  ]
+}

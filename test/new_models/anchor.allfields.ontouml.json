@@ -1,0 +1,85 @@
+{
+  "id": "1234",
+  "type": "Project",
+  "name": {
+    "en": "Project Name"
+  },
+  "alternativeNames": [],
+  "description": {
+    "en": "The Project Description"
+  },
+  "keywords": [],
+  "created": "2024-09-04T00:00:00Z",
+  "modified": "2024-09-04T00:00:00Z",
+  "propertyAssignments": null,
+  "editorialNotes": [],
+  "creators": [],
+  "contributors": [],
+  "publisher": null,
+  "designedForTasks": [],
+  "license": null,
+  "accessRights": [],
+  "themes": [],
+  "contexts": [],
+  "ontologyTypes": [],
+  "representationStyle": null,
+  "namespace": null,
+  "landingPages": [],
+  "sources": [],
+  "bibliographicCitations": [],
+  "acronyms": [],
+  "languages": ["en", "pt-br"],
+  "root": null,
+  "elements": [
+    {
+      "type": "Note",
+      "name": {
+        "en": "My Note"
+      },
+      "alternativeNames": [],
+      "id": "note_1",
+      "customProperties": null,
+      "text": {
+        "en": "My text from my note"
+      },
+      "created": "2024-09-04T00:00:00Z",
+      "modified": "2024-09-04T00:00:00Z"
+    },
+    {
+      "type": "Anchor",
+      "id": "anchor_1",
+      "name": {
+        "en": "My Anchor"
+      },
+      "alternativeNames": [],
+      "note": "note_1",
+      "element": "class_1",
+      "customProperties": null,
+      "created": "2024-09-04T00:00:00Z",
+      "modified": "2024-09-04T00:00:00Z"
+    },
+    {
+      "type": "Class",
+      "id": "class_1",
+      "name": { "en": "Class 1" },
+      "alternativeNames": [],
+      "description": null,
+      "properties": [],
+      "literals": [],
+      "propertyAssignments": null,
+      "isAbstract": false,
+      "isDerived": false,
+      "isPowertype": false,
+      "isExtensional": false,
+      "order": "1",
+      "restrictedTo": ["functional-complex", "collective", "quantity"],
+      "stereotype": "kind",
+      "created": "2024-09-04T00:00:00Z",
+      "modified": "2024-09-04T00:00:00Z",
+      "editorialNotes": [],
+      "creators": [],
+      "contributors": [],
+      "customProperties": null
+    }
+  ]
+}

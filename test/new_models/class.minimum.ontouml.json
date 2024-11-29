@@ -1,0 +1,24 @@
+{
+  "type": "Class",
+  "id": "class1",
+  "name": { "en": "Class 1" },
+  "alternativeNames": [],
+  "description": null,
+
+  "properties": ["property1"],
+  "literals": [],
+  "propertyAssignments": null,
+  "isAbstract": false,
+  "isDerived": false,
+  "isPowertype": false,
+  "order": null,
+  "restrictedTo": ["functional-complex", "collective", "quantity"],
+  "stereotype": null,
+
+  "created": "2024-09-04T00:00:00Z",
+  "modified": "2024-09-04T00:00:00Z",
+  "editorialNotes": [],
+  "creators": [],
+  "contributors": [],
+  "customProperties": null
+}

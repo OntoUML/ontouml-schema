@@ -1,0 +1,16 @@
+{
+  "type": "Package",
+  "id": "package1",
+  "name": { "en": "Package 1" },
+  "alternativeNames": [],
+  "description": null,
+  "contents": [],
+  "propertyAssignments": null,
+
+  "created": "2024-09-04T00:00:00Z",
+  "modified": "2024-09-04T00:00:00Z",
+  "editorialNotes": [],
+  "creators": [],
+  "contributors": [],
+  "customProperties": null
+}

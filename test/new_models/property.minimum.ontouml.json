@@ -1,0 +1,26 @@
+{
+  "id": "p1",
+  "name": { "en": "birthName" },
+  "description": null,
+  "type": "Property",
+  "stereotype": null,
+  "customProperties": null,
+  "propertyType": "class2",
+  "cardinality": "1..1",
+  "isDerived": false,
+  "isOrdered": false,
+  "isReadOnly": false,
+  "stereotypes": ["customStereotype"],
+  "propertyAssignments": {
+    "nonStandardProperty": null
+  },
+  "subsettedProperties": ["p2"],
+  "redefinedProperties": ["p3"],
+  "aggregationKind": "COMPOSITE",
+  "created": "2024-09-04T00:00:00Z",
+  "modified": "2024-09-04T00:00:00Z",
+  "alternativeNames": [],
+  "editorialNotes": [],
+  "creators": [],
+  "contributors": []
+}
