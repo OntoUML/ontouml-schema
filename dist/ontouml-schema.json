@@ -127,8 +127,9 @@
           "items": {
             "oneOf": [
               { "$ref": "#/definitions/Diagram" },
+              { "$ref": "#/definitions/ModelElement" },
               { "$ref": "#/definitions/View" },
-              { "$ref": "#/definitions/ModelElement" }
+              { "$ref": "#/definitions/Shape" }
             ]
           }
         },

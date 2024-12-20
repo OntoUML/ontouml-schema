@@ -1,0 +1,72 @@
+{
+  "id": "1234",
+  "type": "Project",
+  "name": {
+    "en": "Project Name"
+  },
+  "alternativeNames": [],
+  "description": {
+    "en": "The Project Description"
+  },
+  "keywords": [],
+  "created": "2024-09-04T00:00:00Z",
+  "modified": "2024-09-04T00:00:00Z",
+  "propertyAssignments": null,
+  "editorialNotes": [],
+  "creators": [],
+  "contributors": [],
+  "elements": [
+    {
+      "id": "classview_1",
+      "created": "2024-09-04T00:00:00Z",
+      "modified": "2024-09-04T00:00:00Z",
+      "type": "ClassView",
+      "isViewOf": "class_1",
+      "rectangle": "rectangle_1"
+    },
+    {
+      "id": "rectangle_1",
+      "created": "2024-09-04T00:00:00Z",
+      "modified": "2024-09-04T00:00:00Z",
+      "type": "Rectangle",
+      "topLeft": {
+        "x": 813,
+        "y": 20
+      },
+      "width": 95,
+      "height": 40
+    },
+    {
+      "type": "Class",
+      "id": "class_1",
+      "created": "2024-09-04T00:00:00Z",
+      "modified": "2024-09-04T00:00:00Z",
+      "name": { "en": "My class" },
+      "alternativeNames": [],
+      "customProperties": null,
+      "stereotype": null,
+      "isDerived": false,
+      "isAbstract": false,
+      "properties": [],
+      "literals": [],
+      "restrictedTo": [],
+      "isPowertype": false,
+      "order": "1"
+    }
+  ],
+  "root": null,
+  "publisher": null,
+  "designedForTasks": [],
+  "license": null,
+  "accessRights": [],
+  "themes": [],
+  "contexts": [],
+  "ontologyTypes": [],
+  "representationStyle": null,
+  "namespace": null,
+  "landingPages": [],
+  "sources": [],
+  "bibliographicCitations": [],
+  "acronyms": [],
+  "languages": ["en", "pt-br"]
+}

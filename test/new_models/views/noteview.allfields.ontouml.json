@@ -1,0 +1,69 @@
+{
+  "id": "1234",
+  "type": "Project",
+  "name": {
+    "en": "Project Name"
+  },
+  "alternativeNames": [],
+  "description": {
+    "en": "The Project Description"
+  },
+  "keywords": [],
+  "created": "2024-09-04T00:00:00Z",
+  "modified": "2024-09-04T00:00:00Z",
+  "propertyAssignments": null,
+  "editorialNotes": [],
+  "creators": [],
+  "contributors": [],
+  "elements": [
+    {
+      "id": "noteview_1",
+      "type": "NoteView",
+      "isViewOf": "note_1",
+      "text": "text_1",
+      "created": "2024-09-04T00:00:00Z",
+      "modified": "2024-09-04T00:00:00Z"
+    },
+    {
+      "id": "text_1",
+      "type": "Text",
+      "topLeft": {
+        "x": 813,
+        "y": 20
+      },
+      "width": 95,
+      "height": 40,
+      "created": "2024-09-04T00:00:00Z",
+      "modified": "2024-09-04T00:00:00Z"
+    },
+    {
+      "type": "Note",
+      "name": {
+        "en": "My Note"
+      },
+      "alternativeNames": [],
+      "id": "note_1",
+      "customProperties": null,
+      "text": {
+        "en": "My text from my note"
+      },
+      "created": "2024-09-04T00:00:00Z",
+      "modified": "2024-09-04T00:00:00Z"
+    }
+  ],
+  "root": null,
+  "publisher": null,
+  "designedForTasks": [],
+  "license": null,
+  "accessRights": [],
+  "themes": [],
+  "contexts": [],
+  "ontologyTypes": [],
+  "representationStyle": null,
+  "namespace": null,
+  "landingPages": [],
+  "sources": [],
+  "bibliographicCitations": [],
+  "acronyms": [],
+  "languages": ["en", "pt-br"]
+}

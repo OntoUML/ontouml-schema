@@ -54,7 +54,9 @@
     },
     {
       "id": "a1",
-      "name": "name",
+      "name": { "en": "name1" },
+      "alternativeNames": [],
+      "editorialNotes": [],
       "description": null,
       "type": "Property",
       "propertyAssignments": null,

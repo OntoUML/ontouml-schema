@@ -1,0 +1,197 @@
+{
+  "id": "1234",
+  "type": "Project",
+  "name": {
+    "en": "Project Name"
+  },
+  "alternativeNames": [],
+  "description": {
+    "en": "The Project Description"
+  },
+  "keywords": [],
+  "created": "2024-09-04T00:00:00Z",
+  "modified": "2024-09-04T00:00:00Z",
+  "propertyAssignments": null,
+  "editorialNotes": [],
+  "creators": [],
+  "contributors": [],
+  "root": null,
+  "publisher": null,
+  "designedForTasks": [],
+  "license": null,
+  "accessRights": [],
+  "themes": [],
+  "contexts": [],
+  "ontologyTypes": [],
+  "representationStyle": null,
+  "namespace": null,
+  "landingPages": [],
+  "sources": [],
+  "bibliographicCitations": [],
+  "acronyms": [],
+  "languages": ["en", "pt-br"],
+  "elements": [
+    {
+      "id": "gensetview_1",
+      "type": "GeneralizationSetView",
+      "isViewOf": "genset_1",
+      "generalizations": ["genview_1", "genview_2"],
+      "text": "disjoint"
+    },
+    {
+      "id": "genview_1",
+      "type": "GeneralizationView",
+      "isViewOf": "generalization_1",
+      "sourceView": "classview_1",
+      "targetView": "classview_2",
+      "path": "path_1"
+    },
+    {
+      "id": "genview_2",
+      "type": "GeneralizationView",
+      "isViewOf": "generalization_2",
+      "sourceView": "classview_2",
+      "targetView": "classview_1",
+      "path": "path_2"
+    },
+    {
+      "id": "path_1",
+      "created": "2024-09-04T00:00:00Z",
+      "modified": "2024-09-04T00:00:00Z",
+      "type": "Path",
+      "points": [
+        {
+          "x": 0,
+          "y": 0
+        },
+        {
+          "x": 10,
+          "y": 20
+        }
+      ]
+    },
+    {
+      "id": "path_2",
+      "created": "2024-09-04T00:00:00Z",
+      "modified": "2024-09-04T00:00:00Z",
+      "type": "Path",
+      "points": [
+        {
+          "x": 100,
+          "y": 100
+        },
+        {
+          "x": 10,
+          "y": 20
+        }
+      ]
+    },
+    {
+      "id": "classview_1",
+      "created": "2024-09-04T00:00:00Z",
+      "modified": "2024-09-04T00:00:00Z",
+      "type": "ClassView",
+      "isViewOf": "class_1",
+      "rectangle": "rectangle_1"
+    },
+    {
+      "id": "classview_2",
+      "created": "2024-09-04T00:00:00Z",
+      "modified": "2024-09-04T00:00:00Z",
+      "type": "ClassView",
+      "isViewOf": "class_2",
+      "rectangle": "rectangle_2"
+    },
+    {
+      "id": "rectangle_1",
+      "created": "2024-09-04T00:00:00Z",
+      "modified": "2024-09-04T00:00:00Z",
+      "type": "Rectangle",
+      "topLeft": {
+        "x": 813,
+        "y": 20
+      },
+      "width": 95,
+      "height": 40
+    },
+    {
+      "id": "rectangle_2",
+      "created": "2024-09-04T00:00:00Z",
+      "modified": "2024-09-04T00:00:00Z",
+      "type": "Rectangle",
+      "topLeft": {
+        "x": 1000,
+        "y": 500
+      },
+      "width": 100,
+      "height": 50
+    },
+    {
+      "type": "Class",
+      "id": "class_1",
+      "created": "2024-09-04T00:00:00Z",
+      "modified": "2024-09-04T00:00:00Z",
+      "name": {
+        "en": "My class"
+      },
+      "alternativeNames": [],
+      "customProperties": null,
+      "stereotype": null,
+      "isDerived": false,
+      "isAbstract": false,
+      "properties": [],
+      "literals": [],
+      "restrictedTo": [],
+      "isPowertype": false,
+      "order": "1"
+    },
+    {
+      "type": "Class",
+      "id": "class_2",
+      "created": "2024-09-04T00:00:00Z",
+      "modified": "2024-09-04T00:00:00Z",
+      "name": {
+        "en": "My class2"
+      },
+      "alternativeNames": [],
+      "customProperties": null,
+      "stereotype": null,
+      "isDerived": false,
+      "isAbstract": false,
+      "properties": [],
+      "literals": [],
+      "restrictedTo": [],
+      "isPowertype": false,
+      "order": "1"
+    },
+    {
+      "id": "generalization_1",
+      "type": "Generalization",
+      "customProperties": null,
+      "general": "class_1",
+      "specific": "class_2",
+      "created": "2024-09-04T00:00:00Z",
+      "modified": "2024-09-04T00:00:00Z"
+    },
+    {
+      "id": "generalization_2",
+      "type": "Generalization",
+      "customProperties": null,
+      "general": "class_2",
+      "specific": "class_1",
+      "created": "2024-09-04T00:00:00Z",
+      "modified": "2024-09-04T00:00:00Z"
+    },
+    {
+      "id": "genset_1",
+      "type": "GeneralizationSet",
+      "created": "2024-09-04T00:00:00Z",
+      "modified": "2024-09-04T00:00:00Z",
+      "customProperties": null,
+      "isDisjoint": false,
+      "isComplete": false,
+      "generalizations": ["generalization_1", "generalization_2"],
+      "categorizer": null
+    }
+  ]
+}
