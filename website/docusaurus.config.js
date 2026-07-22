@@ -44,7 +44,10 @@ const config = {
       '@easyops-cn/docusaurus-search-local',
       /** @type {import('@easyops-cn/docusaurus-search-local').PluginOptions} */
       ({
-        hashed: true,
+        // Must stay false: `hashed: true` appends a `?_=<hash>` query to the
+        // index URL, which `trailingSlash: true` then 302-redirects to a 404,
+        // breaking search (infinite spinner). See the search-index fetch path.
+        hashed: false,
         indexDocs: true,
         indexBlog: false,
         docsRouteBasePath: '/',
