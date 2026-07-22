@@ -4,7 +4,7 @@
   "description": "This package provides a JSON Schema representation ontologies based on the OntoUML Metamodel. This serialization models in JSON is intended to support the exchange of models over HTTP requests.",
   "main": "src/index.js",
   "scripts": {
-    "test": "npx ajv compile -s dist/ontouml-schema.json -c ajv-formats",
+    "test": "npx ajv compile --spec=draft2020 -s dist/ontouml-schema.json -c ajv-formats",
     "generate": "npx yaml2json -s src/ontouml-schema.yaml && mv src/ontouml-schema.json dist/ontouml-schema.json",
     "draftBump": "npm version prerelease --preid=draft",
     "prepublish": "npm-run-all -s generate test",
