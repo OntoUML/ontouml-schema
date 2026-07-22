@@ -1,12 +1,11 @@
-$schema: http://json-schema.org/draft-07/schema#
+$schema: https://json-schema.org/draft/2020-12/schema
 $id: https://w3id.org/ontouml/schema/v1.0.0-draft
 title: OntoUML Schema
 description: The OntoUML Schema defines the JSON serializations of OntoUML ontologies and their contents according to the OntoUML Metamodel project.
 oneOf:
-  - $ref: '#/definitions/OntoumlElement'
-definitions:
+  - $ref: '#/$defs/OntoumlElement'
+$defs:
   OntoumlElement:
-    $id: '#OntoumlElement'
     title: OntoUML Element
     description: An identified element of an OntoUML ontology according to the OntoUML Metamodel, which includes projects, model elements, diagrams, views, and shapes.
     allOf:
@@ -15,29 +14,28 @@ definitions:
           id:
             title: id
             description: Determines the unique identifier for an OntoUML element in an ontology using a non-empty string.
-            $ref: '#/definitions/id'
+            $ref: '#/$defs/id'
           created:
             title: created
             description: |-
               Determines when the element was created using a string in one of the following formats: year, year-month, date, or date-time.
-            $ref: '#/definitions/pointInTime'
+            $ref: '#/$defs/pointInTime'
           modified:
             title: modified
             description: |-
               Determines when the element was modified using a string in one of the following formats: year, year-month, date, or date-time.
             oneOf:
               - type: 'null'
-              - $ref: '#/definitions/pointInTime'
+              - $ref: '#/$defs/pointInTime'
         required:
           - id
           - created
           - modified
       - oneOf:
-          - $ref: '#/definitions/NamedElement'
-          - $ref: '#/definitions/Shape'
-          - $ref: '#/definitions/View'
+          - $ref: '#/$defs/NamedElement'
+          - $ref: '#/$defs/Shape'
+          - $ref: '#/$defs/View'
   NamedElement:
-    $id: '#NamedElement'
     title: Named Element
     description: An OntoUML element that can be assigned a name and other descriptive information.
     allOf:
@@ -48,37 +46,37 @@ definitions:
             description: Determines the name of the named element using language string.
             oneOf:
               - type: 'null'
-              - $ref: '#/definitions/languageString'
+              - $ref: '#/$defs/languageString'
           alternativeNames:
             title: alternative names
             description: Determines alternative names of the named element using an array of language strings. Alternative names are not translations of the named element, but indeed alternatives or synonyms to the main one.
             type: array
             items:
-              $ref: '#/definitions/languageString'
+              $ref: '#/$defs/languageString'
           description:
             title: description
             description: Determines a free-text account of the named element using language string.
             oneOf:
               - type: 'null'
-              - $ref: '#/definitions/languageString'
+              - $ref: '#/$defs/languageString'
           editorialNotes:
             title: editorial notes
             description: Determines general notes about the named element using an array of language strings. Editorial notes are typically notes on the development process and must not be confused with descriptions.
             type: array
             items:
-              $ref: '#/definitions/languageString'
+              $ref: '#/$defs/languageString'
           creators:
             title: creators
             description: Identifies the agents who contributed to the creation of the named element.
             type: array
             items:
-              $ref: '#/definitions/resource'
+              $ref: '#/$defs/resource'
           contributors:
             title: contributors
             description: Identifies the agents who contributed to the development of the named element.
             type: array
             items:
-              $ref: '#/definitions/resource'
+              $ref: '#/$defs/resource'
         required:
           - name
           - alternativeNames
@@ -87,10 +85,9 @@ definitions:
           - creators
           - contributors
       - oneOf:
-          - $ref: '#/definitions/Project'
-          - $ref: '#/definitions/ModelElement'
+          - $ref: '#/$defs/Project'
+          - $ref: '#/$defs/ModelElement'
   Project:
-    $id: '#Project'
     title: Project
     description: A named element that serves as the container of an entire OntoUML ontology, including the elements of both the abstract syntax (i.e., model elements) and the concrete syntax (i.e., diagrams, view, and shapes).
     type: object
@@ -105,21 +102,22 @@ definitions:
         type: array
         items:
           oneOf:
-            - $ref: '#/definitions/Diagram'
-            - $ref: '#/definitions/View'
-            - $ref: '#/definitions/ModelElement'
+            - $ref: '#/$defs/Diagram'
+            - $ref: '#/$defs/View'
+            - $ref: '#/$defs/ModelElement'
+            - $ref: '#/$defs/Shape'
       root:
         title: root
         description: Identifies the root package of a project (the package containing all other model elements of the project) if present.
         oneOf:
           - type: 'null'
-          - $ref: '#/definitions/id'
+          - $ref: '#/$defs/id'
       publisher:
         title: publisher
         description: Identifies the agent responsible for making the project available. The publisher does not need to have created or contributed to the resource.
         oneOf:
           - type: 'null'
-          - $ref: '#/definitions/resource'
+          - $ref: '#/$defs/resource'
       designedForTasks:
         title: designed for tasks
         description: |-
@@ -144,25 +142,25 @@ definitions:
           - ocmv:SoftwareEngineering: The project was created during the development of an information system. For instance, in the case of a conceptual model used to generate a relational database.
         type: array
         items:
-          $ref: '#/definitions/resource'
+          $ref: '#/$defs/resource'
       license:
         title: license
         description: Identifies a legal document under which the project is made available, e.g., "CC BY 4.0" <https://creativecommons.org/licenses/by/4.0/>.
         oneOf:
           - type: 'null'
-          - $ref: '#/definitions/resource'
+          - $ref: '#/$defs/resource'
       accessRights:
         title: access rights
         description: Identifies a document or a text concerning who and how the project can be accessed. E.g., the document <http://publications.europa.eu/resource/authority/access-right/PUBLIC> informs that something is "publicly accessible by everyone."
         type: array
         items:
-          $ref: '#/definitions/resource'
+          $ref: '#/$defs/resource'
       themes:
         title: themes
         description: Identifies the central themes of the project according to a theme taxonomy. In the OntoUML/UFO Catalog Metadata Vocabulary (OCMV), for example, the theme of a project must be a concept from the Library of Congress Classification (LCC), such as, "Class S - Agriculture" or "Class T - Technology.""
         type: array
         items:
-          $ref: '#/definitions/resource'
+          $ref: '#/$defs/resource'
       contexts:
         title: contexts
         description: |-
@@ -175,7 +173,7 @@ definitions:
           - ocmv:Classroom: The project was developed within the context of a course on conceptual modeling, most likely as a course assignment.
         type: array
         items:
-          $ref: '#/definitions/resource'
+          $ref: '#/$defs/resource'
       ontologyTypes:
         title: ontology types
         description: |-
@@ -188,7 +186,7 @@ definitions:
           - ocmv:Application: An ontology that specializes a domain ontology where there could be no consensus or knowledge sharing. It represents the particular model of a domain according to a single viewpoint of a user or a developer.
         type: array
         items:
-          $ref: '#/definitions/resource'
+          $ref: '#/$defs/resource'
       representationStyle:
         title: representation style
         description: |-
@@ -199,7 +197,7 @@ definitions:
           - ocmv:UfoStyle: Characterizes a project that contains at least one class or relation from UFO without an OntoUML stereotype.
         oneOf:
           - type: 'null'
-          - $ref: '#/definitions/resource'
+          - $ref: '#/$defs/resource'
       namespace:
         title: namespace
         description: Determines the namespace for all OntoUML elements in the project using a string in URI format. When present, the namespace appended with the id of any element in the project should form a globally unique resolvable URI for identification in the web as a FAIR Digital Object.
@@ -226,13 +224,13 @@ definitions:
         description: Determines bibliographic references for the project using language strings. E.g., "Weigand, H., Johannesson, P., & Andersson, B. (2021). An artifact ontology for design science research. Data & Knowledge Engineering, 133".
         type: array
         items:
-          $ref: '#/definitions/languageString'
+          $ref: '#/$defs/languageString'
       keywords:
         title: keywords
         description: Determines the domains (partially) described by the project using language strings. E.g., the User Feedback Ontology is described with the keywords "online user feedback", "software engineering", and "requirements engineering".
         type: array
         items:
-          $ref: '#/definitions/languageString'
+          $ref: '#/$defs/languageString'
       acronyms:
         title: acronyms
         description: Determines the acronyms one can use to refer to the project using strings. E.g., "RDBS-O", "COVER", "ROT".
@@ -267,7 +265,6 @@ definitions:
       - acronyms
       - languages
   ModelElement:
-    $id: '#ModelElement'
     title: Model Element
     description: A named element that represents an element of the language's abstract syntax (e.g., a class, a relation, or a generalization).
     allOf:
@@ -282,15 +279,14 @@ definitions:
         required:
           - customProperties
       - oneOf:
-          - $ref: '#/definitions/Generalization'
-          - $ref: '#/definitions/GeneralizationSet'
-          - $ref: '#/definitions/Anchor'
-          - $ref: '#/definitions/Literal'
-          - $ref: '#/definitions/Note'
-          - $ref: '#/definitions/Package'
-          - $ref: '#/definitions/Decoratable'
+          - $ref: '#/$defs/Generalization'
+          - $ref: '#/$defs/GeneralizationSet'
+          - $ref: '#/$defs/Anchor'
+          - $ref: '#/$defs/Literal'
+          - $ref: '#/$defs/Note'
+          - $ref: '#/$defs/Package'
+          - $ref: '#/$defs/Decoratable'
   Generalization:
-    $id: '#Generalization'
     title: Generalization
     description: |-
       A model element that represents the generalization of a specific classifier into a general classifier. When read in the inverse direction, a generalization is referred to as a specialization.
@@ -307,17 +303,16 @@ definitions:
       general:
         title: general
         description: Identifies the general classifier in a generalization element. E.g., in the generalization of "Student" into "Person", "Person" is the general classifier.
-        $ref: '#/definitions/id'
+        $ref: '#/$defs/id'
       specific:
         title: specific
         description: Identifies the general classifier in a generalization element. E.g., in the generalization of "Student" into "Person", "Student" is the specific classifier.
-        $ref: '#/definitions/id'
+        $ref: '#/$defs/id'
     required:
       - type
       - general
       - specific
   GeneralizationSet:
-    $id: '#GeneralizationSet'
     title: Generalization Set
     description: |-
       A model element that represents a group of connected generalization elements. A generalization set can define disjoint and/or complete constraints over the generalizations it groups.
@@ -354,7 +349,7 @@ definitions:
         description: Identifies all generalizations that are involved by the generalization set.
         type: array
         items:
-          $ref: '#/definitions/id'
+          $ref: '#/$defs/id'
       categorizer:
         title: categorizer
         description: |-
@@ -365,7 +360,7 @@ definitions:
           A categorizer can only be present in generalization sets involving exclusively classes.
         oneOf:
           - type: 'null'
-          - $ref: '#/definitions/id'
+          - $ref: '#/$defs/id'
     required:
       - type
       - isDisjoint
@@ -373,7 +368,6 @@ definitions:
       - generalizations
       - categorizer
   Anchor:
-    $id: '#Anchor'
     title: Anchor
     description: A model element that connects a note to a model element it concerns.
     type: object
@@ -385,17 +379,16 @@ definitions:
       note:
         title: note
         description: Identifies the note the anchor connects.
-        $ref: '#/definitions/id'
+        $ref: '#/$defs/id'
       element:
         title: element
         description: Identifies the model element the anchor connects.
-        $ref: '#/definitions/id'
+        $ref: '#/$defs/id'
     required:
       - type
       - note
       - element
   Literal:
-    $id: '#Literal'
     title: Literal
     description: A model element that represents a specific value within an enumerated set of values. Examples include each letter in an A to F letter grading scale, listed in a class "Letter Grade" decorated with the stereotype "enumeration".
     type: object
@@ -407,7 +400,6 @@ definitions:
     required:
       - type
   Note:
-    $id: '#Note'
     title: Note
     description: A model element that contains an annotation about the ontology or some of its elements. A note can also be used to represent a constraint in both natural or structured language (i.e., first-order logic, or OCL).
     type: object
@@ -419,12 +411,11 @@ definitions:
       text:
         title: text
         description: Determines the contents of a note using a language string.
-        $ref: '#/definitions/languageString'
+        $ref: '#/$defs/languageString'
     required:
       - type
       - text
   Package:
-    $id: '#Package'
     title: Package
     description: |-
       A model element that can group other model elements that are referred to as "packageable elements." Package elements are used to perform the modularization of an ontology.
@@ -441,12 +432,11 @@ definitions:
         description: Identifies the contents of a package element.
         type: array
         items:
-          $ref: '#/definitions/id'
+          $ref: '#/$defs/id'
     required:
       - type
       - contents
   Decoratable:
-    $id: '#Decoratable'
     title: Decoratable
     description: |-
       A model element that can be decorated with a stereotype to identify its ontological properties according to the Unified Foundational Ontology (UFO).
@@ -476,10 +466,9 @@ definitions:
           - stereotype
           - isDerived
       - oneOf:
-          - $ref: '#/definitions/Property'
-          - $ref: '#/definitions/Classifier'
+          - $ref: '#/$defs/Property'
+          - $ref: '#/$defs/Classifier'
   Property:
-    $id: '#Property'
     title: Property
     description: |-
       A decoratable element that represents an attribute of a class, or one end of a relation.
@@ -505,7 +494,7 @@ definitions:
           Subsetting can also be represented through a generalization between relations.
         type: array
         items:
-          $ref: '#/definitions/id'
+          $ref: '#/$defs/id'
       redefinedProperties:
         title: redefined properties
         description: |-
@@ -516,7 +505,7 @@ definitions:
           Redefinition can only occur on the relation ends when both sides of the involved relations are connected to the same classifiers or classifiers that are in the same generalization chain.
         type: array
         items:
-          $ref: '#/definitions/id'
+          $ref: '#/$defs/id'
       aggregationKind:
         title: aggregation kind
         description: |-
@@ -562,7 +551,7 @@ definitions:
         description: Identifies the classifier instantiated by the values assigned to the property.
         oneOf:
           - type: 'null'
-          - $ref: '#/definitions/id'
+          - $ref: '#/$defs/id'
     required:
       - type
       - subsettedProperties
@@ -573,7 +562,6 @@ definitions:
       - isReadOnly
       - propertyType
   Classifier:
-    $id: '#Classifier'
     title: Classifier
     description: A decoratable element (either a class or a relation) that defines properties exhibited by its instances.
     allOf:
@@ -591,15 +579,14 @@ definitions:
               Identifies the properties contained in a classifier. These properties are referred to as attributes when contained by classes, and relation ends when contained by relations. In the case of relations, the properties array must be ordered.
             type: array
             items:
-              $ref: '#/definitions/id'
+              $ref: '#/$defs/id'
         required:
           - isAbstract
           - properties
       - oneOf:
-          - $ref: '#/definitions/Class'
-          - $ref: '#/definitions/Relation'
+          - $ref: '#/$defs/Class'
+          - $ref: '#/$defs/Relation'
   Class:
-    $id: '#Class'
     title: Class
     description: |-
       A classifier that defines the properties of a set of "individualized" entities (i.e., non-relational) of the subject domain.
@@ -618,7 +605,7 @@ definitions:
         description: Identifies the literals of an enumeration class.
         type: array
         items:
-          $ref: '#/definitions/id'
+          $ref: '#/$defs/id'
       restrictedTo:
         title: restrictedTo
         description: |-
@@ -659,17 +646,15 @@ definitions:
       - isPowertype
       - order
   Relation:
-    $id: '#Relation'
     title: Relation
     description: |-
       A classifier that defines the properties of a set of relations of the subject domain.
 
       Examples include "studies in", "buys product from" (ternary relation), and derivation relations (e.g., between material relations and relators).
     oneOf:
-      - $ref: '#/definitions/BinaryRelation'
-      - $ref: '#/definitions/NaryRelation'
+      - $ref: '#/$defs/BinaryRelation'
+      - $ref: '#/$defs/NaryRelation'
   BinaryRelation:
-    $id: '#BinaryRelation'
     title: Binary Relation
     description: |-
       A relation that defines the properties of a set of binary relations of the subject domain.
@@ -686,7 +671,6 @@ definitions:
     required:
       - type
   NaryRelation:
-    $id: '#NaryRelation'
     title: N-ary Relation
     description: |-
       A relation that defines the properties of a set of relations of the subject domain that connect more than two members.
@@ -701,7 +685,6 @@ definitions:
     required:
       - type
   Diagram:
-    $id: '#Diagram'
     title: Diagram
     description: A named element that contains the visual representation (i.e., the concrete syntax) of an OntoUML model or of a portion of it.
     type: object
@@ -715,19 +698,18 @@ definitions:
         description: Identifies the model element that is the owner of a diagram.
         oneOf:
           - type: 'null'
-          - $ref: '#/definitions/id'
+          - $ref: '#/$defs/id'
       views:
         title: views
         description: Identifies the views contained in the diagram.
         type: array
         items:
-          $ref: '#/definitions/id'
+          $ref: '#/$defs/id'
     required:
       - type
       - owner
       - views
   View:
-    $id: '#View'
     title: View
     description: |-
       An OntoUML element that represents a single model element in a diagram.
@@ -741,18 +723,17 @@ definitions:
           isViewOf:
             title: is view of
             description: Identifies the model element that the view represents in the diagram.
-            $ref: '#/definitions/id'
+            $ref: '#/$defs/id'
         required:
           - isViewOf
       - oneOf:
-          - $ref: '#/definitions/ClassView'
-          - $ref: '#/definitions/GeneralizationSetView'
-          - $ref: '#/definitions/NaryRelationView'
-          - $ref: '#/definitions/NoteView'
-          - $ref: '#/definitions/PackageView'
-          - $ref: '#/definitions/BinaryConnectorView'
+          - $ref: '#/$defs/ClassView'
+          - $ref: '#/$defs/GeneralizationSetView'
+          - $ref: '#/$defs/NaryRelationView'
+          - $ref: '#/$defs/NoteView'
+          - $ref: '#/$defs/PackageView'
+          - $ref: '#/$defs/BinaryConnectorView'
   ClassView:
-    $id: '#ClassView'
     title: Class View
     description: A view element that represents the single occurrence of a class in a diagram.
     type: object
@@ -764,12 +745,11 @@ definitions:
       rectangle:
         title: rectangle
         description: Identifies the rectangle shape that renders the class view in the diagram.
-        $ref: '#/definitions/id'
+        $ref: '#/$defs/id'
     required:
       - type
       - rectangle
   GeneralizationSetView:
-    $id: '#GeneralizationSetView'
     title: Generalization Set View
     description: A view element that represents the single occurrence of a generalization set in a diagram.
     type: object
@@ -783,17 +763,16 @@ definitions:
         description: Identifies the generalization views that are grouped by the generalization set view in the diagram.
         type: array
         items:
-          $ref: '#/definitions/id'
+          $ref: '#/$defs/id'
       text:
         title: text
         description: Identifies the text shape that renders the generalization set view in the diagram.
-        $ref: '#/definitions/id'
+        $ref: '#/$defs/id'
     required:
       - type
       - generalizations
       - text
   NaryRelationView:
-    $id: '#NaryRelationView'
     title: N-ary Relation View
     description: A view element that represents the single occurrence of a n-ary relation in a diagram.
     type: object
@@ -808,25 +787,24 @@ definitions:
         type: array
         minItems: 3
         items:
-          $ref: '#/definitions/id'
+          $ref: '#/$defs/id'
       diamond:
         title: diamond
         description: Identifies the diamond shape that renders the joining of all paths of the n-ary relation in the diagram.
-        $ref: '#/definitions/id'
+        $ref: '#/$defs/id'
       paths:
         title: paths
         description: Identifies the path shapes that render each path of the n-ary relation view in the diagram. This array of paths must be ordered according to the properties of the relation the view represents.
         type: array
         minItems: 3
         items:
-          $ref: '#/definitions/id'
+          $ref: '#/$defs/id'
     required:
       - type
       - members
       - diamond
       - paths
   NoteView:
-    $id: '#NoteView'
     title: Note View
     description: A view element that represents the single occurrence of a note in a diagram.
     type: object
@@ -838,12 +816,11 @@ definitions:
       text:
         title: text
         description: Identifies the text shape that renders the note view in the diagram.
-        $ref: '#/definitions/id'
+        $ref: '#/$defs/id'
     required:
       - type
       - text
   PackageView:
-    $id: '#PackageView'
     title: Package View
     description: A view element that represents the single occurrence of a package in a diagram.
     type: object
@@ -855,12 +832,11 @@ definitions:
       rectangle:
         title: rectangle
         description: Identifies the rectangle shape that renders the package view in the diagram.
-        $ref: '#/definitions/id'
+        $ref: '#/$defs/id'
     required:
       - type
       - rectangle
   BinaryConnectorView:
-    $id: '#BinaryConnectorView'
     title: Binary Connector View
     description: A view element that represents the single occurrence of a binary connector (e.g., a binary relation, or a generalization) in a diagram.
     allOf:
@@ -869,25 +845,24 @@ definitions:
           sourceView:
             title: source view
             description: Identifies the source view the binary connector view connects in the diagram.
-            $ref: '#/definitions/id'
+            $ref: '#/$defs/id'
           targetView:
             title: target view
             description: Identifies the target view the binary connector view connects in the diagram.
-            $ref: '#/definitions/id'
+            $ref: '#/$defs/id'
           path:
             title: path
             description: Identifies the path shape that renders the binary connector in the diagram.
-            $ref: '#/definitions/id'
+            $ref: '#/$defs/id'
         required:
           - sourceView
           - targetView
           - path
       - oneOf:
-          - $ref: '#/definitions/GeneralizationView'
-          - $ref: '#/definitions/AnchorView'
-          - $ref: '#/definitions/BinaryRelationView'
+          - $ref: '#/$defs/GeneralizationView'
+          - $ref: '#/$defs/AnchorView'
+          - $ref: '#/$defs/BinaryRelationView'
   GeneralizationView:
-    $id: '#GeneralizationView'
     title: Generalization View
     description: A view element that represents the single occurrence of a binary relation in a diagram.
     type: object
@@ -899,7 +874,6 @@ definitions:
     required:
       - type
   AnchorView:
-    $id: '#AnchorView'
     title: Anchor View
     description: A view element that represents the single occurrence of a anchor in a diagram.
     type: object
@@ -911,7 +885,6 @@ definitions:
     required:
       - type
   BinaryRelationView:
-    $id: '#BinaryRelationView'
     title: Relation View
     description: A view element that represents the single occurrence of a binary relation in a diagram.
     type: object
@@ -923,14 +896,12 @@ definitions:
     required:
       - type
   Shape:
-    $id: '#Shape'
     title: Shape
     description: An OntoUML element that identifies how to render a view (or a portion of one) in a diagram.
     oneOf:
-      - $ref: '#/definitions/Path'
-      - $ref: '#/definitions/RectangularShape'
+      - $ref: '#/$defs/Path'
+      - $ref: '#/$defs/RectangularShape'
   Path:
-    $id: '#Path'
     title: Path
     description: A shape defined by a list of points connecting two other shapes.
     type: object
@@ -945,12 +916,11 @@ definitions:
         type: array
         minItems: 2
         items:
-          $ref: '#/definitions/point'
+          $ref: '#/$defs/point'
     required:
       - type
       - points
   RectangularShape:
-    $id: '#RectangularShape'
     title: Rectangular Shape
     description: A shape defined by a top left position, a height, a width.
     allOf:
@@ -959,7 +929,7 @@ definitions:
           topLeft:
             title: top left
             description: Determines the coordinates of the top left corner of the rectangular shape using a point object.
-            $ref: '#/definitions/point'
+            $ref: '#/$defs/point'
           width:
             title: width
             description: Determines the width of the rectangular shape using a positive integer.
@@ -975,11 +945,10 @@ definitions:
           - width
           - height
       - oneOf:
-          - $ref: '#/definitions/Diamond'
-          - $ref: '#/definitions/Rectangle'
-          - $ref: '#/definitions/Text'
+          - $ref: '#/$defs/Diamond'
+          - $ref: '#/$defs/Rectangle'
+          - $ref: '#/$defs/Text'
   Diamond:
-    $id: '#Diamond'
     title: Diamond
     description: A rectangular shape that renders the joining diamond of a n-ary relation view.
     type: object
@@ -991,7 +960,6 @@ definitions:
     required:
       - type
   Rectangle:
-    $id: '#Rectangle'
     title: Rectangle
     description: A rectangular shape that renders the shape of a class view or a package view.
     type: object
@@ -1003,7 +971,6 @@ definitions:
     required:
       - type
   Text:
-    $id: '#Text'
     title: Text
     description: A rectangular shape that renders the shape of a generalization set view or a note view.
     type: object
@@ -1015,24 +982,21 @@ definitions:
     required:
       - type
   PackageableElement:
-    $id: '#PackageableElement'
     title: Packageable Element
     description: A model element that can be grouped into a package.
     oneOf:
-      - $ref: '#/definitions/Classifier'
-      - $ref: '#/definitions/Generalization'
-      - $ref: '#/definitions/GeneralizationSet'
-      - $ref: '#/definitions/Anchor'
-      - $ref: '#/definitions/Note'
-      - $ref: '#/definitions/Package'
+      - $ref: '#/$defs/Classifier'
+      - $ref: '#/$defs/Generalization'
+      - $ref: '#/$defs/GeneralizationSet'
+      - $ref: '#/$defs/Anchor'
+      - $ref: '#/$defs/Note'
+      - $ref: '#/$defs/Package'
   id:
-    $id: '#id'
     title: id
     description: Determines the unique identifier for an OntoUML element in an ontology using a non-empty string.
     type: string
     minLength: 1
   languageString:
-    $id: '#languageString'
     title: language string
     description: |-
       Determines an object where the key-value pairs represent, respectively, an IANA language tag and a string carrying the textual information in that language.
@@ -1045,7 +1009,6 @@ definitions:
       type: string
       minLength: 1
   resource:
-    $id: '#resource'
     title: resource
     description: An object that represents a reference to a resource by its name and its URI allowing references to resources in the semantic web.
     type: object
@@ -1062,12 +1025,11 @@ definitions:
         description: Determines the name of the resource using a language string.
         oneOf:
           - type: 'null'
-          - $ref: '#/definitions/languageString'
+          - $ref: '#/$defs/languageString'
     required:
       - URI
       - name
   pointInTime:
-    $id: '#pointInTime'
     title: point in time
     description: Determines a point in time with the precision of a year, a month, a day, or a second.
     type: string
@@ -1077,7 +1039,6 @@ definitions:
       - pattern: ^[0-9]{4}-(1[0-2]|0[1-9]|\d)$
       - pattern: ^([0-9]{4})$
   point:
-    $id: '#point'
     title: point
     description: A object that represents a point in a diagram through (x,y) coordinates (horizontal and vertical), where the top left corner of the diagram represents the coordinates (0,0) which increase downwards and rightwards.
     type: object
