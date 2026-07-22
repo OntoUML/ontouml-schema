@@ -9,7 +9,8 @@ on:
 
 permissions:
   contents: read
-  # Required to generate npm publish provenance.
+  # Required for npm Trusted Publishing (OIDC) — exchanges a short-lived
+  # token with npm at publish time, so no NPM_TOKEN secret is needed.
   id-token: write
 
 jobs:
@@ -25,15 +26,19 @@ jobs:
         with:
           node-version: 20
           cache: npm
-          # Configures ~/.npmrc to read the token from NODE_AUTH_TOKEN.
           registry-url: https://registry.npmjs.org
+
+      # Trusted Publishing requires npm >= 11.5.1 (newer than the version
+      # bundled with Node 20).
+      - name: Update npm
+        run: npm install -g npm@latest
 
       - name: Install dependencies
         run: npm ci
 
       # prepublishOnly regenerates dist from the YAML and validates it,
-      # then the package is published (files whitelist keeps it to the schema).
+      # then the package is published (files whitelist keeps it to the
+      # schema). Trusted Publishing authenticates via OIDC and attaches
+      # provenance automatically — no token required.
       - name: Publish
-        run: npm publish --provenance --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm publish --access public
