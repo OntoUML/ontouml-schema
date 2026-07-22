@@ -1,0 +1,39 @@
+name: Publish package to npm
+
+on:
+  # Publish when a GitHub Release is published.
+  release:
+    types: [published]
+  # Allow running the workflow manually from the Actions tab.
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  # Required to generate npm publish provenance.
+  id-token: write
+
+jobs:
+  publish:
+    name: Publish to npm
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          # Configures ~/.npmrc to read the token from NODE_AUTH_TOKEN.
+          registry-url: https://registry.npmjs.org
+
+      - name: Install dependencies
+        run: npm ci
+
+      # prepublishOnly regenerates dist from the YAML and validates it,
+      # then the package is published (files whitelist keeps it to the schema).
+      - name: Publish
+        run: npm publish --provenance --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
