@@ -29,9 +29,10 @@ jobs:
           registry-url: https://registry.npmjs.org
 
       # Trusted Publishing requires npm >= 11.5.1 (newer than the version
-      # bundled with Node 20).
+      # bundled with Node 20). npm 11.x is the latest line compatible with
+      # Node 20; npm 12+ requires Node 22+.
       - name: Update npm
-        run: npm install -g npm@latest
+        run: npm install -g npm@11
 
       - name: Install dependencies
         run: npm ci
