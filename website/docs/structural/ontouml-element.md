@@ -3,7 +3,7 @@ sidebar_position: 1
 description: The abstract root type of every OntoUML element, contributing the identity properties id, created, and modified.
 ---
 
-# OntoumlElement
+# OntoUML Element
 
 `OntoumlElement` is the **abstract** root of the type hierarchy: every element in a serialization —
 projects, model elements, diagrams, views, and shapes — is an `OntoumlElement`. It is an abstract
@@ -33,7 +33,7 @@ appended to that namespace should form a globally unique, resolvable URI. See
 `OntoumlElement` specializes into three branches:
 
 - [`NamedElement`](./named-element.md) — elements that can be named and described: the
-  [`Project`](./project.md), the [`ModelElement`](./model-element.md) branch (the whole
+  [`Project`](./project.md), the [`ModelElement`](../abstract-syntax/model-element.md) branch (the whole
   [abstract syntax](../abstract-syntax/index.md)), and the
   [`Diagram`](../concrete-syntax/diagram.md).
 - [`View`](../concrete-syntax/index.md#views) — the depictions of model elements in the concrete

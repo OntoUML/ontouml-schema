@@ -65,12 +65,14 @@ classDiagram
 
 ## Common to all model elements
 
-Every model element specializes the abstract `ModelElement` type, which contributes a single
-property.
+Every model element specializes the abstract [`ModelElement`](./model-element.md) type, which
+contributes a single property.
 
 | Property | Type | Description |
 | --- | --- | --- |
 | `customProperties` | `object` or `null` | Custom key-value pairs attached to the element. In UML these correspond to tagged values. |
+
+See [`ModelElement`](./model-element.md) for the full treatment of this shared root.
 
 ## Classifiers and properties
 
@@ -112,6 +114,7 @@ not directly to a package.
 
 ## Element types
 
+- [ModelElement](./model-element.md) *(abstract; the shared root)*
 - [Decoratable](./decoratable.md) *(abstract)*
   - [Classifier](./classifier.md) *(abstract)*
     - [Class](./class.md)
@@ -124,3 +127,7 @@ not directly to a package.
 - [Literal](./literal.md)
 - [Note](./note.md)
 - [Anchor](./anchor.md)
+
+See also the [Enumerations](../enumerations/index.md) chapter — the standard OntoUML stereotype
+vocabulary for decoratable elements (and how custom stereotypes are supported), along with the
+`restrictedTo` and `aggregationKind` value sets.

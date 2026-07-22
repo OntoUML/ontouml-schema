@@ -1,5 +1,5 @@
 ---
-sidebar_position: 12
+sidebar_position: 13
 description: The Literal model element — a specific value within an enumerated set.
 ---
 

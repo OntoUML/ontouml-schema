@@ -3,7 +3,7 @@ sidebar_position: 4
 description: The PackageView element — represents a single occurrence of a package in a diagram.
 ---
 
-# PackageView
+# Package View
 
 A [view](./view.md) that represents a single occurrence of a
 [package](../abstract-syntax/package.md) in a [diagram](./diagram.md).

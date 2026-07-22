@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 4
 description: The Class model element — a classifier that defines the properties of individualized entities of the subject domain.
 ---
 
@@ -22,7 +22,9 @@ objects, reified properties, or bare values.
 (`stereotype`, `isDerived`), and the [properties common to all model elements](./index.md).
 
 The values allowed in `restrictedTo` are: `abstract`, `collective`, `event`, `extrinsic-mode`,
-`functional-complex`, `intrinsic-mode`, `quality`, `quantity`, `relator`, `situation`, and `type`.
+`functional-complex`, `intrinsic-mode`, `quality`, `quantity`, `relator`, `situation`, and `type` —
+see [Ontological Nature](../enumerations/ontological-nature.md) for what each denotes and the named
+nature subsets.
 
 When present, `order` must match the pattern `^(\d+|\*)$` — a positive integer such as `"1"` or
 `"2"`, or `"*"` for an orderless class.

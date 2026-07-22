@@ -1,9 +1,9 @@
 ---
-sidebar_position: 5
+sidebar_position: 6
 description: The BinaryRelation model element — a classifier that defines the properties of a relation between two members.
 ---
 
-# Binary relation
+# Binary Relation
 
 A **relation between two members**. It may connect two classes, or — for *derivation* relations — a
 relation (as source) and a class (as target), as in the derivation between the material relation

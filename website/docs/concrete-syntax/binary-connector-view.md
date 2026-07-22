@@ -3,7 +3,7 @@ sidebar_position: 8
 description: The abstract BinaryConnectorView element — a view drawn as a line connecting two other views.
 ---
 
-# BinaryConnectorView
+# Binary Connector View
 
 A **binary connector view** is a [view](./view.md) drawn as a line between two other views — for
 example, a binary relation or a generalization connecting two [class views](./class-view.md).

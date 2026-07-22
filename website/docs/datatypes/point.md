@@ -3,7 +3,7 @@ sidebar_position: 5
 description: The point datatype — an (x, y) coordinate pair locating a position in a diagram, used by the shapes of the concrete syntax.
 ---
 
-# point
+# Point
 
 A **`point`** is a pair of coordinates locating a position in a diagram. Points belong to the
 [concrete syntax](../concrete-syntax/index.md#shapes): they describe *where* a shape is drawn, not

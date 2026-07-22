@@ -1,5 +1,5 @@
 ---
-sidebar_position: 7
+sidebar_position: 8
 description: The Property model element — an attribute of a class or one end of a relation.
 ---
 
@@ -14,7 +14,7 @@ relation. For example, the attribute `age` of `Person`, or the ends of the binar
 | `type` | `"Property"` | Discriminator. |
 | `propertyType` | `id` or `null` | The classifier instantiated by the values assigned to the property. |
 | `cardinality` | `string` or `null` | The cardinality, e.g. `"1"`, `"0..*"`, `"1..5"`. |
-| `aggregationKind` | `enum` or `null` | For relation ends, whether the end is a whole in a parthood relation: `"COMPOSITE"`, `"SHARED"`, or `"NONE"`. `null` is interpreted as `"NONE"`. |
+| `aggregationKind` | `enum` or `null` | For relation ends, whether the end is a whole in a parthood relation: `"COMPOSITE"`, `"SHARED"`, or `"NONE"` (see [Aggregation Kind](../enumerations/aggregation-kind.md)). `null` is interpreted as `"NONE"`. |
 | `isOrdered` | `boolean` or `null` | Whether the order of the property's assignments is meaningful (only relevant when the maximum cardinality exceeds one). |
 | `isReadOnly` | `boolean` or `null` | Whether the property's assignments are immutable. |
 | `subsettedProperties` | `id[]` | Properties (relation ends) that this property subsets. |

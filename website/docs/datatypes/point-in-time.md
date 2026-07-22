@@ -3,7 +3,7 @@ sidebar_position: 4
 description: The pointInTime datatype — a string denoting a moment in time at year, month, day, or second precision, used by created and modified.
 ---
 
-# point in time
+# Point in Time
 
 A **`pointInTime`** is a string that denotes a moment in time. It is used by the
 [identity properties](../document-structure.md#identity-properties) `created` and `modified` to

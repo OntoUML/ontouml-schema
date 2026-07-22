@@ -1,5 +1,5 @@
 ---
-sidebar_position: 8
+sidebar_position: 9
 description: The Generalization model element — the generalization of a specific classifier into a general classifier.
 ---
 

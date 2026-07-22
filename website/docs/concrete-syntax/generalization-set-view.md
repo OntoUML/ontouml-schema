@@ -3,7 +3,7 @@ sidebar_position: 6
 description: The GeneralizationSetView element — represents a single occurrence of a generalization set in a diagram.
 ---
 
-# GeneralizationSetView
+# Generalization Set View
 
 A [view](./view.md) that represents a single occurrence of a
 [generalization set](../abstract-syntax/generalization-set.md) in a [diagram](./diagram.md). It

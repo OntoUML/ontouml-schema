@@ -1,11 +1,11 @@
 ---
-sidebar_position: 4
+sidebar_position: 1
 description: The abstract root of the abstract syntax — a named element that adds customProperties (UML tagged values) to every model element.
 ---
 
-# ModelElement
+# Model Element
 
-A `ModelElement` is a [`NamedElement`](./named-element.md) that represents an element of the
+A `ModelElement` is a [`NamedElement`](../structural/named-element.md) that represents an element of the
 language's **abstract syntax** — a class, a relation, a generalization, and so on. It is an
 **abstract** grouping that never appears directly in a document (it has no `type` value of its own);
 it only contributes the single property below to its many subtypes.
@@ -15,10 +15,10 @@ it only contributes the single property below to its many subtypes.
 | `customProperties` | `object` or `null` | Custom key-value pairs attached to the element. In UML these correspond to tagged values. |
 
 `ModelElement` also carries the [identity properties](../document-structure.md#identity-properties)
-`id`, `created`, and `modified` from [`OntoumlElement`](./ontouml-element.md), and the
+`id`, `created`, and `modified` from [`OntoumlElement`](../structural/ontouml-element.md), and the
 [descriptive properties](../document-structure.md#descriptive-properties) `name`,
 `alternativeNames`, `description`, `editorialNotes`, `creators`, and `contributors` from
-[`NamedElement`](./named-element.md). Because
+[`NamedElement`](../structural/named-element.md). Because
 [every property is required](../document-structure.md#every-property-is-required),
 `customProperties` is always present, written as `null` when the element carries no custom
 key-value pairs.
@@ -29,20 +29,20 @@ metamodel.
 
 ## Subtypes
 
-Every model element in the [abstract syntax](../abstract-syntax/index.md) specializes
+Every model element in the [abstract syntax](./index.md) specializes
 `ModelElement`. Its direct descendants are:
 
-- [`Generalization`](../abstract-syntax/generalization.md)
-- [`GeneralizationSet`](../abstract-syntax/generalization-set.md)
-- [`Anchor`](../abstract-syntax/anchor.md)
-- [`Literal`](../abstract-syntax/literal.md)
-- [`Note`](../abstract-syntax/note.md)
-- [`Package`](../abstract-syntax/package.md)
+- [`Generalization`](./generalization.md)
+- [`GeneralizationSet`](./generalization-set.md)
+- [`Anchor`](./anchor.md)
+- [`Literal`](./literal.md)
+- [`Note`](./note.md)
+- [`Package`](./package.md)
 - `Decoratable` — the abstract branch of elements that can carry a UFO stereotype, comprising
-  [`Property`](../abstract-syntax/property.md) and `Classifier`
-  ([`Class`](../abstract-syntax/class.md) and `Relation` →
-  [binary](../abstract-syntax/relation.md#binary-relation) and
-  [n-ary](../abstract-syntax/relation.md#nary-relation) relations).
+  [`Property`](./property.md) and `Classifier`
+  ([`Class`](./class.md) and `Relation` →
+  [binary](./relation.md#binary-relation) and
+  [n-ary](./relation.md#nary-relation) relations).
 
 ```mermaid
 classDiagram
@@ -96,5 +96,5 @@ inside every model element, alongside the identity and descriptive blocks:
 }
 ```
 
-See the [Abstract Syntax](../abstract-syntax/index.md) reference — for example
-[`Class`](../abstract-syntax/class.md) — for complete, serializable objects that embed this block.
+See the [Abstract Syntax](./index.md) reference — for example
+[`Class`](./class.md) — for complete, serializable objects that embed this block.

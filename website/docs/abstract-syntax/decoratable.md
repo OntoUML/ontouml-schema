@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_position: 2
 description: The Decoratable abstract type — a model element that can be decorated with a UFO stereotype.
 ---
 
@@ -25,9 +25,13 @@ decoratable element is one of its subtypes:
 `customProperties`.
 
 A `stereotype` names the UFO notion the element instantiates. For classes these values include
-`kind`, `role`, `phase`, and `material`, among others; for relations they include stereotypes such
-as `material` and `mediation`. The set of admissible stereotypes comes from UFO rather than from the
-schema, which only requires the value to be a non-empty string.
+`kind`, `role`, `phase`, and `subkind`, among others; for relations they include stereotypes such
+as `material` and `mediation`. The set of admissible stereotypes comes from the OntoUML profile
+rather than from the schema, which only requires the value to be a non-empty string — see
+[Enumerations](../enumerations/index.md) for the full standard vocabulary
+([class](../enumerations/class-stereotypes.md), [relation](../enumerations/relation-stereotypes.md),
+and [property](../enumerations/property-stereotypes.md) stereotypes) and how custom stereotypes are
+supported.
 
 `isDerived` marks an element whose existence is entailed by another. A common example is the
 comparative relation `is heavier than` between two physical objects, which is derived from their

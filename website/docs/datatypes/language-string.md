@@ -3,7 +3,7 @@ sidebar_position: 2
 description: How OntoUML serializes human-readable, translatable text — the languageString datatype used by name, description, a note's text, and more.
 ---
 
-# language string
+# Language String
 
 Every piece of human-readable text in an OntoUML serialization — an element's `name`, its
 `description`, a note's `text`, a project's `keywords`, and so on — is written as a

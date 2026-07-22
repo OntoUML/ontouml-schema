@@ -3,7 +3,7 @@ sidebar_position: 3
 description: The resource datatype — a reference to an external resource by name and URI, linking an OntoUML model into the semantic web.
 ---
 
-# resource
+# Resource
 
 A **`resource`** is a reference to something outside the model — a license, a person, an
 organization, a publication — identified by a name and a URI. By pairing a human-readable label with

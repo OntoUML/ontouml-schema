@@ -1,5 +1,5 @@
 ---
-sidebar_position: 13
+sidebar_position: 14
 description: The Note model element — an annotation or constraint about the ontology or its elements.
 ---
 

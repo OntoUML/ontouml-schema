@@ -3,7 +3,7 @@ sidebar_position: 2
 description: The abstract type that adds name and descriptive metadata — alternativeNames, description, editorialNotes, creators, and contributors.
 ---
 
-# NamedElement
+# Named Element
 
 A `NamedElement` is an [`OntoumlElement`](./ontouml-element.md) that can be assigned a name and other
 descriptive information. It is an **abstract** grouping that never appears directly in a document (it
@@ -41,7 +41,7 @@ The descriptive properties fall into two groups by datatype:
 `NamedElement` has three concrete/abstract descendants:
 
 - [`Project`](./project.md) — the ontology container.
-- [`ModelElement`](./model-element.md) — the abstract root of the
+- [`ModelElement`](../abstract-syntax/model-element.md) — the abstract root of the
   [abstract syntax](../abstract-syntax/index.md), and thus of all its model-element subtypes
   (classes, relations, properties, generalizations, packages, and so on).
 - [`Diagram`](../concrete-syntax/diagram.md) — a named element in the

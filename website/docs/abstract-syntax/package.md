@@ -1,5 +1,5 @@
 ---
-sidebar_position: 10
+sidebar_position: 11
 description: The Package model element — groups other model elements to modularize an ontology.
 ---
 

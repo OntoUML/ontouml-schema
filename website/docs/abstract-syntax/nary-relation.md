@@ -1,9 +1,9 @@
 ---
-sidebar_position: 6
+sidebar_position: 7
 description: The NaryRelation model element — a classifier that defines the properties of a relation connecting more than two members.
 ---
 
-# N-ary relation
+# N-ary Relation
 
 A relation that connects **more than two** members. As with binary relations, the ends are
 [`Property`](./property.md) elements listed in order in `properties`. In UML an n-ary relation is

@@ -3,7 +3,7 @@ sidebar_position: 7
 description: The NaryRelationView element — represents a single occurrence of an n-ary relation in a diagram.
 ---
 
-# NaryRelationView
+# N-ary Relation View
 
 A [view](./view.md) that represents a single occurrence of an
 [n-ary relation](../abstract-syntax/nary-relation.md) in a [diagram](./diagram.md). Its central

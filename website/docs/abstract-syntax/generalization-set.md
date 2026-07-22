@@ -1,9 +1,9 @@
 ---
-sidebar_position: 9
+sidebar_position: 10
 description: The Generalization set model element — a group of generalizations sharing a common general classifier.
 ---
 
-# Generalization set
+# Generalization Set
 
 A model element that groups connected [generalizations](./generalization.md) that share a common
 general classifier, optionally constraining them as disjoint and/or complete. For example, the

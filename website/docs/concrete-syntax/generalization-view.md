@@ -3,7 +3,7 @@ sidebar_position: 10
 description: The GeneralizationView element — represents a single occurrence of a generalization in a diagram.
 ---
 
-# GeneralizationView
+# Generalization View
 
 A [binary connector view](./binary-connector-view.md) that represents a single occurrence of a
 [generalization](../abstract-syntax/generalization.md) in a [diagram](./diagram.md), drawn as a

@@ -3,7 +3,7 @@ sidebar_position: 3
 description: The ClassView element — represents a single occurrence of a class in a diagram.
 ---
 
-# ClassView
+# Class View
 
 A [view](./view.md) that represents a single occurrence of a
 [class](../abstract-syntax/class.md) in a [diagram](./diagram.md).

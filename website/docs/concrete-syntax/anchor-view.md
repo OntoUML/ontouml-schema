@@ -3,7 +3,7 @@ sidebar_position: 11
 description: The AnchorView element — represents a single occurrence of an anchor in a diagram.
 ---
 
-# AnchorView
+# Anchor View
 
 A [binary connector view](./binary-connector-view.md) that represents a single occurrence of an
 [anchor](../abstract-syntax/anchor.md) in a [diagram](./diagram.md), drawn as a line between two

@@ -3,7 +3,7 @@ sidebar_position: 9
 description: The BinaryRelationView element — represents a single occurrence of a binary relation in a diagram.
 ---
 
-# BinaryRelationView
+# Binary Relation View
 
 A [binary connector view](./binary-connector-view.md) that represents a single occurrence of a
 [binary relation](../abstract-syntax/binary-relation.md) in a [diagram](./diagram.md), drawn as a

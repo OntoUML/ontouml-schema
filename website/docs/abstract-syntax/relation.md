@@ -1,5 +1,5 @@
 ---
-sidebar_position: 4
+sidebar_position: 5
 description: The Relation abstract type — binary and n-ary classifiers that define the properties of relations of the subject domain.
 ---
 

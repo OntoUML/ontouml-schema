@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 3
 description: The Classifier abstract type — a decoratable element that defines the properties exhibited by its instances.
 ---
 

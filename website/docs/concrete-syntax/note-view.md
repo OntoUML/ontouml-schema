@@ -3,7 +3,7 @@ sidebar_position: 5
 description: The NoteView element — represents a single occurrence of a note in a diagram.
 ---
 
-# NoteView
+# Note View
 
 A [view](./view.md) that represents a single occurrence of a
 [note](../abstract-syntax/note.md) in a [diagram](./diagram.md).

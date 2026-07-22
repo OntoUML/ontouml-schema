@@ -1,9 +1,9 @@
 ---
-sidebar_position: 11
+sidebar_position: 12
 description: The PackageableElement abstract union — any model element that can be grouped into a package.
 ---
 
-# Packageable element
+# Packageable Element
 
 A **model element that can be grouped into a [package](./package.md)** — that is, the kind of
 element allowed in a package's `contents` array.

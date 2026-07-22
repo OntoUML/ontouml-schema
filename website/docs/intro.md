@@ -27,6 +27,12 @@ JSON data. Publishing the OntoUML serialization as a JSON Schema gives the ecosy
 - **A single source of truth.** The schema is versioned and resolvable by a stable URI, so
   producers and consumers can agree on exactly which structure they are exchanging.
 
+:::tip FAIR by design
+The schema makes OntoUML models **FAIR** (Findable, Accessible, Interoperable, Reusable) by design:
+globally unique identifiers, standards-aligned metadata, controlled vocabularies, and links into the
+semantic web are built in. See [Metadata → FAIR by design](./metadata/index.md#fair).
+:::
+
 ## The schema at a glance
 
 - **Standard:** JSON Schema [Draft 2020-12](https://json-schema.org/specification-links.html#2020-12).
@@ -83,10 +89,12 @@ detail.
 | --- | --- |
 | [Getting Started](./getting-started.md) | How to obtain the schema and validate a document against it. |
 | [Document Structure](./document-structure.md) | The overall shape of a serialization: the type hierarchy, the `type` discriminator, references by `id`, and the required-property rule. |
-| [Structural](./structural/index.md) | The reference for the identity/naming backbone: `OntoumlElement`, `NamedElement`, `Project`, and `ModelElement`. |
+| [Structural](./structural/index.md) | The reference for the identity/naming backbone: `OntoumlElement`, `NamedElement`, and `Project`. |
 | [Abstract Syntax](./abstract-syntax/index.md) | The reference for **model elements** — classes, relations, properties, generalizations, packages, and more. |
 | [Concrete Syntax](./concrete-syntax/index.md) | The reference for **diagrams, views, and shapes** — the visual representation of a model. |
 | [Datatypes](./datatypes/index.md) | The reusable value types: `id`, `languageString`, `resource`, `pointInTime`, and `point`. |
+| [Enumerations](./enumerations/index.md) | The controlled value sets: ontological natures (`restrictedTo`), aggregation kinds, and the class/relation/property stereotype vocabularies. |
+| [Metadata](./metadata/index.md) | All metadata properties across elements — identity, descriptive, and project-level — and how they make models FAIR by design. |
 
 ## Related resources
 

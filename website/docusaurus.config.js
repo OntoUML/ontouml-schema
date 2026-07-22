@@ -118,6 +118,8 @@ const config = {
               { label: 'Abstract Syntax', to: '/abstract-syntax' },
               { label: 'Concrete Syntax', to: '/concrete-syntax' },
               { label: 'Datatypes', to: '/datatypes' },
+              { label: 'Enumerations', to: '/enumerations' },
+              { label: 'Metadata', to: '/metadata' },
             ],
           },
           {

@@ -21,7 +21,7 @@ That backbone is the chain
   [descriptive properties](../document-structure.md#descriptive-properties) — `name`,
   `alternativeNames`, `description`, `editorialNotes`, `creators`, and `contributors`.
 - Its concrete/abstract descendants are the [`Project`](./project.md) container, the abstract
-  [`ModelElement`](./model-element.md) branch (all of the [abstract syntax](../abstract-syntax/index.md)),
+  [`ModelElement`](../abstract-syntax/model-element.md) branch (all of the [abstract syntax](../abstract-syntax/index.md)),
   and the [`Diagram`](../concrete-syntax/diagram.md) (part of the
   [concrete syntax](../concrete-syntax/index.md)).
 
@@ -65,11 +65,11 @@ The pages in this section document the structural types themselves:
 - [`OntoumlElement`](./ontouml-element.md) — abstract; the identity root of every element.
 - [`NamedElement`](./named-element.md) — abstract; adds the descriptive properties.
 - [`Project`](./project.md) — concrete; the container that aggregates an entire ontology.
-- [`ModelElement`](./model-element.md) — abstract; the root of the abstract syntax, adding
-  `customProperties`.
 
-The third named descendant, `Diagram`, belongs to the concrete syntax and is documented under
-[`../concrete-syntax/diagram.md`](../concrete-syntax/diagram.md).
+The two other named descendants are documented in their own chapters:
+[`ModelElement`](../abstract-syntax/model-element.md) — the abstract root of the
+[abstract syntax](../abstract-syntax/index.md) — and the [`Diagram`](../concrete-syntax/diagram.md),
+part of the [concrete syntax](../concrete-syntax/index.md).
 
 For a narrative walkthrough of the same material — the type discriminator, references by `id`, and
 the required-property rule — see [Document Structure](../document-structure.md).

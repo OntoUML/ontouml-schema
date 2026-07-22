@@ -3,7 +3,7 @@ sidebar_position: 1
 description: The id datatype — a non-empty string that uniquely identifies an OntoUML element and lets elements reference one another.
 ---
 
-# id
+# ID
 
 Every OntoUML element carries an **`id`**: a non-empty string that identifies it uniquely within an
 ontology. Ids are the backbone of the serialization's structure — they are how elements
