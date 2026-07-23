@@ -14,7 +14,7 @@ Full documentation of the schema — including every definition, enumeration, an
 
 [JSON Schema](https://json-schema.org/) is a popular web standard for the definition and validation of JSON files. The standard employs JSON files to describe schemas of valid input data.
 
-This standard is language-independent and the schema can be recovered directly through its dedicated URI \<https://w3id.org/ontouml/schema/v1.0.0\>. Some [implementations](https://json-schema.org/implementations.html) of JSON Schema can directly resolve this URI and download the schema.
+This standard is language-independent and the schema can be recovered directly through its dedicated URI \<https://w3id.org/ontouml/schema/v1.0.1\>. Some [implementations](https://json-schema.org/implementations.html) of JSON Schema can directly resolve this URI and download the schema.
 
 Javascript developers, however, can directly download this dependency using the command below.
 

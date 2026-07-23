@@ -1,5 +1,5 @@
 $schema: https://json-schema.org/draft/2020-12/schema
-$id: https://w3id.org/ontouml/schema/v1.0.0
+$id: https://w3id.org/ontouml/schema/v1.0.1
 title: OntoUML Schema
 description: The OntoUML Schema defines the JSON serializations of OntoUML ontologies and their contents according to the OntoUML Metamodel project.
 oneOf:
