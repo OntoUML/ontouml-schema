@@ -2,11 +2,19 @@
 
 This repository provides a JSON Schema representation of ontologies based on the [OntoUML Metamodel](https://github.com/OntoUML/ontouml-metamodel). This serialization of ontologies in JSON is intended to support the exchange of models over HTTP requests.
 
+The schema follows the [JSON Schema 2020-12](https://json-schema.org/) specification.
+
+## Documentation
+
+Full documentation of the schema — including every definition, enumeration, and metadata structure — is available on the documentation website:
+
+**<https://ontouml.github.io/ontouml-schema/>**
+
 ## How to use
 
 [JSON Schema](https://json-schema.org/) is a popular web standard for the definition and validation of JSON files. The standard employs JSON files to describe schemas of valid input data.
 
-This standard is language-independent and the schema can be recovered directly through its dedicated URI \<https://w3id.org/ontouml/schema/v1.0.0\> (unstable as of August 22). Some [implementations](https://json-schema.org/implementations.html) of JSON Schema can directly resolve this URI and download the schema.
+This standard is language-independent and the schema can be recovered directly through its dedicated URI \<https://w3id.org/ontouml/schema/v1.0.0\>. Some [implementations](https://json-schema.org/implementations.html) of JSON Schema can directly resolve this URI and download the schema.
 
 Javascript developers, however, can directly download this dependency using the command below.
 
@@ -19,15 +27,43 @@ The code snippet below shows how a developer can then use a dedicated library su
 ```javascript
 const schema = require('ontouml-schema');
 const Ajv = require('ajv');
+const addFormats = require('ajv-formats');
 
-const validator = new Ajv().compile(schema);
+const ajv = new Ajv();
+addFormats(ajv);
+const validator = ajv.compile(schema);
+
 const project = {
+  id: '1234',
   type: 'Project',
-  id: 'p1',
-  name: {
-    en: 'My Ontology'
-  }
+  name: { en: 'Project Name' },
+  alternativeNames: [],
+  description: { en: 'The Project Description' },
+  keywords: [],
+  created: '2024-09-04T00:00:00Z',
+  modified: '2024-09-04T00:00:00Z',
+  propertyAssignments: null,
+  editorialNotes: [],
+  creators: [],
+  contributors: [],
+  elements: [],
+  root: null,
+  publisher: null,
+  designedForTasks: [],
+  license: null,
+  accessRights: [],
+  themes: [],
+  contexts: [],
+  ontologyTypes: [],
+  representationStyle: null,
+  namespace: null,
+  landingPages: [],
+  sources: [],
+  bibliographicCitations: [],
+  acronyms: [],
+  languages: ['en', 'pt-br']
 };
+
 const isValid = validator(project);
 
 if (isValid) {
@@ -37,6 +73,8 @@ if (isValid) {
   console.log(validator.errors);
 }
 ```
+
+> The schema uses string formats (e.g. `date-time` for `created` and `modified`), so [ajv-formats](https://github.com/ajv-validator/ajv-formats) is required for full validation. See [`test/new_models/`](test/new_models/) for more example serializations.
 
 ## Development
 
