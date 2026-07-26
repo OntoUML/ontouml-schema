@@ -85,8 +85,11 @@ jobs:
           # --no-verify: the pre-commit hook repeats generate + test, which
           # this workflow already ran explicitly.
           git commit --no-verify -m "chore: release $VERSION"
-          git tag "v$VERSION"
-          git push origin master --follow-tags
+          git tag -a "v$VERSION" -m "v$VERSION"
+          # Push the tag explicitly: --follow-tags only pushes annotated
+          # tags and silently skips lightweight ones, which left the tag
+          # behind and broke `gh release create`.
+          git push origin master "refs/tags/v$VERSION"
 
       - name: Create GitHub Release
         env:
