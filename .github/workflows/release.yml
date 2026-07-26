@@ -1,0 +1,101 @@
+name: Release on PR merge
+
+# Every merged PR produces a release: bump the version (kept in sync across
+# package.json, the schema $id, and the README — see AGENTS.md), commit, tag,
+# create a GitHub Release, and trigger the npm publish workflow.
+#
+# The bump type defaults to patch. Override with a `release:major` or
+# `release:minor` label on the PR, or a conventional-commit PR title
+# (`feat: …` → minor, `feat!: …` / a title containing `BREAKING` → major).
+
+on:
+  pull_request:
+    types: [closed]
+    branches: [master]
+
+permissions:
+  # Push the release commit + tag and create the GitHub Release.
+  contents: write
+  # Dispatch publish.yml (a GITHUB_TOKEN-created Release does not fire its
+  # `release: published` trigger, so we dispatch it explicitly).
+  actions: write
+
+# Serialize releases so two merges can't race on the version bump.
+concurrency: release
+
+jobs:
+  release:
+    name: Bump version, tag, and release
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: master
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Determine bump type
+        id: bump
+        env:
+          LABELS: ${{ join(github.event.pull_request.labels.*.name, ' ') }}
+          TITLE: ${{ github.event.pull_request.title }}
+        run: |
+          bump=patch
+          if [[ " $LABELS " == *" release:major "* ]]; then
+            bump=major
+          elif [[ " $LABELS " == *" release:minor "* ]]; then
+            bump=minor
+          elif echo "$TITLE" | grep -qE '^[a-z]+(\([^)]*\))?!:|BREAKING'; then
+            bump=major
+          elif echo "$TITLE" | grep -qE '^feat(\([^)]*\))?:'; then
+            bump=minor
+          fi
+          echo "Bump type: $bump"
+          echo "type=$bump" >> "$GITHUB_OUTPUT"
+
+      - name: Bump version
+        id: version
+        run: |
+          version=$(node scripts/bump-version.mjs "${{ steps.bump.outputs.type }}")
+          echo "Releasing $version"
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+
+      - name: Regenerate schema
+        run: npm run generate
+
+      - name: Validate schema
+        run: npm test
+
+      - name: Commit, tag, and push
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add package.json package-lock.json src/ontouml-schema.yaml README.md dist/ontouml-schema.json
+          # --no-verify: the pre-commit hook repeats generate + test, which
+          # this workflow already ran explicitly.
+          git commit --no-verify -m "chore: release $VERSION"
+          git tag "v$VERSION"
+          git push origin master --follow-tags
+
+      - name: Create GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ steps.version.outputs.version }}
+        run: gh release create "v$VERSION" --title "v$VERSION" --generate-notes
+
+      - name: Trigger npm publish
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ steps.version.outputs.version }}
+        run: gh workflow run publish.yml --ref "v$VERSION"

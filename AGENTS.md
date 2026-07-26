@@ -10,7 +10,11 @@ Guidance for AI agents (and humans) working in this repository.
 
 ## Releasing / version bumps
 
-When bumping the release version, keep the version **in sync across all three** of these:
+**Every merged PR is released automatically** by [`.github/workflows/release.yml`](.github/workflows/release.yml): it bumps the version, commits, tags `vX.Y.Z`, creates a GitHub Release, and triggers the npm publish. Do not bump versions in PRs.
+
+The bump type defaults to **patch**. To release a different bump, either label the PR `release:major` / `release:minor`, or use a conventional-commit PR title (`feat: …` → minor; `feat!: …` or a title containing `BREAKING` → major).
+
+The version is kept **in sync across all three** of these (done by [`scripts/bump-version.mjs`](scripts/bump-version.mjs) — use it for any manual bump too):
 
 1. `version` in [`package.json`](package.json)
 2. The schema `$id` in [`src/ontouml-schema.yaml`](src/ontouml-schema.yaml) — `https://w3id.org/ontouml/schema/vX.Y.Z`
@@ -22,4 +26,4 @@ Published npm versions are immutable — a mistake in a release requires a new v
 
 ## Publishing
 
-Publishing to npm is automated via [`.github/workflows/publish.yml`](.github/workflows/publish.yml), which runs on a published GitHub Release using npm Trusted Publishing (OIDC — no token). To release: bump the version (see above), tag `vX.Y.Z`, and create a GitHub Release from that tag.
+Publishing to npm runs in [`.github/workflows/publish.yml`](.github/workflows/publish.yml) using npm Trusted Publishing (OIDC — no token). It fires on a published GitHub Release or a manual `workflow_dispatch`; the release workflow dispatches it explicitly, because Releases created with the workflow `GITHUB_TOKEN` do not trigger other workflows' `release` events.
