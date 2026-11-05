@@ -21,11 +21,13 @@ validator rejects anything outside them. There are two:
 
 ## Open, standardized vocabularies
 
-The OntoUML **stereotypes** are different. The schema stores a `stereotype` as a plain **non-empty
-string** (see [`Decoratable`](../abstract-syntax/decoratable.md)) and does **not** constrain it to
-an enumeration. The lists below are therefore the *recommended* standard vocabulary — drawn from the
-OntoUML profile — rather than a closed set. **Custom stereotypes are allowed**, deliberately, so
-that tools and modelers can extend the notation.
+The OntoUML **stereotypes** are different. The schema lists the standard values for each kind of
+decoratable element — in its `classStereotype`, `relationStereotype`, and `propertyStereotype`
+definitions — and suggests them for that element's `stereotype`, but still accepts any **non-empty
+string** (see [`Decoratable`](../abstract-syntax/decoratable.md)). The lists below are therefore the
+_recommended_ standard vocabulary — drawn from the OntoUML 1.0 profile under review at the OMG —
+rather than a closed set. **Custom stereotypes are allowed**, deliberately, so that tools and
+modelers can extend the notation.
 
 - **[Class Stereotypes](./class-stereotypes.md)** — decorate [class](../abstract-syntax/class.md)
   elements (`kind`, `role`, `relator`, …).
@@ -33,10 +35,11 @@ that tools and modelers can extend the notation.
   [binary](../abstract-syntax/binary-relation.md) and [n-ary](../abstract-syntax/nary-relation.md)
   relations (`material`, `mediation`, …).
 - **[Property Stereotypes](./property-stereotypes.md)** — decorate
-  [property](../abstract-syntax/property.md) elements (`begin`, `end`).
+  [property](../abstract-syntax/property.md) elements (`addOnly`, `begin`, `end`).
 
 :::info Closed versus open
 Ontological Nature and Aggregation Kind are **closed** enumerations — validators enforce them. The
-three stereotype lists are **open** — the schema accepts any non-empty string, and the standard
-vocabulary exists for interoperability, not enforcement.
+three stereotype lists are **open** — the schema suggests the standard values, so editors can
+autocomplete them, but accepts any non-empty string; the standard vocabulary exists for
+interoperability, not enforcement.
 :::

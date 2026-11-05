@@ -5,13 +5,12 @@ description: The BinaryRelation model element — a classifier that defines the 
 
 # Binary Relation
 
-A **relation between two members**. It may connect two classes, or — for *derivation* relations — a
-relation (as source) and a class (as target), as in the derivation between the material relation
-`studies in` and the `Enrollment` relator.
+A **relation between two members**: it connects two classes, as `studies in` connects `Student` and
+`University`.
 
-| Property | Type | Description |
-| --- | --- | --- |
-| `type` | `"BinaryRelation"` | Discriminator. |
+| Property | Type               | Description    |
+| -------- | ------------------ | -------------- |
+| `type`   | `"BinaryRelation"` | Discriminator. |
 
 `BinaryRelation` carries the properties of [`Classifier`](./classifier.md) (`isAbstract`,
 `properties`), [`Decoratable`](./decoratable.md) (`stereotype`, `isDerived`), and the
@@ -21,7 +20,8 @@ relation (as source) and a class (as target), as in the derivation between the m
 
 The example below is the `«material» studies in` relation connecting the classes `Student` and
 `University`. Its two ends — the `Property` elements listed in `properties` — are drawn with their
-cardinalities (`1..*` at each end).
+cardinalities (`1..*` at each end). Material relations are derived from their truthmaker (here, an
+`Enrollment` relator), so `isDerived` is `true`.
 
 ```mermaid
 classDiagram
@@ -36,7 +36,7 @@ classDiagram
   "id": "relation_1",
   "name": { "en": "studies in" },
   "stereotype": "material",
-  "isDerived": false,
+  "isDerived": true,
   "isAbstract": false,
   "properties": ["end_source", "end_target"],
   "customProperties": null,
@@ -108,14 +108,14 @@ diagram and points, via `propertyType`, to the class it connects — `end_source
 ## Parthood and aggregation {#parthood}
 
 Parthood relations record which end is the **whole** through the `aggregationKind` of that end. The
-example below is a `«componentOf»` relation between the whole `Car` and its part `Engine`. In UML it
-is drawn with a filled diamond at the whole end.
+example below is a `«componenthood»` relation between the whole `Car` and its part `Engine`. In UML
+it is drawn with a filled diamond at the whole end.
 
 ```mermaid
 classDiagram
   class Car
   class Engine
-  Car "1" *-- "1..*" Engine : «componentOf»
+  Car "1" *-- "1..*" Engine : «componenthood»
 ```
 
 ```json
@@ -123,7 +123,7 @@ classDiagram
   "type": "BinaryRelation",
   "id": "relation_3",
   "name": null,
-  "stereotype": "componentOf",
+  "stereotype": "componenthood",
   "isDerived": false,
   "isAbstract": false,
   "properties": ["end_car", "end_engine"],

@@ -15,6 +15,10 @@ Being a [`Classifier`](./classifier.md), `Relation` carries `isAbstract` and `pr
 [properties common to all model elements](./index.md). A relation's ends are
 [`Property`](./property.md) elements referenced, **in order**, from its `properties` array.
 
+| Property     | Type               | Description                                                                                                                                                                                                 |
+| ------------ | ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `stereotype` | `string` or `null` | Refines the [`Decoratable`](./decoratable.md) `stereotype`, suggesting the standard [relation stereotypes](../enumerations/relation-stereotypes.md) such as `"material"`. Any non-empty string is accepted. |
+
 ## Binary relation {#binary-relation}
 
 A relation between two members — for example the `«material» studies in` relation connecting

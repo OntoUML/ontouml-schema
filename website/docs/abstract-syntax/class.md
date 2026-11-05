@@ -9,13 +9,14 @@ A **classifier** that defines the properties of a set of individualized (non-rel
 of the subject domain — for example `Person`, `Enrollment`, or `Grade`. Its instances may be
 objects, reified properties, or bare values.
 
-| Property | Type | Description |
-| --- | --- | --- |
-| `type` | `"Class"` | Discriminator. |
-| `literals` | `id[]` | The [literals](./literal.md) of an enumeration class. |
-| `restrictedTo` | `string[]` | The possible ontological natures of the class's instances (see values below). |
-| `isPowertype` | `boolean` or `null` | Whether the (high-order) class is a Cardelli powertype. |
-| `order` | `string` or `null` | The instantiation order: `"1"` (first-order), `"2"`, `"3"`, … or `"*"` (orderless). |
+| Property       | Type                | Description                                                                                                                                                                                       |
+| -------------- | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `type`         | `"Class"`           | Discriminator.                                                                                                                                                                                    |
+| `stereotype`   | `string` or `null`  | Refines the [`Decoratable`](./decoratable.md) `stereotype`, suggesting the standard [class stereotypes](../enumerations/class-stereotypes.md) such as `"kind"`. Any non-empty string is accepted. |
+| `literals`     | `id[]`              | The [literals](./literal.md) of an enumeration class.                                                                                                                                             |
+| `restrictedTo` | `string[]`          | The possible ontological natures of the class's instances (see values below).                                                                                                                     |
+| `isPowertype`  | `boolean` or `null` | Whether the (high-order) class is a Cardelli powertype.                                                                                                                                           |
+| `order`        | `string` or `null`  | The instantiation order: `"1"` (first-order), `"2"`, `"3"`, … or `"*"` (orderless).                                                                                                               |
 
 `Class` also carries the properties of [`Classifier`](./index.md#classifiers-and-properties)
 (`isAbstract`, `properties`), [`Decoratable`](./index.md#classifiers-and-properties)

@@ -5,20 +5,21 @@ description: The Property model element — an attribute of a class or one end o
 
 # Property
 
-A **decoratable** element that represents either an *attribute* of a class or one *end* of a
+A **decoratable** element that represents either an _attribute_ of a class or one _end_ of a
 relation. For example, the attribute `age` of `Person`, or the ends of the binary relation
 `studies in` connecting `Student` and `University`.
 
-| Property | Type | Description |
-| --- | --- | --- |
-| `type` | `"Property"` | Discriminator. |
-| `propertyType` | `id` or `null` | The classifier instantiated by the values assigned to the property. |
-| `cardinality` | `string` or `null` | The cardinality, e.g. `"1"`, `"0..*"`, `"1..5"`. |
-| `aggregationKind` | `enum` or `null` | For relation ends, whether the end is a whole in a parthood relation: `"COMPOSITE"`, `"SHARED"`, or `"NONE"` (see [Aggregation Kind](../enumerations/aggregation-kind.md)). `null` is interpreted as `"NONE"`. |
-| `isOrdered` | `boolean` or `null` | Whether the order of the property's assignments is meaningful (only relevant when the maximum cardinality exceeds one). |
-| `isReadOnly` | `boolean` or `null` | Whether the property's assignments are immutable. |
-| `subsettedProperties` | `id[]` | Properties (relation ends) that this property subsets. |
-| `redefinedProperties` | `id[]` | Properties (relation ends) that this property redefines. |
+| Property              | Type                | Description                                                                                                                                                                                                    |
+| --------------------- | ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `type`                | `"Property"`        | Discriminator.                                                                                                                                                                                                 |
+| `stereotype`          | `string` or `null`  | Refines the [`Decoratable`](./decoratable.md) `stereotype`, suggesting the standard [property stereotypes](../enumerations/property-stereotypes.md) such as `"begin"`. Any non-empty string is accepted.       |
+| `propertyType`        | `id` or `null`      | The classifier instantiated by the values assigned to the property.                                                                                                                                            |
+| `cardinality`         | `string` or `null`  | The cardinality, e.g. `"1"`, `"0..*"`, `"1..5"`.                                                                                                                                                               |
+| `aggregationKind`     | `enum` or `null`    | For relation ends, whether the end is a whole in a parthood relation: `"COMPOSITE"`, `"SHARED"`, or `"NONE"` (see [Aggregation Kind](../enumerations/aggregation-kind.md)). `null` is interpreted as `"NONE"`. |
+| `isOrdered`           | `boolean` or `null` | Whether the order of the property's assignments is meaningful (only relevant when the maximum cardinality exceeds one).                                                                                        |
+| `isReadOnly`          | `boolean` or `null` | Whether the property's assignments are immutable.                                                                                                                                                              |
+| `subsettedProperties` | `id[]`              | Properties (relation ends) that this property subsets.                                                                                                                                                         |
+| `redefinedProperties` | `id[]`              | Properties (relation ends) that this property redefines.                                                                                                                                                       |
 
 `Property` also carries the properties of [`Decoratable`](./index.md#classifiers-and-properties)
 (`stereotype`, `isDerived`) and the [properties common to all model elements](./index.md).
@@ -66,9 +67,9 @@ classDiagram
 
 A relation end can refine an end inherited from a more general relation, in two ways:
 
-- **Subsetting** (`subsettedProperties`) — the values of this end are always a *subset* of the
+- **Subsetting** (`subsettedProperties`) — the values of this end are always a _subset_ of the
   values of the end it subsets. In UML this is annotated `{subsets parent}`.
-- **Redefinition** (`redefinedProperties`) — this end *replaces* the end it redefines in the
+- **Redefinition** (`redefinedProperties`) — this end _replaces_ the end it redefines in the
   context of the specialized classifier, typically tightening its cardinality or retyping it. In
   UML this is annotated `{redefines parent}`.
 

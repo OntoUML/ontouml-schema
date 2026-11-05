@@ -447,7 +447,10 @@ $defs:
         properties:
           stereotype:
             title: stereotype
-            description: Determines the type of a model element according to Unified Foundational Ontology (UFO).
+            description: |-
+              Determines the type of a model element according to Unified Foundational Ontology (UFO).
+
+              Classes, relations, and properties each have their own standard stereotypes (see "class stereotype", "relation stereotype", and "property stereotype"). Custom stereotypes are also allowed.
             oneOf:
               - type: 'null'
               - type: string
@@ -482,6 +485,14 @@ $defs:
         title: type
         description: Determines the type of a property object.
         const: Property
+      stereotype:
+        title: stereotype
+        description: Determines the type of a property according to UFO, preferably using one of the standard property stereotypes (e.g., "begin"). Custom stereotypes are also allowed.
+        anyOf:
+          - type: 'null'
+          - $ref: '#/$defs/propertyStereotype'
+          - type: string
+            minLength: 1
       subsettedProperties:
         title: subsetted properties
         description: |-
@@ -600,6 +611,14 @@ $defs:
         title: type
         description: Determines the type of a class object.
         const: Class
+      stereotype:
+        title: stereotype
+        description: Determines the type of a class according to UFO, preferably using one of the standard class stereotypes (e.g., "kind", "role", or "relator"). Custom stereotypes are also allowed.
+        anyOf:
+          - type: 'null'
+          - $ref: '#/$defs/classStereotype'
+          - type: string
+            minLength: 1
       literals:
         title: literals
         description: Identifies the literals of an enumeration class.
@@ -650,18 +669,27 @@ $defs:
     description: |-
       A classifier that defines the properties of a set of relations of the subject domain.
 
-      Examples include "studies in", "buys product from" (ternary relation), and derivation relations (e.g., between material relations and relators).
-    oneOf:
-      - $ref: '#/$defs/BinaryRelation'
-      - $ref: '#/$defs/NaryRelation'
+      Examples include "studies in" and "buys product from" (ternary relation).
+    allOf:
+      - type: object
+        properties:
+          stereotype:
+            title: stereotype
+            description: Determines the type of a relation according to UFO, preferably using one of the standard relation stereotypes (e.g., "material", "mediation", or "componenthood"). Custom stereotypes are also allowed.
+            anyOf:
+              - type: 'null'
+              - $ref: '#/$defs/relationStereotype'
+              - type: string
+                minLength: 1
+      - oneOf:
+          - $ref: '#/$defs/BinaryRelation'
+          - $ref: '#/$defs/NaryRelation'
   BinaryRelation:
     title: Binary Relation
     description: |-
-      A relation that defines the properties of a set of binary relations of the subject domain.
+      A relation that defines the properties of a set of binary relations of the subject domain, connecting two classes.
 
-      Examples include "studies in", and derivation relations (e.g., between material relations and relators).
-
-      A binary relation may either connect two classes, or a relation (as source) and a class (as target) in the case of derivation relations connecting descriptive relations to the classes that serve as their truthmakers (as in the relation between the material relation "studies in" and the "Enrollment" relator).
+      Examples include "studies in" between "Student" and "University", and "is taller than" between two persons.
     type: object
     properties:
       type:
@@ -675,7 +703,7 @@ $defs:
     description: |-
       A relation that defines the properties of a set of relations of the subject domain that connect more than two members.
 
-      Examples include "studies in", "buys product from" (ternary relation), and derivation relations (e.g., between material relations and relators).
+      Examples include "buys product from", a ternary relation connecting a buyer, a product, and a seller.
     type: object
     properties:
       type:
@@ -1056,3 +1084,71 @@ $defs:
     required:
       - 'x'
       - 'y'
+  classStereotype:
+    title: class stereotype
+    description: |-
+      Determines one of the standard OntoUML stereotypes for classes, as defined by the UML Profile for Ontology-Driven Conceptual Modeling (OntoUML).
+
+      Classes of endurants use "kind", "collective", "quantity", "relator", "intrinsicMode", "extrinsicMode", "quality", "subkind", "role", "phase", "category", "mixin", "roleMixin", or "phaseMixin"; classes of events use "event", "historicalRole", or "historicalRoleMixin"; classes of situations use "situation"; and classes of higher-order types use "type".
+    enum:
+      - kind
+      - collective
+      - quantity
+      - relator
+      - intrinsicMode
+      - extrinsicMode
+      - quality
+      - subkind
+      - role
+      - phase
+      - category
+      - mixin
+      - roleMixin
+      - phaseMixin
+      - event
+      - historicalRole
+      - historicalRoleMixin
+      - situation
+      - type
+  relationStereotype:
+    title: relation stereotype
+    description: |-
+      Determines one of the standard OntoUML stereotypes for relations, as defined by the UML Profile for Ontology-Driven Conceptual Modeling (OntoUML).
+
+      Relations between endurants use "material", "comparative", "characterization", "mediation", "externalDependence", "componenthood", "membership", "subCollection", "subQuantity", or "constitution"; relations involving events use "historicalDependence", "participation", "creation", "termination", "change", "manifestation", "structural", "temporal", or "participational"; relations involving situations use "triggering", "bringingAbout", or "presence"; and relations involving higher-order types use "instantiation".
+
+      Only "material" and "comparative" can decorate n-ary relations; all other stereotypes decorate binary relations. Derivation is not a relation stereotype: a derived relation is marked with "is derived" instead.
+    enum:
+      - material
+      - comparative
+      - characterization
+      - mediation
+      - externalDependence
+      - componenthood
+      - membership
+      - subCollection
+      - subQuantity
+      - constitution
+      - historicalDependence
+      - participation
+      - creation
+      - termination
+      - change
+      - manifestation
+      - structural
+      - temporal
+      - participational
+      - triggering
+      - bringingAbout
+      - presence
+      - instantiation
+  propertyStereotype:
+    title: property stereotype
+    description: |-
+      Determines one of the standard OntoUML stereotypes for properties, as defined by the UML Profile for Ontology-Driven Conceptual Modeling (OntoUML).
+
+      The stereotype "addOnly" marks a property whose values can be added but never removed or altered; "begin" and "end" mark the attributes that record when an individual begins and ceases to exist.
+    enum:
+      - addOnly
+      - begin
+      - end
