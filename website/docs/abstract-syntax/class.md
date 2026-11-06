@@ -19,8 +19,8 @@ objects, reified properties, or bare values.
 | `order`        | `string` or `null`  | The instantiation order: `"1"` (first-order), `"2"`, `"3"`, … or `"*"` (orderless).                                                                                                               |
 
 `Class` also carries the properties of [`Classifier`](./index.md#classifiers-and-properties)
-(`isAbstract`, `properties`), [`Decoratable`](./index.md#classifiers-and-properties)
-(`stereotype`, `isDerived`), and the [properties common to all model elements](./index.md).
+(`isDerived`, `isAbstract`, `properties`), [`Decoratable`](./index.md#classifiers-and-properties)
+(`stereotype`), and the [properties common to all model elements](./index.md).
 
 The values allowed in `restrictedTo` are: `abstract`, `collective`, `event`, `extrinsic-mode`,
 `functional-complex`, `intrinsic-mode`, `quality`, `quantity`, `relator`, `situation`, and `type` —

@@ -1,5 +1,5 @@
 ---
-sidebar_position: 12
+sidebar_position: 13
 description: The PackageableElement abstract union — any model element that can be grouped into a package.
 ---
 
@@ -14,6 +14,7 @@ own. It is a union rather than a type with properties of its own. A packageable 
 - a [`Classifier`](./classifier.md) — a [class](./class.md) or a [relation](./relation.md);
 - a [generalization](./generalization.md);
 - a [generalization set](./generalization-set.md);
+- a [dependency](./dependency.md);
 - an [anchor](./anchor.md);
 - a [note](./note.md); or
 - a [package](./package.md) itself (allowing packages to nest).

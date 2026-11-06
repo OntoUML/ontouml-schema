@@ -12,15 +12,15 @@ element to the [shapes](./shape.md) needed to draw it — for example, an
 [diamond](./diamond.md) and a set of [paths](./path.md). Multiple views can represent multiple
 occurrences of the same element, whether in one diagram or across several.
 
-A view is responsible for *what* portions of a model element are shown (for example, whether a
-property's cardinality is displayed), while a [shape](./shape.md) is responsible for *how* the
+A view is responsible for _what_ portions of a model element are shown (for example, whether a
+property's cardinality is displayed), while a [shape](./shape.md) is responsible for _how_ the
 drawing is rendered (its position and dimensions).
 
 `View` is **abstract**: it is never serialized on its own. Every serialized object is one of the
 concrete subtypes below, distinguished by its `type` discriminator.
 
-| Property | Type | Description |
-| --- | --- | --- |
+| Property   | Type | Description                                                |
+| ---------- | ---- | ---------------------------------------------------------- |
 | `isViewOf` | `id` | The model element that the view represents in the diagram. |
 
 Every view also carries the [identity properties](../document-structure.md#identity-properties)
@@ -36,4 +36,5 @@ The concrete view types fall into two families:
   [`NaryRelationView`](./nary-relation-view.md).
 - **[Binary connector views](./binary-connector-view.md)**, drawn as a line between two other
   views: [`BinaryRelationView`](./binary-relation-view.md),
-  [`GeneralizationView`](./generalization-view.md), and [`AnchorView`](./anchor-view.md).
+  [`GeneralizationView`](./generalization-view.md), [`AnchorView`](./anchor-view.md), and
+  [`DependencyView`](./dependency-view.md).

@@ -15,13 +15,19 @@ classifier is one of its subtypes:
 - a [`Relation`](./relation.md) — the properties of a set of relations, itself always a
   [binary](./binary-relation.md) or [n-ary](./nary-relation.md) relation.
 
-| Property | Type | Description |
-| --- | --- | --- |
+| Property     | Type                | Description                                                                                                                             |
+| ------------ | ------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| `isDerived`  | `boolean` or `null` | Whether the classifier is derived from another element — i.e. some other element serves as its truthmaker.                              |
 | `isAbstract` | `boolean` or `null` | Whether the classifier can have direct instances. An abstract classifier is instantiated only through its non-abstract specializations. |
-| `properties` | `id[]` | The [properties](./property.md) contained in the classifier, referenced by id. |
+| `properties` | `id[]`              | The [properties](./property.md) contained in the classifier, referenced by id.                                                          |
 
-`Classifier` is a [`Decoratable`](./decoratable.md), so it also carries `stereotype` and
-`isDerived`, along with the [properties common to all model elements](./index.md).
+`Classifier` is a [`Decoratable`](./decoratable.md), so it also carries `stereotype`, along with
+the [properties common to all model elements](./index.md).
+
+`isDerived` marks a classifier whose existence is entailed by another element. A common example is
+the comparative relation `is heavier than` between two physical objects, which is derived from their
+`Weight` quality; a [derivation](./dependency.md#derivation) dependency links the relation to that
+quality.
 
 The `properties` array holds the classifier's **attributes** when the classifier is a class, and its
 **relation ends** when the classifier is a relation. Each entry is the id of a

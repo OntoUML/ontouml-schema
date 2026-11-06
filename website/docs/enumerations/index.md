@@ -21,8 +21,8 @@ validator rejects anything outside them. There are two:
 
 ## Open, standardized vocabularies
 
-The OntoUML **stereotypes** are different. The schema lists the standard values for each kind of
-decoratable element — in its `classStereotype`, `relationStereotype`, and `propertyStereotype`
+The OntoUML **stereotypes** are different. The schema lists the standard values for classes, relations,
+and properties — in its `classStereotype`, `relationStereotype`, and `propertyStereotype`
 definitions — and suggests them for that element's `stereotype`, but still accepts any **non-empty
 string** (see [`Decoratable`](../abstract-syntax/decoratable.md)). The lists below are therefore the
 _recommended_ standard vocabulary — drawn from the OntoUML 1.0 profile under review at the OMG —
@@ -36,6 +36,9 @@ modelers can extend the notation.
   relations (`material`, `mediation`, …).
 - **[Property Stereotypes](./property-stereotypes.md)** — decorate
   [property](../abstract-syntax/property.md) elements (`addOnly`, `begin`, `end`).
+
+[Dependencies](../abstract-syntax/dependency.md) have a single standard stereotype, `derive`, which
+marks a [derivation](../abstract-syntax/dependency.md#derivation).
 
 :::info Closed versus open
 Ontological Nature and Aggregation Kind are **closed** enumerations — validators enforce them. The

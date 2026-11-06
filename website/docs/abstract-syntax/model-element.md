@@ -10,8 +10,8 @@ language's **abstract syntax** — a class, a relation, a generalization, and so
 **abstract** grouping that never appears directly in a document (it has no `type` value of its own);
 it only contributes the single property below to its many subtypes.
 
-| Property | Type | Description |
-| --- | --- | --- |
+| Property           | Type               | Description                                                                               |
+| ------------------ | ------------------ | ----------------------------------------------------------------------------------------- |
 | `customProperties` | `object` or `null` | Custom key-value pairs attached to the element. In UML these correspond to tagged values. |
 
 `ModelElement` also carries the [identity properties](../document-structure.md#identity-properties)
@@ -38,11 +38,11 @@ Every model element in the [abstract syntax](./index.md) specializes
 - [`Literal`](./literal.md)
 - [`Note`](./note.md)
 - [`Package`](./package.md)
-- `Decoratable` — the abstract branch of elements that can carry a UFO stereotype, comprising
-  [`Property`](./property.md) and `Classifier`
+- `Decoratable` — the abstract branch of elements that can carry a stereotype, comprising
+  [`Property`](./property.md), `Classifier`
   ([`Class`](./class.md) and `Relation` →
   [binary](./relation.md#binary-relation) and
-  [n-ary](./relation.md#nary-relation) relations).
+  [n-ary](./relation.md#nary-relation) relations), and [`Dependency`](./dependency.md).
 
 ```mermaid
 classDiagram
@@ -70,6 +70,7 @@ classDiagram
   ModelElement <|-- Decoratable
   Decoratable <|-- Property
   Decoratable <|-- Classifier
+  Decoratable <|-- Dependency
   Classifier <|-- Class
   Classifier <|-- Relation
   Relation <|-- BinaryRelation

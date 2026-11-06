@@ -1,5 +1,5 @@
 ---
-sidebar_position: 9
+sidebar_position: 10
 description: The Generalization model element — the generalization of a specific classifier into a general classifier.
 ---
 
@@ -10,11 +10,11 @@ classifier — read in reverse, a specialization. For example, the generalizatio
 `Person`. A generalization can only connect two classifiers of the **same** kind (two classes or
 two relations).
 
-| Property | Type | Description |
-| --- | --- | --- |
-| `type` | `"Generalization"` | Discriminator. |
-| `general` | `id` | The general classifier (e.g. `Person`). |
-| `specific` | `id` | The specific classifier (e.g. `Student`). |
+| Property   | Type               | Description                               |
+| ---------- | ------------------ | ----------------------------------------- |
+| `type`     | `"Generalization"` | Discriminator.                            |
+| `general`  | `id`               | The general classifier (e.g. `Person`).   |
+| `specific` | `id`               | The specific classifier (e.g. `Student`). |
 
 `Generalization` also carries the [properties common to all model elements](./index.md).
 

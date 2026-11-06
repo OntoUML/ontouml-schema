@@ -1,5 +1,5 @@
 ---
-sidebar_position: 13
+sidebar_position: 14
 description: The Literal model element — a specific value within an enumerated set.
 ---
 
@@ -9,9 +9,9 @@ A model element that represents a specific value within an enumerated set — fo
 of an A–F grading scale, listed in the `literals` of a [`Class`](./class.md) stereotyped as an
 enumeration. `Literal` has no properties of its own beyond `type` and the common ones.
 
-| Property | Type | Description |
-| --- | --- | --- |
-| `type` | `"Literal"` | Discriminator. |
+| Property | Type        | Description    |
+| -------- | ----------- | -------------- |
+| `type`   | `"Literal"` | Discriminator. |
 
 `Literal` also carries the [properties common to all model elements](./index.md).
 

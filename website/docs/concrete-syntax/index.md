@@ -12,8 +12,8 @@ The **concrete syntax** is the visual representation of a model: where and how i
 - a **[View](#views)** represents a single occurrence of one model element in a diagram; and
 - a **[Shape](#shapes)** describes the actual drawing — position and dimensions — of a view.
 
-The separation of *view* from *shape* is deliberate: a view decides *what* of a model element is
-shown (for example, whether a property's cardinality is displayed), while a shape decides *how* it
+The separation of _view_ from _shape_ is deliberate: a view decides _what_ of a model element is
+shown (for example, whether a property's cardinality is displayed), while a shape decides _how_ it
 is rendered (position, width, height, the points of a line). The same model element can be shown in
 several diagrams, each occurrence being a distinct view.
 
@@ -37,11 +37,11 @@ In addition to the [identity](../document-structure.md#identity-properties) and
 [descriptive](../document-structure.md#descriptive-properties) properties of a named element, a
 diagram defines:
 
-| Property | Type | Description |
-| --- | --- | --- |
-| `type` | `"Diagram"` | Discriminator. |
-| `owner` | `id` or `null` | The model element that owns the diagram, if any. |
-| `views` | `id[]` | The [views](#views) contained in the diagram. |
+| Property | Type           | Description                                      |
+| -------- | -------------- | ------------------------------------------------ |
+| `type`   | `"Diagram"`    | Discriminator.                                   |
+| `owner`  | `id` or `null` | The model element that owns the diagram, if any. |
+| `views`  | `id[]`         | The [views](#views) contained in the diagram.    |
 
 ```json
 {
@@ -66,8 +66,8 @@ A **view** represents a single occurrence of a model element in a diagram, tying
 to the [shapes](#shapes) needed to draw it. Every view specializes the abstract `View` type, which
 contributes one property.
 
-| Property | Type | Description |
-| --- | --- | --- |
+| Property   | Type | Description                                 |
+| ---------- | ---- | ------------------------------------------- |
 | `isViewOf` | `id` | The model element that the view represents. |
 
 The concrete view types fall into two groups: views backed by a rectangular region (class,
@@ -78,10 +78,10 @@ package, note, generalization set, n-ary relation) and **binary connector** view
 
 Represents a single occurrence of a [class](../abstract-syntax/class.md).
 
-| Property | Type | Description |
-| --- | --- | --- |
-| `type` | `"ClassView"` | Discriminator. |
-| `rectangle` | `id` | The [rectangle](./rectangle.md) shape that renders the class. |
+| Property    | Type          | Description                                                   |
+| ----------- | ------------- | ------------------------------------------------------------- |
+| `type`      | `"ClassView"` | Discriminator.                                                |
+| `rectangle` | `id`          | The [rectangle](./rectangle.md) shape that renders the class. |
 
 ```json
 {
@@ -98,30 +98,30 @@ Represents a single occurrence of a [class](../abstract-syntax/class.md).
 
 Represents a single occurrence of a [package](../abstract-syntax/package.md).
 
-| Property | Type | Description |
-| --- | --- | --- |
-| `type` | `"PackageView"` | Discriminator. |
-| `rectangle` | `id` | The [rectangle](./rectangle.md) shape that renders the package. |
+| Property    | Type            | Description                                                     |
+| ----------- | --------------- | --------------------------------------------------------------- |
+| `type`      | `"PackageView"` | Discriminator.                                                  |
+| `rectangle` | `id`            | The [rectangle](./rectangle.md) shape that renders the package. |
 
 ### Note view {#note-view}
 
 Represents a single occurrence of a [note](../abstract-syntax/note.md).
 
-| Property | Type | Description |
-| --- | --- | --- |
-| `type` | `"NoteView"` | Discriminator. |
-| `text` | `id` | The [text](./text.md) shape that renders the note. |
+| Property | Type         | Description                                        |
+| -------- | ------------ | -------------------------------------------------- |
+| `type`   | `"NoteView"` | Discriminator.                                     |
+| `text`   | `id`         | The [text](./text.md) shape that renders the note. |
 
 ### Generalization set view {#generalization-set-view}
 
 Represents a single occurrence of a
 [generalization set](../abstract-syntax/generalization-set.md).
 
-| Property | Type | Description |
-| --- | --- | --- |
-| `type` | `"GeneralizationSetView"` | Discriminator. |
-| `generalizations` | `id[]` | The [generalization views](./generalization-view.md) grouped by this view. |
-| `text` | `id` | The [text](./text.md) shape that renders the set's label. |
+| Property          | Type                      | Description                                                                |
+| ----------------- | ------------------------- | -------------------------------------------------------------------------- |
+| `type`            | `"GeneralizationSetView"` | Discriminator.                                                             |
+| `generalizations` | `id[]`                    | The [generalization views](./generalization-view.md) grouped by this view. |
+| `text`            | `id`                      | The [text](./text.md) shape that renders the set's label.                  |
 
 ### N-ary relation view {#nary-relation-view}
 
@@ -129,31 +129,32 @@ Represents a single occurrence of an
 [n-ary relation](../abstract-syntax/nary-relation.md). Its central diamond joins three or more
 paths, each running to a participating class view.
 
-| Property | Type | Description |
-| --- | --- | --- |
-| `type` | `"NaryRelationView"` | Discriminator. |
-| `members` | `id[]` | The class views connected by the relation, **ordered** to match the relation's properties. At least three. |
-| `diamond` | `id` | The [diamond](./diamond.md) shape where the paths join. |
-| `paths` | `id[]` | The [path](#path) shapes, one per member, **ordered** to match the relation's properties. At least three. |
+| Property  | Type                 | Description                                                                                                |
+| --------- | -------------------- | ---------------------------------------------------------------------------------------------------------- |
+| `type`    | `"NaryRelationView"` | Discriminator.                                                                                             |
+| `members` | `id[]`               | The class views connected by the relation, **ordered** to match the relation's properties. At least three. |
+| `diamond` | `id`                 | The [diamond](./diamond.md) shape where the paths join.                                                    |
+| `paths`   | `id[]`               | The [path](#path) shapes, one per member, **ordered** to match the relation's properties. At least three.  |
 
 ### Binary connector views {#binary-connector-views}
 
 A **binary connector view** is a view drawn as a line between two other views. All binary connector
 views share three properties (from the abstract `BinaryConnectorView` type):
 
-| Property | Type | Description |
-| --- | --- | --- |
-| `sourceView` | `id` | The view at the source end of the connector. |
-| `targetView` | `id` | The view at the target end of the connector. |
-| `path` | `id` | The [path](#path) shape that renders the connector. |
+| Property     | Type | Description                                         |
+| ------------ | ---- | --------------------------------------------------- |
+| `sourceView` | `id` | The view at the source end of the connector.        |
+| `targetView` | `id` | The view at the target end of the connector.        |
+| `path`       | `id` | The [path](#path) shape that renders the connector. |
 
-There are three concrete binary connector views, each distinguished only by its `type`:
+There are four concrete binary connector views, each distinguished only by its `type`:
 
-| Type | Renders |
-| --- | --- |
+| Type                   | Renders                                                    |
+| ---------------------- | ---------------------------------------------------------- |
 | `"BinaryRelationView"` | a [binary relation](../abstract-syntax/binary-relation.md) |
-| `"GeneralizationView"` | a [generalization](../abstract-syntax/generalization.md) |
-| `"AnchorView"` | an [anchor](../abstract-syntax/anchor.md) |
+| `"GeneralizationView"` | a [generalization](../abstract-syntax/generalization.md)   |
+| `"AnchorView"`         | an [anchor](../abstract-syntax/anchor.md)                  |
+| `"DependencyView"`     | a [dependency](../abstract-syntax/dependency.md)           |
 
 ```json
 {
@@ -179,9 +180,9 @@ diagram, with values increasing downwards and rightwards.
 
 A shape defined by an ordered list of points connecting two other shapes.
 
-| Property | Type | Description |
-| --- | --- | --- |
-| `type` | `"Path"` | Discriminator. |
+| Property | Type      | Description                                                                                     |
+| -------- | --------- | ----------------------------------------------------------------------------------------------- |
+| `type`   | `"Path"`  | Discriminator.                                                                                  |
 | `points` | `point[]` | At least two points, ordered from the edge of the source shape to the edge of the target shape. |
 
 ```json
@@ -202,19 +203,19 @@ A shape defined by an ordered list of points connecting two other shapes.
 A **rectangular shape** is defined by a top-left position and a size. All rectangular shapes share
 three properties (from the abstract `RectangularShape` type):
 
-| Property | Type | Description |
-| --- | --- | --- |
-| `topLeft` | `point` | The coordinates of the shape's top-left corner. |
-| `width` | `integer` | The shape's width; zero or greater. |
-| `height` | `integer` | The shape's height; zero or greater. |
+| Property  | Type      | Description                                     |
+| --------- | --------- | ----------------------------------------------- |
+| `topLeft` | `point`   | The coordinates of the shape's top-left corner. |
+| `width`   | `integer` | The shape's width; zero or greater.             |
+| `height`  | `integer` | The shape's height; zero or greater.            |
 
 There are three concrete rectangular shapes, each distinguished only by its `type`:
 
-| Type | Renders |
-| --- | --- |
-| `"Rectangle"` | a [class view](#class-view) or [package view](#package-view) |
-| `"Diamond"` | the joining diamond of an [n-ary relation view](#nary-relation-view) |
-| `"Text"` | a [generalization set view](#generalization-set-view) or [note view](#note-view) |
+| Type          | Renders                                                                          |
+| ------------- | -------------------------------------------------------------------------------- |
+| `"Rectangle"` | a [class view](#class-view) or [package view](#package-view)                     |
+| `"Diamond"`   | the joining diamond of an [n-ary relation view](#nary-relation-view)             |
+| `"Text"`      | a [generalization set view](#generalization-set-view) or [note view](#note-view) |
 
 ```json
 {

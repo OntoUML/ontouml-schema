@@ -12,8 +12,8 @@ A **relation between two members**: it connects two classes, as `studies in` con
 | -------- | ------------------ | -------------- |
 | `type`   | `"BinaryRelation"` | Discriminator. |
 
-`BinaryRelation` carries the properties of [`Classifier`](./classifier.md) (`isAbstract`,
-`properties`), [`Decoratable`](./decoratable.md) (`stereotype`, `isDerived`), and the
+`BinaryRelation` carries the properties of [`Classifier`](./classifier.md) (`isDerived`,
+`isAbstract`, `properties`), [`Decoratable`](./decoratable.md) (`stereotype`), and the
 [properties common to all model elements](./index.md). A binary relation's two ends are
 [`Property`](./property.md) elements referenced, **in order**, from its `properties` array
 (inherited from `Classifier`).
@@ -21,7 +21,8 @@ A **relation between two members**: it connects two classes, as `studies in` con
 The example below is the `«material» studies in` relation connecting the classes `Student` and
 `University`. Its two ends — the `Property` elements listed in `properties` — are drawn with their
 cardinalities (`1..*` at each end). Material relations are derived from their truthmaker (here, an
-`Enrollment` relator), so `isDerived` is `true`.
+`Enrollment` relator), so `isDerived` is `true`; a [derivation](./dependency.md#derivation)
+dependency links the relation to that relator.
 
 ```mermaid
 classDiagram

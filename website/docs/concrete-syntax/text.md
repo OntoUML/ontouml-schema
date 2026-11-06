@@ -1,5 +1,5 @@
 ---
-sidebar_position: 17
+sidebar_position: 18
 description: The Text shape — renders a generalization set view or a note view.
 ---
 
@@ -8,9 +8,9 @@ description: The Text shape — renders a generalization set view or a note view
 A [rectangular shape](./rectangular-shape.md) that renders the shape of a
 [generalization set view](./generalization-set-view.md) or a [note view](./note-view.md).
 
-| Property | Type | Description |
-| --- | --- | --- |
-| `type` | `"Text"` | Discriminator. |
+| Property | Type     | Description    |
+| -------- | -------- | -------------- |
+| `type`   | `"Text"` | Discriminator. |
 
 `Text` also carries the properties of [`RectangularShape`](./rectangular-shape.md) (`topLeft`,
 `width`, `height`) and the identity properties `id`, `created`, and `modified`

@@ -13,6 +13,7 @@ relation. For example, the attribute `age` of `Person`, or the ends of the binar
 | --------------------- | ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `type`                | `"Property"`        | Discriminator.                                                                                                                                                                                                 |
 | `stereotype`          | `string` or `null`  | Refines the [`Decoratable`](./decoratable.md) `stereotype`, suggesting the standard [property stereotypes](../enumerations/property-stereotypes.md) such as `"begin"`. Any non-empty string is accepted.       |
+| `isDerived`           | `boolean` or `null` | Whether the property is derived — i.e. its values can be computed from other elements of the model, as `age` can be from `birthDate`.                                                                          |
 | `propertyType`        | `id` or `null`      | The classifier instantiated by the values assigned to the property.                                                                                                                                            |
 | `cardinality`         | `string` or `null`  | The cardinality, e.g. `"1"`, `"0..*"`, `"1..5"`.                                                                                                                                                               |
 | `aggregationKind`     | `enum` or `null`    | For relation ends, whether the end is a whole in a parthood relation: `"COMPOSITE"`, `"SHARED"`, or `"NONE"` (see [Aggregation Kind](../enumerations/aggregation-kind.md)). `null` is interpreted as `"NONE"`. |
@@ -22,7 +23,7 @@ relation. For example, the attribute `age` of `Person`, or the ends of the binar
 | `redefinedProperties` | `id[]`              | Properties (relation ends) that this property redefines.                                                                                                                                                       |
 
 `Property` also carries the properties of [`Decoratable`](./index.md#classifiers-and-properties)
-(`stereotype`, `isDerived`) and the [properties common to all model elements](./index.md).
+(`stereotype`) and the [properties common to all model elements](./index.md).
 
 By convention, `cardinality` matches `^\d+(\.\.(\d+|\*))?$` — a lower bound, optionally followed by
 `..` and an upper bound (`*` denotes unbounded). The pattern is not enforced, so free-form ranges

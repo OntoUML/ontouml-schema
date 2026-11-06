@@ -9,12 +9,12 @@ A relation that connects **more than two** members. As with binary relations, th
 [`Property`](./property.md) elements listed in order in `properties`. In UML an n-ary relation is
 drawn as a diamond joined by a plain line to each participating class.
 
-| Property | Type | Description |
-| --- | --- | --- |
-| `type` | `"NaryRelation"` | Discriminator. |
+| Property | Type             | Description    |
+| -------- | ---------------- | -------------- |
+| `type`   | `"NaryRelation"` | Discriminator. |
 
-`NaryRelation` carries the properties of [`Classifier`](./classifier.md) (`isAbstract`,
-`properties`), [`Decoratable`](./decoratable.md) (`stereotype`, `isDerived`), and the
+`NaryRelation` carries the properties of [`Classifier`](./classifier.md) (`isDerived`,
+`isAbstract`, `properties`), [`Decoratable`](./decoratable.md) (`stereotype`), and the
 [properties common to all model elements](./index.md).
 
 The example below is a ternary `allocation` relation joining `Employee`, `Project`, and `Role`,

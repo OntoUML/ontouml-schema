@@ -1,5 +1,5 @@
 ---
-sidebar_position: 13
+sidebar_position: 14
 description: The Path shape — a line defined by an ordered list of points connecting two shapes.
 ---
 
@@ -10,9 +10,9 @@ renders the line of a [binary connector view](./index.md#binary-connector-views)
 [paths](./nary-relation-view.md) running from the diamond of an n-ary relation view to a member
 class view.
 
-| Property | Type | Description |
-| --- | --- | --- |
-| `type` | `"Path"` | Discriminator. |
+| Property | Type      | Description                                                                                                                    |
+| -------- | --------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| `type`   | `"Path"`  | Discriminator.                                                                                                                 |
 | `points` | `point[]` | At least two [points](../datatypes/index.md#point), ordered from the edge of the source shape to the edge of the target shape. |
 
 As a [shape](./shape.md), `Path` also carries the identity properties `id`, `created`, and

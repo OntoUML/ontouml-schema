@@ -6,7 +6,7 @@ description: The overall shape of an OntoUML serialization — the type hierarch
 # Document Structure
 
 Before consulting the element-by-element reference, it helps to understand the handful of rules
-that govern *every* OntoUML serialization. This page covers the overall shape of a document: what
+that govern _every_ OntoUML serialization. This page covers the overall shape of a document: what
 sits at the root, how elements are typed and linked, and which properties must always be present.
 
 ## A document is a single element
@@ -44,11 +44,11 @@ Because of that shared structure, a few groups of properties recur across many e
 
 Every element is an `OntoumlElement` and therefore carries these three properties:
 
-| Property | Type | Description |
-| --- | --- | --- |
-| `id` | `string` | A non-empty string that uniquely identifies the element within the ontology. |
-| `created` | `pointInTime` | When the element was created. |
-| `modified` | `pointInTime` or `null` | When the element was last modified, or `null`. |
+| Property   | Type                    | Description                                                                  |
+| ---------- | ----------------------- | ---------------------------------------------------------------------------- |
+| `id`       | `string`                | A non-empty string that uniquely identifies the element within the ontology. |
+| `created`  | `pointInTime`           | When the element was created.                                                |
+| `modified` | `pointInTime` or `null` | When the element was last modified, or `null`.                               |
 
 See [`pointInTime`](./datatypes/index.md#pointintime) for the accepted date formats.
 
@@ -57,21 +57,21 @@ See [`pointInTime`](./datatypes/index.md#pointintime) for the accepted date form
 Named elements — projects, diagrams, and model elements — additionally carry descriptive
 information:
 
-| Property | Type | Description |
-| --- | --- | --- |
-| `name` | `languageString` or `null` | The name of the element. |
-| `alternativeNames` | `languageString[]` | Synonyms or alternatives to the main name (not translations). |
-| `description` | `languageString` or `null` | A free-text account of the element. |
-| `editorialNotes` | `languageString[]` | Notes about the development process; not to be confused with `description`. |
-| `creators` | `resource[]` | Agents who contributed to creating the element. |
-| `contributors` | `resource[]` | Agents who contributed to developing the element. |
+| Property           | Type                       | Description                                                                 |
+| ------------------ | -------------------------- | --------------------------------------------------------------------------- |
+| `name`             | `languageString` or `null` | The name of the element.                                                    |
+| `alternativeNames` | `languageString[]`         | Synonyms or alternatives to the main name (not translations).               |
+| `description`      | `languageString` or `null` | A free-text account of the element.                                         |
+| `editorialNotes`   | `languageString[]`         | Notes about the development process; not to be confused with `description`. |
+| `creators`         | `resource[]`               | Agents who contributed to creating the element.                             |
+| `contributors`     | `resource[]`               | Agents who contributed to developing the element.                           |
 
 See [language string](./datatypes/language-string.md) for `languageString` and
 [`resource`](./datatypes/index.md#resource) for that datatype.
 
 ## Every property is required {#every-property-is-required}
 
-The OntoUML Schema is **total**: for each element, *all* of the properties defined for its type are
+The OntoUML Schema is **total**: for each element, _all_ of the properties defined for its type are
 listed as `required`. There are no optional properties. A property that carries no information is
 still written out explicitly:
 
@@ -108,10 +108,19 @@ classifiers by id. The elements themselves are siblings in the Project's `elemen
   "id": "project_1",
   "root": "package_1",
   "elements": [
-    { "type": "Package", "id": "package_1", "contents": ["class_1", "class_2", "gen_1"] },
+    {
+      "type": "Package",
+      "id": "package_1",
+      "contents": ["class_1", "class_2", "gen_1"]
+    },
     { "type": "Class", "id": "class_1" },
     { "type": "Class", "id": "class_2" },
-    { "type": "Generalization", "id": "gen_1", "general": "class_1", "specific": "class_2" }
+    {
+      "type": "Generalization",
+      "id": "gen_1",
+      "general": "class_1",
+      "specific": "class_2"
+    }
   ]
 }
 ```
@@ -133,8 +142,8 @@ Every OntoUML element belongs to one of two layers:
   [model elements](./abstract-syntax/index.md).
 - The **concrete syntax** is the visual representation — the [diagrams, views, and
   shapes](./concrete-syntax/index.md) that describe how (and where) model elements are drawn. A model
-  element can be depicted zero, one, or many times; each depiction is a *view* backed by one or
-  more *shapes*.
+  element can be depicted zero, one, or many times; each depiction is a _view_ backed by one or
+  more _shapes_.
 
 Keeping the two layers separate means the meaning of a model is independent of how it is drawn, and
 the same element can appear in several diagrams.
@@ -158,9 +167,10 @@ OntoumlElement  (abstract — id, created, modified)
 │       ├── Anchor  → type: "Anchor"
 │       ├── Literal  → type: "Literal"
 │       ├── Note  → type: "Note"
-│       └── Decoratable  (abstract — stereotype, isDerived)
+│       └── Decoratable  (abstract — stereotype)
 │           ├── Property  → type: "Property"
-│           └── Classifier  (abstract — isAbstract, properties)
+│           ├── Dependency  → type: "Dependency"
+│           └── Classifier  (abstract — isDerived, isAbstract, properties)
 │               ├── Class  → type: "Class"
 │               └── Relation  (abstract)
 │                   ├── BinaryRelation  → type: "BinaryRelation"
@@ -174,7 +184,8 @@ OntoumlElement  (abstract — id, created, modified)
 │   └── BinaryConnectorView  (abstract — sourceView, targetView, path)
 │       ├── BinaryRelationView  → type: "BinaryRelationView"
 │       ├── GeneralizationView  → type: "GeneralizationView"
-│       └── AnchorView  → type: "AnchorView"
+│       ├── AnchorView  → type: "AnchorView"
+│       └── DependencyView  → type: "DependencyView"
 └── Shape  (abstract)                                   concrete syntax
     ├── Path  → type: "Path"  (points)
     └── RectangularShape  (abstract — topLeft, width, height)
@@ -192,26 +203,26 @@ A `Project` is a named element that serves as the container of an entire OntoUML
 the [identity](#identity-properties) and [descriptive](#descriptive-properties) properties it
 inherits, it defines the following.
 
-| Property | Type | Description |
-| --- | --- | --- |
-| `type` | `"Project"` | Discriminator; always `"Project"`. |
-| `elements` | `array` | All OntoUML elements — model elements, views, and diagrams — that make up the project. |
-| `root` | `id` or `null` | The root package containing all other model elements, if any. |
-| `publisher` | `resource` or `null` | The agent responsible for making the project available. |
-| `designedForTasks` | `resource[]` | The goals that motivated the project (e.g. OCMV modeling goals). |
-| `license` | `resource` or `null` | The legal document under which the project is made available. |
-| `accessRights` | `resource[]` | Documents describing who may access the project and how. |
-| `themes` | `resource[]` | Central themes of the project according to a theme taxonomy. |
-| `contexts` | `resource[]` | The contexts in which the project was developed (e.g. OCMV contexts). |
-| `ontologyTypes` | `resource[]` | The project's classification by scope (e.g. OCMV core/domain/application). |
-| `representationStyle` | `resource` or `null` | The representation style — OntoUML style or UFO style. |
-| `namespace` | `string (uri)` or `null` | Base URI for the ids of the project's elements. |
-| `landingPages` | `string (uri)[]` | Web pages where the project can be accessed. |
-| `sources` | `string (uri)[]` | Resources that influenced the project (e.g. DOIs). |
-| `bibliographicCitations` | `languageString[]` | Bibliographic references for the project. |
-| `keywords` | `languageString[]` | Keywords describing the domain(s) the project covers. |
-| `acronyms` | `string[]` | Acronyms used to refer to the project. |
-| `languages` | `string[]` | IANA language tags for the labels used in the project (e.g. `"en"`, `"pt"`). |
+| Property                 | Type                     | Description                                                                            |
+| ------------------------ | ------------------------ | -------------------------------------------------------------------------------------- |
+| `type`                   | `"Project"`              | Discriminator; always `"Project"`.                                                     |
+| `elements`               | `array`                  | All OntoUML elements — model elements, views, and diagrams — that make up the project. |
+| `root`                   | `id` or `null`           | The root package containing all other model elements, if any.                          |
+| `publisher`              | `resource` or `null`     | The agent responsible for making the project available.                                |
+| `designedForTasks`       | `resource[]`             | The goals that motivated the project (e.g. OCMV modeling goals).                       |
+| `license`                | `resource` or `null`     | The legal document under which the project is made available.                          |
+| `accessRights`           | `resource[]`             | Documents describing who may access the project and how.                               |
+| `themes`                 | `resource[]`             | Central themes of the project according to a theme taxonomy.                           |
+| `contexts`               | `resource[]`             | The contexts in which the project was developed (e.g. OCMV contexts).                  |
+| `ontologyTypes`          | `resource[]`             | The project's classification by scope (e.g. OCMV core/domain/application).             |
+| `representationStyle`    | `resource` or `null`     | The representation style — OntoUML style or UFO style.                                 |
+| `namespace`              | `string (uri)` or `null` | Base URI for the ids of the project's elements.                                        |
+| `landingPages`           | `string (uri)[]`         | Web pages where the project can be accessed.                                           |
+| `sources`                | `string (uri)[]`         | Resources that influenced the project (e.g. DOIs).                                     |
+| `bibliographicCitations` | `languageString[]`       | Bibliographic references for the project.                                              |
+| `keywords`               | `languageString[]`       | Keywords describing the domain(s) the project covers.                                  |
+| `acronyms`               | `string[]`               | Acronyms used to refer to the project.                                                 |
+| `languages`              | `string[]`               | IANA language tags for the labels used in the project (e.g. `"en"`, `"pt"`).           |
 
 :::tip Controlled vocabularies
 Several metadata properties — `designedForTasks`, `contexts`, `ontologyTypes`, and
