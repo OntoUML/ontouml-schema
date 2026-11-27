@@ -10,8 +10,8 @@ A **classifier** that defines the properties of a set of relations of the subjec
 and has no `type` of its own. A serialized relation is always either a
 [**binary relation**](./binary-relation.md) or an [**n-ary relation**](./nary-relation.md).
 
-Being a [`Classifier`](./classifier.md), `Relation` carries `isDerived`, `isAbstract`, and `properties`;
-being a [`Decoratable`](./decoratable.md), it also carries `stereotype`; and it carries the
+Being a [`Classifier`](./classifier.md), `Relation` carries `isDerived`, `isAbstract`, and
+`properties`; being a [`Decoratable`](./decoratable.md), it also carries `stereotype`; and it carries the
 [properties common to all model elements](./index.md). A relation's ends are
 [`Property`](./property.md) elements referenced, **in order**, from its `properties` array.
 

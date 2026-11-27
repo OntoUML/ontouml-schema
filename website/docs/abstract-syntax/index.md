@@ -80,7 +80,8 @@ See [`ModelElement`](./model-element.md) for the full treatment of this shared r
 Classes, relations, and their properties share two further abstract types.
 
 **`Decoratable`** — a model element that can be decorated with a stereotype. Classes,
-relations, properties, and [dependencies](./dependency.md) are all decoratable. See the full [`Decoratable`](./decoratable.md) page.
+relations, properties, and [dependencies](./dependency.md) are all decoratable. See the full
+[`Decoratable`](./decoratable.md) page.
 
 | Property     | Type               | Description                                                                                                             |
 | ------------ | ------------------ | ----------------------------------------------------------------------------------------------------------------------- |

@@ -17,7 +17,8 @@ dependency.
 | `depender` | `id`           | The model element that depends on the dependee (e.g. the derived relation).              |
 | `dependee` | `id`           | The model element the depender depends on (e.g. the truthmaker of the derived relation). |
 
-`Dependency` also carries the properties of [`Decoratable`](./decoratable.md) (`stereotype`) and the [properties common to all model elements](./index.md). It is a
+`Dependency` also carries the properties of [`Decoratable`](./decoratable.md) (`stereotype`) and
+the [properties common to all model elements](./index.md). It is a
 [packageable element](./packageable-element.md), so a [package](./package.md) can contain it.
 
 ## Derivation {#derivation}
@@ -55,8 +56,8 @@ class:
 }
 ```
 
-`derive` is the only standard dependency stereotype. As with every [`Decoratable`](./decoratable.md),
-`stereotype` accepts any non-empty string, so other dependencies (for example UML's `trace` or
+`derive` is the only dependency stereotype the OntoUML profile uses. As with every
+[`Decoratable`](./decoratable.md), `stereotype` accepts any non-empty string, so other dependencies (for example UML's `trace` or
 `refine`) can be serialized with custom stereotypes.
 
 A dependency is rendered in a diagram by a

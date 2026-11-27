@@ -68,8 +68,9 @@ Grouped by the kind of entity they relate.
 :::note Derivation is not a relation stereotype
 In the OntoUML profile, a derived relation — such as a `material` relation derived from a relator,
 or a `comparative` relation derived from a quality — is linked to its truthmaker by a
-[dependency](../abstract-syntax/dependency.md#derivation) stereotyped `derive`, not by a relation. Earlier OntoUML vocabularies serialized that link as
-a relation stereotyped `derivation`; the profile does not. Mark the derived relation itself with
+[dependency](../abstract-syntax/dependency.md#derivation) stereotyped `derive`, not by a relation.
+Earlier OntoUML vocabularies serialized that link as a relation stereotyped `derivation`; the
+profile does not. Mark the derived relation itself with
 `isDerived: true`.
 :::
 
