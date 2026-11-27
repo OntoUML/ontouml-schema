@@ -1,5 +1,5 @@
 ---
-sidebar_position: 11
+sidebar_position: 12
 description: The Package model element — groups other model elements to modularize an ontology.
 ---
 
@@ -9,10 +9,10 @@ A model element that groups other model elements ("packageable elements") to mod
 ontology. The metamodel permits overlapping packages, but ontologies that need a UML
 representation should keep packages in a tree structure.
 
-| Property | Type | Description |
-| --- | --- | --- |
-| `type` | `"Package"` | Discriminator. |
-| `contents` | `id[]` | The [packageable elements](./index.md#packageable-elements) grouped by the package. |
+| Property   | Type        | Description                                                                         |
+| ---------- | ----------- | ----------------------------------------------------------------------------------- |
+| `type`     | `"Package"` | Discriminator.                                                                      |
+| `contents` | `id[]`      | The [packageable elements](./index.md#packageable-elements) grouped by the package. |
 
 `Package` also carries the [properties common to all model elements](./index.md).
 

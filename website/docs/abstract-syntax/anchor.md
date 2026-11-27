@@ -1,5 +1,5 @@
 ---
-sidebar_position: 15
+sidebar_position: 16
 description: The Anchor model element — connects a note to the model element it concerns.
 ---
 
@@ -7,11 +7,11 @@ description: The Anchor model element — connects a note to the model element i
 
 A model element that connects a [note](./note.md) to the model element it concerns.
 
-| Property | Type | Description |
-| --- | --- | --- |
-| `type` | `"Anchor"` | Discriminator. |
-| `note` | `id` | The note the anchor connects. |
-| `element` | `id` | The model element the note is about. |
+| Property  | Type       | Description                          |
+| --------- | ---------- | ------------------------------------ |
+| `type`    | `"Anchor"` | Discriminator.                       |
+| `note`    | `id`       | The note the anchor connects.        |
+| `element` | `id`       | The model element the note is about. |
 
 `Anchor` also carries the [properties common to all model elements](./index.md).
 

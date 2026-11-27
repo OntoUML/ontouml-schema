@@ -1,5 +1,5 @@
 ---
-sidebar_position: 14
+sidebar_position: 15
 description: The Note model element — an annotation or constraint about the ontology or its elements.
 ---
 
@@ -8,10 +8,10 @@ description: The Note model element — an annotation or constraint about the on
 A model element that carries an annotation about the ontology or some of its elements. A note can
 also express a constraint in natural or structured language (e.g. first-order logic or OCL).
 
-| Property | Type | Description |
-| --- | --- | --- |
-| `type` | `"Note"` | Discriminator. |
-| `text` | `languageString` | The contents of the note. |
+| Property | Type             | Description               |
+| -------- | ---------------- | ------------------------- |
+| `type`   | `"Note"`         | Discriminator.            |
+| `text`   | `languageString` | The contents of the note. |
 
 `Note` also carries the [properties common to all model elements](./index.md).
 

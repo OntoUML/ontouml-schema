@@ -1,5 +1,5 @@
 ---
-sidebar_position: 16
+sidebar_position: 17
 description: The Diamond shape — renders the joining diamond of an n-ary relation view.
 ---
 
@@ -9,9 +9,9 @@ A [rectangular shape](./rectangular-shape.md) that renders the joining diamond o
 [n-ary relation view](./nary-relation-view.md), where the paths to the participating class views
 meet.
 
-| Property | Type | Description |
-| --- | --- | --- |
-| `type` | `"Diamond"` | Discriminator. |
+| Property | Type        | Description    |
+| -------- | ----------- | -------------- |
+| `type`   | `"Diamond"` | Discriminator. |
 
 `Diamond` also carries the properties of [`RectangularShape`](./rectangular-shape.md) (`topLeft`,
 `width`, `height`) and the identity properties `id`, `created`, and `modified`

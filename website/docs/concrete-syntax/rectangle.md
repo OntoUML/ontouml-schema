@@ -1,5 +1,5 @@
 ---
-sidebar_position: 15
+sidebar_position: 16
 description: The Rectangle shape — renders a class view or a package view.
 ---
 
@@ -8,9 +8,9 @@ description: The Rectangle shape — renders a class view or a package view.
 A [rectangular shape](./rectangular-shape.md) that renders the shape of a
 [class view](./class-view.md) or a [package view](./package-view.md).
 
-| Property | Type | Description |
-| --- | --- | --- |
-| `type` | `"Rectangle"` | Discriminator. |
+| Property | Type          | Description    |
+| -------- | ------------- | -------------- |
+| `type`   | `"Rectangle"` | Discriminator. |
 
 `Rectangle` also carries the properties of [`RectangularShape`](./rectangular-shape.md) (`topLeft`,
 `width`, `height`) and the identity properties `id`, `created`, and `modified`

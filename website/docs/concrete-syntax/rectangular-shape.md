@@ -1,5 +1,5 @@
 ---
-sidebar_position: 14
+sidebar_position: 15
 description: The abstract RectangularShape element — a shape defined by a top-left position and a size.
 ---
 
@@ -8,11 +8,11 @@ description: The abstract RectangularShape element — a shape defined by a top-
 A [shape](./shape.md) defined by a top-left position and a size (width and height). It renders a
 view backed by a rectangular region.
 
-| Property | Type | Description |
-| --- | --- | --- |
-| `topLeft` | `point` | The coordinates of the shape's top-left corner. See [`point`](../datatypes/index.md#point). |
-| `width` | `integer` | The shape's width; zero or greater. |
-| `height` | `integer` | The shape's height; zero or greater. |
+| Property  | Type      | Description                                                                                 |
+| --------- | --------- | ------------------------------------------------------------------------------------------- |
+| `topLeft` | `point`   | The coordinates of the shape's top-left corner. See [`point`](../datatypes/index.md#point). |
+| `width`   | `integer` | The shape's width; zero or greater.                                                         |
+| `height`  | `integer` | The shape's height; zero or greater.                                                        |
 
 As a [shape](./shape.md), a rectangular shape also carries the identity properties `id`, `created`,
 and `modified` [common to all OntoUML elements](./index.md); it does not carry descriptive

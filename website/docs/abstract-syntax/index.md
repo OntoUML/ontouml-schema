@@ -1,7 +1,7 @@
 ---
 sidebar_position: 0
 slug: /abstract-syntax
-description: Reference for OntoUML model elements — classes, relations, properties, generalizations, generalization sets, packages, literals, notes, and anchors.
+description: Reference for OntoUML model elements — classes, relations, properties, dependencies, generalizations, generalization sets, packages, literals, notes, and anchors.
 ---
 
 # Abstract Syntax
@@ -37,10 +37,10 @@ classDiagram
   class Decoratable {
     <<abstract>>
     stereotype
-    isDerived
   }
   class Classifier {
     <<abstract>>
+    isDerived
     isAbstract
     properties
   }
@@ -57,6 +57,7 @@ classDiagram
   ModelElement <|-- Anchor
   Decoratable <|-- Classifier
   Decoratable <|-- Property
+  Decoratable <|-- Dependency
   Classifier <|-- Class
   Classifier <|-- Relation
   Relation <|-- BinaryRelation
@@ -68,8 +69,8 @@ classDiagram
 Every model element specializes the abstract [`ModelElement`](./model-element.md) type, which
 contributes a single property.
 
-| Property | Type | Description |
-| --- | --- | --- |
+| Property           | Type               | Description                                                                               |
+| ------------------ | ------------------ | ----------------------------------------------------------------------------------------- |
 | `customProperties` | `object` or `null` | Custom key-value pairs attached to the element. In UML these correspond to tagged values. |
 
 See [`ModelElement`](./model-element.md) for the full treatment of this shared root.
@@ -78,22 +79,23 @@ See [`ModelElement`](./model-element.md) for the full treatment of this shared r
 
 Classes, relations, and their properties share two further abstract types.
 
-**`Decoratable`** — a model element that can be decorated with a UFO stereotype. Classes,
-relations, and properties are all decoratable. See the full [`Decoratable`](./decoratable.md) page.
+**`Decoratable`** — a model element that can be decorated with a stereotype. Classes,
+relations, properties, and [dependencies](./dependency.md) are all decoratable. See the full
+[`Decoratable`](./decoratable.md) page.
 
-| Property | Type | Description |
-| --- | --- | --- |
-| `stereotype` | `string` or `null` | The element's type according to the Unified Foundational Ontology (UFO), e.g. `"kind"`. |
-| `isDerived` | `boolean` or `null` | Whether the element is derived from another (i.e. some other element is its truthmaker). |
+| Property     | Type               | Description                                                                                                             |
+| ------------ | ------------------ | ----------------------------------------------------------------------------------------------------------------------- |
+| `stereotype` | `string` or `null` | The element's type, e.g. a Unified Foundational Ontology (UFO) notion such as `"kind"`, or `"derive"` for a derivation. |
 
 **`Classifier`** — a decoratable element (a [class](./class.md) or a [relation](./relation.md))
 that defines properties exhibited by its instances. See the full [`Classifier`](./classifier.md)
 page.
 
-| Property | Type | Description |
-| --- | --- | --- |
-| `isAbstract` | `boolean` or `null` | Whether the classifier can have direct instances. An abstract classifier is instantiated only through its non-abstract specializations. |
-| `properties` | `id[]` | The [properties](./property.md) contained in the classifier — *attributes* for classes, *relation ends* for relations. For relations this array must be ordered. |
+| Property     | Type                | Description                                                                                                                                                      |
+| ------------ | ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `isDerived`  | `boolean` or `null` | Whether the classifier is derived from another element (i.e. some other element is its truthmaker).                                                              |
+| `isAbstract` | `boolean` or `null` | Whether the classifier can have direct instances. An abstract classifier is instantiated only through its non-abstract specializations.                          |
+| `properties` | `id[]`              | The [properties](./property.md) contained in the classifier — _attributes_ for classes, _relation ends_ for relations. For relations this array must be ordered. |
 
 ## Packageable elements {#packageable-elements}
 
@@ -105,25 +107,27 @@ abstract union rather than a type with properties of its own; see the full
 - a [`Classifier`](#classifiers-and-properties) — a [class](./class.md) or a [relation](./relation.md);
 - a [generalization](./generalization.md);
 - a [generalization set](./generalization-set.md);
+- a [dependency](./dependency.md);
 - an [anchor](./anchor.md);
 - a [note](./note.md); or
 - a [package](./package.md) itself (allowing packages to nest).
 
-Note that [properties](./property.md) are *not* packageable: they belong to their owning classifier,
+Note that [properties](./property.md) are _not_ packageable: they belong to their owning classifier,
 not directly to a package.
 
 ## Element types
 
-- [ModelElement](./model-element.md) *(abstract; the shared root)*
-- [Decoratable](./decoratable.md) *(abstract)*
-  - [Classifier](./classifier.md) *(abstract)*
+- [ModelElement](./model-element.md) _(abstract; the shared root)_
+- [Decoratable](./decoratable.md) _(abstract)_
+  - [Classifier](./classifier.md) _(abstract)_
     - [Class](./class.md)
-    - [Relation](./relation.md) *(abstract)* — [binary](./binary-relation.md) and [n-ary](./nary-relation.md)
+    - [Relation](./relation.md) _(abstract)_ — [binary](./binary-relation.md) and [n-ary](./nary-relation.md)
   - [Property](./property.md)
+  - [Dependency](./dependency.md)
 - [Generalization](./generalization.md)
 - [Generalization set](./generalization-set.md)
 - [Package](./package.md)
-- [Packageable element](./packageable-element.md) *(abstract union)*
+- [Packageable element](./packageable-element.md) _(abstract union)_
 - [Literal](./literal.md)
 - [Note](./note.md)
 - [Anchor](./anchor.md)

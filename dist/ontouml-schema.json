@@ -406,31 +406,27 @@
     },
     "Decoratable": {
       "title": "Decoratable",
-      "description": "A model element that can be decorated with a stereotype to identify its ontological properties according to the Unified Foundational Ontology (UFO).\n\nExamples include a class decorated with the stereotype \"kind\" identifying it as a type of object that provides an identity principle to its instances.",
+      "description": "A model element that can be decorated with a stereotype. The stereotypes of classes, relations, and properties identify their ontological properties according to the Unified Foundational Ontology (UFO), while the stereotypes of dependencies identify the kind of dependency.\n\nExamples include a class decorated with the stereotype \"kind\" identifying it as a type of object that provides an identity principle to its instances, and a dependency decorated with the stereotype \"derive\" identifying it as a derivation.",
       "allOf": [
         {
           "type": "object",
           "properties": {
             "stereotype": {
               "title": "stereotype",
-              "description": "Determines the type of a model element according to Unified Foundational Ontology (UFO).",
+              "description": "Determines the type of a model element, which for classes, relations, and properties is its type according to the Unified Foundational Ontology (UFO).\n\nClasses, relations, and properties each have their own standard stereotypes (see \"class stereotype\", \"relation stereotype\", and \"property stereotype\"), while dependencies use \"derive\" to mark a derivation. Custom stereotypes are also allowed.",
               "oneOf": [
                 { "type": "null" },
                 { "type": "string", "minLength": 1 }
               ]
-            },
-            "isDerived": {
-              "title": "is derived",
-              "description": "Determines whether the model element is derived from a different one, i.e., whether a different element serves as its truthmaker.\n\nExamples include the comparative relation \"is heavier than\" between two physical objects which is derived from their \"Weight\" quality.",
-              "oneOf": [{ "type": "null" }, { "type": "boolean" }]
             }
           },
-          "required": ["stereotype", "isDerived"]
+          "required": ["stereotype"]
         },
         {
           "oneOf": [
             { "$ref": "#/$defs/Property" },
-            { "$ref": "#/$defs/Classifier" }
+            { "$ref": "#/$defs/Classifier" },
+            { "$ref": "#/$defs/Dependency" }
           ]
         }
       ]
@@ -444,6 +440,20 @@
           "title": "type",
           "description": "Determines the type of a property object.",
           "const": "Property"
+        },
+        "stereotype": {
+          "title": "stereotype",
+          "description": "Determines the type of a property according to UFO, preferably using one of the standard property stereotypes (e.g., \"begin\"). Custom stereotypes are also allowed.",
+          "anyOf": [
+            { "type": "null" },
+            { "$ref": "#/$defs/propertyStereotype" },
+            { "type": "string", "minLength": 1 }
+          ]
+        },
+        "isDerived": {
+          "title": "is derived",
+          "description": "Determines whether the property is derived, i.e., whether its values can be computed from other elements of the model.\n\nExamples include the attribute \"age\" of a \"Person\", which can be computed from their \"birth date\".",
+          "oneOf": [{ "type": "null" }, { "type": "boolean" }]
         },
         "subsettedProperties": {
           "title": "subsetted properties",
@@ -488,6 +498,7 @@
       },
       "required": [
         "type",
+        "isDerived",
         "subsettedProperties",
         "redefinedProperties",
         "aggregationKind",
@@ -504,6 +515,11 @@
         {
           "type": "object",
           "properties": {
+            "isDerived": {
+              "title": "is derived",
+              "description": "Determines whether the classifier is derived from a different element, i.e., whether a different element serves as its truthmaker.\n\nExamples include the comparative relation \"is heavier than\" between two physical objects which is derived from their \"Weight\" quality. A derived relation is connected to its truthmaker by a dependency decorated with \"derive\".",
+              "oneOf": [{ "type": "null" }, { "type": "boolean" }]
+            },
             "isAbstract": {
               "title": "is abstract",
               "description": "Determines whether the classifier can have direct instances using a boolean. Abstract classifiers can only have instances when these are instances of some other classifier that is not abstract (i.e., concrete) and is a specialization of the abstract one.",
@@ -516,7 +532,7 @@
               "items": { "$ref": "#/$defs/id" }
             }
           },
-          "required": ["isAbstract", "properties"]
+          "required": ["isDerived", "isAbstract", "properties"]
         },
         {
           "oneOf": [{ "$ref": "#/$defs/Class" }, { "$ref": "#/$defs/Relation" }]
@@ -532,6 +548,15 @@
           "title": "type",
           "description": "Determines the type of a class object.",
           "const": "Class"
+        },
+        "stereotype": {
+          "title": "stereotype",
+          "description": "Determines the type of a class according to UFO, preferably using one of the standard class stereotypes (e.g., \"kind\", \"role\", or \"relator\"). Custom stereotypes are also allowed.",
+          "anyOf": [
+            { "type": "null" },
+            { "$ref": "#/$defs/classStereotype" },
+            { "type": "string", "minLength": 1 }
+          ]
         },
         "literals": {
           "title": "literals",
@@ -577,15 +602,33 @@
     },
     "Relation": {
       "title": "Relation",
-      "description": "A classifier that defines the properties of a set of relations of the subject domain.\n\nExamples include \"studies in\", \"buys product from\" (ternary relation), and derivation relations (e.g., between material relations and relators).",
-      "oneOf": [
-        { "$ref": "#/$defs/BinaryRelation" },
-        { "$ref": "#/$defs/NaryRelation" }
+      "description": "A classifier that defines the properties of a set of relations of the subject domain.\n\nExamples include \"studies in\" and \"buys product from\" (ternary relation).",
+      "allOf": [
+        {
+          "type": "object",
+          "properties": {
+            "stereotype": {
+              "title": "stereotype",
+              "description": "Determines the type of a relation according to UFO, preferably using one of the standard relation stereotypes (e.g., \"material\", \"mediation\", or \"componenthood\"). Custom stereotypes are also allowed.",
+              "anyOf": [
+                { "type": "null" },
+                { "$ref": "#/$defs/relationStereotype" },
+                { "type": "string", "minLength": 1 }
+              ]
+            }
+          }
+        },
+        {
+          "oneOf": [
+            { "$ref": "#/$defs/BinaryRelation" },
+            { "$ref": "#/$defs/NaryRelation" }
+          ]
+        }
       ]
     },
     "BinaryRelation": {
       "title": "Binary Relation",
-      "description": "A relation that defines the properties of a set of binary relations of the subject domain.\n\nExamples include \"studies in\", and derivation relations (e.g., between material relations and relators).\n\nA binary relation may either connect two classes, or a relation (as source) and a class (as target) in the case of derivation relations connecting descriptive relations to the classes that serve as their truthmakers (as in the relation between the material relation \"studies in\" and the \"Enrollment\" relator).",
+      "description": "A relation that defines the properties of a set of binary relations of the subject domain, connecting two classes.\n\nExamples include \"studies in\" between \"Student\" and \"University\", and \"is taller than\" between two persons.",
       "type": "object",
       "properties": {
         "type": {
@@ -598,7 +641,7 @@
     },
     "NaryRelation": {
       "title": "N-ary Relation",
-      "description": "A relation that defines the properties of a set of relations of the subject domain that connect more than two members.\n\nExamples include \"studies in\", \"buys product from\" (ternary relation), and derivation relations (e.g., between material relations and relators).",
+      "description": "A relation that defines the properties of a set of relations of the subject domain that connect more than two members.\n\nExamples include \"buys product from\", a ternary relation connecting a buyer, a product, and a seller.",
       "type": "object",
       "properties": {
         "type": {
@@ -608,6 +651,29 @@
         }
       },
       "required": ["type"]
+    },
+    "Dependency": {
+      "title": "Dependency",
+      "description": "A decoratable element that represents a dependency between two model elements, in which the meaning of the depender is not complete without the dependee. Unlike a relation, a dependency has no instances in the subject domain: it relates the model elements themselves. The depender and dependee correspond to the client and supplier of a UML dependency.\n\nExamples include the derivations (dependencies decorated with the stereotype \"derive\") of the material relation \"studies in\" from the relator \"Enrollment\" that serves as its truthmaker, and of the comparative relation \"is taller than\" from the quality \"Height\".",
+      "type": "object",
+      "properties": {
+        "type": {
+          "title": "type",
+          "description": "Determines the type of a dependency object.",
+          "const": "Dependency"
+        },
+        "depender": {
+          "title": "depender",
+          "description": "Identifies the model element that depends on the dependee, e.g., the derived relation in a derivation.",
+          "$ref": "#/$defs/id"
+        },
+        "dependee": {
+          "title": "dependee",
+          "description": "Identifies the model element the depender depends on, e.g., the truthmaker of the derived relation in a derivation.",
+          "$ref": "#/$defs/id"
+        }
+      },
+      "required": ["type", "depender", "dependee"]
     },
     "Diagram": {
       "title": "Diagram",
@@ -799,7 +865,8 @@
           "oneOf": [
             { "$ref": "#/$defs/GeneralizationView" },
             { "$ref": "#/$defs/AnchorView" },
-            { "$ref": "#/$defs/BinaryRelationView" }
+            { "$ref": "#/$defs/BinaryRelationView" },
+            { "$ref": "#/$defs/DependencyView" }
           ]
         }
       ]
@@ -839,6 +906,19 @@
           "title": "type",
           "description": "Determines the type of a binary relation view object.",
           "const": "BinaryRelationView"
+        }
+      },
+      "required": ["type"]
+    },
+    "DependencyView": {
+      "title": "Dependency View",
+      "description": "A view element that represents the single occurrence of a dependency in a diagram, connecting the view of its depender (the source view) to the view of its dependee (the target view).",
+      "type": "object",
+      "properties": {
+        "type": {
+          "title": "type",
+          "description": "Determines the type of a dependency view object.",
+          "const": "DependencyView"
         }
       },
       "required": ["type"]
@@ -953,6 +1033,7 @@
         { "$ref": "#/$defs/Classifier" },
         { "$ref": "#/$defs/Generalization" },
         { "$ref": "#/$defs/GeneralizationSet" },
+        { "$ref": "#/$defs/Dependency" },
         { "$ref": "#/$defs/Anchor" },
         { "$ref": "#/$defs/Note" },
         { "$ref": "#/$defs/Package" }
@@ -1018,6 +1099,65 @@
         }
       },
       "required": ["x", "y"]
+    },
+    "classStereotype": {
+      "title": "class stereotype",
+      "description": "Determines one of the standard OntoUML stereotypes for classes, as defined by the UML Profile for Ontology-Driven Conceptual Modeling (OntoUML).\n\nClasses of endurants use \"kind\", \"collective\", \"quantity\", \"relator\", \"intrinsicMode\", \"extrinsicMode\", \"quality\", \"subkind\", \"role\", \"phase\", \"category\", \"mixin\", \"roleMixin\", or \"phaseMixin\"; classes of events use \"event\", \"historicalRole\", or \"historicalRoleMixin\"; classes of situations use \"situation\"; and classes of higher-order types use \"type\".",
+      "enum": [
+        "kind",
+        "collective",
+        "quantity",
+        "relator",
+        "intrinsicMode",
+        "extrinsicMode",
+        "quality",
+        "subkind",
+        "role",
+        "phase",
+        "category",
+        "mixin",
+        "roleMixin",
+        "phaseMixin",
+        "event",
+        "historicalRole",
+        "historicalRoleMixin",
+        "situation",
+        "type"
+      ]
+    },
+    "relationStereotype": {
+      "title": "relation stereotype",
+      "description": "Determines one of the standard OntoUML stereotypes for relations, as defined by the UML Profile for Ontology-Driven Conceptual Modeling (OntoUML).\n\nRelations between endurants use \"material\", \"comparative\", \"characterization\", \"mediation\", \"externalDependence\", \"componenthood\", \"membership\", \"subCollection\", \"subQuantity\", or \"constitution\"; relations involving events use \"historicalDependence\", \"participation\", \"creation\", \"termination\", \"change\", \"manifestation\", \"structural\", \"temporal\", or \"participational\"; relations involving situations use \"triggering\", \"bringingAbout\", or \"presence\"; and relations involving higher-order types use \"instantiation\".\n\nOnly \"material\" and \"comparative\" can decorate n-ary relations; all other stereotypes decorate binary relations. Derivation is not a relation stereotype: a derived relation is marked with \"is derived\" and connected to its truthmaker by a dependency decorated with \"derive\".",
+      "enum": [
+        "material",
+        "comparative",
+        "characterization",
+        "mediation",
+        "externalDependence",
+        "componenthood",
+        "membership",
+        "subCollection",
+        "subQuantity",
+        "constitution",
+        "historicalDependence",
+        "participation",
+        "creation",
+        "termination",
+        "change",
+        "manifestation",
+        "structural",
+        "temporal",
+        "participational",
+        "triggering",
+        "bringingAbout",
+        "presence",
+        "instantiation"
+      ]
+    },
+    "propertyStereotype": {
+      "title": "property stereotype",
+      "description": "Determines one of the standard OntoUML stereotypes for properties, as defined by the UML Profile for Ontology-Driven Conceptual Modeling (OntoUML).\n\nThe stereotype \"addOnly\" marks a property whose values can be added but never removed or altered; \"begin\" and \"end\" mark the attributes that record when an individual begins and ceases to exist.",
+      "enum": ["addOnly", "begin", "end"]
     }
   }
 }

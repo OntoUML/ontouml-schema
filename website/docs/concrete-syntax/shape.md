@@ -1,5 +1,5 @@
 ---
-sidebar_position: 12
+sidebar_position: 13
 description: The abstract Shape element — describes how to render a view, or a portion of one, in a diagram.
 ---
 
